@@ -1,0 +1,19 @@
+# use this to include all files (only for order-independent builds)
+
+header.js
+
+SpItems.js
+
+ores.js
+
+azatot.js
+
+Astral.js
+
+SpSworld.js
+
+bookpart.js
+
+summon.js
+
+mobs/holybot.js
