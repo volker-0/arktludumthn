@@ -1,0 +1,26 @@
+//bridge-file-version: #1
+{
+	"format_version": 1,
+	"header": {
+		"name": "Arktludumthn",
+		"description": "Don't delete this",
+		"uuid": "c60434e7-8321-4cb4-a6c6-328a06f6baa0",
+		"version": [
+			0,
+			0,
+			1
+		]
+	},
+	"modules": [
+		{
+			"description": "Arktludumthn",
+			"type": "resources",
+			"uuid": "e8be9dfb-8af5-4685-9161-9093bb4f2e64",
+			"version": [
+				0,
+				0,
+				1
+			]
+		}
+	]
+}

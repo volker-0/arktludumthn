@@ -1,0 +1,231 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\entity\\naida.json",
+	"file_type": "client_entity",
+	"format_version": 1,
+	"file_uuid": "ee3ca8f3_90bc_4ce9_83a1_ad341426f4f1",
+	"file_version": 5,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"minecraft:client_entity": {
+						"description": {
+							"identifier": "ark:naida",
+							"materials": {
+								"default": "entity_alphatest"
+							},
+							"textures": {
+								"default": "textures/entity/Naida"
+							},
+							"geometry": {
+								"default": "geometry.naida"
+							},
+							"render_controllers": [
+								"controller.render.mobs"
+							],
+							"spawn_egg": {
+								"base_color": "#1778D2",
+								"overlay_color": "#598B05"
+							},
+							"enable_attachables": false,
+							"animations": {
+								"walk": "animation.naida.walk"
+							},
+							"scripts": {
+								"animate": [
+									{
+										"walk": "query.modified_move_speed"
+									}
+								]
+							}
+						}
+					}
+				},
+				"key": "minecraft:client_entity",
+				"children": [
+					{
+						"open": {
+							"description": {
+								"identifier": "ark:naida",
+								"materials": {
+									"default": "entity_alphatest"
+								},
+								"textures": {
+									"default": "textures/entity/Naida"
+								},
+								"geometry": {
+									"default": "geometry.naida"
+								},
+								"render_controllers": [
+									"controller.render.mobs"
+								],
+								"spawn_egg": {
+									"base_color": "#1778D2",
+									"overlay_color": "#598B05"
+								},
+								"enable_attachables": false,
+								"animations": {
+									"walk": "animation.naida.walk"
+								},
+								"scripts": {
+									"animate": [
+										{
+											"walk": "query.modified_move_speed"
+										}
+									]
+								}
+							}
+						},
+						"key": "description",
+						"children": [
+							{
+								"data": "ark:naida",
+								"key": "identifier"
+							},
+							{
+								"key": "materials",
+								"is_minified": true,
+								"children": {
+									"default": "entity_alphatest"
+								}
+							},
+							{
+								"key": "textures",
+								"is_minified": true,
+								"children": {
+									"default": "textures/entity/Naida"
+								}
+							},
+							{
+								"key": "geometry",
+								"is_minified": true,
+								"children": {
+									"default": "geometry.naida"
+								}
+							},
+							{
+								"key": "render_controllers",
+								"is_minified": true,
+								"children": [
+									"controller.render.mobs"
+								]
+							},
+							{
+								"key": "spawn_egg",
+								"is_minified": true,
+								"children": {
+									"base_color": "#1778D2",
+									"overlay_color": "#598B05"
+								}
+							},
+							{
+								"data": "false",
+								"key": "enable_attachables"
+							},
+							{
+								"open": {
+									"identifier": "ark:naida",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Naida"
+									},
+									"geometry": {
+										"default": "geometry.naida"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#1778D2",
+										"overlay_color": "#598B05"
+									},
+									"enable_attachables": false,
+									"animations": {
+										"walk": "animation.naida.walk"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"walk": "query.modified_move_speed"
+											}
+										]
+									}
+								},
+								"key": "animations",
+								"is_minified": true,
+								"children": {
+									"walk": "animation.naida.walk"
+								}
+							},
+							{
+								"open": {
+									"identifier": "ark:naida",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Naida"
+									},
+									"geometry": {
+										"default": "geometry.naida"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#1778D2",
+										"overlay_color": "#598B05"
+									},
+									"enable_attachables": false,
+									"animations": {
+										"walk": "animation.naida.walk"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"walk": "query.modified_move_speed"
+											}
+										]
+									}
+								},
+								"key": "scripts",
+								"children": [
+									{
+										"open": {
+											"animate": [
+												{
+													"walk": "query.modified_move_speed"
+												}
+											]
+										},
+										"key": "animate",
+										"children": [
+											{
+												"open": [
+													{
+														"walk": "query.modified_move_speed"
+													}
+												],
+												"is_minified": true,
+												"children": {
+													"walk": "query.modified_move_speed"
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

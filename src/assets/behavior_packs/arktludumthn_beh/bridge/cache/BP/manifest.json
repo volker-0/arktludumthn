@@ -1,0 +1,163 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_behavior_packs\\arktludumthn_beh\\manifest.json",
+	"file_type": "manifest_bp",
+	"format_version": 1,
+	"file_uuid": "db33c174_c54a_4d3d_a040_38ce3c766a64",
+	"file_version": 4,
+	"cache_content": {
+		"children": [
+			{
+				"open": {
+					"format_version": 1,
+					"header": {
+						"name": "Arktludumthn",
+						"description": "Don't delete this",
+						"uuid": "dcb8fa6a-3d62-44ff-bea8-8c2405483a9b",
+						"version": [
+							0,
+							0,
+							1
+						]
+					},
+					"modules": [
+						{
+							"description": "Arktludumthn",
+							"type": "data",
+							"uuid": "f72a9b35-7127-421b-b806-8bf4be304be1",
+							"version": [
+								0,
+								0,
+								1
+							]
+						}
+					],
+					"dependencies": [
+						{
+							"uuid": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+							"version": [
+								0,
+								0,
+								1
+							]
+						}
+					]
+				},
+				"data": "1",
+				"key": "format_version"
+			},
+			{
+				"key": "header",
+				"is_minified": true,
+				"children": {
+					"name": "Arktludumthn",
+					"description": "Don't delete this",
+					"uuid": "dcb8fa6a-3d62-44ff-bea8-8c2405483a9b",
+					"version": [
+						0,
+						0,
+						1
+					]
+				}
+			},
+			{
+				"key": "modules",
+				"is_minified": true,
+				"children": [
+					{
+						"description": "Arktludumthn",
+						"type": "data",
+						"uuid": "f72a9b35-7127-421b-b806-8bf4be304be1",
+						"version": [
+							0,
+							0,
+							1
+						]
+					}
+				]
+			},
+			{
+				"open": {
+					"format_version": 1,
+					"header": {
+						"name": "Arktludumthn",
+						"description": "Don't delete this",
+						"uuid": "dcb8fa6a-3d62-44ff-bea8-8c2405483a9b",
+						"version": [
+							0,
+							0,
+							1
+						]
+					},
+					"modules": [
+						{
+							"description": "Arktludumthn",
+							"type": "data",
+							"uuid": "f72a9b35-7127-421b-b806-8bf4be304be1",
+							"version": [
+								0,
+								0,
+								1
+							]
+						}
+					],
+					"dependencies": [
+						{
+							"uuid": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+							"version": [
+								0,
+								0,
+								1
+							]
+						}
+					]
+				},
+				"key": "dependencies",
+				"children": [
+					{
+						"open": [
+							{
+								"uuid": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+								"version": [
+									0,
+									0,
+									1
+								]
+							}
+						],
+						"children": [
+							{
+								"open": {
+									"uuid": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+									"version": [
+										0,
+										0,
+										1
+									]
+								},
+								"data": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+								"key": "uuid"
+							},
+							{
+								"open": {
+									"uuid": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+									"version": [
+										0,
+										0,
+										1
+									]
+								},
+								"key": "version",
+								"is_minified": true,
+								"children": [
+									0,
+									0,
+									1
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
