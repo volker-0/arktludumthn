@@ -1,0 +1,54 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\animation_controllers\\root.json",
+	"file_type": "rp_animation_controller",
+	"format_version": 1,
+	"file_uuid": "735eb6ed_8868_466b_b5b5_212f6bc81915",
+	"file_version": 1,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"animation_controllers": {
+						"controller.animation.blank": {
+							"states": {
+								"default": {}
+							}
+						}
+					}
+				},
+				"key": "animation_controllers",
+				"children": [
+					{
+						"open": {
+							"controller.animation.blank": {
+								"states": {
+									"default": {}
+								}
+							}
+						},
+						"key": "controller.animation.blank",
+						"children": [
+							{
+								"open": {
+									"states": {
+										"default": {}
+									}
+								},
+								"key": "states",
+								"is_minified": true,
+								"children": {
+									"default": {}
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

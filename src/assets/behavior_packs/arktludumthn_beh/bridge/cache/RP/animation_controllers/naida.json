@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "4ae937dd_1b08_4184_a1f1_458e8c9e089f",
-	"file_version": 1,
+	"file_version": 2,
 	"cache_content": {
 		"children": [
 			{
@@ -24,9 +24,7 @@
 										}
 									],
 									"blend_transition": 0.1,
-									"transitions": [
-										{}
-									]
+									"transitions": {}
 								}
 							}
 						}
@@ -46,9 +44,7 @@
 											}
 										],
 										"blend_transition": 0.1,
-										"transitions": [
-											{}
-										]
+										"transitions": {}
 									}
 								}
 							}
@@ -70,9 +66,7 @@
 												}
 											],
 											"blend_transition": 0.1,
-											"transitions": [
-												{}
-											]
+											"transitions": {}
 										}
 									}
 								},
@@ -87,14 +81,21 @@
 													}
 												],
 												"blend_transition": 0.1,
-												"transitions": [
-													{}
-												]
+												"transitions": {}
 											}
 										},
 										"key": "default",
 										"children": [
 											{
+												"open": {
+													"animations": [
+														{
+															"walk": "query.modified_move_speed"
+														}
+													],
+													"blend_transition": 0.1,
+													"transitions": {}
+												},
 												"key": "animations",
 												"children": [
 													{
@@ -115,22 +116,9 @@
 												"key": "blend_transition"
 											},
 											{
-												"open": {
-													"animations": [
-														{
-															"walk": "query.modified_move_speed"
-														}
-													],
-													"blend_transition": 0.1,
-													"transitions": [
-														{}
-													]
-												},
 												"key": "transitions",
 												"is_minified": true,
-												"children": [
-													{}
-												]
+												"children": {}
 											}
 										]
 									}

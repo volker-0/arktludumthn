@@ -1,0 +1,26 @@
+//bridge-file-version: #3
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ark:root",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": {}
+			},
+			"geometry": {
+				"default": "geometry.root"
+			},
+			"animations": {},
+			"render_controllers": [
+				"controller.render.mobs"
+			],
+			"spawn_egg": {
+				"base_color": "#857241",
+				"overlay_color": "#D21717"
+			}
+		}
+	}
+}

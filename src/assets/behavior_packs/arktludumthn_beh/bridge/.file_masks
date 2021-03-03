@@ -52,5 +52,11 @@
 	},
 	"RP/entity/naida_bullet.json": {
 		"data": {}
+	},
+	"RP/entity/root.json": {
+		"data": {}
+	},
+	"RP/animation_controllers/root.json": {
+		"data": {}
 	}
 }

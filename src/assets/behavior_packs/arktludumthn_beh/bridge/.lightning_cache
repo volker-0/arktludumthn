@@ -65,6 +65,26 @@
 			"geometry_identifiers": [
 				"default"
 			]
+		},
+		"RP/entity/root.json": {
+			"identifiers": [
+				"ark:root"
+			],
+			"particle_references": [],
+			"animation_references": [],
+			"sound_references": [],
+			"texture_references": [
+				"default"
+			],
+			"material_references": [
+				"default"
+			],
+			"geometry_references": [
+				"default"
+			],
+			"geometry_identifiers": [
+				"default"
+			]
 		}
 	},
 	"render_controller": {
@@ -78,6 +98,11 @@
 		"RP/animation_controllers/naida.json": {
 			"ids": [
 				"controller.animation.naida"
+			]
+		},
+		"RP/animation_controllers/root.json": {
+			"ids": [
+				"controller.animation.blank"
 			]
 		}
 	},

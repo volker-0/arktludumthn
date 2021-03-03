@@ -1,0 +1,11 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.blank": {
+			"states": {
+				"default": {}
+			}
+		}
+	}
+}

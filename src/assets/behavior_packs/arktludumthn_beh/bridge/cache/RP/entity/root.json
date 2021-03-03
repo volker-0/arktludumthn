@@ -1,0 +1,91 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\entity\\root.json",
+	"file_type": "client_entity",
+	"format_version": 1,
+	"file_uuid": "20011458_bb90_4810_a390_d444661ecca4",
+	"file_version": 3,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"minecraft:client_entity": {
+						"description": {
+							"identifier": "ark:root",
+							"materials": {
+								"default": "entity_alphatest"
+							},
+							"textures": {
+								"default": {}
+							},
+							"geometry": {
+								"default": "geometry.root"
+							},
+							"animations": {},
+							"render_controllers": [
+								"controller.render.mobs"
+							],
+							"spawn_egg": {
+								"base_color": "#857241",
+								"overlay_color": "#D21717"
+							}
+						}
+					}
+				},
+				"key": "minecraft:client_entity",
+				"children": [
+					{
+						"open": {
+							"description": {
+								"identifier": "ark:root",
+								"materials": {
+									"default": "entity_alphatest"
+								},
+								"textures": {
+									"default": {}
+								},
+								"geometry": {
+									"default": "geometry.root"
+								},
+								"animations": {},
+								"render_controllers": [
+									"controller.render.mobs"
+								],
+								"spawn_egg": {
+									"base_color": "#857241",
+									"overlay_color": "#D21717"
+								}
+							}
+						},
+						"key": "description",
+						"is_minified": true,
+						"children": {
+							"identifier": "ark:root",
+							"materials": {
+								"default": "entity_alphatest"
+							},
+							"textures": {
+								"default": {}
+							},
+							"geometry": {
+								"default": "geometry.root"
+							},
+							"animations": {},
+							"render_controllers": [
+								"controller.render.mobs"
+							],
+							"spawn_egg": {
+								"base_color": "#857241",
+								"overlay_color": "#D21717"
+							}
+						}
+					}
+				]
+			}
+		]
+	}
+}
