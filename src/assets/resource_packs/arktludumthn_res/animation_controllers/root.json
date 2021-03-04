@@ -1,10 +1,46 @@
-//bridge-file-version: #1
+//bridge-file-version: #3
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
-		"controller.animation.blank": {
+		"controller.animation.root.attack": {
+			"initial_state": "default",
 			"states": {
-				"default": {}
+				"default": {
+					"transitions": [
+						{
+							"attack_state": "variable.attack_time > 0"
+						}
+					],
+					"blend_transition": 0.1
+				},
+				"attack_state": {
+					"transitions": [
+						{
+							"default": "variable.attack_time == 0"
+						}
+					],
+					"blend_transition": 0.1,
+					"animations": [
+						{
+							"attack": {}
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.root.summon": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"summon_state": {
+								"variable.lifitime == 0": {}
+							}
+						}
+					],
+					"blend_transition": 0.1
+				}
 			}
 		}
 	}
