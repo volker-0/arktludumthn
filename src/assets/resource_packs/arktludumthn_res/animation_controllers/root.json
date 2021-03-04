@@ -1,4 +1,3 @@
-//bridge-file-version: #4
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
@@ -34,7 +33,7 @@
 					],
 					"transitions": [
 						{
-							"default": "query.life_time > 0.5"
+							"default": "query.all_animations_finished == 1"
 						}
 					],
 					"blend_transition": 0.1
