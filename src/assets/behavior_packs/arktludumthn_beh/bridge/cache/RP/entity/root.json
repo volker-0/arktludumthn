@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "20011458_bb90_4810_a390_d444661ecca4",
-	"file_version": 3,
+	"file_version": 5,
 	"cache_content": {
 		"children": [
 			{
@@ -25,13 +25,24 @@
 							"geometry": {
 								"default": "geometry.root"
 							},
-							"animations": {},
+							"animations": {
+								"idle": "animation.root.idle",
+								"spawn": "animation.root.spawn",
+								"attack": "animation.root.attack"
+							},
 							"render_controllers": [
 								"controller.render.mobs"
 							],
 							"spawn_egg": {
 								"base_color": "#857241",
 								"overlay_color": "#D21717"
+							},
+							"scripts": {
+								"animate": [
+									{
+										"idle": {}
+									}
+								]
 							}
 						}
 					}
@@ -51,38 +62,138 @@
 								"geometry": {
 									"default": "geometry.root"
 								},
-								"animations": {},
+								"animations": {
+									"idle": "animation.root.idle",
+									"spawn": "animation.root.spawn",
+									"attack": "animation.root.attack"
+								},
 								"render_controllers": [
 									"controller.render.mobs"
 								],
 								"spawn_egg": {
 									"base_color": "#857241",
 									"overlay_color": "#D21717"
+								},
+								"scripts": {
+									"animate": [
+										{
+											"idle": {}
+										}
+									]
 								}
 							}
 						},
 						"key": "description",
-						"is_minified": true,
-						"children": {
-							"identifier": "ark:root",
-							"materials": {
-								"default": "entity_alphatest"
+						"children": [
+							{
+								"data": "ark:root",
+								"key": "identifier"
 							},
-							"textures": {
-								"default": {}
+							{
+								"key": "materials",
+								"is_minified": true,
+								"children": {
+									"default": "entity_alphatest"
+								}
 							},
-							"geometry": {
-								"default": "geometry.root"
+							{
+								"key": "textures",
+								"is_minified": true,
+								"children": {
+									"default": {}
+								}
 							},
-							"animations": {},
-							"render_controllers": [
-								"controller.render.mobs"
-							],
-							"spawn_egg": {
-								"base_color": "#857241",
-								"overlay_color": "#D21717"
+							{
+								"key": "geometry",
+								"is_minified": true,
+								"children": {
+									"default": "geometry.root"
+								}
+							},
+							{
+								"key": "animations",
+								"is_minified": true,
+								"children": {
+									"idle": "animation.root.idle",
+									"spawn": "animation.root.spawn",
+									"attack": "animation.root.attack"
+								}
+							},
+							{
+								"key": "render_controllers",
+								"is_minified": true,
+								"children": [
+									"controller.render.mobs"
+								]
+							},
+							{
+								"key": "spawn_egg",
+								"is_minified": true,
+								"children": {
+									"base_color": "#857241",
+									"overlay_color": "#D21717"
+								}
+							},
+							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": {}
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": {}
+											}
+										]
+									}
+								},
+								"key": "scripts",
+								"children": [
+									{
+										"open": {
+											"animate": [
+												{
+													"idle": {}
+												}
+											]
+										},
+										"key": "animate",
+										"children": [
+											{
+												"open": [
+													{
+														"idle": {}
+													}
+												],
+												"is_minified": true,
+												"children": {
+													"idle": {}
+												}
+											}
+										]
+									}
+								]
 							}
-						}
+						]
 					}
 				]
 			}

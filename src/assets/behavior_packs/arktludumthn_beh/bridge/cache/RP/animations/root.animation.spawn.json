@@ -1,0 +1,149 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\animations\\root.animation.spawn.json",
+	"file_type": "rp_animation",
+	"format_version": 1,
+	"file_uuid": "c9d4a7cb_f355_4b85_9749_9b15167edb79",
+	"file_version": 1,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.8.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.8.0",
+					"animations": {
+						"animation.root.spawn": {
+							"animation_length": 0.5,
+							"bones": {
+								"All": {
+									"position": {
+										"0.0": [
+											0,
+											-27,
+											0
+										],
+										"0.50": [
+											0,
+											0,
+											0
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"key": "animations",
+				"children": [
+					{
+						"open": {
+							"animation.root.spawn": {
+								"animation_length": 0.5,
+								"bones": {
+									"All": {
+										"position": {
+											"0.0": [
+												0,
+												-27,
+												0
+											],
+											"0.50": [
+												0,
+												0,
+												0
+											]
+										}
+									}
+								}
+							}
+						},
+						"key": "animation.root.spawn",
+						"children": [
+							{
+								"data": "0.5",
+								"key": "animation_length"
+							},
+							{
+								"open": {
+									"animation_length": 0.5,
+									"bones": {
+										"All": {
+											"position": {
+												"0.0": [
+													0,
+													-27,
+													0
+												],
+												"0.50": [
+													0,
+													0,
+													0
+												]
+											}
+										}
+									}
+								},
+								"key": "bones",
+								"children": [
+									{
+										"open": {
+											"All": {
+												"position": {
+													"0.0": [
+														0,
+														-27,
+														0
+													],
+													"0.50": [
+														0,
+														0,
+														0
+													]
+												}
+											}
+										},
+										"key": "All",
+										"children": [
+											{
+												"open": {
+													"position": {
+														"0.0": [
+															0,
+															-27,
+															0
+														],
+														"0.50": [
+															0,
+															0,
+															0
+														]
+													}
+												},
+												"key": "position",
+												"is_minified": true,
+												"children": {
+													"0.0": [
+														0,
+														-27,
+														0
+													],
+													"0.50": [
+														0,
+														0,
+														0
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

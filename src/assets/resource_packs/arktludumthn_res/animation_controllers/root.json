@@ -1,10 +1,16 @@
+//bridge-file-version: #7
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
-		"controller.animation.root.attack": {
+		"controller.animation.root": {
 			"initial_state": "spawn_state",
 			"states": {
 				"default": {
+					"animations": [
+						{
+							"idle": "query.is_alive == 1"
+						}
+					],
 					"transitions": [
 						{
 							"attack_state": "variable.attack_time > 0"

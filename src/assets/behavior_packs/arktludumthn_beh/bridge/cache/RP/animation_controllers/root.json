@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "735eb6ed_8868_466b_b5b5_212f6bc81915",
-	"file_version": 1,
+	"file_version": 7,
 	"cache_content": {
 		"children": [
 			{
@@ -14,9 +14,48 @@
 				"open": {
 					"format_version": "1.10.0",
 					"animation_controllers": {
-						"controller.animation.blank": {
+						"controller.animation.root": {
+							"initial_state": "spawn_state",
 							"states": {
-								"default": {}
+								"default": {
+									"animations": [
+										{
+											"idle": "query.is_alive == 1"
+										}
+									],
+									"transitions": [
+										{
+											"attack_state": "variable.attack_time > 0"
+										}
+									],
+									"blend_transition": 0.1
+								},
+								"attack_state": {
+									"animations": [
+										{
+											"attack": {}
+										}
+									],
+									"transitions": [
+										{
+											"default": "variable.attack_time == 0"
+										}
+									],
+									"blend_transition": 0.1
+								},
+								"spawn_state": {
+									"animations": [
+										{
+											"spawn": {}
+										}
+									],
+									"transitions": [
+										{
+											"default": "query.all_animations_finished == 1"
+										}
+									],
+									"blend_transition": 0.1
+								}
 							}
 						}
 					}
@@ -25,25 +64,190 @@
 				"children": [
 					{
 						"open": {
-							"controller.animation.blank": {
+							"controller.animation.root": {
+								"initial_state": "spawn_state",
 								"states": {
-									"default": {}
+									"default": {
+										"animations": [
+											{
+												"idle": "query.is_alive == 1"
+											}
+										],
+										"transitions": [
+											{
+												"attack_state": "variable.attack_time > 0"
+											}
+										],
+										"blend_transition": 0.1
+									},
+									"attack_state": {
+										"animations": [
+											{
+												"attack": {}
+											}
+										],
+										"transitions": [
+											{
+												"default": "variable.attack_time == 0"
+											}
+										],
+										"blend_transition": 0.1
+									},
+									"spawn_state": {
+										"animations": [
+											{
+												"spawn": {}
+											}
+										],
+										"transitions": [
+											{
+												"default": "query.all_animations_finished == 1"
+											}
+										],
+										"blend_transition": 0.1
+									}
 								}
 							}
 						},
-						"key": "controller.animation.blank",
+						"key": "controller.animation.root",
 						"children": [
 							{
+								"data": "spawn_state",
+								"key": "initial_state"
+							},
+							{
 								"open": {
+									"initial_state": "spawn_state",
 									"states": {
-										"default": {}
+										"default": {
+											"animations": [
+												{
+													"idle": "query.is_alive == 1"
+												}
+											],
+											"transitions": [
+												{
+													"attack_state": "variable.attack_time > 0"
+												}
+											],
+											"blend_transition": 0.1
+										},
+										"attack_state": {
+											"animations": [
+												{
+													"attack": {}
+												}
+											],
+											"transitions": [
+												{
+													"default": "variable.attack_time == 0"
+												}
+											],
+											"blend_transition": 0.1
+										},
+										"spawn_state": {
+											"animations": [
+												{
+													"spawn": {}
+												}
+											],
+											"transitions": [
+												{
+													"default": "query.all_animations_finished == 1"
+												}
+											],
+											"blend_transition": 0.1
+										}
 									}
 								},
 								"key": "states",
-								"is_minified": true,
-								"children": {
-									"default": {}
-								}
+								"children": [
+									{
+										"key": "default",
+										"is_minified": true,
+										"children": {
+											"animations": [
+												{
+													"idle": "query.is_alive == 1"
+												}
+											],
+											"transitions": [
+												{
+													"attack_state": "variable.attack_time > 0"
+												}
+											],
+											"blend_transition": 0.1
+										}
+									},
+									{
+										"key": "attack_state",
+										"children": [
+											{
+												"key": "animations",
+												"is_minified": true,
+												"children": [
+													{
+														"attack": {}
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"default": "variable.attack_time == 0"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"default": "variable.attack_time == 0"
+														}
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
+									},
+									{
+										"key": "spawn_state",
+										"children": [
+											{
+												"key": "animations",
+												"children": [
+													{
+														"open": [
+															{
+																"spawn": {}
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"spawn": {}
+														}
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"is_minified": true,
+												"children": [
+													{
+														"default": "query.all_animations_finished == 1"
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
+									}
+								]
 							}
 						]
 					}

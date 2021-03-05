@@ -71,7 +71,11 @@
 				"ark:root"
 			],
 			"particle_references": [],
-			"animation_references": [],
+			"animation_references": [
+				"idle",
+				"spawn",
+				"attack"
+			],
 			"sound_references": [],
 			"texture_references": [
 				"default"
@@ -102,7 +106,7 @@
 		},
 		"RP/animation_controllers/root.json": {
 			"ids": [
-				"controller.animation.blank"
+				"controller.animation.root"
 			]
 		}
 	},
@@ -143,6 +147,20 @@
 			"families": [],
 			"custom_commands": [],
 			"custom_components": []
+		},
+		"BP/entities/root.json": {
+			"events": [],
+			"bridge_core_tags": [],
+			"identifiers": [
+				"ark:root"
+			],
+			"animation_references": [],
+			"families": [
+				"mob",
+				"plant"
+			],
+			"custom_commands": [],
+			"custom_components": []
 		}
 	},
 	"rp_animation": {
@@ -164,6 +182,11 @@
 		"RP/animations/naida_bullet.animation.json": {
 			"ids": [
 				"animation.naida_bullet.move"
+			]
+		},
+		"RP/animations/root.animation.spawn.json": {
+			"ids": [
+				"animation.root.spawn"
 			]
 		}
 	},

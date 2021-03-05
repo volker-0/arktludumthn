@@ -1,4 +1,4 @@
-//bridge-file-version: #0
+//bridge-file-version: #2
 {
 	"format_version": "1.10.0",
 	"minecraft:entity": {
@@ -49,7 +49,8 @@
 				"homing": true
 			},
 			"minecraft:physics": {
-				"has_collision": false
+				"has_collision": false,
+				"has_gravity": false
 			},
 			"minecraft:conditional_bandwidth_optimization": {
 				"default_values": {
@@ -57,6 +58,9 @@
 					"max_dropped_ticks": 10,
 					"use_motion_prediction_hints": true
 				}
+			},
+			"minecraft:push_through": {
+				"value": 0.5
 			}
 		},
 		"component_groups": {},

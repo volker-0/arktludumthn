@@ -3,7 +3,7 @@
 	"file_type": "entity",
 	"format_version": 1,
 	"file_uuid": "a5d2b951_6639_49f3_845c_f1e18da354d7",
-	"file_version": 0,
+	"file_version": 2,
 	"cache_content": {
 		"children": [
 			{
@@ -61,7 +61,8 @@
 								"homing": true
 							},
 							"minecraft:physics": {
-								"has_collision": false
+								"has_collision": false,
+								"has_gravity": false
 							},
 							"minecraft:conditional_bandwidth_optimization": {
 								"default_values": {
@@ -69,6 +70,9 @@
 									"max_dropped_ticks": 10,
 									"use_motion_prediction_hints": true
 								}
+							},
+							"minecraft:push_through": {
+								"value": 0.5
 							}
 						}
 					}
@@ -134,7 +138,8 @@
 									"homing": true
 								},
 								"minecraft:physics": {
-									"has_collision": false
+									"has_collision": false,
+									"has_gravity": false
 								},
 								"minecraft:conditional_bandwidth_optimization": {
 									"default_values": {
@@ -142,6 +147,9 @@
 										"max_dropped_ticks": 10,
 										"use_motion_prediction_hints": true
 									}
+								},
+								"minecraft:push_through": {
+									"value": 0.5
 								}
 							}
 						},
@@ -153,6 +161,45 @@
 								"children": {
 									"width": 0.625,
 									"height": 0.625
+								}
+							},
+							{
+								"key": "minecraft:projectile",
+								"is_minified": true,
+								"children": {
+									"on_hit": {
+										"impact_damage": {
+											"damage": 4,
+											"knockback": true,
+											"should_bounce": true
+										},
+										"mob_effect": {
+											"effect": "levitation",
+											"durationeasy": 200,
+											"durationnormal": 200,
+											"durationhard": 200,
+											"amplifier": 1
+										},
+										"remove_on_hit": {},
+										"particle_on_hit": {
+											"particle_type": "largeexplode",
+											"on_other_hit": true
+										}
+									},
+									"hit_sound": "bullet.hit",
+									"destroyOnHurt": true,
+									"crit_particle_on_hurt": true,
+									"power": 1.6,
+									"gravity": 0.05,
+									"uncertainty_base": 16,
+									"uncertainty_multiplier": 4,
+									"anchor": 1,
+									"offset": [
+										0,
+										2.2,
+										0
+									],
+									"homing": true
 								}
 							},
 							{
@@ -197,7 +244,8 @@
 										"homing": true
 									},
 									"minecraft:physics": {
-										"has_collision": false
+										"has_collision": false,
+										"has_gravity": false
 									},
 									"minecraft:conditional_bandwidth_optimization": {
 										"default_values": {
@@ -205,51 +253,16 @@
 											"max_dropped_ticks": 10,
 											"use_motion_prediction_hints": true
 										}
+									},
+									"minecraft:push_through": {
+										"value": 0.5
 									}
 								},
-								"key": "minecraft:projectile",
-								"is_minified": true,
-								"children": {
-									"on_hit": {
-										"impact_damage": {
-											"damage": 4,
-											"knockback": true,
-											"should_bounce": true
-										},
-										"mob_effect": {
-											"effect": "levitation",
-											"durationeasy": 200,
-											"durationnormal": 200,
-											"durationhard": 200,
-											"amplifier": 1
-										},
-										"remove_on_hit": {},
-										"particle_on_hit": {
-											"particle_type": "largeexplode",
-											"on_other_hit": true
-										}
-									},
-									"hit_sound": "bullet.hit",
-									"destroyOnHurt": true,
-									"crit_particle_on_hurt": true,
-									"power": 1.6,
-									"gravity": 0.05,
-									"uncertainty_base": 16,
-									"uncertainty_multiplier": 4,
-									"anchor": 1,
-									"offset": [
-										0,
-										2.2,
-										0
-									],
-									"homing": true
-								}
-							},
-							{
 								"key": "minecraft:physics",
 								"is_minified": true,
 								"children": {
-									"has_collision": false
+									"has_collision": false,
+									"has_gravity": false
 								}
 							},
 							{
@@ -261,6 +274,13 @@
 										"max_dropped_ticks": 10,
 										"use_motion_prediction_hints": true
 									}
+								}
+							},
+							{
+								"key": "minecraft:push_through",
+								"is_minified": true,
+								"children": {
+									"value": 0.5
 								}
 							}
 						]

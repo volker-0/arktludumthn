@@ -58,5 +58,14 @@
 	},
 	"RP/animation_controllers/root.json": {
 		"data": {}
+	},
+	"RP/animations/root.animation.spawn.json": {
+		"data": {}
+	},
+	"RP/models/entity/root.json": {
+		"data": {}
+	},
+	"BP/entities/root.json": {
+		"data": {}
 	}
 }

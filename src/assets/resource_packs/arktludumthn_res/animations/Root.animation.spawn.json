@@ -1,23 +1,21 @@
-//bridge-file-version: #1
 {
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.root.spawn": {
-			"animation_length": 0.5,
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.515,
 			"bones": {
-				"All": {
+				"all": {
 					"position": {
-						"0.0": [
-							0,
-							-27,
-							0
-						],
-						"0.50": [
-							0,
-							0,
-							0
-						]
+						"0.0": [0, -27, 0],
+						"0.5": [0, 0, 0]
 					}
+				}
+			},
+			"particle_effects": {
+				"0.0": {
+					"effect": "minecraft:breaking_item_icon",
+					"locator": "particles"
 				}
 			}
 		}
