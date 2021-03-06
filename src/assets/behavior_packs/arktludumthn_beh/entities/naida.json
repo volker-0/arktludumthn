@@ -15,7 +15,7 @@
 			},
 			"minecraft:type_family": {
 				"family": [
-					"god";
+					"god",
 					"mob"
 				]
 			},
