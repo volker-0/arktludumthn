@@ -3,7 +3,7 @@
 	"file_type": "entity",
 	"format_version": 1,
 	"file_uuid": "2509bf30_a79a_4372_ac30_f1b4374bd2b3",
-	"file_version": 32,
+	"file_version": 34,
 	"cache_content": {
 		"children": [
 			{
@@ -23,7 +23,8 @@
 							},
 							"minecraft:type_family": {
 								"family": [
-									"god"
+									"god",
+									"mob"
 								]
 							},
 							"minecraft:health": {
@@ -76,30 +77,29 @@
 									},
 									{
 										"weight": 0,
-										"cooldown_time": 5,
-										"cast_duration": 10,
+										"cooldown_time": 15,
+										"cast_duration": 0.5,
 										"sequence": [
 											{
 												"shape": "line",
 												"target": "target",
-												"base_delay": 0,
-												"delay_per_summon": 0.5,
-												"num_entities_spawned": 20,
-												"summon_cap": 20,
+												"base_delay": 1,
+												"num_entities_spawned": 1,
+												"summon_cap": 5,
 												"summon_cap_radius": 16,
-												"entity_type": "minecraft:evocation_fang",
-												"size": 1,
-												"entity_lifespan": 1.1
+												"entity_type": "ark:root",
+												"size": 0.8,
+												"entity_lifespan": -1
 											}
 										]
 									},
 									{
 										"weight": 10,
-										"cooldown_time": 9,
+										"cooldown_time": 12,
 										"cast_duration": 3,
 										"sequence": [
 											{
-												"shape": "line",
+												"shape": "circle",
 												"target": "self",
 												"base_delay": 0,
 												"delay_per_summon": 1,
@@ -121,7 +121,7 @@
 								"damage": 3
 							},
 							"minecraft:behavior.look_at_target": {
-								"priority": 5,
+								"priority": 0,
 								"look_distance": 15,
 								"probability": 0.02
 							},
@@ -170,7 +170,8 @@
 							},
 							"minecraft:type_family": {
 								"family": [
-									"god"
+									"god",
+									"mob"
 								]
 							},
 							"minecraft:health": {
@@ -223,30 +224,29 @@
 									},
 									{
 										"weight": 0,
-										"cooldown_time": 5,
-										"cast_duration": 10,
+										"cooldown_time": 15,
+										"cast_duration": 0.5,
 										"sequence": [
 											{
 												"shape": "line",
 												"target": "target",
-												"base_delay": 0,
-												"delay_per_summon": 0.5,
-												"num_entities_spawned": 20,
-												"summon_cap": 20,
+												"base_delay": 1,
+												"num_entities_spawned": 1,
+												"summon_cap": 5,
 												"summon_cap_radius": 16,
-												"entity_type": "minecraft:evocation_fang",
-												"size": 1,
-												"entity_lifespan": 1.1
+												"entity_type": "ark:root",
+												"size": 0.8,
+												"entity_lifespan": -1
 											}
 										]
 									},
 									{
 										"weight": 10,
-										"cooldown_time": 9,
+										"cooldown_time": 12,
 										"cast_duration": 3,
 										"sequence": [
 											{
-												"shape": "line",
+												"shape": "circle",
 												"target": "self",
 												"base_delay": 0,
 												"delay_per_summon": 1,
@@ -268,7 +268,7 @@
 								"damage": 3
 							},
 							"minecraft:behavior.look_at_target": {
-								"priority": 5,
+								"priority": 0,
 								"look_distance": 15,
 								"probability": 0.02
 							},
@@ -329,7 +329,8 @@
 								},
 								"minecraft:type_family": {
 									"family": [
-										"god"
+										"god",
+										"mob"
 									]
 								},
 								"minecraft:health": {
@@ -382,30 +383,29 @@
 										},
 										{
 											"weight": 0,
-											"cooldown_time": 5,
-											"cast_duration": 10,
+											"cooldown_time": 15,
+											"cast_duration": 0.5,
 											"sequence": [
 												{
 													"shape": "line",
 													"target": "target",
-													"base_delay": 0,
-													"delay_per_summon": 0.5,
-													"num_entities_spawned": 20,
-													"summon_cap": 20,
+													"base_delay": 1,
+													"num_entities_spawned": 1,
+													"summon_cap": 5,
 													"summon_cap_radius": 16,
-													"entity_type": "minecraft:evocation_fang",
-													"size": 1,
-													"entity_lifespan": 1.1
+													"entity_type": "ark:root",
+													"size": 0.8,
+													"entity_lifespan": -1
 												}
 											]
 										},
 										{
 											"weight": 10,
-											"cooldown_time": 9,
+											"cooldown_time": 12,
 											"cast_duration": 3,
 											"sequence": [
 												{
-													"shape": "line",
+													"shape": "circle",
 													"target": "self",
 													"base_delay": 0,
 													"delay_per_summon": 1,
@@ -427,7 +427,7 @@
 									"damage": 3
 								},
 								"minecraft:behavior.look_at_target": {
-									"priority": 5,
+									"priority": 0,
 									"look_distance": 15,
 									"probability": 0.02
 								},
@@ -469,7 +469,8 @@
 								"is_minified": true,
 								"children": {
 									"family": [
-										"god"
+										"god",
+										"mob"
 									]
 								}
 							},
@@ -515,30 +516,14 @@
 								}
 							},
 							{
-								"key": "minecraft:movement.basic",
-								"is_minified": true,
-								"children": {}
-							},
-							{
-								"key": "minecraft:jump.static",
-								"is_minified": true,
-								"children": {}
-							},
-							{
-								"key": "minecraft:behavior.float",
-								"is_minified": true,
-								"children": {
-									"priority": 0
-								}
-							},
-							{
 								"open": {
 									"minecraft:behavior.random_stroll": {
 										"priority": 9
 									},
 									"minecraft:type_family": {
 										"family": [
-											"god"
+											"god",
+											"mob"
 										]
 									},
 									"minecraft:health": {
@@ -591,30 +576,29 @@
 											},
 											{
 												"weight": 0,
-												"cooldown_time": 5,
-												"cast_duration": 10,
+												"cooldown_time": 15,
+												"cast_duration": 0.5,
 												"sequence": [
 													{
 														"shape": "line",
 														"target": "target",
-														"base_delay": 0,
-														"delay_per_summon": 0.5,
-														"num_entities_spawned": 20,
-														"summon_cap": 20,
+														"base_delay": 1,
+														"num_entities_spawned": 1,
+														"summon_cap": 5,
 														"summon_cap_radius": 16,
-														"entity_type": "minecraft:evocation_fang",
-														"size": 1,
-														"entity_lifespan": 1.1
+														"entity_type": "ark:root",
+														"size": 0.8,
+														"entity_lifespan": -1
 													}
 												]
 											},
 											{
 												"weight": 10,
-												"cooldown_time": 9,
+												"cooldown_time": 12,
 												"cast_duration": 3,
 												"sequence": [
 													{
-														"shape": "line",
+														"shape": "circle",
 														"target": "self",
 														"base_delay": 0,
 														"delay_per_summon": 1,
@@ -636,7 +620,7 @@
 										"damage": 3
 									},
 									"minecraft:behavior.look_at_target": {
-										"priority": 5,
+										"priority": 0,
 										"look_distance": 15,
 										"probability": 0.02
 									},
@@ -662,247 +646,215 @@
 										"is_pushable": true
 									}
 								},
-								"key": "minecraft:behavior.summon_entity",
-								"children": [
-									{
-										"data": "0",
-										"key": "priority"
+								"key": "minecraft:movement.basic",
+								"is_minified": true,
+								"children": {}
+							},
+							{
+								"open": {
+									"minecraft:behavior.random_stroll": {
+										"priority": 9
 									},
-									{
-										"open": {
-											"priority": 0,
-											"summon_choices": [
-												{
-													"weight": 0,
-													"cooldown_time": 5,
-													"cast_duration": 0.9,
-													"sequence": [
-														{
-															"shape": "circle",
-															"target": "target",
-															"base_delay": 1,
-															"delay_per_summon": 0,
-															"num_entities_spawned": 5,
-															"summon_cap": 5,
-															"summon_cap_radius": 16,
-															"entity_type": "minecraft:evocation_fang",
-															"size": 1.5,
-															"entity_lifespan": 1.1
-														}
-													]
-												},
-												{
-													"weight": 0,
-													"cooldown_time": 5,
-													"cast_duration": 10,
-													"sequence": [
-														{
-															"shape": "line",
-															"target": "target",
-															"base_delay": 0,
-															"delay_per_summon": 0.5,
-															"num_entities_spawned": 20,
-															"summon_cap": 20,
-															"summon_cap_radius": 16,
-															"entity_type": "minecraft:evocation_fang",
-															"size": 1,
-															"entity_lifespan": 1.1
-														}
-													]
-												},
-												{
-													"weight": 10,
-													"cooldown_time": 9,
-													"cast_duration": 3,
-													"sequence": [
-														{
-															"shape": "line",
-															"target": "self",
-															"base_delay": 0,
-															"delay_per_summon": 1,
-															"num_entities_spawned": 3,
-															"summon_cap": 3,
-															"summon_cap_radius": 16,
-															"entity_type": "ark:naida_bullet",
-															"size": 1
-														}
-													]
-												}
-											]
-										},
-										"key": "summon_choices",
-										"children": [
+									"minecraft:type_family": {
+										"family": [
+											"god",
+											"mob"
+										]
+									},
+									"minecraft:health": {
+										"value": 1000,
+										"max": 1000
+									},
+									"minecraft:boss": {
+										"hud_range": 50,
+										"name": "Наяда",
+										"should_darken_sky": false
+									},
+									"minecraft:collision_box": {
+										"width": 1,
+										"height": 2
+									},
+									"minecraft:movement": {
+										"value": 0.3
+									},
+									"minecraft:navigation.walk": {
+										"can_pass_doors": true,
+										"can_path_over_water": true,
+										"is_amphibious": true
+									},
+									"minecraft:movement.basic": {},
+									"minecraft:jump.static": {},
+									"minecraft:behavior.float": {
+										"priority": 0
+									},
+									"minecraft:behavior.summon_entity": {
+										"priority": 0,
+										"summon_choices": [
 											{
-												"is_minified": true,
-												"children": {
-													"weight": 0,
-													"cooldown_time": 5,
-													"cast_duration": 0.9,
-													"sequence": [
-														{
-															"shape": "circle",
-															"target": "target",
-															"base_delay": 1,
-															"delay_per_summon": 0,
-															"num_entities_spawned": 5,
-															"summon_cap": 5,
-															"summon_cap_radius": 16,
-															"entity_type": "minecraft:evocation_fang",
-															"size": 1.5,
-															"entity_lifespan": 1.1
-														}
-													]
-												}
-											},
-											{
-												"is_minified": true,
-												"children": {
-													"weight": 0,
-													"cooldown_time": 5,
-													"cast_duration": 10,
-													"sequence": [
-														{
-															"shape": "line",
-															"target": "target",
-															"base_delay": 0,
-															"delay_per_summon": 0.5,
-															"num_entities_spawned": 20,
-															"summon_cap": 20,
-															"summon_cap_radius": 16,
-															"entity_type": "minecraft:evocation_fang",
-															"size": 1,
-															"entity_lifespan": 1.1
-														}
-													]
-												}
-											},
-											{
-												"open": [
+												"weight": 0,
+												"cooldown_time": 5,
+												"cast_duration": 0.9,
+												"sequence": [
 													{
-														"weight": 0,
-														"cooldown_time": 5,
-														"cast_duration": 0.9,
-														"sequence": [
-															{
-																"shape": "circle",
-																"target": "target",
-																"base_delay": 1,
-																"delay_per_summon": 0,
-																"num_entities_spawned": 5,
-																"summon_cap": 5,
-																"summon_cap_radius": 16,
-																"entity_type": "minecraft:evocation_fang",
-																"size": 1.5,
-																"entity_lifespan": 1.1
-															}
-														]
-													},
-													{
-														"weight": 0,
-														"cooldown_time": 5,
-														"cast_duration": 10,
-														"sequence": [
-															{
-																"shape": "line",
-																"target": "target",
-																"base_delay": 0,
-																"delay_per_summon": 0.5,
-																"num_entities_spawned": 20,
-																"summon_cap": 20,
-																"summon_cap_radius": 16,
-																"entity_type": "minecraft:evocation_fang",
-																"size": 1,
-																"entity_lifespan": 1.1
-															}
-														]
-													},
-													{
-														"weight": 10,
-														"cooldown_time": 9,
-														"cast_duration": 3,
-														"sequence": [
-															{
-																"shape": "line",
-																"target": "self",
-																"base_delay": 0,
-																"delay_per_summon": 1,
-																"num_entities_spawned": 3,
-																"summon_cap": 3,
-																"summon_cap_radius": 16,
-																"entity_type": "ark:naida_bullet",
-																"size": 1
-															}
-														]
+														"shape": "circle",
+														"target": "target",
+														"base_delay": 1,
+														"delay_per_summon": 0,
+														"num_entities_spawned": 5,
+														"summon_cap": 5,
+														"summon_cap_radius": 16,
+														"entity_type": "minecraft:evocation_fang",
+														"size": 1.5,
+														"entity_lifespan": 1.1
 													}
-												],
-												"children": [
+												]
+											},
+											{
+												"weight": 0,
+												"cooldown_time": 15,
+												"cast_duration": 0.5,
+												"sequence": [
 													{
-														"data": "10",
-														"key": "weight"
-													},
+														"shape": "line",
+														"target": "target",
+														"base_delay": 1,
+														"num_entities_spawned": 1,
+														"summon_cap": 5,
+														"summon_cap_radius": 16,
+														"entity_type": "ark:root",
+														"size": 0.8,
+														"entity_lifespan": -1
+													}
+												]
+											},
+											{
+												"weight": 10,
+												"cooldown_time": 12,
+												"cast_duration": 3,
+												"sequence": [
 													{
-														"data": "9",
-														"key": "cooldown_time"
-													},
-													{
-														"data": "3",
-														"key": "cast_duration"
-													},
-													{
-														"open": {
-															"weight": 10,
-															"cooldown_time": 9,
-															"cast_duration": 3,
-															"sequence": [
-																{
-																	"shape": "line",
-																	"target": "self",
-																	"base_delay": 0,
-																	"delay_per_summon": 1,
-																	"num_entities_spawned": 3,
-																	"summon_cap": 3,
-																	"summon_cap_radius": 16,
-																	"entity_type": "ark:naida_bullet",
-																	"size": 1
-																}
-															]
-														},
-														"key": "sequence",
-														"children": [
-															{
-																"open": [
-																	{
-																		"shape": "line",
-																		"target": "self",
-																		"base_delay": 0,
-																		"delay_per_summon": 1,
-																		"num_entities_spawned": 3,
-																		"summon_cap": 3,
-																		"summon_cap_radius": 16,
-																		"entity_type": "ark:naida_bullet",
-																		"size": 1
-																	}
-																],
-																"is_minified": true,
-																"children": {
-																	"shape": "line",
-																	"target": "self",
-																	"base_delay": 0,
-																	"delay_per_summon": 1,
-																	"num_entities_spawned": 3,
-																	"summon_cap": 3,
-																	"summon_cap_radius": 16,
-																	"entity_type": "ark:naida_bullet",
-																	"size": 1
-																}
-															}
-														]
+														"shape": "circle",
+														"target": "self",
+														"base_delay": 0,
+														"delay_per_summon": 1,
+														"num_entities_spawned": 3,
+														"summon_cap": 3,
+														"summon_cap_radius": 16,
+														"entity_type": "ark:naida_bullet",
+														"size": 1
 													}
 												]
 											}
 										]
+									},
+									"minecraft:behavior.random_look_around": {
+										"priority": 9
+									},
+									"minecraft:physics": {},
+									"minecraft:attack": {
+										"damage": 3
+									},
+									"minecraft:behavior.look_at_target": {
+										"priority": 0,
+										"look_distance": 15,
+										"probability": 0.02
+									},
+									"minecraft:behavior.nearest_attackable_target": {
+										"priority": 1,
+										"entity_types": [
+											{
+												"filters": {
+													"any_of": [
+														{
+															"test": "is_family",
+															"value": "player"
+														}
+													]
+												}
+											}
+										]
+									},
+									"minecraft:behavior.hurt_by_target": {
+										"priority": 0
+									},
+									"minecraft:pushable": {
+										"is_pushable": true
 									}
-								]
+								},
+								"key": "minecraft:jump.static",
+								"is_minified": true,
+								"children": {}
+							},
+							{
+								"key": "minecraft:behavior.float",
+								"is_minified": true,
+								"children": {
+									"priority": 0
+								}
+							},
+							{
+								"key": "minecraft:behavior.summon_entity",
+								"is_minified": true,
+								"children": {
+									"priority": 0,
+									"summon_choices": [
+										{
+											"weight": 0,
+											"cooldown_time": 5,
+											"cast_duration": 0.9,
+											"sequence": [
+												{
+													"shape": "circle",
+													"target": "target",
+													"base_delay": 1,
+													"delay_per_summon": 0,
+													"num_entities_spawned": 5,
+													"summon_cap": 5,
+													"summon_cap_radius": 16,
+													"entity_type": "minecraft:evocation_fang",
+													"size": 1.5,
+													"entity_lifespan": 1.1
+												}
+											]
+										},
+										{
+											"weight": 0,
+											"cooldown_time": 15,
+											"cast_duration": 0.5,
+											"sequence": [
+												{
+													"shape": "line",
+													"target": "target",
+													"base_delay": 1,
+													"num_entities_spawned": 1,
+													"summon_cap": 5,
+													"summon_cap_radius": 16,
+													"entity_type": "ark:root",
+													"size": 0.8,
+													"entity_lifespan": -1
+												}
+											]
+										},
+										{
+											"weight": 10,
+											"cooldown_time": 12,
+											"cast_duration": 3,
+											"sequence": [
+												{
+													"shape": "circle",
+													"target": "self",
+													"base_delay": 0,
+													"delay_per_summon": 1,
+													"num_entities_spawned": 3,
+													"summon_cap": 3,
+													"summon_cap_radius": 16,
+													"entity_type": "ark:naida_bullet",
+													"size": 1
+												}
+											]
+										}
+									]
+								}
 							},
 							{
 								"key": "minecraft:behavior.random_look_around",
@@ -927,7 +879,7 @@
 								"key": "minecraft:behavior.look_at_target",
 								"is_minified": true,
 								"children": {
-									"priority": 5,
+									"priority": 0,
 									"look_distance": 15,
 									"probability": 0.02
 								}
@@ -940,59 +892,14 @@
 										"key": "priority"
 									},
 									{
-										"open": {
-											"priority": 1,
-											"entity_types": [
-												{
-													"filters": {
-														"any_of": [
-															{
-																"test": "is_family",
-																"value": "player"
-															}
-														]
-													}
-												}
-											]
-										},
 										"key": "entity_types",
 										"children": [
 											{
-												"open": [
-													{
-														"filters": {
-															"any_of": [
-																{
-																	"test": "is_family",
-																	"value": "player"
-																}
-															]
-														}
-													}
-												],
 												"children": [
 													{
-														"open": {
-															"filters": {
-																"any_of": [
-																	{
-																		"test": "is_family",
-																		"value": "player"
-																	}
-																]
-															}
-														},
 														"key": "filters",
 														"children": [
 															{
-																"open": {
-																	"any_of": [
-																		{
-																			"test": "is_family",
-																			"value": "player"
-																		}
-																	]
-																},
 																"key": "any_of",
 																"children": [
 																	{

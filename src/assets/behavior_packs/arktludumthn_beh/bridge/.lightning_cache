@@ -132,7 +132,8 @@
 			],
 			"animation_references": [],
 			"families": [
-				"god"
+				"god",
+				"mob"
 			],
 			"custom_commands": [],
 			"custom_components": []

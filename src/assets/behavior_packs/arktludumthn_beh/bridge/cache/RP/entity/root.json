@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "20011458_bb90_4810_a390_d444661ecca4",
-	"file_version": 5,
+	"file_version": 7,
 	"cache_content": {
 		"children": [
 			{
@@ -20,7 +20,7 @@
 								"default": "entity_alphatest"
 							},
 							"textures": {
-								"default": {}
+								"default": "textures/entity/Root"
 							},
 							"geometry": {
 								"default": "geometry.root"
@@ -41,6 +41,12 @@
 								"animate": [
 									{
 										"idle": {}
+									},
+									{
+										"spawn": {}
+									},
+									{
+										"attack": {}
 									}
 								]
 							}
@@ -57,7 +63,7 @@
 									"default": "entity_alphatest"
 								},
 								"textures": {
-									"default": {}
+									"default": "textures/entity/Root"
 								},
 								"geometry": {
 									"default": "geometry.root"
@@ -78,6 +84,12 @@
 									"animate": [
 										{
 											"idle": {}
+										},
+										{
+											"spawn": {}
+										},
+										{
+											"attack": {}
 										}
 									]
 								}
@@ -100,7 +112,7 @@
 								"key": "textures",
 								"is_minified": true,
 								"children": {
-									"default": {}
+									"default": "textures/entity/Root"
 								}
 							},
 							{
@@ -135,58 +147,60 @@
 								}
 							},
 							{
-								"open": {
-									"identifier": "ark:root",
-									"materials": {
-										"default": "entity_alphatest"
-									},
-									"textures": {
-										"default": {}
-									},
-									"geometry": {
-										"default": "geometry.root"
-									},
-									"animations": {
-										"idle": "animation.root.idle",
-										"spawn": "animation.root.spawn",
-										"attack": "animation.root.attack"
-									},
-									"render_controllers": [
-										"controller.render.mobs"
-									],
-									"spawn_egg": {
-										"base_color": "#857241",
-										"overlay_color": "#D21717"
-									},
-									"scripts": {
-										"animate": [
-											{
-												"idle": {}
-											}
-										]
-									}
-								},
 								"key": "scripts",
 								"children": [
 									{
-										"open": {
-											"animate": [
-												{
-													"idle": {}
-												}
-											]
-										},
 										"key": "animate",
 										"children": [
 											{
 												"open": [
 													{
 														"idle": {}
+													},
+													{
+														"spawn": {}
+													},
+													{
+														"attack": {}
 													}
 												],
 												"is_minified": true,
 												"children": {
 													"idle": {}
+												}
+											},
+											{
+												"open": [
+													{
+														"idle": {}
+													},
+													{
+														"spawn": {}
+													},
+													{
+														"attack": {}
+													}
+												],
+												"is_minified": true,
+												"children": {
+													"spawn": {}
+												}
+											},
+											{
+												"open": [
+													{
+														"idle": {}
+													},
+													{
+														"spawn": {}
+													},
+													{
+														"attack": {}
+													}
+												],
+												"is_minified": true,
+												"children": {
+													"attack": {}
 												}
 											}
 										]

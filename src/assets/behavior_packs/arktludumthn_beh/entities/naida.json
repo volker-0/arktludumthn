@@ -1,4 +1,4 @@
-//bridge-file-version: #32
+//bridge-file-version: #34
 {
 	"format_version": "1.13.0",
 	"minecraft:entity": {
@@ -49,7 +49,7 @@
 				"priority": 0,
 				"summon_choices": [
 					{
-						"weight": 5,
+						"weight": 0,
 						"cooldown_time": 5,
 						"cast_duration": 0.9,
 						"sequence": [
@@ -68,7 +68,7 @@
 						]
 					},
 					{
-						"weight": 5,
+						"weight": 0,
 						"cooldown_time": 15,
 						"cast_duration": 0.5,
 						"sequence": [
@@ -81,13 +81,13 @@
 								"summon_cap_radius": 16,
 								"entity_type": "ark:root",
 								"size": 0.8,
-								"entity_lifespan": 1.1
+								"entity_lifespan": -1
 							}
 						]
 					},
 					{
-						"weight": 5,
-						"cooldown_time": 9,
+						"weight": 10,
+						"cooldown_time": 12,
 						"cast_duration": 3,
 						"sequence": [
 							{
@@ -113,7 +113,7 @@
 				"damage": 3
 			},
 			"minecraft:behavior.look_at_target": {
-				"priority": 5,
+				"priority": 0,
 				"look_distance": 15,
 				"probability": 0.02
 			},
