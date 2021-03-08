@@ -7,8 +7,8 @@
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 2,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 0.5, 0]
 			},
 			"bones": [
 				{
@@ -41,6 +41,13 @@
 					"cubes": [
 						{"origin": [-1, 22, -1], "size": [2, 5, 2], "uv": [52, 47]}
 					]
+				},
+				{
+					"name": "particles",
+					"pivot": [0, 0, 0],
+					"locators": {
+						"block_breake_emitter": [0, 0, 0]
+					}
 				}
 			]
 		}

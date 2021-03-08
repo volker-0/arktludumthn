@@ -1,4 +1,4 @@
-//bridge-file-version: #34
+//bridge-file-version: #37
 {
 	"format_version": "1.13.0",
 	"minecraft:entity": {
@@ -49,8 +49,8 @@
 				"priority": 0,
 				"summon_choices": [
 					{
-						"weight": 0,
-						"cooldown_time": 5,
+						"weight": 3,
+						"cooldown_time": 10,
 						"cast_duration": 0.9,
 						"sequence": [
 							{
@@ -59,16 +59,15 @@
 								"base_delay": 1,
 								"delay_per_summon": 0,
 								"num_entities_spawned": 5,
-								"summon_cap": 5,
-								"summon_cap_radius": 16,
-								"entity_type": "minecraft:evocation_fang",
+								"entity_type": "ark:naida_fang",
 								"size": 1.5,
 								"entity_lifespan": 1.1
 							}
-						]
+						],
+						"particle_color": "#00498B"
 					},
 					{
-						"weight": 0,
+						"weight": 5,
 						"cooldown_time": 15,
 						"cast_duration": 0.5,
 						"sequence": [
@@ -83,12 +82,13 @@
 								"size": 0.8,
 								"entity_lifespan": -1
 							}
-						]
+						],
+						"particle_color": "#49DA06"
 					},
 					{
-						"weight": 10,
-						"cooldown_time": 12,
-						"cast_duration": 3,
+						"weight": 1,
+						"cooldown_time": 8,
+						"cast_duration": 1,
 						"sequence": [
 							{
 								"shape": "circle",
@@ -101,7 +101,8 @@
 								"entity_type": "ark:naida_bullet",
 								"size": 1
 							}
-						]
+						],
+						"particle_color": "#FF5F5F"
 					}
 				]
 			},

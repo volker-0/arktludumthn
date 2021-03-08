@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "4ae937dd_1b08_4184_a1f1_458e8c9e089f",
-	"file_version": 3,
+	"file_version": 5,
 	"cache_content": {
 		"children": [
 			{
@@ -23,8 +23,25 @@
 											"walk": "query.modified_move_speed"
 										}
 									],
-									"blend_transition": 0.1,
-									"transitions": {}
+									"transitions": [
+										{
+											"magic_state": "query.is_casting == 1"
+										}
+									],
+									"blend_transition": 0.1
+								},
+								"magic_state": {
+									"animations": [
+										{
+											"magic": {}
+										}
+									],
+									"transitions": [
+										{
+											"default": "query.is_casting == 0"
+										}
+									],
+									"blend_transition": 0.1
 								}
 							}
 						}
@@ -43,8 +60,25 @@
 												"walk": "query.modified_move_speed"
 											}
 										],
-										"blend_transition": 0.1,
-										"transitions": {}
+										"transitions": [
+											{
+												"magic_state": "query.is_casting == 1"
+											}
+										],
+										"blend_transition": 0.1
+									},
+									"magic_state": {
+										"animations": [
+											{
+												"magic": {}
+											}
+										],
+										"transitions": [
+											{
+												"default": "query.is_casting == 0"
+											}
+										],
+										"blend_transition": 0.1
 									}
 								}
 							}
@@ -65,13 +99,64 @@
 													"walk": "query.modified_move_speed"
 												}
 											],
-											"blend_transition": 0.1,
-											"transitions": {}
+											"transitions": [
+												{
+													"magic_state": "query.is_casting == 1"
+												}
+											],
+											"blend_transition": 0.1
+										},
+										"magic_state": {
+											"animations": [
+												{
+													"magic": {}
+												}
+											],
+											"transitions": [
+												{
+													"default": "query.is_casting == 0"
+												}
+											],
+											"blend_transition": 0.1
 										}
 									}
 								},
 								"key": "states",
 								"children": [
+									{
+										"key": "default",
+										"children": [
+											{
+												"key": "animations",
+												"is_minified": true,
+												"children": [
+													{
+														"walk": "query.modified_move_speed"
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"magic_state": "query.is_casting == 1"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"magic_state": "query.is_casting == 1"
+														}
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
+									},
 									{
 										"open": {
 											"default": {
@@ -80,33 +165,57 @@
 														"walk": "query.modified_move_speed"
 													}
 												],
-												"blend_transition": 0.1,
-												"transitions": {}
+												"transitions": [
+													{
+														"magic_state": "query.is_casting == 1"
+													}
+												],
+												"blend_transition": 0.1
+											},
+											"magic_state": {
+												"animations": [
+													{
+														"magic": {}
+													}
+												],
+												"transitions": [
+													{
+														"default": "query.is_casting == 0"
+													}
+												],
+												"blend_transition": 0.1
 											}
 										},
-										"key": "default",
+										"key": "magic_state",
 										"children": [
 											{
-												"open": {
-													"animations": [
-														{
-															"walk": "query.modified_move_speed"
-														}
-													],
-													"blend_transition": 0.1,
-													"transitions": {}
-												},
 												"key": "animations",
 												"children": [
 													{
 														"open": [
 															{
-																"walk": "query.modified_move_speed"
+																"magic": {}
 															}
 														],
 														"is_minified": true,
 														"children": {
-															"walk": "query.modified_move_speed"
+															"magic": {}
+														}
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"default": "query.is_casting == 0"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"default": "query.is_casting == 0"
 														}
 													}
 												]
@@ -114,11 +223,6 @@
 											{
 												"data": "0.1",
 												"key": "blend_transition"
-											},
-											{
-												"key": "transitions",
-												"is_minified": true,
-												"children": {}
 											}
 										]
 									}

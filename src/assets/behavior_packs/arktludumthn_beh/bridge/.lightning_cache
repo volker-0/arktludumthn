@@ -26,7 +26,9 @@
 			"identifiers": [
 				"ark:naida"
 			],
-			"particle_references": [],
+			"particle_references": [
+				"block_breake"
+			],
 			"animation_references": [
 				"walk"
 			],
@@ -75,6 +77,28 @@
 				"idle",
 				"spawn",
 				"attack"
+			],
+			"sound_references": [],
+			"texture_references": [
+				"default"
+			],
+			"material_references": [
+				"default"
+			],
+			"geometry_references": [
+				"default"
+			],
+			"geometry_identifiers": [
+				"default"
+			]
+		},
+		"RP/entity/naida_fang.json": {
+			"identifiers": [
+				"ark:naida_fang"
+			],
+			"particle_references": [],
+			"animation_references": [
+				"bite"
 			],
 			"sound_references": [],
 			"texture_references": [
@@ -188,6 +212,11 @@
 		"RP/animations/root.animation.spawn.json": {
 			"ids": [
 				"animation.root.spawn"
+			]
+		},
+		"RP/animations/naida_fang.animation.bite.json": {
+			"ids": [
+				"animation.evocation_fang.bite"
 			]
 		}
 	},

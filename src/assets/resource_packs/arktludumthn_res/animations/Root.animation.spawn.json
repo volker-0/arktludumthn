@@ -3,7 +3,7 @@
 	"animations": {
 		"animation.root.spawn": {
 			"loop": "hold_on_last_frame",
-			"animation_length": 0.515,
+			"animation_length": 0.5,
 			"bones": {
 				"all": {
 					"position": {
@@ -14,8 +14,8 @@
 			},
 			"particle_effects": {
 				"0.0": {
-					"effect": "minecraft:breaking_item_icon",
-					"locator": "particles"
+					"effect": "block_breake",
+					"locator": "block_breake_emitter"
 				}
 			}
 		}

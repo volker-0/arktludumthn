@@ -67,5 +67,14 @@
 	},
 	"BP/entities/root.json": {
 		"data": {}
+	},
+	"RP/animations/naida_fang.animation.bite.json": {
+		"data": {}
+	},
+	"RP/models/entity/naida_fang.json": {
+		"data": {}
+	},
+	"RP/entity/naida_fang.json": {
+		"data": {}
 	}
 }
