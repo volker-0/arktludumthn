@@ -3,7 +3,7 @@
 	"file_type": "rp_animation",
 	"format_version": 1,
 	"file_uuid": "82d08b56_8204_4c21_8d5c_d1ae26f9669c",
-	"file_version": 1,
+	"file_version": 3,
 	"cache_content": {
 		"children": [
 			{
@@ -14,18 +14,18 @@
 				"open": {
 					"format_version": "1.8.0",
 					"animations": {
-						"animation.evocation_fang.bite": {
+						"animation.naida_fang.bite": {
 							"loop": "hold_on_last_frame",
 							"animation_length": 0.28,
 							"bones": {
 								"jaw_1": {
 									"rotation": {
-										"0.0": [
+										"0": [
 											0,
 											0,
 											0
 										],
-										"0.28": [
+										"1": [
 											0,
 											0,
 											85
@@ -34,12 +34,12 @@
 								},
 								"jaw_2": {
 									"rotation": {
-										"0.0": [
+										"0": [
 											0,
 											0,
 											0
 										],
-										"0.28": [
+										"1": [
 											0,
 											0,
 											-85
@@ -48,12 +48,12 @@
 								},
 								"jaw_3": {
 									"rotation": {
-										"0.0": [
+										"0": [
 											0,
 											0,
 											0
 										],
-										"0.28": [
+										"1": [
 											0,
 											85,
 											0
@@ -62,12 +62,12 @@
 								},
 								"jaw_4": {
 									"rotation": {
-										"0.0": [
+										"0": [
 											0,
 											0,
 											0
 										],
-										"0.28": [
+										"1": [
 											0,
 											-85,
 											0
@@ -82,18 +82,18 @@
 				"children": [
 					{
 						"open": {
-							"animation.evocation_fang.bite": {
+							"animation.naida_fang.bite": {
 								"loop": "hold_on_last_frame",
 								"animation_length": 0.28,
 								"bones": {
 									"jaw_1": {
 										"rotation": {
-											"0.0": [
+											"0": [
 												0,
 												0,
 												0
 											],
-											"0.28": [
+											"1": [
 												0,
 												0,
 												85
@@ -102,12 +102,12 @@
 									},
 									"jaw_2": {
 										"rotation": {
-											"0.0": [
+											"0": [
 												0,
 												0,
 												0
 											],
-											"0.28": [
+											"1": [
 												0,
 												0,
 												-85
@@ -116,12 +116,12 @@
 									},
 									"jaw_3": {
 										"rotation": {
-											"0.0": [
+											"0": [
 												0,
 												0,
 												0
 											],
-											"0.28": [
+											"1": [
 												0,
 												85,
 												0
@@ -130,12 +130,12 @@
 									},
 									"jaw_4": {
 										"rotation": {
-											"0.0": [
+											"0": [
 												0,
 												0,
 												0
 											],
-											"0.28": [
+											"1": [
 												0,
 												-85,
 												0
@@ -145,7 +145,7 @@
 								}
 							}
 						},
-						"key": "animation.evocation_fang.bite",
+						"key": "animation.naida_fang.bite",
 						"children": [
 							{
 								"data": "hold_on_last_frame",
@@ -162,12 +162,12 @@
 									"bones": {
 										"jaw_1": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													0,
 													85
@@ -176,12 +176,12 @@
 										},
 										"jaw_2": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													0,
 													-85
@@ -190,12 +190,12 @@
 										},
 										"jaw_3": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													85,
 													0
@@ -204,12 +204,12 @@
 										},
 										"jaw_4": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													-85,
 													0
@@ -225,12 +225,12 @@
 										"is_minified": true,
 										"children": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													0,
 													85
@@ -243,12 +243,12 @@
 										"is_minified": true,
 										"children": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													0,
 													-85
@@ -262,12 +262,12 @@
 											{
 												"open": {
 													"rotation": {
-														"0.0": [
+														"0": [
 															0,
 															0,
 															0
 														],
-														"0.28": [
+														"1": [
 															0,
 															85,
 															0
@@ -277,12 +277,12 @@
 												"key": "rotation",
 												"is_minified": true,
 												"children": {
-													"0.0": [
+													"0": [
 														0,
 														0,
 														0
 													],
-													"0.28": [
+													"1": [
 														0,
 														85,
 														0
@@ -296,12 +296,12 @@
 										"is_minified": true,
 										"children": {
 											"rotation": {
-												"0.0": [
+												"0": [
 													0,
 													0,
 													0
 												],
-												"0.28": [
+												"1": [
 													0,
 													-85,
 													0

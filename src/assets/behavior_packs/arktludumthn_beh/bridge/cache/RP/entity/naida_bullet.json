@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "f8e707a4_add6_4b31_9cb2_51c67b5a9214",
-	"file_version": 3,
+	"file_version": 4,
 	"cache_content": {
 		"children": [
 			{
@@ -20,7 +20,7 @@
 								"default": "shulker_bullet"
 							},
 							"textures": {
-								"default": "textures/entity/shulker/spark"
+								"default": "textures/entity/Naida_bullet"
 							},
 							"geometry": {
 								"default": "geometry.shulker_bullet"
@@ -49,7 +49,7 @@
 									"default": "shulker_bullet"
 								},
 								"textures": {
-									"default": "textures/entity/shulker/spark"
+									"default": "textures/entity/Naida_bullet"
 								},
 								"geometry": {
 									"default": "geometry.shulker_bullet"
@@ -81,10 +81,33 @@
 								}
 							},
 							{
+								"open": {
+									"identifier": "ark:naida_bullet",
+									"materials": {
+										"default": "shulker_bullet"
+									},
+									"textures": {
+										"default": "textures/entity/Naida_bullet"
+									},
+									"geometry": {
+										"default": "geometry.shulker_bullet"
+									},
+									"animations": {
+										"move": "animation.naida_bullet.move"
+									},
+									"scripts": {
+										"animate": [
+											"move"
+										]
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									]
+								},
 								"key": "textures",
 								"is_minified": true,
 								"children": {
-									"default": "textures/entity/shulker/spark"
+									"default": "textures/entity/Naida_bullet"
 								}
 							},
 							{
@@ -117,7 +140,7 @@
 										"default": "shulker_bullet"
 									},
 									"textures": {
-										"default": "textures/entity/shulker/spark"
+										"default": "textures/entity/Naida_bullet"
 									},
 									"geometry": {
 										"default": "geometry.shulker_bullet"

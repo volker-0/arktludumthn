@@ -3,7 +3,7 @@
 	"file_type": "entity",
 	"format_version": 1,
 	"file_uuid": "a5d2b951_6639_49f3_845c_f1e18da354d7",
-	"file_version": 2,
+	"file_version": 5,
 	"cache_content": {
 		"children": [
 			{
@@ -21,10 +21,6 @@
 							"is_experimental": false
 						},
 						"components": {
-							"minecraft:collision_box": {
-								"width": 0.625,
-								"height": 0.625
-							},
 							"minecraft:projectile": {
 								"on_hit": {
 									"impact_damage": {
@@ -33,7 +29,7 @@
 										"should_bounce": true
 									},
 									"mob_effect": {
-										"effect": "levitation",
+										"effect": "poison",
 										"durationeasy": 200,
 										"durationnormal": 200,
 										"durationhard": 200,
@@ -71,8 +67,22 @@
 									"use_motion_prediction_hints": true
 								}
 							},
-							"minecraft:push_through": {
-								"value": 0.5
+							"minecraft:custom_hit_test": {
+								"hitboxes": [
+									{
+										"width": 0.625,
+										"height": 0.625,
+										"pivot": [
+											0,
+											0,
+											0
+										]
+									}
+								]
+							},
+							"minecraft:collision_box": {
+								"width": 0,
+								"height": 0
 							}
 						}
 					}
@@ -98,10 +108,6 @@
 								"is_experimental": false
 							},
 							"components": {
-								"minecraft:collision_box": {
-									"width": 0.625,
-									"height": 0.625
-								},
 								"minecraft:projectile": {
 									"on_hit": {
 										"impact_damage": {
@@ -110,7 +116,7 @@
 											"should_bounce": true
 										},
 										"mob_effect": {
-											"effect": "levitation",
+											"effect": "poison",
 											"durationeasy": 200,
 											"durationnormal": 200,
 											"durationhard": 200,
@@ -148,21 +154,27 @@
 										"use_motion_prediction_hints": true
 									}
 								},
-								"minecraft:push_through": {
-									"value": 0.5
+								"minecraft:custom_hit_test": {
+									"hitboxes": [
+										{
+											"width": 0.625,
+											"height": 0.625,
+											"pivot": [
+												0,
+												0,
+												0
+											]
+										}
+									]
+								},
+								"minecraft:collision_box": {
+									"width": 0,
+									"height": 0
 								}
 							}
 						},
 						"key": "components",
 						"children": [
-							{
-								"key": "minecraft:collision_box",
-								"is_minified": true,
-								"children": {
-									"width": 0.625,
-									"height": 0.625
-								}
-							},
 							{
 								"key": "minecraft:projectile",
 								"is_minified": true,
@@ -174,7 +186,7 @@
 											"should_bounce": true
 										},
 										"mob_effect": {
-											"effect": "levitation",
+											"effect": "poison",
 											"durationeasy": 200,
 											"durationnormal": 200,
 											"durationhard": 200,
@@ -203,61 +215,6 @@
 								}
 							},
 							{
-								"open": {
-									"minecraft:collision_box": {
-										"width": 0.625,
-										"height": 0.625
-									},
-									"minecraft:projectile": {
-										"on_hit": {
-											"impact_damage": {
-												"damage": 4,
-												"knockback": true,
-												"should_bounce": true
-											},
-											"mob_effect": {
-												"effect": "levitation",
-												"durationeasy": 200,
-												"durationnormal": 200,
-												"durationhard": 200,
-												"amplifier": 1
-											},
-											"remove_on_hit": {},
-											"particle_on_hit": {
-												"particle_type": "largeexplode",
-												"on_other_hit": true
-											}
-										},
-										"hit_sound": "bullet.hit",
-										"destroyOnHurt": true,
-										"crit_particle_on_hurt": true,
-										"power": 1.6,
-										"gravity": 0.05,
-										"uncertainty_base": 16,
-										"uncertainty_multiplier": 4,
-										"anchor": 1,
-										"offset": [
-											0,
-											2.2,
-											0
-										],
-										"homing": true
-									},
-									"minecraft:physics": {
-										"has_collision": false,
-										"has_gravity": false
-									},
-									"minecraft:conditional_bandwidth_optimization": {
-										"default_values": {
-											"max_optimized_distance": 80,
-											"max_dropped_ticks": 10,
-											"use_motion_prediction_hints": true
-										}
-									},
-									"minecraft:push_through": {
-										"value": 0.5
-									}
-								},
 								"key": "minecraft:physics",
 								"is_minified": true,
 								"children": {
@@ -277,10 +234,51 @@
 								}
 							},
 							{
-								"key": "minecraft:push_through",
+								"key": "minecraft:custom_hit_test",
+								"children": [
+									{
+										"key": "hitboxes",
+										"children": [
+											{
+												"children": [
+													{
+														"data": "0.625",
+														"key": "width"
+													},
+													{
+														"data": "0.625",
+														"key": "height"
+													},
+													{
+														"open": {
+															"width": 0.625,
+															"height": 0.625,
+															"pivot": [
+																0,
+																0,
+																0
+															]
+														},
+														"key": "pivot",
+														"is_minified": true,
+														"children": [
+															0,
+															0,
+															0
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"key": "minecraft:collision_box",
 								"is_minified": true,
 								"children": {
-									"value": 0.5
+									"width": 0,
+									"height": 0
 								}
 							}
 						]

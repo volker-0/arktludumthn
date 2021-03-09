@@ -1,4 +1,4 @@
-//bridge-file-version: #0
+//bridge-file-version: #2
 {
 	"format_version": "1.8.0",
 	"animations": {
@@ -7,9 +7,11 @@
 			"bones": {
 				"body": {
 					"rotation": {
-						"0": "math.cos(query.life_time * 120) * 180",
-						"1": "math.sin(query.life_time * 120) * 180",
-						"2": "math.sin(query.life_time * 170) * 360"
+						"0": [
+							"math.cos(query.life_time * 120) * 180",
+							"math.sin(query.life_time * 120) * 180",
+							"math.sin(query.life_time * 170) * 360"
+						]
 					}
 				}
 			}

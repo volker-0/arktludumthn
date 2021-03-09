@@ -1,4 +1,4 @@
-//bridge-file-version: #3
+//bridge-file-version: #4
 {
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
@@ -8,7 +8,7 @@
 				"default": "shulker_bullet"
 			},
 			"textures": {
-				"default": "textures/entity/shulker/spark"
+				"default": "textures/entity/Naida_bullet"
 			},
 			"geometry": {
 				"default": "geometry.shulker_bullet"

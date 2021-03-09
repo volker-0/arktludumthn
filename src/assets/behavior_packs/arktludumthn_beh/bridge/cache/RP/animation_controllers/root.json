@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "735eb6ed_8868_466b_b5b5_212f6bc81915",
-	"file_version": 9,
+	"file_version": 10,
 	"cache_content": {
 		"children": [
 			{
@@ -20,7 +20,7 @@
 								"default": {
 									"animations": [
 										{
-											"idle": "query.life_time > 0.5"
+											"idle": "(query.is_idling) || (query.is_stalkering)"
 										}
 									],
 									"transitions": [
@@ -70,7 +70,7 @@
 									"default": {
 										"animations": [
 											{
-												"idle": "query.life_time > 0.5"
+												"idle": "(query.is_idling) || (query.is_stalkering)"
 											}
 										],
 										"transitions": [
@@ -122,7 +122,7 @@
 										"default": {
 											"animations": [
 												{
-													"idle": "query.life_time > 0.5"
+													"idle": "(query.is_idling) || (query.is_stalkering)"
 												}
 											],
 											"transitions": [
@@ -163,45 +163,11 @@
 								"key": "states",
 								"children": [
 									{
-										"key": "default",
-										"is_minified": true,
-										"children": {
-											"animations": [
-												{
-													"idle": "query.life_time > 0.5"
-												}
-											],
-											"transitions": [
-												{
-													"attack_state": "variable.attack_time > 0"
-												}
-											],
-											"blend_transition": 0.1
-										}
-									},
-									{
-										"key": "attack_state",
-										"is_minified": true,
-										"children": {
-											"animations": [
-												{
-													"attack": "(1.0)"
-												}
-											],
-											"transitions": [
-												{
-													"default": "!variable.attack_time"
-												}
-											],
-											"blend_transition": 0.1
-										}
-									},
-									{
 										"open": {
 											"default": {
 												"animations": [
 													{
-														"idle": "query.life_time > 0.5"
+														"idle": "(query.is_idling) || (query.is_stalkering)"
 													}
 												],
 												"transitions": [
@@ -238,6 +204,70 @@
 												"blend_transition": 0.1
 											}
 										},
+										"key": "default",
+										"children": [
+											{
+												"open": {
+													"animations": [
+														{
+															"idle": "(query.is_idling) || (query.is_stalkering)"
+														}
+													],
+													"transitions": [
+														{
+															"attack_state": "variable.attack_time > 0"
+														}
+													],
+													"blend_transition": 0.1
+												},
+												"key": "animations",
+												"children": [
+													{
+														"open": [
+															{
+																"idle": "(query.is_idling) || (query.is_stalkering)"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"idle": "(query.is_idling) || (query.is_stalkering)"
+														}
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"is_minified": true,
+												"children": [
+													{
+														"attack_state": "variable.attack_time > 0"
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
+									},
+									{
+										"key": "attack_state",
+										"is_minified": true,
+										"children": {
+											"animations": [
+												{
+													"attack": "(1.0)"
+												}
+											],
+											"transitions": [
+												{
+													"default": "!variable.attack_time"
+												}
+											],
+											"blend_transition": 0.1
+										}
+									},
+									{
 										"key": "spawn_state",
 										"is_minified": true,
 										"children": {

@@ -3,7 +3,7 @@
 	"file_type": "rp_animation",
 	"format_version": 1,
 	"file_uuid": "a7d90b7b_d4c9_4d1b_acd9_9e44cc2f9a0e",
-	"file_version": 0,
+	"file_version": 2,
 	"cache_content": {
 		"children": [
 			{
@@ -19,9 +19,11 @@
 							"bones": {
 								"body": {
 									"rotation": {
-										"0": "math.cos(query.life_time * 120) * 180",
-										"1": "math.sin(query.life_time * 120) * 180",
-										"2": "math.sin(query.life_time * 170) * 360"
+										"0": [
+											"math.cos(query.life_time * 120) * 180",
+											"math.sin(query.life_time * 120) * 180",
+											"math.sin(query.life_time * 170) * 360"
+										]
 									}
 								}
 							}
@@ -37,28 +39,88 @@
 								"bones": {
 									"body": {
 										"rotation": {
-											"0": "math.cos(query.life_time * 120) * 180",
-											"1": "math.sin(query.life_time * 120) * 180",
-											"2": "math.sin(query.life_time * 170) * 360"
+											"0": [
+												"math.cos(query.life_time * 120) * 180",
+												"math.sin(query.life_time * 120) * 180",
+												"math.sin(query.life_time * 170) * 360"
+											]
 										}
 									}
 								}
 							}
 						},
 						"key": "animation.naida_bullet.move",
-						"is_minified": true,
-						"children": {
-							"loop": true,
-							"bones": {
-								"body": {
-									"rotation": {
-										"0": "math.cos(query.life_time * 120) * 180",
-										"1": "math.sin(query.life_time * 120) * 180",
-										"2": "math.sin(query.life_time * 170) * 360"
+						"children": [
+							{
+								"data": "true",
+								"key": "loop"
+							},
+							{
+								"open": {
+									"loop": true,
+									"bones": {
+										"body": {
+											"rotation": {
+												"0": [
+													"math.cos(query.life_time * 120) * 180",
+													"math.sin(query.life_time * 120) * 180",
+													"math.sin(query.life_time * 170) * 360"
+												]
+											}
+										}
 									}
-								}
+								},
+								"key": "bones",
+								"children": [
+									{
+										"open": {
+											"body": {
+												"rotation": {
+													"0": [
+														"math.cos(query.life_time * 120) * 180",
+														"math.sin(query.life_time * 120) * 180",
+														"math.sin(query.life_time * 170) * 360"
+													]
+												}
+											}
+										},
+										"key": "body",
+										"children": [
+											{
+												"open": {
+													"rotation": {
+														"0": [
+															"math.cos(query.life_time * 120) * 180",
+															"math.sin(query.life_time * 120) * 180",
+															"math.sin(query.life_time * 170) * 360"
+														]
+													}
+												},
+												"key": "rotation",
+												"children": [
+													{
+														"open": {
+															"0": [
+																"math.cos(query.life_time * 120) * 180",
+																"math.sin(query.life_time * 120) * 180",
+																"math.sin(query.life_time * 170) * 360"
+															]
+														},
+														"key": "0",
+														"is_minified": true,
+														"children": [
+															"math.cos(query.life_time * 120) * 180",
+															"math.sin(query.life_time * 120) * 180",
+															"math.sin(query.life_time * 170) * 360"
+														]
+													}
+												]
+											}
+										]
+									}
+								]
 							}
-						}
+						]
 					}
 				]
 			}

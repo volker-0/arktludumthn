@@ -216,7 +216,7 @@
 		},
 		"RP/animations/naida_fang.animation.bite.json": {
 			"ids": [
-				"animation.evocation_fang.bite"
+				"animation.naida_fang.bite"
 			]
 		}
 	},

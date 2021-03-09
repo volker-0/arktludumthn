@@ -1,4 +1,4 @@
-//bridge-file-version: #2
+//bridge-file-version: #5
 {
 	"format_version": "1.10.0",
 	"minecraft:entity": {
@@ -9,10 +9,6 @@
 			"is_experimental": false
 		},
 		"components": {
-			"minecraft:collision_box": {
-				"width": 0.625,
-				"height": 0.625
-			},
 			"minecraft:projectile": {
 				"on_hit": {
 					"impact_damage": {
@@ -21,7 +17,7 @@
 						"should_bounce": true
 					},
 					"mob_effect": {
-						"effect": "levitation",
+						"effect": "poison",
 						"durationeasy": 200,
 						"durationnormal": 200,
 						"durationhard": 200,
@@ -59,8 +55,22 @@
 					"use_motion_prediction_hints": true
 				}
 			},
-			"minecraft:push_through": {
-				"value": 0.5
+			"minecraft:custom_hit_test": {
+				"hitboxes": [
+					{
+						"width": 0.625,
+						"height": 0.625,
+						"pivot": [
+							0,
+							0,
+							0
+						]
+					}
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0,
+				"height": 0
 			}
 		},
 		"component_groups": {},

@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "7604ea00_ad07_4919_a7fe_5e3e33ff8e3e",
-	"file_version": 1,
+	"file_version": 2,
 	"cache_content": {
 		"children": [
 			{
@@ -17,7 +17,7 @@
 						"description": {
 							"identifier": "ark:naida_fang",
 							"materials": {
-								"default": "fang"
+								"default": "entity_alphatest"
 							},
 							"textures": {
 								"default": "textures/entity/Naida_fang"
@@ -52,7 +52,7 @@
 							"description": {
 								"identifier": "ark:naida_fang",
 								"materials": {
-									"default": "fang"
+									"default": "entity_alphatest"
 								},
 								"textures": {
 									"default": "textures/entity/Naida_fang"
@@ -89,7 +89,7 @@
 								"key": "materials",
 								"is_minified": true,
 								"children": {
-									"default": "fang"
+									"default": "entity_alphatest"
 								}
 							},
 							{
@@ -132,7 +132,7 @@
 								"open": {
 									"identifier": "ark:naida_fang",
 									"materials": {
-										"default": "fang"
+										"default": "entity_alphatest"
 									},
 									"textures": {
 										"default": "textures/entity/Naida_fang"
