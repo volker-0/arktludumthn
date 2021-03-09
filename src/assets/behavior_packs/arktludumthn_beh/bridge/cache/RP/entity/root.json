@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "20011458_bb90_4810_a390_d444661ecca4",
-	"file_version": 7,
+	"file_version": 9,
 	"cache_content": {
 		"children": [
 			{
@@ -40,13 +40,13 @@
 							"scripts": {
 								"animate": [
 									{
-										"idle": {}
+										"idle": "(1.0)"
 									},
 									{
-										"spawn": {}
+										"spawn": "(1.0)"
 									},
 									{
-										"attack": {}
+										"attack": "(1.0)"
 									}
 								]
 							}
@@ -83,13 +83,13 @@
 								"scripts": {
 									"animate": [
 										{
-											"idle": {}
+											"idle": "(1.0)"
 										},
 										{
-											"spawn": {}
+											"spawn": "(1.0)"
 										},
 										{
-											"attack": {}
+											"attack": "(1.0)"
 										}
 									]
 								}
@@ -102,6 +102,43 @@
 								"key": "identifier"
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "materials",
 								"is_minified": true,
 								"children": {
@@ -109,6 +146,43 @@
 								}
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "textures",
 								"is_minified": true,
 								"children": {
@@ -116,6 +190,43 @@
 								}
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "geometry",
 								"is_minified": true,
 								"children": {
@@ -123,6 +234,43 @@
 								}
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "animations",
 								"is_minified": true,
 								"children": {
@@ -132,6 +280,43 @@
 								}
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "render_controllers",
 								"is_minified": true,
 								"children": [
@@ -139,6 +324,43 @@
 								]
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "spawn_egg",
 								"is_minified": true,
 								"children": {
@@ -147,60 +369,110 @@
 								}
 							},
 							{
+								"open": {
+									"identifier": "ark:root",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Root"
+									},
+									"geometry": {
+										"default": "geometry.root"
+									},
+									"animations": {
+										"idle": "animation.root.idle",
+										"spawn": "animation.root.spawn",
+										"attack": "animation.root.attack"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									],
+									"spawn_egg": {
+										"base_color": "#857241",
+										"overlay_color": "#D21717"
+									},
+									"scripts": {
+										"animate": [
+											{
+												"idle": "(1.0)"
+											},
+											{
+												"spawn": "(1.0)"
+											},
+											{
+												"attack": "(1.0)"
+											}
+										]
+									}
+								},
 								"key": "scripts",
 								"children": [
 									{
+										"open": {
+											"animate": [
+												{
+													"idle": "(1.0)"
+												},
+												{
+													"spawn": "(1.0)"
+												},
+												{
+													"attack": "(1.0)"
+												}
+											]
+										},
 										"key": "animate",
 										"children": [
 											{
 												"open": [
 													{
-														"idle": {}
+														"idle": "(1.0)"
 													},
 													{
-														"spawn": {}
+														"spawn": "(1.0)"
 													},
 													{
-														"attack": {}
+														"attack": "(1.0)"
 													}
 												],
 												"is_minified": true,
 												"children": {
-													"idle": {}
+													"idle": "(1.0)"
 												}
 											},
 											{
 												"open": [
 													{
-														"idle": {}
+														"idle": "(1.0)"
 													},
 													{
-														"spawn": {}
+														"spawn": "(1.0)"
 													},
 													{
-														"attack": {}
+														"attack": "(1.0)"
 													}
 												],
 												"is_minified": true,
 												"children": {
-													"spawn": {}
+													"spawn": "(1.0)"
 												}
 											},
 											{
 												"open": [
 													{
-														"idle": {}
+														"idle": "(1.0)"
 													},
 													{
-														"spawn": {}
+														"spawn": "(1.0)"
 													},
 													{
-														"attack": {}
+														"attack": "(1.0)"
 													}
 												],
 												"is_minified": true,
 												"children": {
-													"attack": {}
+													"attack": "(1.0)"
 												}
 											}
 										]

@@ -1,0 +1,72 @@
+//bridge-file-version: #2
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:root",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:movement": {
+				"value": 0
+			},
+			"minecraft:movement.basic": {
+				"max_turn": 30
+			},
+			"minecraft:attack": {
+				"damage": 3
+			},
+			"minecraft:area_attack": {
+				"damage_range": 0.2,
+				"damage_per_tick": 1,
+				"cause": "contact"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"plant"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 2.5
+			},
+			"minecraft:health": {
+				"max": 40,
+				"value": 40
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:physics": {},
+			"minecraft:behavior.look_at_target": {
+				"priority": 0
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 1,
+				"must_see": true,
+				"within_radius": 10,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "player"
+								}
+							]
+						}
+					}
+				]
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 0
+			}
+		},
+		"events": {}
+	}
+}

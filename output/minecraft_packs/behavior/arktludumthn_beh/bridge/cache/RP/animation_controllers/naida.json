@@ -1,0 +1,237 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\animation_controllers\\naida.json",
+	"file_type": "rp_animation_controller",
+	"format_version": 1,
+	"file_uuid": "4ae937dd_1b08_4184_a1f1_458e8c9e089f",
+	"file_version": 5,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"animation_controllers": {
+						"controller.animation.naida": {
+							"initial_state": "default",
+							"states": {
+								"default": {
+									"animations": [
+										{
+											"walk": "query.modified_move_speed"
+										}
+									],
+									"transitions": [
+										{
+											"magic_state": "query.is_casting == 1"
+										}
+									],
+									"blend_transition": 0.1
+								},
+								"magic_state": {
+									"animations": [
+										{
+											"magic": {}
+										}
+									],
+									"transitions": [
+										{
+											"default": "query.is_casting == 0"
+										}
+									],
+									"blend_transition": 0.1
+								}
+							}
+						}
+					}
+				},
+				"key": "animation_controllers",
+				"children": [
+					{
+						"open": {
+							"controller.animation.naida": {
+								"initial_state": "default",
+								"states": {
+									"default": {
+										"animations": [
+											{
+												"walk": "query.modified_move_speed"
+											}
+										],
+										"transitions": [
+											{
+												"magic_state": "query.is_casting == 1"
+											}
+										],
+										"blend_transition": 0.1
+									},
+									"magic_state": {
+										"animations": [
+											{
+												"magic": {}
+											}
+										],
+										"transitions": [
+											{
+												"default": "query.is_casting == 0"
+											}
+										],
+										"blend_transition": 0.1
+									}
+								}
+							}
+						},
+						"key": "controller.animation.naida",
+						"children": [
+							{
+								"data": "default",
+								"key": "initial_state"
+							},
+							{
+								"open": {
+									"initial_state": "default",
+									"states": {
+										"default": {
+											"animations": [
+												{
+													"walk": "query.modified_move_speed"
+												}
+											],
+											"transitions": [
+												{
+													"magic_state": "query.is_casting == 1"
+												}
+											],
+											"blend_transition": 0.1
+										},
+										"magic_state": {
+											"animations": [
+												{
+													"magic": {}
+												}
+											],
+											"transitions": [
+												{
+													"default": "query.is_casting == 0"
+												}
+											],
+											"blend_transition": 0.1
+										}
+									}
+								},
+								"key": "states",
+								"children": [
+									{
+										"key": "default",
+										"children": [
+											{
+												"key": "animations",
+												"is_minified": true,
+												"children": [
+													{
+														"walk": "query.modified_move_speed"
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"magic_state": "query.is_casting == 1"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"magic_state": "query.is_casting == 1"
+														}
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
+									},
+									{
+										"open": {
+											"default": {
+												"animations": [
+													{
+														"walk": "query.modified_move_speed"
+													}
+												],
+												"transitions": [
+													{
+														"magic_state": "query.is_casting == 1"
+													}
+												],
+												"blend_transition": 0.1
+											},
+											"magic_state": {
+												"animations": [
+													{
+														"magic": {}
+													}
+												],
+												"transitions": [
+													{
+														"default": "query.is_casting == 0"
+													}
+												],
+												"blend_transition": 0.1
+											}
+										},
+										"key": "magic_state",
+										"children": [
+											{
+												"key": "animations",
+												"children": [
+													{
+														"open": [
+															{
+																"magic": {}
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"magic": {}
+														}
+													}
+												]
+											},
+											{
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"default": "query.is_casting == 0"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"default": "query.is_casting == 0"
+														}
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,96 @@
+//bridge-file-version: #13
+{
+	"format_version": "1.13.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:holybot",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"gear"
+				]
+			},
+			"minecraft:health": {
+				"value": 100,
+				"max": 100
+			},
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 2
+			},
+			"minecraft:movement": {
+				"value": 0.3
+			},
+			"minecraft:navigation.walk": {
+				"can_path_over_water": true,
+				"can_pass_doors": true,
+				"can_open_doors": false,
+				"avoid_water": true,
+				"is_amphibious": true
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:jump.static": {},
+			"minecraft:behavior.float": {
+				"priority": 0
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 9
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true
+			},
+			"minecraft:behavior.melee_attack": {
+				"priority": 1,
+				"track_target": true,
+				"target_dist": 50,
+				"look_distance": 50
+			},
+			"minecraft:boss": {
+				"should_darken_sky": false,
+				"hud_range": 50,
+				"name": "Проклятый Механизм"
+			},
+			"minecraft:behavior.look_at_target": {
+				"priority": 2,
+				"look_distance": 10,
+				"probability": 0.02
+			},
+			"minecraft:attack": {
+				"damage": 4
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 0
+			},
+			"minecraft:behavior.move_towards_target": {
+				"priority": 1,
+				"speed_multiplier": 0.3
+			},
+			"minecraft:behavior.random_stroll": {
+				"speed_multiplier": 0.3,
+				"priority": 7
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 1,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"value": "player"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"events": {}
+	}
+}

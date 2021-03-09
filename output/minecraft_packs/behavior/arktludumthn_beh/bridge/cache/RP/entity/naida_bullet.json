@@ -1,0 +1,149 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\entity\\naida_bullet.json",
+	"file_type": "client_entity",
+	"format_version": 1,
+	"file_uuid": "f8e707a4_add6_4b31_9cb2_51c67b5a9214",
+	"file_version": 3,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"minecraft:client_entity": {
+						"description": {
+							"identifier": "ark:naida_bullet",
+							"materials": {
+								"default": "shulker_bullet"
+							},
+							"textures": {
+								"default": "textures/entity/shulker/spark"
+							},
+							"geometry": {
+								"default": "geometry.shulker_bullet"
+							},
+							"animations": {
+								"move": "animation.naida_bullet.move"
+							},
+							"scripts": {
+								"animate": [
+									"move"
+								]
+							},
+							"render_controllers": [
+								"controller.render.mobs"
+							]
+						}
+					}
+				},
+				"key": "minecraft:client_entity",
+				"children": [
+					{
+						"open": {
+							"description": {
+								"identifier": "ark:naida_bullet",
+								"materials": {
+									"default": "shulker_bullet"
+								},
+								"textures": {
+									"default": "textures/entity/shulker/spark"
+								},
+								"geometry": {
+									"default": "geometry.shulker_bullet"
+								},
+								"animations": {
+									"move": "animation.naida_bullet.move"
+								},
+								"scripts": {
+									"animate": [
+										"move"
+									]
+								},
+								"render_controllers": [
+									"controller.render.mobs"
+								]
+							}
+						},
+						"key": "description",
+						"children": [
+							{
+								"data": "ark:naida_bullet",
+								"key": "identifier"
+							},
+							{
+								"key": "materials",
+								"is_minified": true,
+								"children": {
+									"default": "shulker_bullet"
+								}
+							},
+							{
+								"key": "textures",
+								"is_minified": true,
+								"children": {
+									"default": "textures/entity/shulker/spark"
+								}
+							},
+							{
+								"key": "geometry",
+								"is_minified": true,
+								"children": {
+									"default": "geometry.shulker_bullet"
+								}
+							},
+							{
+								"key": "animations",
+								"is_minified": true,
+								"children": {
+									"move": "animation.naida_bullet.move"
+								}
+							},
+							{
+								"key": "scripts",
+								"is_minified": true,
+								"children": {
+									"animate": [
+										"move"
+									]
+								}
+							},
+							{
+								"open": {
+									"identifier": "ark:naida_bullet",
+									"materials": {
+										"default": "shulker_bullet"
+									},
+									"textures": {
+										"default": "textures/entity/shulker/spark"
+									},
+									"geometry": {
+										"default": "geometry.shulker_bullet"
+									},
+									"animations": {
+										"move": "animation.naida_bullet.move"
+									},
+									"scripts": {
+										"animate": [
+											"move"
+										]
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									]
+								},
+								"key": "render_controllers",
+								"is_minified": true,
+								"children": [
+									"controller.render.mobs"
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

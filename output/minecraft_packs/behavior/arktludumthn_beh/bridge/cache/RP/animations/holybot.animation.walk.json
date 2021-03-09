@@ -1,0 +1,216 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\animations\\holybot.animation.walk.json",
+	"file_type": "rp_animation",
+	"format_version": 1,
+	"file_uuid": "058d991f_761d_49e1_89ad_f2c0388f70ab",
+	"file_version": 0,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.8.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.8.0",
+					"animations": {
+						"animation.holybot.walk": {
+							"loop": true,
+							"animation_length": 1,
+							"bones": {
+								"left_leg": {
+									"rotation": {
+										"0.0": [
+											-30,
+											0,
+											0
+										],
+										"0.50": [
+											30,
+											0,
+											0
+										],
+										"1.0": [
+											-30,
+											0,
+											0
+										]
+									}
+								},
+								"right_leg": {
+									"rotation": {
+										"0.0": [
+											30,
+											0,
+											0
+										],
+										"0.50": [
+											-30,
+											0,
+											0
+										],
+										"1.0": [
+											30,
+											0,
+											0
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"key": "animations",
+				"children": [
+					{
+						"open": {
+							"animation.holybot.walk": {
+								"loop": true,
+								"animation_length": 1,
+								"bones": {
+									"left_leg": {
+										"rotation": {
+											"0.0": [
+												-30,
+												0,
+												0
+											],
+											"0.50": [
+												30,
+												0,
+												0
+											],
+											"1.0": [
+												-30,
+												0,
+												0
+											]
+										}
+									},
+									"right_leg": {
+										"rotation": {
+											"0.0": [
+												30,
+												0,
+												0
+											],
+											"0.50": [
+												-30,
+												0,
+												0
+											],
+											"1.0": [
+												30,
+												0,
+												0
+											]
+										}
+									}
+								}
+							}
+						},
+						"key": "animation.holybot.walk",
+						"children": [
+							{
+								"data": "true",
+								"key": "loop"
+							},
+							{
+								"data": "1",
+								"key": "animation_length"
+							},
+							{
+								"open": {
+									"loop": true,
+									"animation_length": 1,
+									"bones": {
+										"left_leg": {
+											"rotation": {
+												"0.0": [
+													-30,
+													0,
+													0
+												],
+												"0.50": [
+													30,
+													0,
+													0
+												],
+												"1.0": [
+													-30,
+													0,
+													0
+												]
+											}
+										},
+										"right_leg": {
+											"rotation": {
+												"0.0": [
+													30,
+													0,
+													0
+												],
+												"0.50": [
+													-30,
+													0,
+													0
+												],
+												"1.0": [
+													30,
+													0,
+													0
+												]
+											}
+										}
+									}
+								},
+								"key": "bones",
+								"is_minified": true,
+								"children": {
+									"left_leg": {
+										"rotation": {
+											"0.0": [
+												-30,
+												0,
+												0
+											],
+											"0.50": [
+												30,
+												0,
+												0
+											],
+											"1.0": [
+												-30,
+												0,
+												0
+											]
+										}
+									},
+									"right_leg": {
+										"rotation": {
+											"0.0": [
+												30,
+												0,
+												0
+											],
+											"0.50": [
+												-30,
+												0,
+												0
+											],
+											"1.0": [
+												30,
+												0,
+												0
+											]
+										}
+									}
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

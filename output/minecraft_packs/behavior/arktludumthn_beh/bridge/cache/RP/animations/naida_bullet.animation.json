@@ -1,0 +1,67 @@
+{
+	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\animations\\naida_bullet.animation.json",
+	"file_type": "rp_animation",
+	"format_version": 1,
+	"file_uuid": "a7d90b7b_d4c9_4d1b_acd9_9e44cc2f9a0e",
+	"file_version": 0,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.8.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.8.0",
+					"animations": {
+						"animation.naida_bullet.move": {
+							"loop": true,
+							"bones": {
+								"body": {
+									"rotation": {
+										"0": "math.cos(query.life_time * 120) * 180",
+										"1": "math.sin(query.life_time * 120) * 180",
+										"2": "math.sin(query.life_time * 170) * 360"
+									}
+								}
+							}
+						}
+					}
+				},
+				"key": "animations",
+				"children": [
+					{
+						"open": {
+							"animation.naida_bullet.move": {
+								"loop": true,
+								"bones": {
+									"body": {
+										"rotation": {
+											"0": "math.cos(query.life_time * 120) * 180",
+											"1": "math.sin(query.life_time * 120) * 180",
+											"2": "math.sin(query.life_time * 170) * 360"
+										}
+									}
+								}
+							}
+						},
+						"key": "animation.naida_bullet.move",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"bones": {
+								"body": {
+									"rotation": {
+										"0": "math.cos(query.life_time * 120) * 180",
+										"1": "math.sin(query.life_time * 120) * 180",
+										"2": "math.sin(query.life_time * 170) * 360"
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		]
+	}
+}

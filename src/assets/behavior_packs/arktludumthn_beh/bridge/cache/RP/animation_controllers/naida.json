@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "4ae937dd_1b08_4184_a1f1_458e8c9e089f",
-	"file_version": 5,
+	"file_version": 6,
 	"cache_content": {
 		"children": [
 			{
@@ -25,7 +25,7 @@
 									],
 									"transitions": [
 										{
-											"magic_state": "query.is_casting == 1"
+											"magic_state": "query.is_casting "
 										}
 									],
 									"blend_transition": 0.1
@@ -33,12 +33,12 @@
 								"magic_state": {
 									"animations": [
 										{
-											"magic": {}
+											"magic": "(1.0)"
 										}
 									],
 									"transitions": [
 										{
-											"default": "query.is_casting == 0"
+											"default": "!query.is_casting "
 										}
 									],
 									"blend_transition": 0.1
@@ -62,7 +62,7 @@
 										],
 										"transitions": [
 											{
-												"magic_state": "query.is_casting == 1"
+												"magic_state": "query.is_casting "
 											}
 										],
 										"blend_transition": 0.1
@@ -70,12 +70,12 @@
 									"magic_state": {
 										"animations": [
 											{
-												"magic": {}
+												"magic": "(1.0)"
 											}
 										],
 										"transitions": [
 											{
-												"default": "query.is_casting == 0"
+												"default": "!query.is_casting "
 											}
 										],
 										"blend_transition": 0.1
@@ -101,7 +101,7 @@
 											],
 											"transitions": [
 												{
-													"magic_state": "query.is_casting == 1"
+													"magic_state": "query.is_casting "
 												}
 											],
 											"blend_transition": 0.1
@@ -109,12 +109,12 @@
 										"magic_state": {
 											"animations": [
 												{
-													"magic": {}
+													"magic": "(1.0)"
 												}
 											],
 											"transitions": [
 												{
-													"default": "query.is_casting == 0"
+													"default": "!query.is_casting "
 												}
 											],
 											"blend_transition": 0.1
@@ -122,111 +122,35 @@
 									}
 								},
 								"key": "states",
-								"children": [
-									{
-										"key": "default",
-										"children": [
+								"is_minified": true,
+								"children": {
+									"default": {
+										"animations": [
 											{
-												"key": "animations",
-												"is_minified": true,
-												"children": [
-													{
-														"walk": "query.modified_move_speed"
-													}
-												]
-											},
-											{
-												"key": "transitions",
-												"children": [
-													{
-														"open": [
-															{
-																"magic_state": "query.is_casting == 1"
-															}
-														],
-														"is_minified": true,
-														"children": {
-															"magic_state": "query.is_casting == 1"
-														}
-													}
-												]
-											},
-											{
-												"data": "0.1",
-												"key": "blend_transition"
+												"walk": "query.modified_move_speed"
 											}
-										]
+										],
+										"transitions": [
+											{
+												"magic_state": "query.is_casting "
+											}
+										],
+										"blend_transition": 0.1
 									},
-									{
-										"open": {
-											"default": {
-												"animations": [
-													{
-														"walk": "query.modified_move_speed"
-													}
-												],
-												"transitions": [
-													{
-														"magic_state": "query.is_casting == 1"
-													}
-												],
-												"blend_transition": 0.1
-											},
-											"magic_state": {
-												"animations": [
-													{
-														"magic": {}
-													}
-												],
-												"transitions": [
-													{
-														"default": "query.is_casting == 0"
-													}
-												],
-												"blend_transition": 0.1
+									"magic_state": {
+										"animations": [
+											{
+												"magic": "(1.0)"
 											}
-										},
-										"key": "magic_state",
-										"children": [
+										],
+										"transitions": [
 											{
-												"key": "animations",
-												"children": [
-													{
-														"open": [
-															{
-																"magic": {}
-															}
-														],
-														"is_minified": true,
-														"children": {
-															"magic": {}
-														}
-													}
-												]
-											},
-											{
-												"key": "transitions",
-												"children": [
-													{
-														"open": [
-															{
-																"default": "query.is_casting == 0"
-															}
-														],
-														"is_minified": true,
-														"children": {
-															"default": "query.is_casting == 0"
-														}
-													}
-												]
-											},
-											{
-												"data": "0.1",
-												"key": "blend_transition"
+												"default": "!query.is_casting "
 											}
-										]
+										],
+										"blend_transition": 0.1
 									}
-								]
+								}
 							}
 						]
 					}

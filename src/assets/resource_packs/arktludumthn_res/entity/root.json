@@ -1,4 +1,4 @@
-//bridge-file-version: #7
+//bridge-file-version: #9
 {
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
@@ -28,13 +28,13 @@
 			"scripts": {
 				"animate": [
 					{
-						"idle": {}
+						"idle": "(1.0)"
 					},
 					{
-						"spawn": {}
+						"spawn": "(1.0)"
 					},
 					{
-						"attack": {}
+						"attack": "(1.0)"
 					}
 				]
 			}

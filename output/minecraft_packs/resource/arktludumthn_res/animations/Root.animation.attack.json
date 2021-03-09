@@ -1,0 +1,28 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.root.attack": {
+			"animation_length": 0.52,
+			"bones": {
+				"all": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.16": [35, 0, 0]
+					}
+				},
+				"without1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.24": [35, 0, 0]
+					}
+				},
+				"without2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.28": [35, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,145 @@
+//bridge-file-version: #37
+{
+	"format_version": "1.13.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:naida",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:behavior.random_stroll": {
+				"priority": 9
+			},
+			"minecraft:type_family": {
+				"family": [
+					"god",
+					"mob"
+				]
+			},
+			"minecraft:health": {
+				"value": 1000,
+				"max": 1000
+			},
+			"minecraft:boss": {
+				"hud_range": 50,
+				"name": "Наяда",
+				"should_darken_sky": false
+			},
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 2
+			},
+			"minecraft:movement": {
+				"value": 0.3
+			},
+			"minecraft:navigation.walk": {
+				"can_pass_doors": true,
+				"can_path_over_water": true,
+				"is_amphibious": true
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:jump.static": {},
+			"minecraft:behavior.float": {
+				"priority": 0
+			},
+			"minecraft:behavior.summon_entity": {
+				"priority": 0,
+				"summon_choices": [
+					{
+						"weight": 3,
+						"cooldown_time": 10,
+						"cast_duration": 0.9,
+						"sequence": [
+							{
+								"shape": "circle",
+								"target": "target",
+								"base_delay": 1,
+								"delay_per_summon": 0,
+								"num_entities_spawned": 5,
+								"entity_type": "ark:naida_fang",
+								"size": 1.5,
+								"entity_lifespan": 1.1
+							}
+						],
+						"particle_color": "#00498B"
+					},
+					{
+						"weight": 5,
+						"cooldown_time": 15,
+						"cast_duration": 0.5,
+						"sequence": [
+							{
+								"shape": "line",
+								"target": "target",
+								"base_delay": 1,
+								"num_entities_spawned": 1,
+								"summon_cap": 5,
+								"summon_cap_radius": 16,
+								"entity_type": "ark:root",
+								"size": 0.8,
+								"entity_lifespan": -1
+							}
+						],
+						"particle_color": "#49DA06"
+					},
+					{
+						"weight": 1,
+						"cooldown_time": 8,
+						"cast_duration": 1,
+						"sequence": [
+							{
+								"shape": "circle",
+								"target": "self",
+								"base_delay": 0,
+								"delay_per_summon": 1,
+								"num_entities_spawned": 3,
+								"summon_cap": 3,
+								"summon_cap_radius": 16,
+								"entity_type": "ark:naida_bullet",
+								"size": 1
+							}
+						],
+						"particle_color": "#FF5F5F"
+					}
+				]
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 9
+			},
+			"minecraft:physics": {},
+			"minecraft:attack": {
+				"damage": 3
+			},
+			"minecraft:behavior.look_at_target": {
+				"priority": 0,
+				"look_distance": 15,
+				"probability": 0.02
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 1,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"value": "player"
+								}
+							]
+						}
+					}
+				]
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 0
+			},
+			"minecraft:pushable": {
+				"is_pushable": true
+			}
+		},
+		"events": {}
+	}
+}

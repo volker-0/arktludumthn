@@ -1,4 +1,4 @@
-//bridge-file-version: #7
+//bridge-file-version: #8
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
@@ -8,7 +8,7 @@
 				"default": {
 					"animations": [
 						{
-							"idle": "query.is_alive == 1"
+							"idle": "query.is_alive"
 						}
 					],
 					"transitions": [
@@ -21,12 +21,12 @@
 				"attack_state": {
 					"animations": [
 						{
-							"attack": {}
+							"attack": "(1.0)"
 						}
 					],
 					"transitions": [
 						{
-							"default": "variable.attack_time == 0"
+							"default": "!variable.attack_time"
 						}
 					],
 					"blend_transition": 0.1
@@ -34,12 +34,12 @@
 				"spawn_state": {
 					"animations": [
 						{
-							"spawn": {}
+							"spawn": "(1.0)"
 						}
 					],
 					"transitions": [
 						{
-							"default": "query.all_animations_finished == 1"
+							"default": "query.all_animations_finished "
 						}
 					],
 					"blend_transition": 0.1

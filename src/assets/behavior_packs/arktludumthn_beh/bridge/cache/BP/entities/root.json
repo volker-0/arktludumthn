@@ -3,7 +3,7 @@
 	"file_type": "entity",
 	"format_version": 1,
 	"file_uuid": "7a9b3c39_84e0_472f_8545_929816b02c07",
-	"file_version": 2,
+	"file_version": 3,
 	"cache_content": {
 		"children": [
 			{
@@ -17,7 +17,7 @@
 						"description": {
 							"identifier": "ark:root",
 							"is_summonable": true,
-							"is_spawnable": false,
+							"is_spawnable": true,
 							"is_experimental": false
 						},
 						"component_groups": {},
@@ -85,26 +85,11 @@
 				"key": "minecraft:entity",
 				"children": [
 					{
-						"key": "description",
-						"is_minified": true,
-						"children": {
-							"identifier": "ark:root",
-							"is_summonable": true,
-							"is_spawnable": false,
-							"is_experimental": false
-						}
-					},
-					{
-						"key": "component_groups",
-						"is_minified": true,
-						"children": {}
-					},
-					{
 						"open": {
 							"description": {
 								"identifier": "ark:root",
 								"is_summonable": true,
-								"is_spawnable": false,
+								"is_spawnable": true,
 								"is_experimental": false
 							},
 							"component_groups": {},
@@ -168,6 +153,21 @@
 							},
 							"events": {}
 						},
+						"key": "description",
+						"is_minified": true,
+						"children": {
+							"identifier": "ark:root",
+							"is_summonable": true,
+							"is_spawnable": true,
+							"is_experimental": false
+						}
+					},
+					{
+						"key": "component_groups",
+						"is_minified": true,
+						"children": {}
+					},
+					{
 						"key": "components",
 						"children": [
 							{
@@ -356,7 +356,7 @@
 							"description": {
 								"identifier": "ark:root",
 								"is_summonable": true,
-								"is_spawnable": false,
+								"is_spawnable": true,
 								"is_experimental": false
 							},
 							"component_groups": {},

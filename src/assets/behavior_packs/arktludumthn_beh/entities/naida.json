@@ -1,11 +1,11 @@
-//bridge-file-version: #37
+//bridge-file-version: #38
 {
 	"format_version": "1.13.0",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "ark:naida",
 			"is_summonable": true,
-			"is_spawnable": false,
+			"is_spawnable": true,
 			"is_experimental": false
 		},
 		"component_groups": {},

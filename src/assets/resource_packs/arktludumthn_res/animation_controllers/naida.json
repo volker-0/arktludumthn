@@ -1,4 +1,4 @@
-//bridge-file-version: #5
+//bridge-file-version: #6
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
@@ -13,7 +13,7 @@
 					],
 					"transitions": [
 						{
-							"magic_state": "query.is_casting == 1"
+							"magic_state": "query.is_casting "
 						}
 					],
 					"blend_transition": 0.1
@@ -21,12 +21,12 @@
 				"magic_state": {
 					"animations": [
 						{
-							"magic": {}
+							"magic": "(1.0)"
 						}
 					],
 					"transitions": [
 						{
-							"default": "query.is_casting == 0"
+							"default": "!query.is_casting "
 						}
 					],
 					"blend_transition": 0.1

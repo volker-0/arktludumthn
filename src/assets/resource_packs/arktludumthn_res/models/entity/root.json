@@ -1,15 +1,11 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.ark:root",
-				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 2,
-				"visible_bounds_height": 5,
-				"visible_bounds_offset": [0, 0.5, 0]
-			},
+	"format_version": "1.10.0",
+	"geometry.root":{
+			"texture_width": 64,
+			"texture_height": 64,
+			"visible_bounds_width": 2,
+			"visible_bounds_height": 5,
+			"visible_bounds_offset": [0, 0.5, 0],
 			"bones": [
 				{
 					"name": "all",
@@ -44,12 +40,12 @@
 				},
 				{
 					"name": "particles",
+					"parent": "all",
 					"pivot": [0, 0, 0],
 					"locators": {
 						"block_breake_emitter": [0, 0, 0]
 					}
 				}
 			]
-		}
-	]
+	}
 }
