@@ -1,4 +1,4 @@
-//bridge-file-version: #38
+//bridge-file-version: #39
 {
 	"format_version": "1.13.0",
 	"minecraft:entity": {
@@ -49,8 +49,8 @@
 				"priority": 0,
 				"summon_choices": [
 					{
-						"weight": 3,
-						"cooldown_time": 10,
+						"weight": 1,
+						"cooldown_time": 5,
 						"cast_duration": 0.9,
 						"sequence": [
 							{
@@ -68,7 +68,7 @@
 					},
 					{
 						"weight": 5,
-						"cooldown_time": 15,
+						"cooldown_time": 10,
 						"cast_duration": 0.5,
 						"sequence": [
 							{

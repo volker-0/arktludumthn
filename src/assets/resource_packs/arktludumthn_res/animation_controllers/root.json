@@ -1,4 +1,4 @@
-//bridge-file-version: #8
+//bridge-file-version: #9
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
@@ -8,7 +8,7 @@
 				"default": {
 					"animations": [
 						{
-							"idle": "query.is_alive"
+							"idle": "query.life_time > 0.5"
 						}
 					],
 					"transitions": [

@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "20011458_bb90_4810_a390_d444661ecca4",
-	"file_version": 9,
+	"file_version": 10,
 	"cache_content": {
 		"children": [
 			{
@@ -40,7 +40,7 @@
 							"scripts": {
 								"animate": [
 									{
-										"idle": "(1.0)"
+										"idle": "query.life_time > 0.5"
 									},
 									{
 										"spawn": "(1.0)"
@@ -83,7 +83,7 @@
 								"scripts": {
 									"animate": [
 										{
-											"idle": "(1.0)"
+											"idle": "query.life_time > 0.5"
 										},
 										{
 											"spawn": "(1.0)"
@@ -128,7 +128,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -172,7 +172,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -216,7 +216,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -260,7 +260,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -306,7 +306,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -350,7 +350,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -395,7 +395,7 @@
 									"scripts": {
 										"animate": [
 											{
-												"idle": "(1.0)"
+												"idle": "query.life_time > 0.5"
 											},
 											{
 												"spawn": "(1.0)"
@@ -412,7 +412,7 @@
 										"open": {
 											"animate": [
 												{
-													"idle": "(1.0)"
+													"idle": "query.life_time > 0.5"
 												},
 												{
 													"spawn": "(1.0)"
@@ -427,7 +427,7 @@
 											{
 												"open": [
 													{
-														"idle": "(1.0)"
+														"idle": "query.life_time > 0.5"
 													},
 													{
 														"spawn": "(1.0)"
@@ -438,13 +438,13 @@
 												],
 												"is_minified": true,
 												"children": {
-													"idle": "(1.0)"
+													"idle": "query.life_time > 0.5"
 												}
 											},
 											{
 												"open": [
 													{
-														"idle": "(1.0)"
+														"idle": "query.life_time > 0.5"
 													},
 													{
 														"spawn": "(1.0)"
@@ -461,7 +461,7 @@
 											{
 												"open": [
 													{
-														"idle": "(1.0)"
+														"idle": "query.life_time > 0.5"
 													},
 													{
 														"spawn": "(1.0)"

@@ -1,4 +1,4 @@
-//bridge-file-version: #3
+//bridge-file-version: #5
 {
 	"format_version": "1.16.0",
 	"minecraft:entity": {
@@ -19,11 +19,6 @@
 			"minecraft:attack": {
 				"damage": 3
 			},
-			"minecraft:area_attack": {
-				"damage_range": 0.2,
-				"damage_per_tick": 1,
-				"cause": "contact"
-			},
 			"minecraft:type_family": {
 				"family": [
 					"mob",
@@ -31,8 +26,8 @@
 				]
 			},
 			"minecraft:collision_box": {
-				"width": 1,
-				"height": 2.5
+				"width": 0.7,
+				"height": 1.8
 			},
 			"minecraft:health": {
 				"max": 40,
@@ -56,6 +51,7 @@
 							"any_of": [
 								{
 									"test": "is_family",
+									"operator": "equals",
 									"subject": "player"
 								}
 							]
@@ -64,6 +60,9 @@
 				]
 			},
 			"minecraft:behavior.hurt_by_target": {
+				"priority": 0
+			},
+			"minecraft:behavior.melee_attack": {
 				"priority": 0
 			}
 		},

@@ -3,7 +3,7 @@
 	"file_type": "entity",
 	"format_version": 1,
 	"file_uuid": "7a9b3c39_84e0_472f_8545_929816b02c07",
-	"file_version": 3,
+	"file_version": 5,
 	"cache_content": {
 		"children": [
 			{
@@ -31,11 +31,6 @@
 							"minecraft:attack": {
 								"damage": 3
 							},
-							"minecraft:area_attack": {
-								"damage_range": 0.2,
-								"damage_per_tick": 1,
-								"cause": "contact"
-							},
 							"minecraft:type_family": {
 								"family": [
 									"mob",
@@ -43,8 +38,8 @@
 								]
 							},
 							"minecraft:collision_box": {
-								"width": 1,
-								"height": 2.5
+								"width": 0.7,
+								"height": 1.8
 							},
 							"minecraft:health": {
 								"max": 40,
@@ -68,6 +63,7 @@
 											"any_of": [
 												{
 													"test": "is_family",
+													"operator": "equals",
 													"subject": "player"
 												}
 											]
@@ -77,6 +73,9 @@
 							},
 							"minecraft:behavior.hurt_by_target": {
 								"priority": 0
+							},
+							"minecraft:behavior.melee_attack": {
+								"priority": 0
 							}
 						},
 						"events": {}
@@ -85,74 +84,6 @@
 				"key": "minecraft:entity",
 				"children": [
 					{
-						"open": {
-							"description": {
-								"identifier": "ark:root",
-								"is_summonable": true,
-								"is_spawnable": true,
-								"is_experimental": false
-							},
-							"component_groups": {},
-							"components": {
-								"minecraft:movement": {
-									"value": 0
-								},
-								"minecraft:movement.basic": {
-									"max_turn": 30
-								},
-								"minecraft:attack": {
-									"damage": 3
-								},
-								"minecraft:area_attack": {
-									"damage_range": 0.2,
-									"damage_per_tick": 1,
-									"cause": "contact"
-								},
-								"minecraft:type_family": {
-									"family": [
-										"mob",
-										"plant"
-									]
-								},
-								"minecraft:collision_box": {
-									"width": 1,
-									"height": 2.5
-								},
-								"minecraft:health": {
-									"max": 40,
-									"value": 40
-								},
-								"minecraft:pushable": {
-									"is_pushable": false,
-									"is_pushable_by_piston": false
-								},
-								"minecraft:physics": {},
-								"minecraft:behavior.look_at_target": {
-									"priority": 0
-								},
-								"minecraft:behavior.nearest_attackable_target": {
-									"priority": 1,
-									"must_see": true,
-									"within_radius": 10,
-									"entity_types": [
-										{
-											"filters": {
-												"any_of": [
-													{
-														"test": "is_family",
-														"subject": "player"
-													}
-												]
-											}
-										}
-									]
-								},
-								"minecraft:behavior.hurt_by_target": {
-									"priority": 0
-								}
-							},
-							"events": {}
-						},
 						"key": "description",
 						"is_minified": true,
 						"children": {
@@ -163,195 +94,6 @@
 						}
 					},
 					{
-						"key": "component_groups",
-						"is_minified": true,
-						"children": {}
-					},
-					{
-						"key": "components",
-						"children": [
-							{
-								"key": "minecraft:movement",
-								"is_minified": true,
-								"children": {
-									"value": 0
-								}
-							},
-							{
-								"key": "minecraft:movement.basic",
-								"is_minified": true,
-								"children": {
-									"max_turn": 30
-								}
-							},
-							{
-								"key": "minecraft:attack",
-								"is_minified": true,
-								"children": {
-									"damage": 3
-								}
-							},
-							{
-								"key": "minecraft:area_attack",
-								"is_minified": true,
-								"children": {
-									"damage_range": 0.2,
-									"damage_per_tick": 1,
-									"cause": "contact"
-								}
-							},
-							{
-								"key": "minecraft:type_family",
-								"is_minified": true,
-								"children": {
-									"family": [
-										"mob",
-										"plant"
-									]
-								}
-							},
-							{
-								"key": "minecraft:collision_box",
-								"is_minified": true,
-								"children": {
-									"width": 1,
-									"height": 2.5
-								}
-							},
-							{
-								"key": "minecraft:health",
-								"is_minified": true,
-								"children": {
-									"max": 40,
-									"value": 40
-								}
-							},
-							{
-								"key": "minecraft:pushable",
-								"is_minified": true,
-								"children": {
-									"is_pushable": false,
-									"is_pushable_by_piston": false
-								}
-							},
-							{
-								"key": "minecraft:physics",
-								"is_minified": true,
-								"children": {}
-							},
-							{
-								"key": "minecraft:behavior.look_at_target",
-								"is_minified": true,
-								"children": {
-									"priority": 0
-								}
-							},
-							{
-								"key": "minecraft:behavior.nearest_attackable_target",
-								"children": [
-									{
-										"data": "1",
-										"key": "priority"
-									},
-									{
-										"data": "true",
-										"key": "must_see"
-									},
-									{
-										"data": "10",
-										"key": "within_radius"
-									},
-									{
-										"open": {
-											"priority": 1,
-											"must_see": true,
-											"within_radius": 10,
-											"entity_types": [
-												{
-													"filters": {
-														"any_of": [
-															{
-																"test": "is_family",
-																"subject": "player"
-															}
-														]
-													}
-												}
-											]
-										},
-										"key": "entity_types",
-										"children": [
-											{
-												"open": [
-													{
-														"filters": {
-															"any_of": [
-																{
-																	"test": "is_family",
-																	"subject": "player"
-																}
-															]
-														}
-													}
-												],
-												"children": [
-													{
-														"open": {
-															"filters": {
-																"any_of": [
-																	{
-																		"test": "is_family",
-																		"subject": "player"
-																	}
-																]
-															}
-														},
-														"key": "filters",
-														"children": [
-															{
-																"open": {
-																	"any_of": [
-																		{
-																			"test": "is_family",
-																			"subject": "player"
-																		}
-																	]
-																},
-																"key": "any_of",
-																"children": [
-																	{
-																		"open": [
-																			{
-																				"test": "is_family",
-																				"subject": "player"
-																			}
-																		],
-																		"is_minified": true,
-																		"children": {
-																			"test": "is_family",
-																			"subject": "player"
-																		}
-																	}
-																]
-															}
-														]
-													}
-												]
-											}
-										]
-									}
-								]
-							},
-							{
-								"key": "minecraft:behavior.hurt_by_target",
-								"is_minified": true,
-								"children": {
-									"priority": 0
-								}
-							}
-						]
-					},
-					{
 						"open": {
 							"description": {
 								"identifier": "ark:root",
@@ -370,11 +112,6 @@
 								"minecraft:attack": {
 									"damage": 3
 								},
-								"minecraft:area_attack": {
-									"damage_range": 0.2,
-									"damage_per_tick": 1,
-									"cause": "contact"
-								},
 								"minecraft:type_family": {
 									"family": [
 										"mob",
@@ -382,8 +119,8 @@
 									]
 								},
 								"minecraft:collision_box": {
-									"width": 1,
-									"height": 2.5
+									"width": 0.7,
+									"height": 1.8
 								},
 								"minecraft:health": {
 									"max": 40,
@@ -407,6 +144,7 @@
 												"any_of": [
 													{
 														"test": "is_family",
+														"operator": "equals",
 														"subject": "player"
 													}
 												]
@@ -416,10 +154,146 @@
 								},
 								"minecraft:behavior.hurt_by_target": {
 									"priority": 0
+								},
+								"minecraft:behavior.melee_attack": {
+									"priority": 0
 								}
 							},
 							"events": {}
 						},
+						"key": "component_groups",
+						"is_minified": true,
+						"children": {}
+					},
+					{
+						"open": {
+							"description": {
+								"identifier": "ark:root",
+								"is_summonable": true,
+								"is_spawnable": true,
+								"is_experimental": false
+							},
+							"component_groups": {},
+							"components": {
+								"minecraft:movement": {
+									"value": 0
+								},
+								"minecraft:movement.basic": {
+									"max_turn": 30
+								},
+								"minecraft:attack": {
+									"damage": 3
+								},
+								"minecraft:type_family": {
+									"family": [
+										"mob",
+										"plant"
+									]
+								},
+								"minecraft:collision_box": {
+									"width": 0.7,
+									"height": 1.8
+								},
+								"minecraft:health": {
+									"max": 40,
+									"value": 40
+								},
+								"minecraft:pushable": {
+									"is_pushable": false,
+									"is_pushable_by_piston": false
+								},
+								"minecraft:physics": {},
+								"minecraft:behavior.look_at_target": {
+									"priority": 0
+								},
+								"minecraft:behavior.nearest_attackable_target": {
+									"priority": 1,
+									"must_see": true,
+									"within_radius": 10,
+									"entity_types": [
+										{
+											"filters": {
+												"any_of": [
+													{
+														"test": "is_family",
+														"operator": "equals",
+														"subject": "player"
+													}
+												]
+											}
+										}
+									]
+								},
+								"minecraft:behavior.hurt_by_target": {
+									"priority": 0
+								},
+								"minecraft:behavior.melee_attack": {
+									"priority": 0
+								}
+							},
+							"events": {}
+						},
+						"key": "components",
+						"is_minified": true,
+						"children": {
+							"minecraft:movement": {
+								"value": 0
+							},
+							"minecraft:movement.basic": {
+								"max_turn": 30
+							},
+							"minecraft:attack": {
+								"damage": 3
+							},
+							"minecraft:type_family": {
+								"family": [
+									"mob",
+									"plant"
+								]
+							},
+							"minecraft:collision_box": {
+								"width": 0.7,
+								"height": 1.8
+							},
+							"minecraft:health": {
+								"max": 40,
+								"value": 40
+							},
+							"minecraft:pushable": {
+								"is_pushable": false,
+								"is_pushable_by_piston": false
+							},
+							"minecraft:physics": {},
+							"minecraft:behavior.look_at_target": {
+								"priority": 0
+							},
+							"minecraft:behavior.nearest_attackable_target": {
+								"priority": 1,
+								"must_see": true,
+								"within_radius": 10,
+								"entity_types": [
+									{
+										"filters": {
+											"any_of": [
+												{
+													"test": "is_family",
+													"operator": "equals",
+													"subject": "player"
+												}
+											]
+										}
+									}
+								]
+							},
+							"minecraft:behavior.hurt_by_target": {
+								"priority": 0
+							},
+							"minecraft:behavior.melee_attack": {
+								"priority": 0
+							}
+						}
+					},
+					{
 						"key": "events",
 						"is_minified": true,
 						"children": {}

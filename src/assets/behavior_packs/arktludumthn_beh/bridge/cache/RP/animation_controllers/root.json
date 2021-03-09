@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "735eb6ed_8868_466b_b5b5_212f6bc81915",
-	"file_version": 8,
+	"file_version": 9,
 	"cache_content": {
 		"children": [
 			{
@@ -20,7 +20,7 @@
 								"default": {
 									"animations": [
 										{
-											"idle": "query.is_alive"
+											"idle": "query.life_time > 0.5"
 										}
 									],
 									"transitions": [
@@ -70,7 +70,7 @@
 									"default": {
 										"animations": [
 											{
-												"idle": "query.is_alive"
+												"idle": "query.life_time > 0.5"
 											}
 										],
 										"transitions": [
@@ -122,7 +122,7 @@
 										"default": {
 											"animations": [
 												{
-													"idle": "query.is_alive"
+													"idle": "query.life_time > 0.5"
 												}
 											],
 											"transitions": [
@@ -168,7 +168,7 @@
 										"children": {
 											"animations": [
 												{
-													"idle": "query.is_alive"
+													"idle": "query.life_time > 0.5"
 												}
 											],
 											"transitions": [
@@ -201,7 +201,7 @@
 											"default": {
 												"animations": [
 													{
-														"idle": "query.is_alive"
+														"idle": "query.life_time > 0.5"
 													}
 												],
 												"transitions": [
