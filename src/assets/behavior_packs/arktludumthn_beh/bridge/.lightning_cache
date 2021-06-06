@@ -30,7 +30,8 @@
 				"block_breake"
 			],
 			"animation_references": [
-				"walk"
+				"walk",
+				"ctrl"
 			],
 			"sound_references": [],
 			"texture_references": [
@@ -76,7 +77,8 @@
 			"animation_references": [
 				"idle",
 				"spawn",
-				"attack"
+				"attack",
+				"ctrl"
 			],
 			"sound_references": [],
 			"texture_references": [
@@ -217,6 +219,11 @@
 		"RP/animations/naida_fang.animation.bite.json": {
 			"ids": [
 				"animation.naida_fang.bite"
+			]
+		},
+		"RP/animations/root.animation.attack.json": {
+			"ids": [
+				"animation.root.attack"
 			]
 		}
 	},

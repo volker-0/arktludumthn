@@ -1,4 +1,4 @@
-//bridge-file-version: #10
+//bridge-file-version: #20
 {
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
@@ -16,25 +16,20 @@
 			"animations": {
 				"idle": "animation.root.idle",
 				"spawn": "animation.root.spawn",
-				"attack": "animation.root.attack"
+				"attack": "animation.root.attack",
+				"ctrl": "controller.animation.root"
 			},
 			"render_controllers": [
 				"controller.render.mobs"
 			],
 			"spawn_egg": {
 				"base_color": "#857241",
-				"overlay_color": "#D21717"
+				"overlay_color": "#25A5BE"
 			},
 			"scripts": {
 				"animate": [
 					{
-						"idle": "query.life_time > 0.5"
-					},
-					{
-						"spawn": "(1.0)"
-					},
-					{
-						"attack": "(1.0)"
+						"ctrl": "(1.0)"
 					}
 				]
 			}

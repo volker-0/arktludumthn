@@ -1,4 +1,4 @@
-//bridge-file-version: #9
+//bridge-file-version: #11
 {
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
@@ -22,12 +22,13 @@
 			},
 			"enable_attachables": false,
 			"animations": {
-				"walk": "animation.naida.walk"
+				"walk": "animation.naida.walk",
+				"ctrl": "controller.animation.naida"
 			},
 			"scripts": {
 				"animate": [
 					{
-						"walk": "query.modified_move_speed"
+						"ctrl": "(1.0)"
 					}
 				]
 			},

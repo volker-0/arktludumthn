@@ -2,8 +2,8 @@
 	"file_path": "D:\\Что-то бесполезное\\modding\\addons\\games\\com.mojang\\development_resource_packs\\arktludumthn_res\\animations\\root.animation.spawn.json",
 	"file_type": "rp_animation",
 	"format_version": 1,
-	"file_uuid": "c9d4a7cb_f355_4b85_9749_9b15167edb79",
-	"file_version": 1,
+	"file_uuid": "3a37395a_2fc3_49a3_b813_0ac12d30e96c",
+	"file_version": 4,
 	"cache_content": {
 		"children": [
 			{
@@ -15,21 +15,28 @@
 					"format_version": "1.8.0",
 					"animations": {
 						"animation.root.spawn": {
-							"animation_length": 0.5,
+							"loop": "hold_on_last_frame",
+							"animation_length": 1,
 							"bones": {
-								"All": {
+								"all": {
 									"position": {
-										"0.0": [
+										"0": [
 											0,
 											-27,
 											0
 										],
-										"0.50": [
+										"1": [
 											0,
 											0,
 											0
 										]
 									}
+								}
+							},
+							"particle_effects": {
+								"0": {
+									"effect": "minecraft:breaking_item_icon",
+									"locator": "block_breake_emitter"
 								}
 							}
 						}
@@ -40,21 +47,28 @@
 					{
 						"open": {
 							"animation.root.spawn": {
-								"animation_length": 0.5,
+								"loop": "hold_on_last_frame",
+								"animation_length": 1,
 								"bones": {
-									"All": {
+									"all": {
 										"position": {
-											"0.0": [
+											"0": [
 												0,
 												-27,
 												0
 											],
-											"0.50": [
+											"1": [
 												0,
 												0,
 												0
 											]
 										}
+									}
+								},
+								"particle_effects": {
+									"0": {
+										"effect": "minecraft:breaking_item_icon",
+										"locator": "block_breake_emitter"
 									}
 								}
 							}
@@ -62,26 +76,63 @@
 						"key": "animation.root.spawn",
 						"children": [
 							{
-								"data": "0.5",
-								"key": "animation_length"
+								"data": "hold_on_last_frame",
+								"key": "loop"
 							},
 							{
 								"open": {
-									"animation_length": 0.5,
+									"loop": "hold_on_last_frame",
+									"animation_length": 1,
 									"bones": {
-										"All": {
+										"all": {
 											"position": {
-												"0.0": [
+												"0": [
 													0,
 													-27,
 													0
 												],
-												"0.50": [
+												"1": [
 													0,
 													0,
 													0
 												]
 											}
+										}
+									},
+									"particle_effects": {
+										"0": {
+											"effect": "minecraft:breaking_item_icon",
+											"locator": "block_breake_emitter"
+										}
+									}
+								},
+								"data": "1.0",
+								"key": "animation_length"
+							},
+							{
+								"open": {
+									"loop": "hold_on_last_frame",
+									"animation_length": 1,
+									"bones": {
+										"all": {
+											"position": {
+												"0": [
+													0,
+													-27,
+													0
+												],
+												"1": [
+													0,
+													0,
+													0
+												]
+											}
+										}
+									},
+									"particle_effects": {
+										"0": {
+											"effect": "minecraft:breaking_item_icon",
+											"locator": "block_breake_emitter"
 										}
 									}
 								},
@@ -89,14 +140,14 @@
 								"children": [
 									{
 										"open": {
-											"All": {
+											"all": {
 												"position": {
-													"0.0": [
+													"0": [
 														0,
 														-27,
 														0
 													],
-													"0.50": [
+													"1": [
 														0,
 														0,
 														0
@@ -104,17 +155,17 @@
 												}
 											}
 										},
-										"key": "All",
+										"key": "all",
 										"children": [
 											{
 												"open": {
 													"position": {
-														"0.0": [
+														"0": [
 															0,
 															-27,
 															0
 														],
-														"0.50": [
+														"1": [
 															0,
 															0,
 															0
@@ -122,21 +173,85 @@
 													}
 												},
 												"key": "position",
-												"is_minified": true,
-												"children": {
-													"0.0": [
-														0,
-														-27,
-														0
-													],
-													"0.50": [
-														0,
-														0,
-														0
-													]
-												}
+												"children": [
+													{
+														"open": {
+															"0": [
+																0,
+																-27,
+																0
+															],
+															"1": [
+																0,
+																0,
+																0
+															]
+														},
+														"key": "0",
+														"is_minified": true,
+														"children": [
+															0,
+															-27,
+															0
+														]
+													},
+													{
+														"key": "1",
+														"is_minified": true,
+														"children": [
+															0,
+															0,
+															0
+														]
+													}
+												]
 											}
 										]
+									}
+								]
+							},
+							{
+								"open": {
+									"loop": "hold_on_last_frame",
+									"animation_length": 1,
+									"bones": {
+										"all": {
+											"position": {
+												"0": [
+													0,
+													-27,
+													0
+												],
+												"1": [
+													0,
+													0,
+													0
+												]
+											}
+										}
+									},
+									"particle_effects": {
+										"0": {
+											"effect": "minecraft:breaking_item_icon",
+											"locator": "block_breake_emitter"
+										}
+									}
+								},
+								"key": "particle_effects",
+								"children": [
+									{
+										"open": {
+											"0": {
+												"effect": "minecraft:breaking_item_icon",
+												"locator": "block_breake_emitter"
+											}
+										},
+										"key": "0",
+										"is_minified": true,
+										"children": {
+											"effect": "minecraft:breaking_item_icon",
+											"locator": "block_breake_emitter"
+										}
 									}
 								]
 							}

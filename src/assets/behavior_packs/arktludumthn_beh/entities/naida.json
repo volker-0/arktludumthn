@@ -1,4 +1,4 @@
-//bridge-file-version: #39
+//bridge-file-version: #42
 {
 	"format_version": "1.13.0",
 	"minecraft:entity": {
@@ -118,26 +118,29 @@
 				"look_distance": 15,
 				"probability": 0.02
 			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 0
+			},
+			"minecraft:pushable": {
+				"is_pushable": true
+			},
 			"minecraft:behavior.nearest_attackable_target": {
-				"priority": 1,
+				"priority": 3,
 				"entity_types": [
 					{
 						"filters": {
 							"any_of": [
 								{
 									"test": "is_family",
+									"subject": "other",
 									"value": "player"
 								}
 							]
-						}
+						},
+						"max_dist": 16
 					}
-				]
-			},
-			"minecraft:behavior.hurt_by_target": {
-				"priority": 0
-			},
-			"minecraft:pushable": {
-				"is_pushable": true
+				],
+				"must_see": true
 			}
 		},
 		"events": {}

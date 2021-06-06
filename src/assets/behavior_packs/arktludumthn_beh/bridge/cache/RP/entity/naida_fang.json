@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "7604ea00_ad07_4919_a7fe_5e3e33ff8e3e",
-	"file_version": 2,
+	"file_version": 4,
 	"cache_content": {
 		"children": [
 			{
@@ -86,46 +86,39 @@
 								"key": "identifier"
 							},
 							{
+								"open": {
+									"identifier": "ark:naida_fang",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Naida_fang"
+									},
+									"geometry": {
+										"default": "geometry.naida_fang"
+									},
+									"scripts": {
+										"pre_animation": [
+											"variable.remaining_life = (query.life_span - 2.0) - (query.life_time*20.0);",
+											"variable.animation_progress = query.life_span == 0.0 ? 0.0 : (variable.remaining_life < 1.0 ? 1.0 : 1.0 - Math.min(1.0, variable.remaining_life / 20.0));",
+											"variable.bite_amount = (1 - Math.Pow(Math.Clamp(variable.animation_progress*2.0, 0, 1.0), 3.0)) * 0.35 * 180;",
+											"variable.y_offset = (variable.animation_progress + Math.sin(variable.animation_progress*2.7*80.0)) * 0.6 * 12.0;"
+										],
+										"animate": [
+											"bite"
+										]
+									},
+									"animations": {
+										"bite": "animation.naida_fang.bite"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									]
+								},
 								"key": "materials",
 								"is_minified": true,
 								"children": {
 									"default": "entity_alphatest"
-								}
-							},
-							{
-								"key": "textures",
-								"is_minified": true,
-								"children": {
-									"default": "textures/entity/Naida_fang"
-								}
-							},
-							{
-								"key": "geometry",
-								"is_minified": true,
-								"children": {
-									"default": "geometry.naida_fang"
-								}
-							},
-							{
-								"key": "scripts",
-								"is_minified": true,
-								"children": {
-									"pre_animation": [
-										"variable.remaining_life = (query.life_span - 2.0) - (query.life_time*20.0);",
-										"variable.animation_progress = query.life_span == 0.0 ? 0.0 : (variable.remaining_life < 1.0 ? 1.0 : 1.0 - Math.min(1.0, variable.remaining_life / 20.0));",
-										"variable.bite_amount = (1 - Math.Pow(Math.Clamp(variable.animation_progress*2.0, 0, 1.0), 3.0)) * 0.35 * 180;",
-										"variable.y_offset = (variable.animation_progress + Math.sin(variable.animation_progress*2.7*80.0)) * 0.6 * 12.0;"
-									],
-									"animate": [
-										"bite"
-									]
-								}
-							},
-							{
-								"key": "animations",
-								"is_minified": true,
-								"children": {
-									"bite": "animation.naida_fang.bite"
 								}
 							},
 							{
@@ -158,6 +151,100 @@
 										"controller.render.mobs"
 									]
 								},
+								"key": "textures",
+								"is_minified": true,
+								"children": {
+									"default": "textures/entity/Naida_fang"
+								}
+							},
+							{
+								"open": {
+									"identifier": "ark:naida_fang",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Naida_fang"
+									},
+									"geometry": {
+										"default": "geometry.naida_fang"
+									},
+									"scripts": {
+										"pre_animation": [
+											"variable.remaining_life = (query.life_span - 2.0) - (query.life_time*20.0);",
+											"variable.animation_progress = query.life_span == 0.0 ? 0.0 : (variable.remaining_life < 1.0 ? 1.0 : 1.0 - Math.min(1.0, variable.remaining_life / 20.0));",
+											"variable.bite_amount = (1 - Math.Pow(Math.Clamp(variable.animation_progress*2.0, 0, 1.0), 3.0)) * 0.35 * 180;",
+											"variable.y_offset = (variable.animation_progress + Math.sin(variable.animation_progress*2.7*80.0)) * 0.6 * 12.0;"
+										],
+										"animate": [
+											"bite"
+										]
+									},
+									"animations": {
+										"bite": "animation.naida_fang.bite"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									]
+								},
+								"key": "geometry",
+								"is_minified": true,
+								"children": {
+									"default": "geometry.naida_fang"
+								}
+							},
+							{
+								"open": {
+									"identifier": "ark:naida_fang",
+									"materials": {
+										"default": "entity_alphatest"
+									},
+									"textures": {
+										"default": "textures/entity/Naida_fang"
+									},
+									"geometry": {
+										"default": "geometry.naida_fang"
+									},
+									"scripts": {
+										"pre_animation": [
+											"variable.remaining_life = (query.life_span - 2.0) - (query.life_time*20.0);",
+											"variable.animation_progress = query.life_span == 0.0 ? 0.0 : (variable.remaining_life < 1.0 ? 1.0 : 1.0 - Math.min(1.0, variable.remaining_life / 20.0));",
+											"variable.bite_amount = (1 - Math.Pow(Math.Clamp(variable.animation_progress*2.0, 0, 1.0), 3.0)) * 0.35 * 180;",
+											"variable.y_offset = (variable.animation_progress + Math.sin(variable.animation_progress*2.7*80.0)) * 0.6 * 12.0;"
+										],
+										"animate": [
+											"bite"
+										]
+									},
+									"animations": {
+										"bite": "animation.naida_fang.bite"
+									},
+									"render_controllers": [
+										"controller.render.mobs"
+									]
+								},
+								"key": "scripts",
+								"is_minified": true,
+								"children": {
+									"pre_animation": [
+										"variable.remaining_life = (query.life_span - 2.0) - (query.life_time*20.0);",
+										"variable.animation_progress = query.life_span == 0.0 ? 0.0 : (variable.remaining_life < 1.0 ? 1.0 : 1.0 - Math.min(1.0, variable.remaining_life / 20.0));",
+										"variable.bite_amount = (1 - Math.Pow(Math.Clamp(variable.animation_progress*2.0, 0, 1.0), 3.0)) * 0.35 * 180;",
+										"variable.y_offset = (variable.animation_progress + Math.sin(variable.animation_progress*2.7*80.0)) * 0.6 * 12.0;"
+									],
+									"animate": [
+										"bite"
+									]
+								}
+							},
+							{
+								"key": "animations",
+								"is_minified": true,
+								"children": {
+									"bite": "animation.naida_fang.bite"
+								}
+							},
+							{
 								"key": "render_controllers",
 								"is_minified": true,
 								"children": [

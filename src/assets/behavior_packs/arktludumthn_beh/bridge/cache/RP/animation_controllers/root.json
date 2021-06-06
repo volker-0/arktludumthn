@@ -3,7 +3,7 @@
 	"file_type": "rp_animation_controller",
 	"format_version": 1,
 	"file_uuid": "735eb6ed_8868_466b_b5b5_212f6bc81915",
-	"file_version": 10,
+	"file_version": 21,
 	"cache_content": {
 		"children": [
 			{
@@ -20,12 +20,12 @@
 								"default": {
 									"animations": [
 										{
-											"idle": "(query.is_idling) || (query.is_stalkering)"
+											"idle": "(1.0)"
 										}
 									],
 									"transitions": [
 										{
-											"attack_state": "variable.attack_time > 0"
+											"attack_state": "variable.attack_time > 0.0"
 										}
 									],
 									"blend_transition": 0.1
@@ -38,7 +38,7 @@
 									],
 									"transitions": [
 										{
-											"default": "!variable.attack_time"
+											"default": "variable.attack_time<=0.0"
 										}
 									],
 									"blend_transition": 0.1
@@ -51,7 +51,7 @@
 									],
 									"transitions": [
 										{
-											"default": "query.all_animations_finished "
+											"default": "query.all_animations_finished"
 										}
 									],
 									"blend_transition": 0.1
@@ -70,12 +70,12 @@
 									"default": {
 										"animations": [
 											{
-												"idle": "(query.is_idling) || (query.is_stalkering)"
+												"idle": "(1.0)"
 											}
 										],
 										"transitions": [
 											{
-												"attack_state": "variable.attack_time > 0"
+												"attack_state": "variable.attack_time > 0.0"
 											}
 										],
 										"blend_transition": 0.1
@@ -88,7 +88,7 @@
 										],
 										"transitions": [
 											{
-												"default": "!variable.attack_time"
+												"default": "variable.attack_time<=0.0"
 											}
 										],
 										"blend_transition": 0.1
@@ -101,7 +101,7 @@
 										],
 										"transitions": [
 											{
-												"default": "query.all_animations_finished "
+												"default": "query.all_animations_finished"
 											}
 										],
 										"blend_transition": 0.1
@@ -122,12 +122,12 @@
 										"default": {
 											"animations": [
 												{
-													"idle": "(query.is_idling) || (query.is_stalkering)"
+													"idle": "(1.0)"
 												}
 											],
 											"transitions": [
 												{
-													"attack_state": "variable.attack_time > 0"
+													"attack_state": "variable.attack_time > 0.0"
 												}
 											],
 											"blend_transition": 0.1
@@ -140,7 +140,7 @@
 											],
 											"transitions": [
 												{
-													"default": "!variable.attack_time"
+													"default": "variable.attack_time<=0.0"
 												}
 											],
 											"blend_transition": 0.1
@@ -153,7 +153,7 @@
 											],
 											"transitions": [
 												{
-													"default": "query.all_animations_finished "
+													"default": "query.all_animations_finished"
 												}
 											],
 											"blend_transition": 0.1
@@ -167,12 +167,12 @@
 											"default": {
 												"animations": [
 													{
-														"idle": "(query.is_idling) || (query.is_stalkering)"
+														"idle": "(1.0)"
 													}
 												],
 												"transitions": [
 													{
-														"attack_state": "variable.attack_time > 0"
+														"attack_state": "variable.attack_time > 0.0"
 													}
 												],
 												"blend_transition": 0.1
@@ -185,7 +185,7 @@
 												],
 												"transitions": [
 													{
-														"default": "!variable.attack_time"
+														"default": "variable.attack_time<=0.0"
 													}
 												],
 												"blend_transition": 0.1
@@ -198,7 +198,7 @@
 												],
 												"transitions": [
 													{
-														"default": "query.all_animations_finished "
+														"default": "query.all_animations_finished"
 													}
 												],
 												"blend_transition": 0.1
@@ -210,12 +210,12 @@
 												"open": {
 													"animations": [
 														{
-															"idle": "(query.is_idling) || (query.is_stalkering)"
+															"idle": "(1.0)"
 														}
 													],
 													"transitions": [
 														{
-															"attack_state": "variable.attack_time > 0"
+															"attack_state": "variable.attack_time > 0.0"
 														}
 													],
 													"blend_transition": 0.1
@@ -225,22 +225,42 @@
 													{
 														"open": [
 															{
-																"idle": "(query.is_idling) || (query.is_stalkering)"
+																"idle": "(1.0)"
 															}
 														],
 														"is_minified": true,
 														"children": {
-															"idle": "(query.is_idling) || (query.is_stalkering)"
+															"idle": "(1.0)"
 														}
 													}
 												]
 											},
 											{
+												"open": {
+													"animations": [
+														{
+															"idle": "(1.0)"
+														}
+													],
+													"transitions": [
+														{
+															"attack_state": "variable.attack_time > 0.0"
+														}
+													],
+													"blend_transition": 0.1
+												},
 												"key": "transitions",
-												"is_minified": true,
 												"children": [
 													{
-														"attack_state": "variable.attack_time > 0"
+														"open": [
+															{
+																"attack_state": "variable.attack_time > 0.0"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"attack_state": "variable.attack_time > 0.0"
+														}
 													}
 												]
 											},
@@ -251,38 +271,220 @@
 										]
 									},
 									{
+										"open": {
+											"default": {
+												"animations": [
+													{
+														"idle": "(1.0)"
+													}
+												],
+												"transitions": [
+													{
+														"attack_state": "variable.attack_time > 0.0"
+													}
+												],
+												"blend_transition": 0.1
+											},
+											"attack_state": {
+												"animations": [
+													{
+														"attack": "(1.0)"
+													}
+												],
+												"transitions": [
+													{
+														"default": "variable.attack_time<=0.0"
+													}
+												],
+												"blend_transition": 0.1
+											},
+											"spawn_state": {
+												"animations": [
+													{
+														"spawn": "(1.0)"
+													}
+												],
+												"transitions": [
+													{
+														"default": "query.all_animations_finished"
+													}
+												],
+												"blend_transition": 0.1
+											}
+										},
 										"key": "attack_state",
-										"is_minified": true,
-										"children": {
-											"animations": [
-												{
-													"attack": "(1.0)"
-												}
-											],
-											"transitions": [
-												{
-													"default": "!variable.attack_time"
-												}
-											],
-											"blend_transition": 0.1
-										}
+										"children": [
+											{
+												"open": {
+													"animations": [
+														{
+															"attack": "(1.0)"
+														}
+													],
+													"transitions": [
+														{
+															"default": "variable.attack_time<=0.0"
+														}
+													],
+													"blend_transition": 0.1
+												},
+												"key": "animations",
+												"children": [
+													{
+														"open": [
+															{
+																"attack": "(1.0)"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"attack": "(1.0)"
+														}
+													}
+												]
+											},
+											{
+												"open": {
+													"animations": [
+														{
+															"attack": "(1.0)"
+														}
+													],
+													"transitions": [
+														{
+															"default": "variable.attack_time<=0.0"
+														}
+													],
+													"blend_transition": 0.1
+												},
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"default": "variable.attack_time<=0.0"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"default": "variable.attack_time<=0.0"
+														}
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
 									},
 									{
+										"open": {
+											"default": {
+												"animations": [
+													{
+														"idle": "(1.0)"
+													}
+												],
+												"transitions": [
+													{
+														"attack_state": "variable.attack_time > 0.0"
+													}
+												],
+												"blend_transition": 0.1
+											},
+											"attack_state": {
+												"animations": [
+													{
+														"attack": "(1.0)"
+													}
+												],
+												"transitions": [
+													{
+														"default": "variable.attack_time<=0.0"
+													}
+												],
+												"blend_transition": 0.1
+											},
+											"spawn_state": {
+												"animations": [
+													{
+														"spawn": "(1.0)"
+													}
+												],
+												"transitions": [
+													{
+														"default": "query.all_animations_finished"
+													}
+												],
+												"blend_transition": 0.1
+											}
+										},
 										"key": "spawn_state",
-										"is_minified": true,
-										"children": {
-											"animations": [
-												{
-													"spawn": "(1.0)"
-												}
-											],
-											"transitions": [
-												{
-													"default": "query.all_animations_finished "
-												}
-											],
-											"blend_transition": 0.1
-										}
+										"children": [
+											{
+												"open": {
+													"animations": [
+														{
+															"spawn": "(1.0)"
+														}
+													],
+													"transitions": [
+														{
+															"default": "query.all_animations_finished"
+														}
+													],
+													"blend_transition": 0.1
+												},
+												"key": "animations",
+												"children": [
+													{
+														"open": [
+															{
+																"spawn": "(1.0)"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"spawn": "(1.0)"
+														}
+													}
+												]
+											},
+											{
+												"open": {
+													"animations": [
+														{
+															"spawn": "(1.0)"
+														}
+													],
+													"transitions": [
+														{
+															"default": "query.all_animations_finished"
+														}
+													],
+													"blend_transition": 0.1
+												},
+												"key": "transitions",
+												"children": [
+													{
+														"open": [
+															{
+																"default": "query.all_animations_finished"
+															}
+														],
+														"is_minified": true,
+														"children": {
+															"default": "query.all_animations_finished"
+														}
+													}
+												]
+											},
+											{
+												"data": "0.1",
+												"key": "blend_transition"
+											}
+										]
 									}
 								]
 							}

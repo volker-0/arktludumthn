@@ -1,4 +1,4 @@
-//bridge-file-version: #13
+//bridge-file-version: #14
 {
 	"format_version": "1.13.0",
 	"minecraft:entity": {
@@ -76,19 +76,22 @@
 				"priority": 7
 			},
 			"minecraft:behavior.nearest_attackable_target": {
-				"priority": 1,
+				"priority": 3,
 				"entity_types": [
 					{
 						"filters": {
 							"any_of": [
 								{
 									"test": "is_family",
+									"subject": "other",
 									"value": "player"
 								}
 							]
-						}
+						},
+						"max_dist": 16
 					}
-				]
+				],
+				"must_see": true
 			}
 		},
 		"events": {}

@@ -76,5 +76,8 @@
 	},
 	"RP/entity/naida_fang.json": {
 		"data": {}
+	},
+	"RP/animations/root.animation.attack.json": {
+		"data": {}
 	}
 }
