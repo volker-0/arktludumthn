@@ -1,4 +1,4 @@
-//bridge-file-version: #11
+//bridge-file-version: #12
 {
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
@@ -31,9 +31,6 @@
 						"ctrl": "(1.0)"
 					}
 				]
-			},
-			"particle_effects": {
-				"block_breake": "minecraft:breaking_item_icon"
 			}
 		}
 	}

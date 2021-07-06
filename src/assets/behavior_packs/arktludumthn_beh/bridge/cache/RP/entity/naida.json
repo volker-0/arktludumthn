@@ -3,7 +3,7 @@
 	"file_type": "client_entity",
 	"format_version": 1,
 	"file_uuid": "ee3ca8f3_90bc_4ce9_83a1_ad341426f4f1",
-	"file_version": 11,
+	"file_version": 12,
 	"cache_content": {
 		"children": [
 			{
@@ -43,9 +43,6 @@
 										"ctrl": "(1.0)"
 									}
 								]
-							},
-							"particle_effects": {
-								"block_breake": "minecraft:breaking_item_icon"
 							}
 						}
 					}
@@ -83,9 +80,6 @@
 											"ctrl": "(1.0)"
 										}
 									]
-								},
-								"particle_effects": {
-									"block_breake": "minecraft:breaking_item_icon"
 								}
 							}
 						},
@@ -165,9 +159,6 @@
 												"ctrl": "(1.0)"
 											}
 										]
-									},
-									"particle_effects": {
-										"block_breake": "minecraft:breaking_item_icon"
 									}
 								},
 								"key": "animations",
@@ -207,9 +198,6 @@
 												"ctrl": "(1.0)"
 											}
 										]
-									},
-									"particle_effects": {
-										"block_breake": "minecraft:breaking_item_icon"
 									}
 								},
 								"key": "scripts",
@@ -238,13 +226,6 @@
 										]
 									}
 								]
-							},
-							{
-								"key": "particle_effects",
-								"is_minified": true,
-								"children": {
-									"block_breake": "minecraft:breaking_item_icon"
-								}
 							}
 						]
 					}

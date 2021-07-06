@@ -3,7 +3,7 @@
 	"file_type": "entity",
 	"format_version": 1,
 	"file_uuid": "2509bf30_a79a_4372_ac30_f1b4374bd2b3",
-	"file_version": 42,
+	"file_version": 45,
 	"cache_content": {
 		"children": [
 			{
@@ -57,6 +57,7 @@
 								"priority": 0,
 								"summon_choices": [
 									{
+										"do_casting": true,
 										"weight": 1,
 										"cooldown_time": 5,
 										"cast_duration": 0.9,
@@ -75,6 +76,7 @@
 										"particle_color": "#00498B"
 									},
 									{
+										"do_casting": true,
 										"weight": 5,
 										"cooldown_time": 10,
 										"cast_duration": 0.5,
@@ -92,25 +94,6 @@
 											}
 										],
 										"particle_color": "#49DA06"
-									},
-									{
-										"weight": 1,
-										"cooldown_time": 8,
-										"cast_duration": 1,
-										"sequence": [
-											{
-												"shape": "circle",
-												"target": "self",
-												"base_delay": 0,
-												"delay_per_summon": 1,
-												"num_entities_spawned": 3,
-												"summon_cap": 3,
-												"summon_cap_radius": 16,
-												"entity_type": "ark:naida_bullet",
-												"size": 1
-											}
-										],
-										"particle_color": "#FF5F5F"
 									}
 								]
 							},
@@ -149,6 +132,15 @@
 									}
 								],
 								"must_see": true
+							},
+							"minecraft:shooter": {
+								"def": "ark:naida_bullet"
+							},
+							"minecraft:behavior.ranged_attack": {
+								"priority": 1,
+								"attack_interval_max": 4,
+								"attack_interval_min": 4,
+								"attack_radius": 20
 							}
 						},
 						"events": {}
@@ -208,6 +200,7 @@
 								"priority": 0,
 								"summon_choices": [
 									{
+										"do_casting": true,
 										"weight": 1,
 										"cooldown_time": 5,
 										"cast_duration": 0.9,
@@ -226,6 +219,7 @@
 										"particle_color": "#00498B"
 									},
 									{
+										"do_casting": true,
 										"weight": 5,
 										"cooldown_time": 10,
 										"cast_duration": 0.5,
@@ -243,25 +237,6 @@
 											}
 										],
 										"particle_color": "#49DA06"
-									},
-									{
-										"weight": 1,
-										"cooldown_time": 8,
-										"cast_duration": 1,
-										"sequence": [
-											{
-												"shape": "circle",
-												"target": "self",
-												"base_delay": 0,
-												"delay_per_summon": 1,
-												"num_entities_spawned": 3,
-												"summon_cap": 3,
-												"summon_cap_radius": 16,
-												"entity_type": "ark:naida_bullet",
-												"size": 1
-											}
-										],
-										"particle_color": "#FF5F5F"
 									}
 								]
 							},
@@ -300,6 +275,15 @@
 									}
 								],
 								"must_see": true
+							},
+							"minecraft:shooter": {
+								"def": "ark:naida_bullet"
+							},
+							"minecraft:behavior.ranged_attack": {
+								"priority": 1,
+								"attack_interval_max": 4,
+								"attack_interval_min": 4,
+								"attack_radius": 20
 							}
 						},
 						"events": {}
@@ -371,6 +355,7 @@
 									"priority": 0,
 									"summon_choices": [
 										{
+											"do_casting": true,
 											"weight": 1,
 											"cooldown_time": 5,
 											"cast_duration": 0.9,
@@ -389,6 +374,7 @@
 											"particle_color": "#00498B"
 										},
 										{
+											"do_casting": true,
 											"weight": 5,
 											"cooldown_time": 10,
 											"cast_duration": 0.5,
@@ -406,25 +392,6 @@
 												}
 											],
 											"particle_color": "#49DA06"
-										},
-										{
-											"weight": 1,
-											"cooldown_time": 8,
-											"cast_duration": 1,
-											"sequence": [
-												{
-													"shape": "circle",
-													"target": "self",
-													"base_delay": 0,
-													"delay_per_summon": 1,
-													"num_entities_spawned": 3,
-													"summon_cap": 3,
-													"summon_cap_radius": 16,
-													"entity_type": "ark:naida_bullet",
-													"size": 1
-												}
-											],
-											"particle_color": "#FF5F5F"
 										}
 									]
 								},
@@ -463,6 +430,15 @@
 										}
 									],
 									"must_see": true
+								},
+								"minecraft:shooter": {
+									"def": "ark:naida_bullet"
+								},
+								"minecraft:behavior.ranged_attack": {
+									"priority": 1,
+									"attack_interval_max": 4,
+									"attack_interval_min": 4,
+									"attack_radius": 20
 								}
 							},
 							"events": {}
@@ -509,6 +485,7 @@
 								"priority": 0,
 								"summon_choices": [
 									{
+										"do_casting": true,
 										"weight": 1,
 										"cooldown_time": 5,
 										"cast_duration": 0.9,
@@ -527,6 +504,7 @@
 										"particle_color": "#00498B"
 									},
 									{
+										"do_casting": true,
 										"weight": 5,
 										"cooldown_time": 10,
 										"cast_duration": 0.5,
@@ -544,25 +522,6 @@
 											}
 										],
 										"particle_color": "#49DA06"
-									},
-									{
-										"weight": 1,
-										"cooldown_time": 8,
-										"cast_duration": 1,
-										"sequence": [
-											{
-												"shape": "circle",
-												"target": "self",
-												"base_delay": 0,
-												"delay_per_summon": 1,
-												"num_entities_spawned": 3,
-												"summon_cap": 3,
-												"summon_cap_radius": 16,
-												"entity_type": "ark:naida_bullet",
-												"size": 1
-											}
-										],
-										"particle_color": "#FF5F5F"
 									}
 								]
 							},
@@ -601,6 +560,15 @@
 									}
 								],
 								"must_see": true
+							},
+							"minecraft:shooter": {
+								"def": "ark:naida_bullet"
+							},
+							"minecraft:behavior.ranged_attack": {
+								"priority": 1,
+								"attack_interval_max": 4,
+								"attack_interval_min": 4,
+								"attack_radius": 20
 							}
 						}
 					},

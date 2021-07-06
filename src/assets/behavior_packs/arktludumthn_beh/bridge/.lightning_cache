@@ -26,9 +26,7 @@
 			"identifiers": [
 				"ark:naida"
 			],
-			"particle_references": [
-				"block_breake"
-			],
+			"particle_references": [],
 			"animation_references": [
 				"walk",
 				"ctrl"
