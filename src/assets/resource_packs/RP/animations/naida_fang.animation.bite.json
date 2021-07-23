@@ -1,0 +1,67 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.naida_fang.bite": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0,
+			"bones": {
+				"jaw_1": {
+					"rotation": {
+						"0": [
+							0,
+							0,
+							0
+						],
+						"1": [
+							0,
+							0,
+							85
+						]
+					}
+				},
+				"jaw_2": {
+					"rotation": {
+						"0": [
+							0,
+							0,
+							0
+						],
+						"1": [
+							0,
+							0,
+							-85
+						]
+					}
+				},
+				"jaw_3": {
+					"rotation": {
+						"0": [
+							0,
+							0,
+							0
+						],
+						"1": [
+							0,
+							85,
+							0
+						]
+					}
+				},
+				"jaw_4": {
+					"rotation": {
+						"0": [
+							0,
+							0,
+							0
+						],
+						"1": [
+							0,
+							-85,
+							0
+						]
+					}
+				}
+			}
+		}
+	}
+}

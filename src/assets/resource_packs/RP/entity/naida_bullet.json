@@ -1,0 +1,28 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ark:naida_bullet",
+			"materials": {
+				"default": "shulker_bullet"
+			},
+			"textures": {
+				"default": "textures/entity/Naida_bullet"
+			},
+			"geometry": {
+				"default": "geometry.shulker_bullet"
+			},
+			"animations": {
+				"move": "animation.naida_bullet.move"
+			},
+			"scripts": {
+				"animate": [
+					"move"
+				]
+			},
+			"render_controllers": [
+				"controller.render.mobs"
+			]
+		}
+	}
+}

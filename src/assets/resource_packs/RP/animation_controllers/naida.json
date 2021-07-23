@@ -1,0 +1,31 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.naida": {
+			"initial_state": "magic_state",
+			"states": {
+				"default": {
+					"animations": [
+						{
+							"walk": "query.modified_move_speed"
+						}
+					],
+					"transitions": [
+						{
+							"magic_state": "query.is_casting "
+						}
+					],
+					"blend_transition": 0.1
+				},
+				"magic_state": {
+					"animations": [
+						{
+							"magic": "query.is_casting"
+						}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		}
+	}
+}

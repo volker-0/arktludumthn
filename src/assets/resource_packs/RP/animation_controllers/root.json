@@ -1,0 +1,49 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.root": {
+			"initial_state": "spawn_state",
+			"states": {
+				"default": {
+					"animations": [
+						{
+							"idle": "(1.0)"
+						}
+					],
+					"transitions": [
+						{
+							"attack_state": "variable.attack_time > 0.0"
+						}
+					],
+					"blend_transition": 0
+				},
+				"attack_state": {
+					"animations": [
+						{
+							"attack": "(1.0)"
+						}
+					],
+					"transitions": [
+						{
+							"default": "variable.attack_time<=0.0"
+						}
+					],
+					"blend_transition": 0
+				},
+				"spawn_state": {
+					"animations": [
+						{
+							"spawn": "(1.0)"
+						}
+					],
+					"transitions": [
+						{
+							"default": "query.all_animations_finished"
+						}
+					],
+					"blend_transition": 0
+				}
+			}
+		}
+	}
+}
