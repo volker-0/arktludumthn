@@ -28,7 +28,7 @@
 				"should_darken_sky": false
 			},
 			"minecraft:collision_box": {
-				"width": 1,
+				"width": 0.8,
 				"height": 2
 			},
 			"minecraft:movement": {
@@ -49,8 +49,8 @@
 				"summon_choices": [
 					{
 						"do_casting": true,
-						"weight": 0,
-						"cooldown_time": 5,
+						"weight": 5,
+						"cooldown_time": 2,
 						"cast_duration": 0.9,
 						"sequence": [
 							{
@@ -61,7 +61,7 @@
 								"num_entities_spawned": 5,
 								"entity_type": "ark:naida_fang",
 								"size": 1.5,
-								"entity_lifespan": 1.1
+								"entity_lifespan": 1.5
 							}
 						],
 						"particle_color": "#00498B"
@@ -77,34 +77,14 @@
 								"target": "target",
 								"base_delay": 1,
 								"num_entities_spawned": 1,
-								"summon_cap": 5,
-								"summon_cap_radius": 16,
+								"summon_cap": 7,
+								"summon_cap_radius": 25,
 								"entity_type": "ark:root",
 								"size": 0.8,
 								"entity_lifespan": -1
 							}
 						],
 						"particle_color": "#49DA06"
-					},
-					{
-						"do_casting": true,
-						"weight": 1,
-						"cooldown_time": 10,
-						"min_activation_range": 2,
-						"max_activation_range": 15,
-						"cast_duration": 1,
-						"particle_color": "#8c8c8c",
-						"sequence": [
-							{
-								"shape": "circle",
-								"target": "self",
-								"base_delay": 1.5,
-								"num_entities_spawned": 3,
-								"size": 0.7,
-								"entity_lifespan": -1,
-								"entity_type": "ark:naida_bullet"
-							}
-						]
 					}
 				]
 			},
@@ -142,7 +122,17 @@
 					}
 				],
 				"must_see": true
-			}
+			},
+			"minecraft:shooter": {
+				"def": "splash_potion",
+				"aux_val": 25
+			},
+			"minecraft:behavior.ranged_attack": {
+				"priority": 10,
+				"attack_interval": 5,
+				"attack_radius": 8
+			},
+			"minecraft:custom_hit_test": {}
 		},
 		"events": {}
 	}

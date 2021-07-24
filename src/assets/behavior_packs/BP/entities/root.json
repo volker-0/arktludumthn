@@ -19,10 +19,6 @@
 				"value": 40,
 				"max": 40
 			},
-			"minecraft:collision_box": {
-				"width": 0.7,
-				"height": 1.8
-			},
 			"minecraft:movement": {
 				"value": 0,
 				"max": 0
@@ -35,7 +31,6 @@
 				"is_amphibious": true
 			},
 			"minecraft:movement.basic": {},
-			"minecraft:jump.static": {},
 			"minecraft:behavior.float": {
 				"priority": 0
 			},
@@ -87,6 +82,10 @@
 					}
 				],
 				"must_see": true
+			},
+			"minecraft:collision_box": {
+				"width": 0.5,
+				"height": 1.7
 			}
 		},
 		"events": {}

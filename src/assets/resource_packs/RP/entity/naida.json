@@ -31,6 +31,9 @@
 						"ctrl": "(1.0)"
 					}
 				]
+			},
+			"particle_emitters": {
+				"spell": "minecraft:evoker_spell"
 			}
 		}
 	}

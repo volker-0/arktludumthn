@@ -2,7 +2,7 @@
 	"format_version": "1.10.0",
 	"animation_controllers": {
 		"controller.animation.naida": {
-			"initial_state": "magic_state",
+			"initial_state": "default",
 			"states": {
 				"default": {
 					"animations": [
@@ -23,7 +23,12 @@
 							"magic": "query.is_casting"
 						}
 					],
-					"blend_transition": 0.1
+					"blend_transition": 0.1,
+					"transitions": [
+						{
+							"default": "!query.is_casting"
+						}
+					]
 				}
 			}
 		}
