@@ -20,12 +20,6 @@
 						"1.8": [0, 0, 0]
 					}
 				}
-			},
-			"particle_effects": {
-				"0.0": {
-					"effect": "spell",
-					"locator": "right_arm_locator"
-				}
 			}
 		}
 	}

@@ -28,6 +28,16 @@
 						{
 							"default": "!query.is_casting"
 						}
+					],
+					"particle_effects": [
+						{
+							"effect": "spell",
+							"locator": "left_arm_locator"
+						},
+						{
+							"effect": "spell",
+							"locator": "right_arm_locator"
+						}
 					]
 				}
 			}
