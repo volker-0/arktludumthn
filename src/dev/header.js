@@ -1,6 +1,7 @@
 importLib("ToolType","*");
 IMPORT("SettingsManager");
 IMPORT("DungeonAPI");
+IMPORT("RechargeLib");
 
 var cloud = Block.createSpecialType({
 	base: 35,
