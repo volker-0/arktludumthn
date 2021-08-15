@@ -1,0 +1,37 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ark:root",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/Root"
+			},
+			"geometry": {
+				"default": "geometry.root"
+			},
+			"animations": {
+				"idle": "animation.root.idle",
+				"spawn": "animation.root.spawn",
+				"attack": "animation.root.attack",
+				"ctrl": "controller.animation.root"
+			},
+			"render_controllers": [
+				"controller.render.mobs"
+			],
+			"spawn_egg": {
+				"base_color": "#857241",
+				"overlay_color": "#25A5BE"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"ctrl": "(1.0)"
+					}
+				]
+			}
+		}
+	}
+}

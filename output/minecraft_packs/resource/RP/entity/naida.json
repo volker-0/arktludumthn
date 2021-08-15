@@ -1,0 +1,41 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ark:naida",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/Naida"
+			},
+			"geometry": {
+				"default": "geometry.naida"
+			},
+			"render_controllers": [
+				"controller.render.mobs"
+			],
+			"spawn_egg": {
+				"base_color": "#1778D2",
+				"overlay_color": "#598B05"
+			},
+			"enable_attachables": false,
+			"animations": {
+				"walk": "animation.naida.walk",
+				"magic": "animation.naida.magic",
+				"ctrl": "controller.animation.naida",
+				"shoot": "animation.naida.shoot"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"ctrl": "(1.0)"
+					}
+				]
+			},
+			"particle_effects": {
+				"spell": "minecraft:evoker_spell"
+			}
+		}
+	}
+}

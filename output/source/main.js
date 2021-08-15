@@ -3,6 +3,7 @@
 importLib("ToolType","*");
 IMPORT("SettingsManager");
 IMPORT("DungeonAPI");
+//IMPORT("RechargeLib");
 
 var cloud = Block.createSpecialType({
 	base: 35,
@@ -22,7 +23,43 @@ var dimens = Block.createSpecialType({
 function randomInteger(min, max) {
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
-  }
+};
+
+function StopSound(arr) {
+	for(var i in arr) {
+		var SP = arr[i];
+		try {
+			if(SP.sound.isPlaying()) {
+				SP.sound.stop();
+			};
+			SP.sound.release();
+		} catch(e) {};
+	};
+	arr = []
+};
+
+function PlaySongVarFile(name, format, vaar) {
+	try {
+		var media = null;
+		for(var i in vaar){
+			var SP = vaar[i];
+			if(!SP.isPlaying()) {
+				media = SP;
+				break;
+			};
+		};
+		if(media == null) {
+			media = new android.media.MediaPlayer();
+			vaar.push(media);
+		};
+		media.reset();
+		media.setDataSource(__dir__ + "sounds/"+name);
+		media.prepare();
+		media.start();
+		return media;
+	} catch(err) {};
+	return media;
+};
 
 
 // included from: \SpItems.js
@@ -3269,6 +3306,9 @@ Item.createItem("Ark", "Арктлудумзн", {name: "Ark", meta: 0}, {stack:
 
 
 // included from: \mobs\holybot.js
+let hollybotSound = null;
+let HolybotSounds = [];
+
 Callback.addCallback("ItemUse", function(coords, item){
     coords = coords.relative;
     if(item.id == ItemID.hollybot){
@@ -3276,6 +3316,19 @@ Callback.addCallback("ItemUse", function(coords, item){
         Game.message("Призван проклятый механизмм");
     }
 });
+
+Callback.addCallback("tick", function(){
+    if (World.getThreadTime() % 4 == 0){
+        let mobs = Entity.getAll();
+        mobs.forEach(function(item, index, array) {
+            if(Entity.getTypeAddon(item) == "ark:holybot" && !(hollybotSound == 1)){
+                PlaySongVarFile("Holybot.mp3", HolybotSounds)
+                hollybotSound = 1;
+            };
+        });
+    };
+});
+
 Callback.addCallback("EntityDeath", function(entity,attacker,damageType){
     if(Entity.getTypeAddon(entity) == "ark:holybot"){
         var random = Math.random();
@@ -3291,7 +3344,6 @@ Callback.addCallback("EntityDeath", function(entity,attacker,damageType){
         } else {
             BlockSourse.spawnDroppedItem(coords.x, coords.y, coords.z, ItemID.horngodboots);
         };
-        Game.message("Дропнуто");
     };
 });
 

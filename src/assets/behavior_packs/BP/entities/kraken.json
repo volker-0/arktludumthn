@@ -1,0 +1,109 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:kraken",
+			"is_summonable": true,
+			"is_spawnable": true,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:health": {
+				"value": 3000,
+				"max": 3000
+			},
+			"minecraft:attack_damage": {
+				"value": 5
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 3,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								}
+							]
+						},
+						"max_dist": 16
+					}
+				],
+				"must_see": true
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 0
+			},
+			"minecraft:boss": {
+				"should_darken_sky": false,
+				"hud_range": 50,
+				"name": "Кракен"
+			},
+			"minecraft:behavior.melee_attack": {
+				"priority": 1,
+				"track_target": true
+			},
+			"minecraft:pushable": {
+				"is_pushable": true
+			},
+			"minecraft:physics": {},
+			"minecraft:collision_box": {
+				"width": 0.8,
+				"height": 2
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"fish",
+					"kraken"
+				]
+			},
+			"minecraft:navigation.walk": {
+				"can_path_over_water": true,
+				"can_sink": false
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:jump.static": {},
+			"minecraft:behavior.squid_move_away_from_ground": {
+				"priority": 1
+			},
+			"minecraft:behavior.squid_out_of_water": {
+				"priority": 2
+			},
+			"minecraft:behavior.summon_entity": {
+				"priority": 0,
+				"summon_choices": [
+					{
+						"do_casting": true,
+						"cooldown_time": 7,
+						"cast_duration": 0.4,
+						"particle_color": "#00e5ff",
+						"sequence": [
+							{
+								"entity_type": "minecraft:cod",
+								"entity_lifespan": -1,
+								"num_entities_spawned": 1,
+								"shape": "circle",
+								"target": "self",
+								"summon_cap": 8,
+								"summon_cap_radius": 30
+							}
+						]
+					}
+				]
+			},
+			"minecraft:ravager_blocked": {
+				"knockback_strength": 3,
+				"reaction_choices": [
+					{
+						"weight": 1
+					}
+				]
+			}
+		},
+		"events": {}
+	}
+}

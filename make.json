@@ -80,6 +80,10 @@
             "targetDir": "."
         },
         {
+            "source": "src/sounds",
+            "targetDir":"."
+        },
+        {
             "source": "src/structure",
             "targetDir":"."
         },

@@ -1,0 +1,35 @@
+{
+	"format_version": 1,
+	"header": {
+		"name": "Arktludumthn",
+		"description": "Don't delete this",
+		"uuid": "dcb8fa6a-3d62-44ff-bea8-8c2405483a9b",
+		"version": [
+			0,
+			0,
+			1
+		]
+	},
+	"modules": [
+		{
+			"description": "Arktludumthn",
+			"type": "data",
+			"uuid": "f72a9b35-7127-421b-b806-8bf4be304be1",
+			"version": [
+				0,
+				0,
+				1
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "dcec8bab-bf54-4546-93d0-c58cc19f2d25",
+			"version": [
+				0,
+				0,
+				1
+			]
+		}
+	]
+}

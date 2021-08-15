@@ -1,4 +1,3 @@
-
 {
 	"entity_sounds": {
 		"entities": {
@@ -7,16 +6,7 @@
 				"pitch": [
 					0.8,
 					1.2
-				],
-				"events": {
-					"ambient": "mob.holybot.idle",
-					"hurt": "mob.holybot.hit",
-					"death": "mob.holybot.death",
-					"death.to.zombie": "mob.holybot.death",
-					"haggle": "mob.holybot.haggle",
-					"haggle.yes": "mob.holybot.yes",
-					"haggle.no": "mob.holybot.no"
-				}
+				]
 			}
 		}
 	}

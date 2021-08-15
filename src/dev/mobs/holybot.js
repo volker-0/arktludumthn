@@ -1,3 +1,6 @@
+let hollybotSound = null;
+let HolybotSounds = [];
+
 Callback.addCallback("ItemUse", function(coords, item){
     coords = coords.relative;
     if(item.id == ItemID.hollybot){
@@ -5,6 +8,19 @@ Callback.addCallback("ItemUse", function(coords, item){
         Game.message("Призван проклятый механизмм");
     }
 });
+
+Callback.addCallback("tick", function(){
+    if (World.getThreadTime() % 4 == 0){
+        let mobs = Entity.getAll();
+        mobs.forEach(function(item, index, array) {
+            if(Entity.getTypeAddon(item) == "ark:holybot" && !(hollybotSound == 1)){
+                PlaySongVarFile("Holybot.mp3", HolybotSounds)
+                hollybotSound = 1;
+            };
+        });
+    };
+});
+
 Callback.addCallback("EntityDeath", function(entity,attacker,damageType){
     if(Entity.getTypeAddon(entity) == "ark:holybot"){
         var random = Math.random();
@@ -20,6 +36,5 @@ Callback.addCallback("EntityDeath", function(entity,attacker,damageType){
         } else {
             BlockSourse.spawnDroppedItem(coords.x, coords.y, coords.z, ItemID.horngodboots);
         };
-        Game.message("Дропнуто");
     };
 });
