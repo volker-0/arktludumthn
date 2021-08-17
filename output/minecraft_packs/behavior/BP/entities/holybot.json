@@ -5,7 +5,17 @@
 			"identifier": "ark:holybot",
 			"is_spawnable": true,
 			"is_summonable": true,
-			"is_experimental": false
+			"is_experimental": false,
+			"scripts": {
+				"animate": [
+					{
+						"ambient": true
+					}
+				]
+			},
+			"animations": {
+				"ambient": "controller.animation.holybot.commands"
+			}
 		},
 		"component_groups": {},
 		"components": {
