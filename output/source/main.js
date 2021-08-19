@@ -3,7 +3,13 @@
 importLib("ToolType","*");
 IMPORT("SettingsManager");
 IMPORT("DungeonAPI");
+IMPORT("SoundAPI")
 //IMPORT("RechargeLib");
+
+const folder = __dir__ + "/sounds/";
+const MusicPlayer = new MediaPlayer();
+
+MediaPlayer.register("Holybot.music", folder + "Holybot.mp3");
 
 var cloud = Block.createSpecialType({
 	base: 35,
@@ -25,41 +31,6 @@ function randomInteger(min, max) {
     return Math.floor(rand);
 };
 
-function StopSound(arr) {
-	for(var i in arr) {
-		var SP = arr[i];
-		try {
-			if(SP.sound.isPlaying()) {
-				SP.sound.stop();
-			};
-			SP.sound.release();
-		} catch(e) {};
-	};
-	arr = []
-};
-
-function PlaySongVarFile(name, format, vaar) {
-	try {
-		var media = null;
-		for(var i in vaar){
-			var SP = vaar[i];
-			if(!SP.isPlaying()) {
-				media = SP;
-				break;
-			};
-		};
-		if(media == null) {
-			media = new android.media.MediaPlayer();
-			vaar.push(media);
-		};
-		media.reset();
-		media.setDataSource(__dir__ + "sounds/" + name + format);
-		media.prepare();
-		media.start();
-		return media;
-	} catch(err) {};
-	return media;
-};
 
 
 // included from: \SpItems.js
@@ -3306,42 +3277,18 @@ Item.createItem("Ark", "Арктлудумзн", {name: "Ark", meta: 0}, {stack:
 
 
 // included from: \mobs\holybot.js
-let hollybotSound = null;
-let HolybotSounds = [];
-
 Callback.addCallback("ItemUse", function(coords, item){
     coords = coords.relative;
     if(item.id == ItemID.hollybot){
         Entity.spawn(coords.x,coords.y,coords.z,"ark:holybot");
         Game.message("Призван проклятый механизмм");
-        PlaySongVarFile("Holybot.mp3", HolybotSounds);
-    }
-});
-
-Callback.addCallback("EntiyHurt", function(attacker, entity, damageValue, damageType){
-    if(Entity.getTypeAddon(entity) == "ark:holybot"){
-        if(!hollybotSound == 1){
-            PlaySongVarFile("Holybot", ".mp3", HolybotSounds);
-        };
+        MusicPlayer.play("Holybot.music");
     };
 });
 
-Callback.addCallback("EntityDeath", function(entity,attacker,damageType){
+Callback.addCallback("EntityDeath", function(entity, attacker, damageType){
     if(Entity.getTypeAddon(entity) == "ark:holybot"){
-        var random = Math.random();
-        coords = Entity.getPosition(entity);
-        BlockSourse.getCurrentWorldGenRegion();
-        BlockSourse.spawnDroppedItem(coords.x, coords.y, coords.z, ItemID.hollyingot, randomInteger(5, 15));
-        if(random<= 0.25){
-            BlockSourse.spawnDroppedItem(coords.x, coords.y, coords.z, ItemID.horngodhelmet, 1);
-        } else if(random <=0.5){
-            BlockSourse.spawnDroppedItem(coords.x. coords.y, coords.z, ItemID.horngodchestplate, 1);
-        } else if(random<=0.75){
-            BlockSourse.spawnDroppedItem(coords.x, coords.y, coords.z, ItemID.horngodleggins, 1);
-        } else {
-            BlockSourse.spawnDroppedItem(coords.x, coords.y, coords.z, ItemID.horngodboots);
-        };
-        StopSound(HolybotSounds);
+        MusicPlayer.stop();
     };
 });
 
