@@ -1,15 +1,15 @@
 {
-	"type": "minecraft:entity",
 	"pools": [
 		{
 			"rolls": 1,
 			"entries": [
 				{
-					"type": "minecraft:item",
+					"type": "item",
 					"name": "minecraft:item_krackeningot",
+					"weight": 1,
 					"functions": [
 						{
-							"function": "minecraft:set_count",
+							"function": "set_count",
 							"count": {
 								"min": 6,
 								"max": 15

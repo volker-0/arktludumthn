@@ -5,11 +5,12 @@
 			"rolls": 1,
 			"entries": [
 				{
-					"type": "minecraft:item",
+					"type": "item",
+					"weight": 1,
 					"name": "minecraft:item_livingshard",
 					"functions": [
 						{
-							"function": "minecraft:set_count",
+							"function": "set_count",
 							"count": {
 								"min": 1,
 								"max": 4
@@ -23,11 +24,13 @@
 			"rolls": 1,
 			"entries": [
 				{
-					"type": "minecraft:item",
+					"type": "item",
+					"weight": 1,
 					"name": "minecraft:item_gitareaxe"
 				},
 				{
-					"type": "minecraft:item",
+					"type": "item",
+					"weight": 1,
 					"name": "minecraft:item_seeder"
 				}
 			]
