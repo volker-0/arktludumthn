@@ -94,6 +94,18 @@
 						"num_to_spawn": 3,
 						"min_wait_time": 10,
 						"max_wait_time": 15
+					},
+					{
+						"filters": {
+							"subject": "self",
+							"test": "has_target",
+							"operator": "equals",
+							"value": true
+						},
+						"spawn_entity": "ark:sharik",
+						"num_to_spawn": 1,
+						"min_wait_time": 7,
+						"max_wait_time": 13
 					}
 				]
 			},
@@ -109,6 +121,9 @@
 			},
 			"minecraft:boss": {
 				"name": "Кракен"
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/kraken.json"
 			}
 		},
 		"events": {}
