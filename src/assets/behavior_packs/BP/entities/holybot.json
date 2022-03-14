@@ -91,6 +91,9 @@
 					}
 				],
 				"must_see": true
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/holybot.json"
 			}
 		},
 		"events": {}

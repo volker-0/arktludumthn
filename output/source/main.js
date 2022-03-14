@@ -113,36 +113,36 @@ function addItemsToGenerateChest(id, random, count, data){
         coords = GenerationUtils.findSurface(coords.x, coords.y, coords.z);
     
         if (World.getBlock(coords.x, coords.y + 1, coords.z).id === 0 && GenerationUtils.canSeeSky(coords.x, coords.y + 1, coords.z)) {
-           World.setBlock(coords.x,coords.y+100,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x+1,coords.y+100,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x+2,coords.y+100,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x,coords.y+100,  coords.z-1, BlockID.cloud, 0);
-           World.setBlock(coords.x+1,coords.y+100,  coords.z-1, BlockID.cloud, 0);
-           
-           World.setBlock(coords.x,coords.y+101,  coords.z, BlockID.aeriteore, 0);
-           World.setBlock(coords.x+1,coords.y+101,  coords.z, BlockID.aeriteore, 0);
-           World.setBlock(coords.x+2,coords.y+101,  coords.z, BlockID.aeriteore, 0);
-           World.setBlock(coords.x,coords.y+101,  coords.z-1, BlockID.aeriteore, 0);
-           World.setBlock(coords.x+1,coords.y+101,  coords.z-1, BlockID.aeriteore, 0);
-           World.setBlock(coords.x+3,coords.y+101,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x+2,coords.y+101,  coords.z+1, BlockID.cloud, 0);
-           World.setBlock(coords.x+1,coords.y+101,  coords.z+1, BlockID.cloud, 0);
-           World.setBlock(coords.x,coords.y+101,  coords.z+1, BlockID.cloud, 0);
-           World.setBlock(coords.x+2,coords.y+101,  coords.z-1, BlockID.cloud, 0);
-           World.setBlock(coords.x+1,coords.y+101,  coords.z-2, BlockID.cloud, 0);
-           World.setBlock(coords.x,coords.y+101,  coords.z-2, BlockID.cloud, 0);
-           World.setBlock(coords.x-1,coords.y+101,  coords.z-1, BlockID.cloud, 0);
-           World.setBlock(coords.x-1,coords.y+101,  coords.z, BlockID.cloud, 0);
-           
-           World.setBlock(coords.x,coords.y+102,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x+1,coords.y+102,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x+2,coords.y+102,  coords.z, BlockID.cloud, 0);
-           World.setBlock(coords.x,coords.y+102,  coords.z-1, BlockID.cloud, 0);
-           World.setBlock(coords.x+1,coords.y+102,  coords.z-1, BlockID.cloud, 0);
-           
-           World.setBlock(coords.x,coords.y+102,  coords.z, 54, 0);
-           
-           fillChest(coords.x, coords.y+102, coords.z);
+            World.setBlock(coords.x,coords.y+100,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x+1,coords.y+100,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x+2,coords.y+100,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x,coords.y+100,  coords.z-1, BlockID.cloud, 0);
+            World.setBlock(coords.x+1,coords.y+100,  coords.z-1, BlockID.cloud, 0);
+            
+            World.setBlock(coords.x,coords.y+101,  coords.z, BlockID.aeriteore, 0);
+            World.setBlock(coords.x+1,coords.y+101,  coords.z, BlockID.aeriteore, 0);
+            World.setBlock(coords.x+2,coords.y+101,  coords.z, BlockID.aeriteore, 0);
+            World.setBlock(coords.x,coords.y+101,  coords.z-1, BlockID.aeriteore, 0);
+            World.setBlock(coords.x+1,coords.y+101,  coords.z-1, BlockID.aeriteore, 0);
+            World.setBlock(coords.x+3,coords.y+101,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x+2,coords.y+101,  coords.z+1, BlockID.cloud, 0);
+            World.setBlock(coords.x+1,coords.y+101,  coords.z+1, BlockID.cloud, 0);
+            World.setBlock(coords.x,coords.y+101,  coords.z+1, BlockID.cloud, 0);
+            World.setBlock(coords.x+2,coords.y+101,  coords.z-1, BlockID.cloud, 0);
+            World.setBlock(coords.x+1,coords.y+101,  coords.z-2, BlockID.cloud, 0);
+            World.setBlock(coords.x,coords.y+101,  coords.z-2, BlockID.cloud, 0);
+            World.setBlock(coords.x-1,coords.y+101,  coords.z-1, BlockID.cloud, 0);
+            World.setBlock(coords.x-1,coords.y+101,  coords.z, BlockID.cloud, 0);
+            
+            World.setBlock(coords.x,coords.y+102,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x+1,coords.y+102,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x+2,coords.y+102,  coords.z, BlockID.cloud, 0);
+            World.setBlock(coords.x,coords.y+102,  coords.z-1, BlockID.cloud, 0);
+            World.setBlock(coords.x+1,coords.y+102,  coords.z-1, BlockID.cloud, 0);
+            
+            World.setBlock(coords.x,coords.y+102,  coords.z, 54, 0);
+            
+            fillChest(coords.x, coords.y+102, coords.z);
     }}});
 
     IDRegistry.genItemID("elementalingot");
@@ -3183,7 +3183,7 @@ Item.createItem("hollybot", "§b Проклятый механизм \n §r Ош
 Recipes.addShaped({id: ItemID.hollybot, count: 1, data: 0}, [ "abc", "b b", "dbe"], ['a', ItemID.aquacore, 0, 'b', ItemID.cometiteingot, 0, 'c', ItemID.aercore, 0, 'd', ItemID.terracore, 0, 'e', ItemID.igniscore, 0]);
 
 
-   IDRegistry.genItemID("Naida");
+IDRegistry.genItemID("Naida");
 Item.createItem("Naida", "§b Живая вода \n §r Говорят Наида любила розы, но после того как Нотч \n уничтожил их что бы создать мак, Наида впала в ярость", {name: "Naida", data: 0});
 
 Recipes.addShaped({id: ItemID.Naida, count: 1, data: 0}, [ " a ", "cbc", " c "], ['a', ItemID.hollyingot, 0, 'b', 373, 0, 'c', 337, 0]);
@@ -3293,4 +3293,23 @@ Callback.addCallback("EntityDeath", function(entity, attacker, damageType){
 });
 
 
+
+// included from: \mobs\naida.js
+Callback.addCallback("ItemUse", function(coords, item){
+  coords = coords.relative;
+  if(item.id == ItemID.Naida){
+    Entity.spawn(coords.x,coords.y,coords.z,"ark:naida");
+    Game.message("Призвана Наида");
+  };
+});
+
+
+// included from: \mobs\kraken.js
+Callback.addCallback("ItemUse", function(coords, item){
+  coords = coords.relative;
+  if(item.id == ItemID.Kracken){
+    Entity.spawn(coords.x,coords.y,coords.z,"ark:kraken");
+    Game.message("Призван Кракен");
+  };
+});
 

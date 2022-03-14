@@ -12,4 +12,3 @@ Callback.addCallback("EntityDeath", function(entity, attacker, damageType){
         MusicPlayer.stop();
     };
 });
-

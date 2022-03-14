@@ -4,7 +4,7 @@ Item.createItem("hollybot", "§b Проклятый механизм \n §r Ош
 Recipes.addShaped({id: ItemID.hollybot, count: 1, data: 0}, [ "abc", "b b", "dbe"], ['a', ItemID.aquacore, 0, 'b', ItemID.cometiteingot, 0, 'c', ItemID.aercore, 0, 'd', ItemID.terracore, 0, 'e', ItemID.igniscore, 0]);
 
 
-   IDRegistry.genItemID("Naida");
+IDRegistry.genItemID("Naida");
 Item.createItem("Naida", "§b Живая вода \n §r Говорят Наида любила розы, но после того как Нотч \n уничтожил их что бы создать мак, Наида впала в ярость", {name: "Naida", data: 0});
 
 Recipes.addShaped({id: ItemID.Naida, count: 1, data: 0}, [ " a ", "cbc", " c "], ['a', ItemID.hollyingot, 0, 'b', 373, 0, 'c', 337, 0]);

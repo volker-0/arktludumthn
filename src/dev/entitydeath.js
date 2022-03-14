@@ -6,27 +6,24 @@ Callback.addCallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.aquaessence, soul);
-    }
+    };
 
-    ;
 
     if (Entity.getType(entity) == 28) {
       var coords = Entity.getPosition(entity);
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.aquaessence, soul);
-    }
+    };
 
-    ;
 
     if (Entity.getType(entity) == 37) {
       var coords = Entity.getPosition(entity);
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.aquaessence, soul);
-    }
+    };
 
-    ;
 
     if (Entity.getType(entity) == 49) {
       var coords = Entity.getPosition(entity);
@@ -35,7 +32,6 @@ Callback.addCallback("EntityDeath", function(entity) {
       World.drop(coords.x, coords.y, coords.z, ItemID.aquaessence, soul);
     }
   }
-
 );
 
 //ignis
@@ -117,18 +113,14 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-    ;
+    };
 
     if (Entity.getType(entity) == 11) {
       var coords = Entity.getPosition(entity);
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 10) {
@@ -136,9 +128,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 16) {
@@ -146,9 +136,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 12) {
@@ -164,9 +152,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 23) {
@@ -174,20 +160,15 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
+    };
 
-
-    ;
 
     if (Entity.getType(entity) == 24) {
       var coords = Entity.getPosition(entity);
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 25) {
@@ -195,10 +176,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 27) {
@@ -206,10 +184,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 26) {
@@ -217,10 +192,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 13) {
@@ -228,10 +200,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
 
@@ -240,10 +209,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 14) {
@@ -251,10 +217,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 20) {
@@ -262,10 +225,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 36) {
@@ -273,10 +233,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 35) {
@@ -284,10 +241,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 40) {
@@ -295,10 +249,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 38) {
@@ -306,10 +257,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 34) {
@@ -317,10 +265,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 37) {
@@ -328,10 +273,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 39) {
@@ -339,10 +281,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 55) {
@@ -350,10 +289,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 45) {
@@ -361,10 +297,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 32) {
@@ -372,10 +305,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 44) {
@@ -383,10 +313,7 @@ Callback.addcallback("EntityDeath", function(entity) {
       var soul = parseInt(Math.random() * 3);
 
       World.drop(coords.x, coords.y, coords.z, ItemID.terraessence, soul);
-    }
-
-
-    ;
+    };
 
 
     if (Entity.getType(entity) == 33) {

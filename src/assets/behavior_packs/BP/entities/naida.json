@@ -131,6 +131,9 @@
 				"priority": 1,
 				"attack_interval": 8,
 				"attack_radius": 8
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/naida.json"
 			}
 		},
 		"events": {}

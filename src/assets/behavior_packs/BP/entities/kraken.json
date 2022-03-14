@@ -109,6 +109,9 @@
 			},
 			"minecraft:boss": {
 				"name": "Кракен"
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/kraken.json"
 			}
 		},
 		"events": {}
