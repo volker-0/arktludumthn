@@ -20,16 +20,6 @@
 				0,
 				1
 			]
-		},
-		{
-			"description": "Scripts",
-			"type": "client_data",
-			"uuid": "c05a992e-482a-455f-898c-58bbb4975e47",
-			"version": [
-				0,
-				0,
-				1
-			]
 		}
 	],
 	"dependencies": [
