@@ -20,6 +20,16 @@
 				0,
 				1
 			]
+		},
+		{
+			"description": "Scripts",
+			"type": "client_data",
+			"uuid": "c05a992e-482a-455f-898c-58bbb4975e47",
+			"version": [
+				0,
+				0,
+				1
+			]
 		}
 	],
 	"dependencies": [
@@ -31,5 +41,18 @@
 				1
 			]
 		}
-	]
+	],
+	"metadata": {
+		"generated_with": {
+			"bridge": [
+				"2.1.5",
+				"2.2.4",
+				"2.2.5"
+			],
+			"dash": [
+				"0.7.1",
+				"0.8.3"
+			]
+		}
+	}
 }
