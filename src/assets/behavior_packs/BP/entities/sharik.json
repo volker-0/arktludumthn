@@ -1,0 +1,81 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:sharik",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false,
+			"runtime_identifier": "minecraft:creeper"
+		},
+		"component_groups": {
+			"ark:mine": {
+				"minecraft:explode": {
+					"power": 3,
+					"breaks_blocks": false,
+					"fuse_lit": true,
+					"fuse_length": {
+						"range_min": 0.7,
+						"range_max": 1
+					},
+					"causes_fire": false
+				}
+			}
+		},
+		"components": {
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 0,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								}
+							]
+						},
+						"max_dist": 16
+					}
+				],
+				"must_see": false
+			},
+			"minecraft:target_nearby_sensor": {
+				"inside_range": 3,
+				"must_see": false,
+				"on_inside_range": {
+					"event": "ark:explosing"
+				}
+			},
+			"minecraft:physics": {
+				"has_collision": true,
+				"has_gravity": true
+			},
+			"minecraft:navigation.generic": {
+				"is_amphibious": false,
+				"can_path_over_water": false,
+				"can_swim": true,
+				"can_walk": false,
+				"can_breach": false,
+				"can_sink": false
+			},
+			"minecraft:behavior.float": {
+				"priority": 0
+			},
+			"minecraft:collision_box": {
+				"width": 0,
+				"height": 0
+			}
+		},
+		"events": {
+			"ark:explosing": {
+				"add": {
+					"component_groups": [
+						"ark:mine"
+					]
+				}
+			}
+		}
+	}
+}

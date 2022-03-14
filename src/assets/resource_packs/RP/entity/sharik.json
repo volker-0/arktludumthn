@@ -1,0 +1,26 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ark:sharik",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/sharik"
+			},
+			"geometry": {
+				"default": "geometry.pball"
+			},
+			"render_controllers": [
+				{
+					"controller.render.mobs": 1
+				}
+			],
+			"spawn_egg": {
+				"base_color": "#d5ff57",
+				"overlay_color": "#d5ff57"
+			}
+		}
+	}
+}

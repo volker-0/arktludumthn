@@ -1,0 +1,36 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ark:fish_kraken",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/fish"
+			},
+			"geometry": {
+				"default": "geometry.fish"
+			},
+			"render_controllers": [
+				{
+					"controller.render.mobs": 1
+				}
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			},
+			"animations": {
+				"swim": "animation.fish.swim"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"swim": "query.is_swimming"
+					}
+				]
+			}
+		}
+	}
+}
