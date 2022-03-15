@@ -103,7 +103,7 @@ Callback.addCallback("GenerateCustomDimensionChunk", function(chunkX, chunkZ, ra
         var coords = GenerationUtils.randomCoords(chunkX, chunkZ, 56, 156); 
         coords= GenerationUtils.findSurface(coords.x,coords.y,coords.z);
         if(Math.random()<0.07){
-       Dungeon.setStructure("altar.json",coords.x, coords.y+1, coords.z, 0);
+        Dungeon.setStructure("altar.json",coords.x, coords.y+1, coords.z, 0);
         };
     };
 });
