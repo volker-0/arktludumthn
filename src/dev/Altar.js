@@ -69,16 +69,15 @@ Block.createBlock("creatoraltar", [{name: "Алтарь созидания", tex
 
 Callback.addCallback("ItemUse", function(coords, block){
   if(block.id == BlockID.block){
-    let Structure
-    coords = coords.relative;
-    for(let coord of AltarBlocks){
+    let Structure;
+    for (let coord of AltarBlocks) {
       if(World.getBlock(coords.x - coord.x, coords.y - coord.y - 1, coords.z - coord.z) == 112){
         Structure = true;
       }else{
         Structure = false;
         break;
       };
-    };
+    }
     Game.message(Structure);
   };
 });
