@@ -3128,6 +3128,21 @@ BaseBlock(BlockID.azatotbricks, 50);
 IDRegistry.genBlockID("creatoraltar");
 Block.createBlock("creatoraltar", [{name: "Алтарь созидания", texture: [["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0]], inCreative: true}]);
 
+const AltarGui = new UI.StandardWindow({
+  standard: {
+    header: { text: { text: "Алтарь созидания" } },
+    inventory: { standard: true },
+    background: { standard: true }
+  }
+});
+
+TileEntity.registerPrototype(BlockID.creatoraltar, {
+  getGuiScreen: function(){
+    return AltarGui;
+  }
+
+});
+
 Callback.addCallback("ItemUse", function(coords){
   if(World.getBlock(coords.x, coords.y, coords.z).id == BlockID.creatoraltar){
     AltarPower = 0;
@@ -3147,11 +3162,13 @@ Callback.addCallback("ItemUse", function(coords){
           break;
         };
       };
-      Game.message(AltarPower);
       for (let i = 0; i < AltarCatalizator.length; i++) {
         if(World.getBlock(coords.x + AltarCatalizator[i].x, coords.y + AltarCatalizator[i].y, coords.z + AltarCatalizator[i].z).id in Catalizator){
           for(let key in Catalizator){
-            AltarPower += Catalizator[key];
+            if(World.getBlock(coords.x + AltarCatalizator[i].x, coords.y + AltarCatalizator[i].y, coords.z + AltarCatalizator[i].z).id == key){
+              AltarPower += Catalizator[key];
+              break;
+            };
           };
         };
       };
