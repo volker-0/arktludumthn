@@ -3028,7 +3028,7 @@ if (item.id==ItemID.MultiverseSword)
 
 
 // included from: \Altar.js
-let AltarPower = 0;
+let AltarPower;
 
 const AltarBlocks =[{x: -3,y :0, z :-2},
                     {x: -3,y :0, z :-1},
@@ -3096,10 +3096,28 @@ const AltarBlocks =[{x: -3,y :0, z :-2},
                     {x: 3, y :0, z :1},
                     {x: 3, y :0, z :2}];
 
+const AltarCatalizator = [
+  {x: 2, y:2, z:0},
+  {x: 2, y:3, z:2},
+  {x: 0, y:2, z:2},
+  {x: -2, y:3, z:2},
+  {x: -2, y:2, z:0},
+  {x: -2, y:3, z:-2},
+  {x: 0, y:2, z:-2},
+  {x: 2, y:3, z:-2}
+]
+
 let AltarBase = {
   98: 1,
   112: 2,
 };
+
+let Catalizator = {
+  22: 5,
+  57: 7,
+  41: 10,
+  42: 3,
+}
 
 function BaseBlock(blockid, power){
   AltarBase[blockid] = power;
@@ -3112,6 +3130,7 @@ Block.createBlock("creatoraltar", [{name: "Алтарь созидания", tex
 
 Callback.addCallback("ItemUse", function(coords){
   if(World.getBlock(coords.x, coords.y, coords.z).id == BlockID.creatoraltar){
+    AltarPower = 0;
     let Structure;
     for (let i = 0; i < AltarBlocks.length; i++) {
       if(World.getBlock(coords.x + AltarBlocks[i].x, coords.y + AltarBlocks[i].y - 1, coords.z + AltarBlocks[i].z).id in AltarBase){
@@ -3129,6 +3148,13 @@ Callback.addCallback("ItemUse", function(coords){
         };
       };
       Game.message(AltarPower);
+      for (let i = 0; i < AltarCatalizator.length; i++) {
+        if(World.getBlock(coords.x + AltarCatalizator[i].x, coords.y + AltarCatalizator[i].y, coords.z + AltarCatalizator[i].z).id in Catalizator){
+          for(let key in Catalizator){
+            AltarPower += Catalizator[key];
+          };
+        };
+      };
     };
   };
 });

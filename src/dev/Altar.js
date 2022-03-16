@@ -82,6 +82,13 @@ let AltarBase = {
   112: 2,
 };
 
+let Catalizator = {
+  22: 5,
+  57: 7,
+  41: 10,
+  42: 3,
+}
+
 function BaseBlock(blockid, power){
   AltarBase[blockid] = power;
 };
@@ -111,6 +118,14 @@ Callback.addCallback("ItemUse", function(coords){
         };
       };
       Game.message(AltarPower);
+      for (let i = 0; i < AltarCatalizator.length; i++) {
+        if(World.getBlock(coords.x + AltarCatalizator[i].x, coords.y + AltarCatalizator[i].y, coords.z + AltarCatalizator[i].z).id in Catalizator){
+          for(let key in Catalizator){
+            AltarPower += Catalizator[key];
+            break;
+          };
+        };
+      };
     };
   };
 });
