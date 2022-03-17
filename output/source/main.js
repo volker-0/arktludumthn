@@ -3136,12 +3136,6 @@ let AltarGui = new UI.StandardWindow({
   },
   params:{
     textures: {
-      /*slot: "thaum_slot",
-      invSlot: "thaum_inv_slot",
-      selection: "thaum_selection",
-      closeButton: "thaum_close_button_up",
-      closeButton2: "thaum_close_button_down",
-      frame: "thaum_frame_default"*/
     }
   },
   drawing: [
