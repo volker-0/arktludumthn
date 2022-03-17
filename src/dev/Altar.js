@@ -102,8 +102,21 @@ const AltarGui = new UI.StandardWindow({
   standard: {
     header: { text: { text: "Алтарь созидания" } },
     inventory: { standard: true },
-    background: { standard: true }
-  }
+    background: { standart: true }
+  },
+  params:{
+    textures: {
+      /*slot: "thaum_slot",
+      invSlot: "thaum_inv_slot",
+      selection: "thaum_selection",
+      closeButton: "thaum_close_button_up",
+      closeButton2: "thaum_close_button_down",
+      frame: "thaum_frame_default"*/
+    }
+  },
+  drawing:[
+    {type: "bitmap", bitmap: "Altar", x: 0, y: 0,  width: 100, height: 100}
+  ]
 });
 
 TileEntity.registerPrototype(BlockID.creatoraltar, {
