@@ -3128,7 +3128,7 @@ BaseBlock(BlockID.azatotbricks, 50);
 IDRegistry.genBlockID("creatoraltar");
 Block.createBlock("creatoraltar", [{name: "Алтарь созидания", texture: [["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0]], inCreative: true}]);
 
-const AltarGui = new UI.StandardWindow({
+let AltarGui = new UI.StandardWindow({
   standard: {
     header: { text: { text: "Алтарь созидания" } },
     inventory: { standard: true },
@@ -3144,9 +3144,10 @@ const AltarGui = new UI.StandardWindow({
       frame: "thaum_frame_default"*/
     }
   },
-  drawing:[
-    {type: "bitmap", bitmap: "Altar", x: 0, y: 0,  width: 1000, height: 1000}
-  ]
+  drawing: [
+    { type: "bitmap", x: 0, y: 0, bitmap: "altar_background", width: 1000, height:600 }
+  ],
+  elements:{}
 });
 
 TileEntity.registerPrototype(BlockID.creatoraltar, {
