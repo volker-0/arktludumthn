@@ -412,8 +412,20 @@ var AltarGui = new UI.StandardWindow({
     drawing: [
         { type: "bitmap", x: 0, y: 0, bitmap: "altar_background", width: 1000, height: 600 }
     ],
-    elements: {}
+    elements: {
+        "slot0": { type: "slot", x: 465, y: 20, size: 70, isTransparentBackground: true },
+        "slot1": { type: "slot", x: 675, y: 95, size: 70, isTransparentBackground: true },
+        "slot2": { type: "slot", x: 790, y: 265, size: 70, isTransparentBackground: true },
+        "slot3": { type: "slot", x: 675, y: 435, size: 70, isTransparentBackground: true },
+        "slot4": { type: "slot", x: 465, y: 510, size: 70, isTransparentBackground: true },
+        "slot5": { type: "slot", x: 255, y: 435, size: 70, isTransparentBackground: true },
+        "slot6": { type: "slot", x: 140, y: 265, size: 70, isTransparentBackground: true },
+        "slot7": { type: "slot", x: 255, y: 95, size: 70, isTransparentBackground: true },
+        "slotCenter": { type: "slot", x: 465, y: 265, size: 70, isTransparentBackground: true }
+    }
 });
+//x 465  y 20
+//
 TileEntity.registerPrototype(BlockID.creatoraltar, {
     useNetworkItemContainer: true,
     getScreenName: function (player, coords) {

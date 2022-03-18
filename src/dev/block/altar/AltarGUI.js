@@ -11,8 +11,21 @@ let AltarGui = new UI.StandardWindow({
   drawing: [
     { type: "bitmap", x: 0, y: 0, bitmap: "altar_background", width: 1000, height:600 }
   ],
-  elements:{}
+  elements:{
+    "slot0" : {type: "slot", x: 465, y: 20, size: 70, maxStackSize: 1},
+    "slot1" : {type: "slot", x: 675, y: 95, size: 70, maxStackSize: 1},
+    "slot2" : {type: "slot", x: 790, y: 265, size: 70, maxStackSize: 1},
+    "slot3" : {type: "slot", x: 675, y: 435, size: 70, maxStackSize: 1},
+    "slot4" : {type: "slot", x: 465, y: 510, size: 70, maxStackSize: 1},
+    "slot5" : {type: "slot", x: 255, y: 435, size: 70, maxStackSize: 1},
+    "slot6" : {type: "slot", x: 140, y: 265, size: 70, maxStackSize: 1},
+    "slot7" : {type: "slot", x: 255, y: 95, size: 70, maxStackSize: 1},
+    "slotCenter" : {type: "slot", x: 465, y: 265, size: 70, maxStackSize: 1}
+  }
 });
+
+//x 465  y 20
+//
 
 TileEntity.registerPrototype(BlockID.creatoraltar, {
   useNetworkItemContainer: true,
