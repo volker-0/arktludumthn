@@ -1,25 +1,59 @@
-# use this to include all files (only for order-independent builds)
-
 header.js
 
-SpItems.js
+API/EssenceAPI.js
+API/ItemGenerate.js
+API/AltarAPI.js
 
-ores.js
+block/specialType.js
+block/ore.js
+block/decor.js
+block/altar/AltarStructure.js
+block/altar/AltarBlock.js
+block/altar/AltarGUI.js
 
-azatot.js
+item/ingot.js
+item/armor/ignis.js
+item/armor/terra.js
+item/armor/aqua.js
+item/armor/aer.js
+item/armor/cometite.js
+item/armor/holly.js
+item/armor/grandminecraft.js
+item/armor/kracken.js
+item/armor/cosmetite.js
+item/armor/palladium.js
+item/armor/horngod.js
+item/armor/astral.js
+item/armor/chaos.js
+item/armor/omikrone.js
+item/armor/venomus.js
+item/armor/meow.js
+item/armor/florite.js
+item/armor/galaxite.js
+item/armor/goldy.js
+item/armor/shadowspec.js
+item/armor/azatot.js
+item/armor/chtulhu.js
+item/armor/ark.js
+item/armor.js
+item/elemental.js
+item/essence.js
+item/core.js
+item/sword.js
+item/summonMob.js
+item/bossDrop.js
+item/shard.js
+item/food.js
+item/dimension.js
+item/books.js
 
-Astral.js
+dimension.js
 
-SpSworld.js
+generation/ItemGenerate.js
+generation/overWorld.js
+generation/nether.js
 
-Altar.js
+craft/furnace.js
+craft/workbench.js
 
-bookpart.js
-
-summon.js
-
-mobs/holybot.js
-
-mobs/naida.js
-
-mobs/kraken.js
+creative_tab.js
