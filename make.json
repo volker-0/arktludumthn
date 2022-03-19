@@ -90,6 +90,10 @@
         {
             "source":"src/mod_icon.png",
             "targetDir":"."
+        },
+        {
+            "source":"src/assets/models",
+            "targetDir":"resources/res/"
         }
     ]
 }

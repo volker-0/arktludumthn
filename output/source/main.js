@@ -476,28 +476,35 @@ var AltarCatalizator = [
     { x: 2, y: 3, z: -2 }
 ];
 IDRegistry.genBlockID("creatoraltar");
-Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", texture: [["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0]], inCreative: true }]);
+Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", texture: ["creatoraltar", 0], inCreative: true }]);
+var AltarMesh = new RenderMesh(__dir__ + "resources/res/models/altar.obj", "obj", null);
+AltarMesh.setBlockTexture("creatoraltar", 0);
+var AltarModel = new BlockRenderer.Model(AltarMesh);
+var ICRenderAltar = new ICRender.Model(AltarModel);
+BlockRenderer.setStaticICRender(BlockID.creatoraltar, -1, ICRenderAltar);
 var AltarGui = new UI.StandardWindow({
     standard: {
-        header: { text: { text: "Алтарь созидания" } },
+        header: { text: { text: "Алтарь созидания" }, color: android.graphics.Color.rgb(185, 142, 77) },
         inventory: { standard: true },
-        background: { standart: true }
+        background: {
+            bitmap: "altar_background",
+        }
     },
     params: {
         textures: {}
     },
     drawing: [
-        { type: "bitmap", x: 0, y: 0, bitmap: "altar_background", width: 1000, height: 600 }
+        { type: "bitmap", x: 0, y: 0, bitmap: "AltarStar", width: 999, height: 600 }
     ],
     elements: {
         "slot0": { type: "slot", x: 465, y: 20, size: 70, maxStackSize: 1 },
-        "slot1": { type: "slot", x: 675, y: 95, size: 70, maxStackSize: 1 },
+        "slot1": { type: "slot", x: 625, y: 40, size: 70, maxStackSize: 1 },
         "slot2": { type: "slot", x: 790, y: 265, size: 70, maxStackSize: 1 },
-        "slot3": { type: "slot", x: 675, y: 435, size: 70, maxStackSize: 1 },
+        "slot3": { type: "slot", x: 625, y: 480, size: 70, maxStackSize: 1 },
         "slot4": { type: "slot", x: 465, y: 510, size: 70, maxStackSize: 1 },
-        "slot5": { type: "slot", x: 255, y: 435, size: 70, maxStackSize: 1 },
+        "slot5": { type: "slot", x: 300, y: 480, size: 70, maxStackSize: 1 },
         "slot6": { type: "slot", x: 140, y: 265, size: 70, maxStackSize: 1 },
-        "slot7": { type: "slot", x: 255, y: 95, size: 70, maxStackSize: 1 },
+        "slot7": { type: "slot", x: 300, y: 40, size: 70, maxStackSize: 1 },
         "slotCenter": { type: "slot", x: 465, y: 265, size: 70, maxStackSize: 1 },
         "AltarText": { type: "text", x: 0, y: 0, text: "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: 0" },
     }
@@ -517,38 +524,45 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         return AltarGui;
     },
     tick: function () {
+        //Получение предметов в слотах
+        if (World.getThreadTime() % 10 == 0) {
+            var slot = this.container.getSlot("slotCenter");
+            this.networkData.putInt("itemCenterId", slot.id);
+            this.networkData.putInt("itemCenterData", slot.data);
+            this.networkData.sendChanges();
+        }
+        ;
+        //Получение силы алтаря
         if (World.getWorldTime() % 20 == 0) {
-            if (World.getWorldTime() % 100 == 0) {
-                var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
-                var Structure = void 0;
-                for (var i = 0; i < AltarBlocks.length; i++) {
-                    if (AltarSource.getBlock(this.x + AltarBlocks[i].x, this.y + AltarBlocks[i].y - 1, this.z + AltarBlocks[i].z).id in AltarAPI.AltarBase) {
-                        Structure = true;
-                    }
-                    else {
-                        Structure = false;
+            this.data.AltarPower = 0;
+            var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
+            var Structure = void 0;
+            for (var i = 0; i < AltarBlocks.length; i++) {
+                if (AltarSource.getBlock(this.x + AltarBlocks[i].x, this.y + AltarBlocks[i].y - 1, this.z + AltarBlocks[i].z).id in AltarAPI.AltarBase) {
+                    Structure = true;
+                }
+                else {
+                    Structure = false;
+                    break;
+                }
+                ;
+            }
+            ;
+            if (Structure) {
+                for (var key in AltarAPI.AltarBase) {
+                    if (AltarSource.getBlock(this.x, this.y - 1, this.z).id == key) {
+                        this.data.AltarPower += AltarAPI.AltarBase[key];
                         break;
                     }
                     ;
                 }
                 ;
-                if (Structure) {
-                    for (var key in AltarAPI.AltarBase) {
-                        if (AltarSource.getBlock(this.x, this.y - 1, this.z).id == key) {
-                            this.data.AltarPower += AltarAPI.AltarBase[key];
-                            break;
-                        }
-                        ;
-                    }
-                    ;
-                    for (var i = 0; i < AltarCatalizator.length; i++) {
-                        if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator) {
-                            for (var key in AltarAPI.Catalizator) {
-                                if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key) {
-                                    this.data.AltarPower += AltarAPI.Catalizator[key];
-                                    break;
-                                }
-                                ;
+                for (var i = 0; i < AltarCatalizator.length; i++) {
+                    if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator) {
+                        for (var key in AltarAPI.Catalizator) {
+                            if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key) {
+                                this.data.AltarPower += AltarAPI.Catalizator[key];
+                                break;
                             }
                             ;
                         }
@@ -557,10 +571,11 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
                     ;
                 }
                 ;
-                this.container.sendChanges();
-                this.container.setText("AltarText", "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: ".concat(this.data.AltarPower));
             }
             ;
+            this.container.sendChanges();
+            this.container.setText("AltarText", "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: ".concat(this.data.AltarPower));
+            //Проверка рецепта
             var itemsArr = [this.container.getSlot("slotCenter").id, this.container.getSlot("slot0").id, this.container.getSlot("slot1").id, this.container.getSlot("slot2").id, this.container.getSlot("slot3").id, this.container.getSlot("slot4").id, this.container.getSlot("slot5").id, this.container.getSlot("slot6").id, this.container.getSlot("slot7").id,];
             for (recipe in AltarAPI.Recipes) {
                 var copy = AltarAPI.Recipes[recipe];
@@ -581,6 +596,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
             ;
         }
         ;
+        //Крафт
         if (this.data.isCraftng) {
             this.data.CraftingTime--;
             if (this.data.CraftingTime <= 0) {
@@ -599,6 +615,29 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
                 this.container.setSlot("slotCenter", this.data.CraftingItem, 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCentert").extra);
                 this.container.sendChanges();
             }
+        }
+    },
+    client: {
+        updateModel: function () {
+            // обновить модель используя networkData
+            // не стоит забывать про конвертацию id предметов из серверных в клиентские
+            var id = Network.serverToLocalId(this.networkData.getInt("itemCenterId"));
+            var data = this.networkData.getInt("itemCenterData");
+            this.model.describeItem({
+                id: id, count: 1, data: data, size: 1
+            });
+        },
+        load: function () {
+            this.model = new Animation.Item(this.x + .5, this.y + 1.5, this.z + .5);
+            this.updateModel();
+            this.model.load();
+            var that = this;
+            this.networkData.addOnDataChangedListener(function (data, isExternal) {
+                that.updateModel();
+            });
+        },
+        unload: function () {
+            this.model.destroy();
         }
     },
 });
