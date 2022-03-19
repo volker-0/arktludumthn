@@ -55,5 +55,6 @@ generation/nether.js
 
 craft/furnace.js
 craft/workbench.js
+craft/altar.js
 
 creative_tab.js

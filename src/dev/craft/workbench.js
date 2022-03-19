@@ -434,8 +434,6 @@ Recipes.addShaped({id: ItemID.terracore, count: 1, data: 0}, [ "aa ", "aa ", "  
 
 Recipes.addShaped({id: ItemID.aercore, count: 1, data: 0}, [ "aa ", "aa ", "   "], ['a', ItemID.aeressence, 0]);
 
-Recipes.addShaped({id: ItemID.elementalcore, count: 1, data: 0}, [ "ab ", "cd ", "   "], ['a', ItemID.aercore, 0, 'b', ItemID.terracore, 0, 'c', ItemID. igniscore, 0, 'd', ItemID.aquacore, 0]);
-
 Recipes.addShaped({id: ItemID.krackenkatana, count: 1, data: 0}, [ " aa", "aaa", "ba "], ['a', ItemID.krackeningot, 0, 'b', 280, 0]);
 
 Recipes.addShaped({id: ItemID.krackenblade, count: 1, data: 0}, [ " aa", "aaa", "ba "], ['a', ItemID.krackeningot, 0, 'b', ItemID.hollyingot, 0]);
