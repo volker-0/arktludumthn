@@ -88,7 +88,10 @@ let AltarAPI = {
     };
   },
 
-  AddAltarRecipe(sc, s0, s1, s2, s3, s4, s5, s6, s7, output){
-    this.Recipes[output] = [sc, s0, s1, s2, s3, s4, s5, s6, s7]
+  AddAltarRecipe(sc, s0, s1, s2, s3, s4, s5, s6, s7, output, energy){
+    this.Recipes[output] = {
+      items:[sc, s0, s1, s2, s3, s4, s5, s6, s7],
+      energy: energy,
+    };
   },
 };

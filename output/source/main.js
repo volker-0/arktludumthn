@@ -76,17 +76,95 @@ var AltarAPI = {
         42: 3,
         133: 9,
     },
+    Recipes: {},
     BaseBlock: function (blockid, power) {
-        this.AltarBase[blockid] = power;
+        if (typeof (blockid) == "number") {
+            this.AltarBase[blockid] = power;
+        }
+        else {
+            this.AltarBase[BlockID.blockid] = power;
+        }
+        ;
+    },
+    BaseBlockArr: function (blockidArr, powerArr) {
+        for (var i = 0; i < blockidArr.length; i++) {
+            if (typeof (blockid) == "number") {
+                this.AltarBase[blockidArr[i]] = powerArr[i];
+            }
+            else {
+                this.AltarBase[BlockID.blockidArr[i]] = powerArr[i];
+            }
+            ;
+        }
     },
     CatalizatorBlock: function (blockid, power) {
-        this.Catalizator[blockid] = power;
+        if (typeof (blockid) == "number") {
+            this.Catalizator[blockid] = power;
+        }
+        else {
+            this.Catalizator[BlockID.blockid] = power;
+        }
+        ;
+    },
+    CatalizatorBlockArr: function (blockidArr, powerArr) {
+        for (var i = 0; i < blockidArr.length; i++) {
+            if (typeof (blockid) == "number") {
+                this.Catalizator[blockidArr[i]] = powerArr[i];
+            }
+            else {
+                this.Catalizator[BlockID.blockidArr[i]] = powerArr[i];
+            }
+            ;
+        }
+        ;
     },
     CatalizatorBlockDelete: function (blockid) {
-        delete this.Catalizator[blockid];
+        if (typeof (blockid) == "number") {
+            delete this.Catalizator[blockid];
+        }
+        else {
+            delete this.Catalizator[BlockID.blockid];
+        }
+        ;
+    },
+    CatalizatorBlocDeletekArr: function (blockidArr) {
+        for (var i = 0; i < blockidArr.length; i++) {
+            if (typeof (blockid) == "number") {
+                delete this.Catalizator[blockidArr[i]];
+            }
+            else {
+                delete this.Catalizator[BlockID.blockidArr[i]];
+            }
+            ;
+        }
+        ;
     },
     BaseBlockDelete: function (blockid) {
-        delete this.AltarBase[blockid];
+        if (typeof (blockid) == "number") {
+            delete this.AltarBase[blockid];
+        }
+        else {
+            delete this.AltarBase[BlockID.blockid];
+        }
+        ;
+    },
+    BaseBlocDeletekArr: function (blockidArr) {
+        for (var i = 0; i < blockidArr.length; i++) {
+            if (typeof (blockid) == "number") {
+                delete this.Base[blockidArr[i]];
+            }
+            else {
+                delete this.Base[BlockID.blockidArr[i]];
+            }
+            ;
+        }
+        ;
+    },
+    AddAltarRecipe: function (sc, s0, s1, s2, s3, s4, s5, s6, s7, output, energy) {
+        this.Recipes[output] = {
+            items: [sc, s0, s1, s2, s3, s4, s5, s6, s7],
+            energy: energy,
+        };
     },
 };
 var cloud = Block.createSpecialType({
@@ -399,7 +477,6 @@ var AltarCatalizator = [
 ];
 IDRegistry.genBlockID("creatoraltar");
 Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", texture: [["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0], ["creatoraltar", 0]], inCreative: true }]);
-AltarAPI.BaseBlock(BlockID.azatotbricks, 50);
 var AltarGui = new UI.StandardWindow({
     standard: {
         header: { text: { text: "Алтарь созидания" } },
@@ -413,21 +490,26 @@ var AltarGui = new UI.StandardWindow({
         { type: "bitmap", x: 0, y: 0, bitmap: "altar_background", width: 1000, height: 600 }
     ],
     elements: {
-        "slot0": { type: "slot", x: 465, y: 20, size: 70, isTransparentBackground: true },
-        "slot1": { type: "slot", x: 675, y: 95, size: 70, isTransparentBackground: true },
-        "slot2": { type: "slot", x: 790, y: 265, size: 70, isTransparentBackground: true },
-        "slot3": { type: "slot", x: 675, y: 435, size: 70, isTransparentBackground: true },
-        "slot4": { type: "slot", x: 465, y: 510, size: 70, isTransparentBackground: true },
-        "slot5": { type: "slot", x: 255, y: 435, size: 70, isTransparentBackground: true },
-        "slot6": { type: "slot", x: 140, y: 265, size: 70, isTransparentBackground: true },
-        "slot7": { type: "slot", x: 255, y: 95, size: 70, isTransparentBackground: true },
-        "slotCenter": { type: "slot", x: 465, y: 265, size: 70, isTransparentBackground: true }
+        "slot0": { type: "slot", x: 465, y: 20, size: 70, maxStackSize: 1 },
+        "slot1": { type: "slot", x: 675, y: 95, size: 70, maxStackSize: 1 },
+        "slot2": { type: "slot", x: 790, y: 265, size: 70, maxStackSize: 1 },
+        "slot3": { type: "slot", x: 675, y: 435, size: 70, maxStackSize: 1 },
+        "slot4": { type: "slot", x: 465, y: 510, size: 70, maxStackSize: 1 },
+        "slot5": { type: "slot", x: 255, y: 435, size: 70, maxStackSize: 1 },
+        "slot6": { type: "slot", x: 140, y: 265, size: 70, maxStackSize: 1 },
+        "slot7": { type: "slot", x: 255, y: 95, size: 70, maxStackSize: 1 },
+        "slotCenter": { type: "slot", x: 465, y: 265, size: 70, maxStackSize: 1 },
+        "AltarText": { type: "text", x: 0, y: 0, text: "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: 0" },
     }
 });
-//x 465  y 20
-//
 TileEntity.registerPrototype(BlockID.creatoraltar, {
     useNetworkItemContainer: true,
+    defaultValues: {
+        isCraftng: false,
+        CraftingTime: 100,
+        CraftingItem: null,
+        AltarPower: 0,
+    },
     getScreenName: function (player, coords) {
         return "main";
     },
@@ -435,36 +517,38 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         return AltarGui;
     },
     tick: function () {
-        if (World.getWorldTime() % 100 == 0) {
-            var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
-            AltarPower = 0;
-            var Structure = void 0;
-            for (var i = 0; i < AltarBlocks.length; i++) {
-                if (AltarSource.getBlock(this.x + AltarBlocks[i].x, this.y + AltarBlocks[i].y - 1, this.z + AltarBlocks[i].z).id in AltarAPI.AltarBase) {
-                    Structure = true;
-                }
-                else {
-                    Structure = false;
-                    break;
-                }
-                ;
-            }
-            ;
-            if (Structure) {
-                for (var key in AltarAPI.AltarBase) {
-                    if (AltarSource.getBlock(this.x, this.y - 1, this.z).id == key) {
-                        AltarPower += AltarAPI.AltarBase[key];
+        if (World.getWorldTime() % 20 == 0) {
+            if (World.getWorldTime() % 100 == 0) {
+                var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
+                var Structure = void 0;
+                for (var i = 0; i < AltarBlocks.length; i++) {
+                    if (AltarSource.getBlock(this.x + AltarBlocks[i].x, this.y + AltarBlocks[i].y - 1, this.z + AltarBlocks[i].z).id in AltarAPI.AltarBase) {
+                        Structure = true;
+                    }
+                    else {
+                        Structure = false;
                         break;
                     }
                     ;
                 }
                 ;
-                for (var i = 0; i < AltarCatalizator.length; i++) {
-                    if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator) {
-                        for (var key in AltarAPI.Catalizator) {
-                            if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key) {
-                                AltarPower += AltarAPI.Catalizator[key];
-                                break;
+                if (Structure) {
+                    for (var key in AltarAPI.AltarBase) {
+                        if (AltarSource.getBlock(this.x, this.y - 1, this.z).id == key) {
+                            this.data.AltarPower += AltarAPI.AltarBase[key];
+                            break;
+                        }
+                        ;
+                    }
+                    ;
+                    for (var i = 0; i < AltarCatalizator.length; i++) {
+                        if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator) {
+                            for (var key in AltarAPI.Catalizator) {
+                                if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key) {
+                                    this.data.AltarPower += AltarAPI.Catalizator[key];
+                                    break;
+                                }
+                                ;
                             }
                             ;
                         }
@@ -473,10 +557,49 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
                     ;
                 }
                 ;
+                this.container.sendChanges();
+                this.container.setText("AltarText", "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: ".concat(this.data.AltarPower));
+            }
+            ;
+            var itemsArr = [this.container.getSlot("slotCenter").id, this.container.getSlot("slot0").id, this.container.getSlot("slot1").id, this.container.getSlot("slot2").id, this.container.getSlot("slot3").id, this.container.getSlot("slot4").id, this.container.getSlot("slot5").id, this.container.getSlot("slot6").id, this.container.getSlot("slot7").id,];
+            for (recipe in AltarAPI.Recipes) {
+                var copy = AltarAPI.Recipes[recipe];
+                if (JSON.stringify(copy.items) == JSON.stringify(itemsArr)) {
+                    if (this.data.AltarPower >= copy.energy) {
+                        this.data.CraftingItem = recipe;
+                        this.data.isCraftng = true;
+                        break;
+                    }
+                    ;
+                }
+                else {
+                    this.data.isCraftng = false;
+                    this.data.CraftingTime = 100;
+                }
+                ;
             }
             ;
         }
         ;
+        if (this.data.isCraftng) {
+            this.data.CraftingTime--;
+            if (this.data.CraftingTime <= 0) {
+                this.data.isCraftng = false;
+                this.data.CraftingTime = 100;
+                this.container.setSlot("slotCenter", this.container.getSlot("slotCenter").id, this.container.getSlot("slotCenter").count - 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCenter").extra);
+                this.container.setSlot("slot0", this.container.getSlot("slot0").id, this.container.getSlot("slot0").count - 1, this.container.getSlot("slot0").data, this.container.getSlot("slot0").extra);
+                this.container.setSlot("slot1", this.container.getSlot("slot1").id, this.container.getSlot("slot1").count - 1, this.container.getSlot("slot1").data, this.container.getSlot("slot1").extra);
+                this.container.setSlot("slot2", this.container.getSlot("slot2").id, this.container.getSlot("slot2").count - 1, this.container.getSlot("slot2").data, this.container.getSlot("slot2").extra);
+                this.container.setSlot("slot3", this.container.getSlot("slot3").id, this.container.getSlot("slot3").count - 1, this.container.getSlot("slot3").data, this.container.getSlot("slot3").extra);
+                this.container.setSlot("slot4", this.container.getSlot("slot4").id, this.container.getSlot("slot4").count - 1, this.container.getSlot("slot4").data, this.container.getSlot("slot4").extra);
+                this.container.setSlot("slot5", this.container.getSlot("slot5").id, this.container.getSlot("slot5").count - 1, this.container.getSlot("slot5").data, this.container.getSlot("slot5").extra);
+                this.container.setSlot("slot6", this.container.getSlot("slot6").id, this.container.getSlot("slot6").count - 1, this.container.getSlot("slot6").data, this.container.getSlot("slot6").extra);
+                this.container.setSlot("slot7", this.container.getSlot("slot7").id, this.container.getSlot("slot7").count - 1, this.container.getSlot("slot7").data, this.container.getSlot("slot7").extra);
+                this.container.validateAll();
+                this.container.setSlot("slotCenter", this.data.CraftingItem, 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCentert").extra);
+                this.container.sendChanges();
+            }
+        }
     },
 });
 IDRegistry.genItemID("aeriteingot");
@@ -12788,12 +12911,13 @@ Recipes.addShaped({ id: ItemID.aquacore, count: 1, data: 0 }, ["aa ", "aa ", "  
 Recipes.addShaped({ id: ItemID.igniscore, count: 1, data: 0 }, ["aa ", "aa ", "   "], ['a', ItemID.ignisessence, 0]);
 Recipes.addShaped({ id: ItemID.terracore, count: 1, data: 0 }, ["aa ", "aa ", "   "], ['a', ItemID.terraessence, 0]);
 Recipes.addShaped({ id: ItemID.aercore, count: 1, data: 0 }, ["aa ", "aa ", "   "], ['a', ItemID.aeressence, 0]);
-Recipes.addShaped({ id: ItemID.elementalcore, count: 1, data: 0 }, ["ab ", "cd ", "   "], ['a', ItemID.aercore, 0, 'b', ItemID.terracore, 0, 'c', ItemID.igniscore, 0, 'd', ItemID.aquacore, 0]);
 Recipes.addShaped({ id: ItemID.krackenkatana, count: 1, data: 0 }, [" aa", "aaa", "ba "], ['a', ItemID.krackeningot, 0, 'b', 280, 0]);
 Recipes.addShaped({ id: ItemID.krackenblade, count: 1, data: 0 }, [" aa", "aaa", "ba "], ['a', ItemID.krackeningot, 0, 'b', ItemID.hollyingot, 0]);
 Recipes.addShaped({ id: ItemID.grandbiomesword, count: 1, data: 0 }, [" a ", "b b", " d "], ['a', ItemID.omegabiomesword, 0, 'b', ItemID.cosmicsingularity, 0, 'd', ItemID.grandminecraftsword, 0]);
 Recipes.addShaped({ id: ItemID.ElementalGuardian, count: 1, data: 0 }, ["aba", "bbb", "aba"], ['a', ItemID.elementalcore, 0, 'b', ItemID.krackeningot, 0]);
 Recipes.addShaped({ id: ItemID.ArsenalGuardian, count: 1, data: 0 }, [" a ", "bcd", "cec"], ['a', ItemID.evilfragment, 0, 'b', ItemID.energyfragment, 0, 'c', ItemID.krackeningot, 0, 'd', ItemID.coldfragment, 0, 'e', ItemID.millionfragment, 0]);
+AltarAPI.BaseBlock(BlockID.azatotbricks, 50);
+AltarAPI.AddAltarRecipe(0, 0, ItemID.aercore, 0, ItemID.terracore, 0, ItemID.igniscore, 0, ItemID.aquacore, ItemID.elementalcore, 10);
 Item.addCreativeGroup("aer_armor", "броня воздуха", [
     ItemID.aerhelmet,
     ItemID.aerchestplate,
