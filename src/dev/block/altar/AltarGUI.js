@@ -37,15 +37,9 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     CraftingTime: 100,
     CraftingItem: null,
     AltarPower: 0,
-    RotationCenter: 0,
-    Rotation0: 0,
-    Rotation1: 0,
-    Rotation2: 0,
-    Rotation3: 0,
-    Rotation4: 0,
-    Rotation5: 0,
-    Rotation6: 0,
-    Rotation7: 0,
+    ItemsParticles:[],
+    BlockPos:[],
+    BlockParticles:[],
   },
 
   getScreenName: function(player, coords) {
@@ -105,7 +99,10 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         if(AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator){
           for(let key in AltarAPI.Catalizator){
             if(AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key){
-              this.data.AltarPower += AltarAPI.Catalizator[key];
+              let copy = AltarAPI.Catalizator[key];
+              this.data.BlockPos.push(AltarCatalizator[i]);
+              this.data.BlockParticles.push(copy[1]);
+              this.data.AltarPower += copy[0];
               break;
             };
           };
@@ -122,6 +119,12 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
       let copy = AltarAPI.Recipes[recipe];
       if(JSON.stringify(copy.items) == JSON.stringify(itemsArr)){
         if(this.data.AltarPower>= copy.energy){
+          for(let i =0; i<=7; i++){
+            let name = "slot"+i;
+            if(this.container.getSlot(name).id!=0){
+              this.data.ItemsParticles.push(AltarItems[i]);
+            }
+          };
           this.data.CraftingItem = recipe;
           this.data.isCraftng = true;
           break;
@@ -171,7 +174,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
       this.model1 = new Animation.Item(this.x + .9375, this.y + 1.25, this.z + .0625);
       this.model2 = new Animation.Item(this.x + 1.125, this.y + 1.29, this.z + .5);
       this.model3 = new Animation.Item(this.x + .9375, this.y + 1.25, this.z + .9375);
-      this.model4 = new Animation.Item(this.x + .5, this.y + 1.29, this.z + 1.125);
+      this.model4 = new Animation.Item(this.x + .5,    this.y + 1.29, this.z + 1.125);
       this.model5 = new Animation.Item(this.x + .0625, this.y + 1.25, this.z + .9375);
       this.model6 = new Animation.Item(this.x - 0.125, this.y + 1.29, this.z + .5);
       this.model7 = new Animation.Item(this.x + .0625, this.y + 1.25, this.z + .0625);

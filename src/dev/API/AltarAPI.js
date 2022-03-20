@@ -5,11 +5,11 @@ let AltarAPI = {
   },
 
   Catalizator:{
-    22: 5,
-    57: 7,
-    41: 10,
-    42: 3,
-    133: 9,
+    22: [5,7],
+    57: [7, 7],
+    41: [10, 7],
+    42: [3, 7],
+    133: [9, 7],
   },
 
   Recipes:{
@@ -34,9 +34,9 @@ let AltarAPI = {
     }
   },
 
-  CatalizatorBlock(blockid, power){
+  CatalizatorBlock(blockid, power, particle){
     if(typeof(blockid) == "number"){
-      this.Catalizator[blockid] = power;
+      this.Catalizator[blockid] = [power, particle];
     } else{
       this.Catalizator[BlockID.blockid] = power;
     };
