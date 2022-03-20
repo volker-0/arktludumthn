@@ -71,6 +71,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     //Крафт
     if(this.data.isCraftng){
       this.data.CraftingTime--;
+      this.sendPacket("animateParticles", {});
       this.Craft();
     };
     this.networkData.sendChanges();
@@ -152,20 +153,65 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
   },
 
   client:{
+    events:{
+      animateParticles: function(packetData) {
+        for (var i = 0; i < 10; i++) {
+          Particles.addParticle(7, this.x + .5, this.y + .5, this.z + .5, Math.random() - .5, Math.random() - .5, Math.random() - .5, 0);
+        };
+      },
+    },
     updateModel: function() {
-      let idCenter = Network.serverToLocalId(this.networkData.getInt("itemCenterId"));
-      let dataCenter = this.networkData.getInt("itemCenterData");
       this.modelCenter.describeItem({
           id: Network.serverToLocalId(this.networkData.getInt("itemCenterId")), count: 1, data: this.networkData.getInt("itemCenterData"), size: 0.4
       });
-      for(let i =0; i<=7; i++){
-        let name = "model"+i;
-        let copy = this[name];
-        copy.loadCustom(function(){
-          this.setItemRotation(this.__rotation[0], this.__rotation[1] + Math.PI/30, this.__rotation[2]);
-          this.refresh();
-        });
-      };
+      //item0
+      let id0 = Network.serverToLocalId(this.networkData.getInt("item0Id"));
+      let data0 = this.networkData.getInt("item0Data");
+      this.model0.describeItem({
+          id: id0, count: 1, data: data0, size: 0.25
+      });
+      //item1
+      let id1 = Network.serverToLocalId(this.networkData.getInt("item1Id"));
+      let data1 = this.networkData.getInt("item1Data");
+      this.model1.describeItem({
+          id: id1, count: 1, data: data1, size: 0.2
+      });
+      //item2
+      let id2 = Network.serverToLocalId(this.networkData.getInt("item2Id"));
+      let data2 = this.networkData.getInt("item2Data");
+      this.model2.describeItem({
+          id: id2, count: 1, data: data2, size: 0.25
+      });
+      //item3
+      let id3 = Network.serverToLocalId(this.networkData.getInt("item3Id"));
+      let data3 = this.networkData.getInt("item3Data");
+      this.model3.describeItem({
+          id: id3, count: 1, data: data3, size: 0.2
+      });
+      //item4
+      let id4 = Network.serverToLocalId(this.networkData.getInt("item4Id"));
+      let data4 = this.networkData.getInt("item4Data");
+      this.model4.describeItem({
+          id: id4, count: 1, data: data4, size: 0.25
+      });
+      //item5
+      let id5 = Network.serverToLocalId(this.networkData.getInt("item5Id"));
+      let data5 = this.networkData.getInt("item5Data");
+      this.model5.describeItem({
+          id: id5, count: 1, data: data5, size: 0.2
+      });
+      //item6
+      let id6 = Network.serverToLocalId(this.networkData.getInt("item6Id"));
+      let data6 = this.networkData.getInt("item6Data");
+      this.model6.describeItem({
+          id: id6, count: 1, data: data6, size: 0.25
+      });
+      //item7
+      let id7 = Network.serverToLocalId(this.networkData.getInt("item7Id"));
+      let data7 = this.networkData.getInt("item7Data");
+      this.model7.describeItem({
+          id: id7, count: 1, data: data7, size: 0.2
+      });
     },
 
     load: function() {

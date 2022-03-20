@@ -17,74 +17,42 @@ let AltarAPI = {
   },
 
   BaseBlock(blockid, power){
-    if(typeof(blockid) == "number"){
-      this.AltarBase[blockid] = power;
-    } else {
-      this.AltarBase[BlockID.blockid] = power;
-    };
+    this.AltarBase[blockid] = power;
   },
 
   BaseBlockArr(blockidArr, powerArr){
     for(let i = 0; i < blockidArr.length; i++){
-      if(typeof(blockid) == "number"){
-        this.AltarBase[blockidArr[i]] = powerArr[i];
-      } else {
-        this.AltarBase[BlockID.blockidArr[i]] = powerArr[i];
-      };
-    }
+      this.AltarBase[blockidArr[i]] = powerArr[i];
+    };
   },
 
   CatalizatorBlock(blockid, power, particle){
-    if(typeof(blockid) == "number"){
-      this.Catalizator[blockid] = [power, particle];
-    } else{
-      this.Catalizator[BlockID.blockid] = power;
-    };
+    this.Catalizator[blockid] = [power, particle];
   },
 
   CatalizatorBlockArr(blockidArr, powerArr){
     for(let i = 0; i < blockidArr.length; i++){
-      if(typeof(blockid) == "number"){
-        this.Catalizator[blockidArr[i]] = powerArr[i];
-      } else {
-        this.Catalizator[BlockID.blockidArr[i]] = powerArr[i];
-      };
+      this.Catalizator[blockidArr[i]] = powerArr[i];
     };
   },
 
   CatalizatorBlockDelete(blockid){
-    if(typeof(blockid) == "number"){
-      delete this.Catalizator[blockid];
-    } else{
-      delete this.Catalizator[BlockID.blockid];
-    };
+    delete this.Catalizator[blockid];
   },
 
   CatalizatorBlocDeletekArr(blockidArr){
     for(let i = 0; i < blockidArr.length; i++){
-      if(typeof(blockid) == "number"){
-        delete this.Catalizator[blockidArr[i]];
-      } else {
-        delete this.Catalizator[BlockID.blockidArr[i]];
-      };
+      delete this.Catalizator[blockidArr[i]];
     };
   },
 
   BaseBlockDelete(blockid){
-    if(typeof(blockid) == "number"){
-      delete this.AltarBase[blockid];
-    } else {
-      delete this.AltarBase[BlockID.blockid];
-    };
+    delete this.AltarBase[blockid];
   },
 
   BaseBlocDeletekArr(blockidArr){
     for(let i = 0; i < blockidArr.length; i++){
-      if(typeof(blockid) == "number"){
-        delete this.Base[blockidArr[i]];
-      } else {
-        delete this.Base[BlockID.blockidArr[i]];
-      };
+      delete this.Base[blockidArr[i]];
     };
   },
 

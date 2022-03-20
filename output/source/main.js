@@ -70,93 +70,46 @@ var AltarAPI = {
         112: 2,
     },
     Catalizator: {
-        22: 5,
-        57: 7,
-        41: 10,
-        42: 3,
-        133: 9,
+        22: [5, 7],
+        57: [7, 7],
+        41: [10, 7],
+        42: [3, 7],
+        133: [9, 7],
     },
     Recipes: {},
     BaseBlock: function (blockid, power) {
-        if (typeof (blockid) == "number") {
-            this.AltarBase[blockid] = power;
-        }
-        else {
-            this.AltarBase[BlockID.blockid] = power;
-        }
-        ;
+        this.AltarBase[blockid] = power;
     },
     BaseBlockArr: function (blockidArr, powerArr) {
         for (var i = 0; i < blockidArr.length; i++) {
-            if (typeof (blockid) == "number") {
-                this.AltarBase[blockidArr[i]] = powerArr[i];
-            }
-            else {
-                this.AltarBase[BlockID.blockidArr[i]] = powerArr[i];
-            }
-            ;
-        }
-    },
-    CatalizatorBlock: function (blockid, power) {
-        if (typeof (blockid) == "number") {
-            this.Catalizator[blockid] = power;
-        }
-        else {
-            this.Catalizator[BlockID.blockid] = power;
+            this.AltarBase[blockidArr[i]] = powerArr[i];
         }
         ;
     },
+    CatalizatorBlock: function (blockid, power, particle) {
+        this.Catalizator[blockid] = [power, particle];
+    },
     CatalizatorBlockArr: function (blockidArr, powerArr) {
         for (var i = 0; i < blockidArr.length; i++) {
-            if (typeof (blockid) == "number") {
-                this.Catalizator[blockidArr[i]] = powerArr[i];
-            }
-            else {
-                this.Catalizator[BlockID.blockidArr[i]] = powerArr[i];
-            }
-            ;
+            this.Catalizator[blockidArr[i]] = powerArr[i];
         }
         ;
     },
     CatalizatorBlockDelete: function (blockid) {
-        if (typeof (blockid) == "number") {
-            delete this.Catalizator[blockid];
-        }
-        else {
-            delete this.Catalizator[BlockID.blockid];
-        }
-        ;
+        delete this.Catalizator[blockid];
     },
     CatalizatorBlocDeletekArr: function (blockidArr) {
         for (var i = 0; i < blockidArr.length; i++) {
-            if (typeof (blockid) == "number") {
-                delete this.Catalizator[blockidArr[i]];
-            }
-            else {
-                delete this.Catalizator[BlockID.blockidArr[i]];
-            }
-            ;
+            delete this.Catalizator[blockidArr[i]];
         }
         ;
     },
     BaseBlockDelete: function (blockid) {
-        if (typeof (blockid) == "number") {
-            delete this.AltarBase[blockid];
-        }
-        else {
-            delete this.AltarBase[BlockID.blockid];
-        }
-        ;
+        delete this.AltarBase[blockid];
     },
     BaseBlocDeletekArr: function (blockidArr) {
         for (var i = 0; i < blockidArr.length; i++) {
-            if (typeof (blockid) == "number") {
-                delete this.Base[blockidArr[i]];
-            }
-            else {
-                delete this.Base[BlockID.blockidArr[i]];
-            }
-            ;
+            delete this.Base[blockidArr[i]];
         }
         ;
     },
@@ -399,7 +352,6 @@ Block.registerDropFunction("astralmid", function (coords, blockID, blockData, le
     }
     return [];
 }, 1);
-var AltarPower;
 var AltarBlocks = [{ x: -3, y: 0, z: -2 },
     { x: -3, y: 0, z: -1 },
     { x: -3, y: 0, z: 0 },
@@ -475,6 +427,16 @@ var AltarCatalizator = [
     { x: 0, y: 2, z: -2 },
     { x: 2, y: 3, z: -2 }
 ];
+var AltarItems = [
+    { x: .5, y: 1.29, z: -0.125 },
+    { x: .9375, y: 1.25, z: .0625 },
+    { x: 1.125, y: 1.29, z: .5 },
+    { x: .93752, y: 1.25, z: .9375 },
+    { x: .5, y: 1.29, z: 1.125 },
+    { x: .06252, y: 1.25, z: .9375 },
+    { x: -0.125, y: 1.29, z: .5 },
+    { x: .0625, y: 1.25, z: .0625 }
+];
 IDRegistry.genBlockID("creatoraltar");
 Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", texture: ["creatoraltar", 0], inCreative: true }]);
 var AltarMesh = new RenderMesh(__dir__ + "resources/res/models/altar.obj", "obj", null);
@@ -516,15 +478,9 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         CraftingTime: 100,
         CraftingItem: null,
         AltarPower: 0,
-        RotationCenter: 0,
-        Rotation0: 0,
-        Rotation1: 0,
-        Rotation2: 0,
-        Rotation3: 0,
-        Rotation4: 0,
-        Rotation5: 0,
-        Rotation6: 0,
-        Rotation7: 0,
+        ItemsParticles: [],
+        BlockPos: [],
+        BlockParticles: [],
     },
     getScreenName: function (player, coords) {
         return "main";
@@ -535,69 +491,67 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     tick: function () {
         //Получение предметов в слотах
         if (World.getThreadTime() % 10 == 0) {
-            //slotCenter
             this.networkData.putInt("itemCenterId", this.container.getSlot("slotCenter").id);
             this.networkData.putInt("itemCenterData", this.container.getSlot("slotCenter").data);
-            //slot0
-            this.networkData.putInt("item0Id", this.container.getSlot("slot0").id);
-            this.networkData.putInt("item0Data", this.container.getSlot("slot0").data);
-            //slot1
-            this.networkData.putInt("item1Id", this.container.getSlot("slot1").id);
-            this.networkData.putInt("item1Data", this.container.getSlot("slot1").data);
-            //slot2
-            this.networkData.putInt("item2Id", this.container.getSlot("slot2").id);
-            this.networkData.putInt("item2Data", this.container.getSlot("slot2").data);
-            //slot3
-            this.networkData.putInt("item3Id", this.container.getSlot("slot3").id);
-            this.networkData.putInt("item3Data", this.container.getSlot("slot3").data);
-            //slot4
-            this.networkData.putInt("item4Id", this.container.getSlot("slot4").id);
-            this.networkData.putInt("item4Data", this.container.getSlot("slot4").data);
-            //slot5
-            this.networkData.putInt("item5Id", this.container.getSlot("slot5").id);
-            this.networkData.putInt("item5Data", this.container.getSlot("slot5").data);
-            //slot6
-            this.networkData.putInt("item6Id", this.container.getSlot("slot6").id);
-            this.networkData.putInt("item6Data", this.container.getSlot("slot6").data);
-            //slot7
-            this.networkData.putInt("item7Id", this.container.getSlot("slot7").id);
-            this.networkData.putInt("item7Data", this.container.getSlot("slot7").data);
-            this.networkData.sendChanges();
+            for (var i = 0; i <= 7; i++) {
+                var slot = "slot" + i;
+                var id = "item".concat(i, "Id");
+                var data = "item".concat(i, "Data");
+                this.networkData.putInt(id, this.container.getSlot(slot).id);
+                this.networkData.putInt(data, this.container.getSlot(slot).data);
+            }
+            ;
         }
         ;
-        //Получение силы алтаря
         if (World.getWorldTime() % 20 == 0) {
-            this.data.AltarPower = 0;
-            var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
-            var Structure = void 0;
-            for (var i = 0; i < AltarBlocks.length; i++) {
-                if (AltarSource.getBlock(this.x + AltarBlocks[i].x, this.y + AltarBlocks[i].y - 1, this.z + AltarBlocks[i].z).id in AltarAPI.AltarBase) {
-                    Structure = true;
-                }
-                else {
-                    Structure = false;
+            //Получение силы алтаря
+            this.GetAltarPower();
+            //Проверка рецепта
+            this.GetRecipe();
+        }
+        ;
+        //Крафт
+        if (this.data.isCraftng) {
+            this.data.CraftingTime--;
+            this.sendPacket("animateParticles", {});
+            this.Craft();
+        }
+        ;
+        this.networkData.sendChanges();
+    },
+    GetAltarPower: function () {
+        this.data.AltarPower = 0;
+        var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
+        var Structure;
+        for (var i = 0; i < AltarBlocks.length; i++) {
+            if (AltarSource.getBlock(this.x + AltarBlocks[i].x, this.y + AltarBlocks[i].y - 1, this.z + AltarBlocks[i].z).id in AltarAPI.AltarBase) {
+                Structure = true;
+            }
+            else {
+                Structure = false;
+                break;
+            }
+            ;
+        }
+        ;
+        if (Structure) {
+            for (var key in AltarAPI.AltarBase) {
+                if (AltarSource.getBlock(this.x, this.y - 1, this.z).id == key) {
+                    this.data.AltarPower += AltarAPI.AltarBase[key];
                     break;
                 }
                 ;
             }
             ;
-            if (Structure) {
-                for (var key in AltarAPI.AltarBase) {
-                    if (AltarSource.getBlock(this.x, this.y - 1, this.z).id == key) {
-                        this.data.AltarPower += AltarAPI.AltarBase[key];
-                        break;
-                    }
-                    ;
-                }
-                ;
-                for (var i = 0; i < AltarCatalizator.length; i++) {
-                    if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator) {
-                        for (var key in AltarAPI.Catalizator) {
-                            if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key) {
-                                this.data.AltarPower += AltarAPI.Catalizator[key];
-                                break;
-                            }
-                            ;
+            for (var i = 0; i < AltarCatalizator.length; i++) {
+                if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id in AltarAPI.Catalizator) {
+                    for (var key in AltarAPI.Catalizator) {
+                        if (AltarSource.getBlock(this.x + AltarCatalizator[i].x, this.y + AltarCatalizator[i].y, this.z + AltarCatalizator[i].z).id == key) {
+                            var copy = AltarAPI.Catalizator[key];
+                            this.data.BlockPos.push(AltarCatalizator[i]);
+                            this.data.BlockParticles.push(copy[1]);
+                            this.data.AltarPower += copy[0];
+                            break;
                         }
                         ;
                     }
@@ -606,109 +560,118 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
                 ;
             }
             ;
-            this.container.sendChanges();
-            this.container.setText("AltarText", "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: ".concat(this.data.AltarPower));
-            //Проверка рецепта
-            var itemsArr = [this.container.getSlot("slotCenter").id, this.container.getSlot("slot0").id, this.container.getSlot("slot1").id, this.container.getSlot("slot2").id, this.container.getSlot("slot3").id, this.container.getSlot("slot4").id, this.container.getSlot("slot5").id, this.container.getSlot("slot6").id, this.container.getSlot("slot7").id,];
-            for (recipe in AltarAPI.Recipes) {
-                var copy = AltarAPI.Recipes[recipe];
-                if (JSON.stringify(copy.items) == JSON.stringify(itemsArr)) {
-                    if (this.data.AltarPower >= copy.energy) {
-                        this.data.CraftingItem = recipe;
-                        this.data.isCraftng = true;
-                        break;
+        }
+        ;
+        this.container.sendChanges();
+        this.container.setText("AltarText", "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: ".concat(this.data.AltarPower));
+    },
+    GetRecipe: function () {
+        var itemsArr = [this.container.getSlot("slotCenter").id, this.container.getSlot("slot0").id, this.container.getSlot("slot1").id, this.container.getSlot("slot2").id, this.container.getSlot("slot3").id, this.container.getSlot("slot4").id, this.container.getSlot("slot5").id, this.container.getSlot("slot6").id, this.container.getSlot("slot7").id,];
+        for (recipe in AltarAPI.Recipes) {
+            var copy = AltarAPI.Recipes[recipe];
+            if (JSON.stringify(copy.items) == JSON.stringify(itemsArr)) {
+                if (this.data.AltarPower >= copy.energy) {
+                    for (var i = 0; i <= 7; i++) {
+                        var name = "slot" + i;
+                        if (this.container.getSlot(name).id != 0) {
+                            this.data.ItemsParticles.push(AltarItems[i]);
+                        }
                     }
                     ;
-                }
-                else {
-                    this.data.isCraftng = false;
-                    this.data.CraftingTime = 100;
+                    this.data.CraftingItem = recipe;
+                    this.data.isCraftng = true;
+                    break;
                 }
                 ;
+            }
+            else {
+                this.data.isCraftng = false;
+                this.data.CraftingTime = 100;
             }
             ;
         }
         ;
-        //Крафт
-        if (this.data.isCraftng) {
-            this.data.CraftingTime--;
-            if (this.data.CraftingTime <= 0) {
-                this.data.isCraftng = false;
-                this.data.CraftingTime = 100;
-                this.container.setSlot("slotCenter", this.container.getSlot("slotCenter").id, this.container.getSlot("slotCenter").count - 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCenter").extra);
-                this.container.setSlot("slot0", this.container.getSlot("slot0").id, this.container.getSlot("slot0").count - 1, this.container.getSlot("slot0").data, this.container.getSlot("slot0").extra);
-                this.container.setSlot("slot1", this.container.getSlot("slot1").id, this.container.getSlot("slot1").count - 1, this.container.getSlot("slot1").data, this.container.getSlot("slot1").extra);
-                this.container.setSlot("slot2", this.container.getSlot("slot2").id, this.container.getSlot("slot2").count - 1, this.container.getSlot("slot2").data, this.container.getSlot("slot2").extra);
-                this.container.setSlot("slot3", this.container.getSlot("slot3").id, this.container.getSlot("slot3").count - 1, this.container.getSlot("slot3").data, this.container.getSlot("slot3").extra);
-                this.container.setSlot("slot4", this.container.getSlot("slot4").id, this.container.getSlot("slot4").count - 1, this.container.getSlot("slot4").data, this.container.getSlot("slot4").extra);
-                this.container.setSlot("slot5", this.container.getSlot("slot5").id, this.container.getSlot("slot5").count - 1, this.container.getSlot("slot5").data, this.container.getSlot("slot5").extra);
-                this.container.setSlot("slot6", this.container.getSlot("slot6").id, this.container.getSlot("slot6").count - 1, this.container.getSlot("slot6").data, this.container.getSlot("slot6").extra);
-                this.container.setSlot("slot7", this.container.getSlot("slot7").id, this.container.getSlot("slot7").count - 1, this.container.getSlot("slot7").data, this.container.getSlot("slot7").extra);
-                this.container.validateAll();
-                this.container.setSlot("slotCenter", this.data.CraftingItem, 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCentert").extra);
-                this.container.sendChanges();
+    },
+    Craft: function () {
+        if (this.data.CraftingTime <= 0) {
+            this.data.isCraftng = false;
+            this.data.CraftingTime = 100;
+            this.container.setSlot("slotCenter", this.container.getSlot("slotCenter").id, this.container.getSlot("slotCenter").count - 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCenter").extra);
+            for (var i = 0; i <= 7; i++) {
+                var name = "slot" + i;
+                this.container.setSlot(name, this.container.getSlot(name).id, this.container.getSlot(name).count - 1, this.container.getSlot(name).data, this.container.getSlot(name).extra);
             }
+            ;
+            this.container.validateAll();
+            this.container.setSlot("slotCenter", this.data.CraftingItem, 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCentert").extra);
+            this.container.sendChanges();
         }
+        ;
     },
     client: {
+        events: {
+            animateParticles: function (packetData) {
+                for (var i = 0; i < 10; i++) {
+                    Particles.addParticle(7, this.x + .5, this.y + .5, this.z + .5, Math.random() - .5, Math.random() - .5, Math.random() - .5, 0);
+                }
+                ;
+            },
+        },
         updateModel: function () {
-            //itemCenter
-            var idCenter = Network.serverToLocalId(this.networkData.getInt("itemCenterId"));
-            var dataCenter = this.networkData.getInt("itemCenterData");
             this.modelCenter.describeItem({
-                id: idCenter, count: 1, data: dataCenter, size: 0.4
+                id: Network.serverToLocalId(this.networkData.getInt("itemCenterId")), count: 1, data: this.networkData.getInt("itemCenterData"), size: 0.4
             });
             //item0
             var id0 = Network.serverToLocalId(this.networkData.getInt("item0Id"));
             var data0 = this.networkData.getInt("item0Data");
             this.model0.describeItem({
-                id: id0, count: 1, data: data0, size: 0.25
+                id: id0, count: 1, data: data0, size: 0.1
             });
             //item1
             var id1 = Network.serverToLocalId(this.networkData.getInt("item1Id"));
             var data1 = this.networkData.getInt("item1Data");
             this.model1.describeItem({
-                id: id1, count: 1, data: data1, size: 0.2
+                id: id1, count: 1, data: data1, size: 0.1
             });
             //item2
             var id2 = Network.serverToLocalId(this.networkData.getInt("item2Id"));
             var data2 = this.networkData.getInt("item2Data");
             this.model2.describeItem({
-                id: id2, count: 1, data: data2, size: 0.25
+                id: id2, count: 1, data: data2, size: 0.1
             });
             //item3
             var id3 = Network.serverToLocalId(this.networkData.getInt("item3Id"));
             var data3 = this.networkData.getInt("item3Data");
             this.model3.describeItem({
-                id: id3, count: 1, data: data3, size: 0.2
+                id: id3, count: 1, data: data3, size: 0.1
             });
             //item4
             var id4 = Network.serverToLocalId(this.networkData.getInt("item4Id"));
             var data4 = this.networkData.getInt("item4Data");
             this.model4.describeItem({
-                id: id4, count: 1, data: data4, size: 0.25
+                id: id4, count: 1, data: data4, size: 0.1
             });
             //item5
             var id5 = Network.serverToLocalId(this.networkData.getInt("item5Id"));
             var data5 = this.networkData.getInt("item5Data");
             this.model5.describeItem({
-                id: id5, count: 1, data: data5, size: 0.2
+                id: id5, count: 1, data: data5, size: 0.1
             });
             //item6
             var id6 = Network.serverToLocalId(this.networkData.getInt("item6Id"));
             var data6 = this.networkData.getInt("item6Data");
             this.model6.describeItem({
-                id: id6, count: 1, data: data6, size: 0.25
+                id: id6, count: 1, data: data6, size: 0.1
             });
             //item7
             var id7 = Network.serverToLocalId(this.networkData.getInt("item7Id"));
             var data7 = this.networkData.getInt("item7Data");
             this.model7.describeItem({
-                id: id7, count: 1, data: data7, size: 0.2
+                id: id7, count: 1, data: data7, size: 0.1
             });
         },
         load: function () {
-            this.modelCenter = new Animation.Item(this.x + .5, this.y + 1.2, this.z + .5);
+            this.modelCenter = new Animation.Item(this.x + .5, this.y + 1.23, this.z + .5);
             this.model0 = new Animation.Item(this.x + .5, this.y + 1.29, this.z - 0.125);
             this.model1 = new Animation.Item(this.x + .9375, this.y + 1.25, this.z + .0625);
             this.model2 = new Animation.Item(this.x + 1.125, this.y + 1.29, this.z + .5);
@@ -719,16 +682,14 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
             this.model7 = new Animation.Item(this.x + .0625, this.y + 1.25, this.z + .0625);
             this.updateModel();
             this.modelCenter.load();
-            this.model0.load();
-            this.model1.load();
-            this.model2.load();
-            this.model3.load();
-            this.model4.load();
-            this.model5.load();
-            this.model6.load();
-            this.model7.load();
+            for (var i = 0; i <= 7; i++) {
+                var name = "model" + i;
+                var copy = this[name];
+                copy.load();
+            }
+            ;
             this.modelCenter.loadCustom(function () {
-                this.setItemRotation(this.__rotation[0], this.__rotation[1] + Math.PI / 30, this.__rotation[2]);
+                this.setItemRotation(this.__rotation[0], this.__rotation[1] + Math.PI / 50, this.__rotation[2]);
                 this.refresh();
             });
             for (var i = 0; i <= 7; i++) {
@@ -739,46 +700,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
                     this.refresh();
                 });
             }
-            //this.model0.loadCustom(function(){
-            //  this.model0.setItemRotation(Math.PI/2, this.data.Rotation0 + Math.PI/30, Math.PI/2);
-            //  this.model0.refresh();
-            //  this.data.Rotation0+=Math.PI/30;
-            //});
-            //this.model1.loadCustom(function(){
-            //  this.setItemRotation(Math.PI/2, this.data.Rotation1 + Math.PI/30, Math.PI/2);
-            //  this.refresh();
-            //  this.data.Rotation1+=Math.PI/30;
-            //});
-            //this.model2.loadCustom(function(){
-            //  this.model2.setItemRotation(Math.PI/2, this.data.Rotation2 + Math.PI/30, Math.PI/2);
-            //  this.model2.refresh();
-            //  this.data.Rotation2+=Math.PI/30;
-            //});
-            //this.model3.loadCustom(function(){
-            //  this.model3.setItemRotation(Math.PI/2, this.data.Rotation3 + Math.PI/30, Math.PI/2);
-            //  this.model3.refresh();
-            //  this.data.Rotation3+=Math.PI/30;
-            //});
-            //this.model4.loadCustom(function(){
-            //  this.model4.setItemRotation(Math.PI/2, this.data.Rotation4 + Math.PI/30, Math.PI/2);
-            //  this.model4.refresh();
-            //  this.data.Rotation4+=Math.PI/30;
-            //});
-            //this.model5.loadCustom(function(){
-            //  this.model5.setItemRotation(Math.PI/2, this.data.Rotation5 + Math.PI/30, Math.PI/2);
-            //  this.model5.refresh();
-            //  this.data.Rotation5+=Math.PI/30;
-            //});
-            //this.model6.loadCustom(function(){
-            //  this.model6.setItemRotation(Math.PI/2, this.data.Rotation6 + Math.PI/30, Math.PI/2);
-            //  this.model6.refresh();
-            //  this.data.Rotation6+=Math.PI/30;
-            //});
-            //this.model7.loadCustom(function(){
-            //  this.model7.setItemRotation(Math.PI/2, this.data.Rotation7 + Math.PI/30, Math.PI/2);
-            //  this.model7.refresh();
-            //  this.data.Rotation7+=Math.PI/30;
-            //});
+            ;
             var that = this;
             this.networkData.addOnDataChangedListener(function (data, isExternal) {
                 that.updateModel();
