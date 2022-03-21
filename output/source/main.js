@@ -120,6 +120,13 @@ var AltarAPI = {
         };
     },
 };
+var TestParticle = Particles.registerParticleType({
+    texture: "nitor",
+    size: [0.5, 0.8],
+    lifetime: [30, 30],
+    color: [193, 103, 0, 1],
+    render: 1,
+});
 var cloud = Block.createSpecialType({
     base: 35,
     lightopacity: 6,
@@ -481,6 +488,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         ItemsParticles: [],
         BlockPos: [],
         BlockParticles: [],
+        LocalEmiter: null,
     },
     getScreenName: function (player, coords) {
         return "main";
@@ -513,7 +521,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         //Крафт
         if (this.data.isCraftng) {
             this.data.CraftingTime--;
-            this.sendPacket("animateParticles", {});
+            this.sendPacket("AnimateParticles", { Emiter: this.data.LocalEmiter, coords: { x: this.x, y: this.y, z: this.z }, Pos: this.data.BlockPos });
             this.Craft();
         }
         ;
@@ -521,6 +529,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     },
     GetAltarPower: function () {
         this.data.AltarPower = 0;
+        this.data.BlockPos = [];
         var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
         var Structure;
         for (var i = 0; i < AltarBlocks.length; i++) {
@@ -610,9 +619,12 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     },
     client: {
         events: {
-            animateParticles: function (packetData) {
-                for (var i = 0; i < 10; i++) {
-                    Particles.addParticle(7, this.x + .5, this.y + .5, this.z + .5, Math.random() - .5, Math.random() - .5, Math.random() - .5, 0);
+            AnimateParticles: function (Data) {
+                for (var i = 0; i < Data.Pos.length; i++) {
+                    var LocalEmiter = new Particles.ParticleEmitter(Data.coords.x, Data.coords.y, Data.coords.z);
+                    var LocalData = Data.Pos[i];
+                    LocalEmiter.emit(TestParticle, 0, Data.coords.x + LocalData.x + .5, Data.coords.y + LocalData.y + .5, Data.coords.z + LocalData.z + .5, ((LocalData.x + .5) * (-1)) / 60, ((LocalData.y + 1.5) * (-1)) / 60, ((LocalData.z + .5) * (-1)) / 60);
+                    LocalEmiter.release();
                 }
                 ;
             },
@@ -625,49 +637,49 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
             var id0 = Network.serverToLocalId(this.networkData.getInt("item0Id"));
             var data0 = this.networkData.getInt("item0Data");
             this.model0.describeItem({
-                id: id0, count: 1, data: data0, size: 0.1
+                id: id0, count: 1, data: data0, size: 0.25
             });
             //item1
             var id1 = Network.serverToLocalId(this.networkData.getInt("item1Id"));
             var data1 = this.networkData.getInt("item1Data");
             this.model1.describeItem({
-                id: id1, count: 1, data: data1, size: 0.1
+                id: id1, count: 1, data: data1, size: 0.2
             });
             //item2
             var id2 = Network.serverToLocalId(this.networkData.getInt("item2Id"));
             var data2 = this.networkData.getInt("item2Data");
             this.model2.describeItem({
-                id: id2, count: 1, data: data2, size: 0.1
+                id: id2, count: 1, data: data2, size: 0.25
             });
             //item3
             var id3 = Network.serverToLocalId(this.networkData.getInt("item3Id"));
             var data3 = this.networkData.getInt("item3Data");
             this.model3.describeItem({
-                id: id3, count: 1, data: data3, size: 0.1
+                id: id3, count: 1, data: data3, size: 0.2
             });
             //item4
             var id4 = Network.serverToLocalId(this.networkData.getInt("item4Id"));
             var data4 = this.networkData.getInt("item4Data");
             this.model4.describeItem({
-                id: id4, count: 1, data: data4, size: 0.1
+                id: id4, count: 1, data: data4, size: 0.25
             });
             //item5
             var id5 = Network.serverToLocalId(this.networkData.getInt("item5Id"));
             var data5 = this.networkData.getInt("item5Data");
             this.model5.describeItem({
-                id: id5, count: 1, data: data5, size: 0.1
+                id: id5, count: 1, data: data5, size: 0.2
             });
             //item6
             var id6 = Network.serverToLocalId(this.networkData.getInt("item6Id"));
             var data6 = this.networkData.getInt("item6Data");
             this.model6.describeItem({
-                id: id6, count: 1, data: data6, size: 0.1
+                id: id6, count: 1, data: data6, size: 0.25
             });
             //item7
             var id7 = Network.serverToLocalId(this.networkData.getInt("item7Id"));
             var data7 = this.networkData.getInt("item7Data");
             this.model7.describeItem({
-                id: id7, count: 1, data: data7, size: 0.1
+                id: id7, count: 1, data: data7, size: 0.2
             });
         },
         load: function () {

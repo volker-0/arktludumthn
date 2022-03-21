@@ -94,6 +94,10 @@
         {
             "source":"src/assets/models",
             "targetDir":"resources/res/"
+        },
+        {
+            "source":"src/assets/particle-atlas",
+            "targetDir":"resources/res/"
         }
     ]
 }

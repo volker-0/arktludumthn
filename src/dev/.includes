@@ -4,6 +4,8 @@ API/EssenceAPI.js
 API/ItemGenerate.js
 API/AltarAPI.js
 
+particles/CatalizatorParticles.js
+
 block/specialType.js
 block/ore.js
 block/decor.js

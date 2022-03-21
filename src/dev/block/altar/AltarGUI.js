@@ -40,11 +40,12 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     ItemsParticles:[],
     BlockPos:[],
     BlockParticles:[],
+    LocalEmiter: null,
   },
 
   getScreenName: function(player, coords) {
     return "main";
-},
+  },
 
   getScreenByName: function(screenName) {
     return AltarGui;
@@ -71,7 +72,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     //Крафт
     if(this.data.isCraftng){
       this.data.CraftingTime--;
-      this.sendPacket("animateParticles", {});
+      this.sendPacket("AnimateParticles", {Emiter:this.data.LocalEmiter, coords: {x: this.x, y: this.y, z: this.z}, Pos: this.data.BlockPos});
       this.Craft();
     };
     this.networkData.sendChanges();
@@ -79,6 +80,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
 
   GetAltarPower: function(){
     this.data.AltarPower = 0;
+    this.data.BlockPos = [];
     let AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
     let Structure;
     for (let i = 0; i < AltarBlocks.length; i++) {
@@ -154,9 +156,12 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
 
   client:{
     events:{
-      animateParticles: function(packetData) {
-        for (var i = 0; i < 10; i++) {
-          Particles.addParticle(7, this.x + .5, this.y + .5, this.z + .5, Math.random() - .5, Math.random() - .5, Math.random() - .5, 0);
+      AnimateParticles: function(Data) {
+        for(let i =0; i< Data.Pos.length;i++){
+          let LocalEmiter = new Particles.ParticleEmitter(Data.coords.x, Data.coords.y, Data.coords.z);
+          let LocalData = Data.Pos[i];
+          LocalEmiter.emit(TestParticle,0,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, ((LocalData.x+ .5) * (-1))/60, ((LocalData.y+ 1.5) * (-1))/60, ((LocalData.z+ .5) * (-1))/60)
+          LocalEmiter.release();
         };
       },
     },
