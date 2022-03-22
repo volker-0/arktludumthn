@@ -158,10 +158,11 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     events:{
       AnimateParticles: function(Data) {
         for(let i =0; i< Data.Pos.length;i++){
-          let LocalEmiter = new Particles.ParticleEmitter(Data.coords.x, Data.coords.y, Data.coords.z);
+          //let LocalEmiter = new Particles.ParticleEmitter(Data.coords.x, Data.coords.y, Data.coords.z);
           let LocalData = Data.Pos[i];
-          LocalEmiter.emit(TestParticle,0,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, ((LocalData.x+ .5) * (-1))/60, ((LocalData.y+ 1.5) * (-1))/60, ((LocalData.z+ .5) * (-1))/60)
-          LocalEmiter.release();
+          //LocalEmiter.emit(TestParticle,0,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
+          //LocalEmiter.release();
+          Particles.addParticle(TestParticle,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
         };
       },
     },

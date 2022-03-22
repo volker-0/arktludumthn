@@ -1,9 +1,9 @@
 let TestParticle = Particles.registerParticleType({
   texture: "nitor",
-  size: [0.5, 0.8],
-  lifetime: [30, 30],
+  size: [1, 2],
+  lifetime: [60, 60],
 
-  color: [193, 103, 0, 1],
+  color: [1, 1, 1, 1],
 
   render: 1,
 })
