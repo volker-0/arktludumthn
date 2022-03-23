@@ -2,9 +2,10 @@ header.js
 
 API/EssenceAPI.js
 API/ItemGenerate.js
-API/AltarAPI.js
 
 particles/CatalizatorParticles.js
+
+API/AltarAPI.js
 
 block/specialType.js
 block/ore.js

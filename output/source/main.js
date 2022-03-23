@@ -64,17 +64,52 @@ function ItemGenerate() {
         }
     };
 }
+var GoldParticle = Particles.registerParticleType({
+    texture: "nitor",
+    size: [0.25, 1.5],
+    lifetime: [60, 60],
+    color: [0.77, 0.67, 0, 0.4],
+    render: 0,
+});
+var EmeraldParticle = Particles.registerParticleType({
+    texture: "nitor",
+    size: [0.25, 1.5],
+    lifetime: [60, 60],
+    color: [0, 0.69, 0.17, 0.4],
+    render: 0,
+});
+var IronParticle = Particles.registerParticleType({
+    texture: "nitor",
+    size: [0.25, 1.5],
+    lifetime: [60, 60],
+    color: [0.7, 0.7, 0.7, 0.4],
+    render: 0,
+});
+var LypisParticle = Particles.registerParticleType({
+    texture: "nitor",
+    size: [0.25, 1.5],
+    lifetime: [60, 60],
+    color: [0.6, 0.34, 0.64, 0.4],
+    render: 0,
+});
+var DiamondParticle = Particles.registerParticleType({
+    texture: "nitor",
+    size: [0.25, 1.5],
+    lifetime: [60, 60],
+    color: [0.12, 0.74, 0.70, 0.4],
+    render: 0,
+});
 var AltarAPI = {
     AltarBase: {
         98: 1,
         112: 2,
     },
     Catalizator: {
-        22: [5, 7],
-        57: [7, 7],
-        41: [10, 7],
-        42: [3, 7],
-        133: [9, 7],
+        22: [5, LypisParticle],
+        57: [7, DiamondParticle],
+        41: [10, GoldParticle],
+        42: [3, IronParticle],
+        133: [9, EmeraldParticle],
     },
     Recipes: {},
     BaseBlock: function (blockid, power) {
@@ -120,13 +155,6 @@ var AltarAPI = {
         };
     },
 };
-var TestParticle = Particles.registerParticleType({
-    texture: "nitor",
-    size: [4, 5],
-    lifetime: [60, 60],
-    color: [0.77, 0.67, 0, 1],
-    render: 1,
-});
 var cloud = Block.createSpecialType({
     base: 35,
     lightopacity: 6,
@@ -463,7 +491,7 @@ var AltarGui = new UI.StandardWindow({
         textures: {}
     },
     drawing: [
-        { type: "bitmap", x: 0, y: 0, bitmap: "AltarStar", width: 999, height: 600 }
+        { type: "bitmap", x: 0, y: 0, bitmap: "AltarStar", width: 997, height: 600 }
     ],
     elements: {
         "slot0": { type: "slot", x: 465, y: 20, size: 70, maxStackSize: 1 },
@@ -488,7 +516,6 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         ItemsParticles: [],
         BlockPos: [],
         BlockParticles: [],
-        LocalEmiter: null,
     },
     getScreenName: function (player, coords) {
         return "main";
@@ -521,7 +548,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         //Крафт
         if (this.data.isCraftng) {
             this.data.CraftingTime--;
-            this.sendPacket("AnimateParticles", { Emiter: this.data.LocalEmiter, coords: { x: this.x, y: this.y, z: this.z }, Pos: this.data.BlockPos });
+            this.sendPacket("AnimateParticles", { Particles: this.data.BlockParticles, coords: { x: this.x, y: this.y, z: this.z }, Pos: this.data.BlockPos });
             this.Craft();
         }
         ;
@@ -530,6 +557,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     GetAltarPower: function () {
         this.data.AltarPower = 0;
         this.data.BlockPos = [];
+        this.data.BlockParticles = [];
         var AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
         var Structure;
         for (var i = 0; i < AltarBlocks.length; i++) {
@@ -621,11 +649,8 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         events: {
             AnimateParticles: function (Data) {
                 for (var i = 0; i < Data.Pos.length; i++) {
-                    //let LocalEmiter = new Particles.ParticleEmitter(Data.coords.x, Data.coords.y, Data.coords.z);
                     var LocalData = Data.Pos[i];
-                    //LocalEmiter.emit(TestParticle,0,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
-                    //LocalEmiter.release();
-                    Particles.addParticle(TestParticle, Data.coords.x + LocalData.x + .5, Data.coords.y + LocalData.y + .5, Data.coords.z + LocalData.z + .5, (LocalData.x * (-1)) / 60, ((LocalData.y * (-1)) + 0.78) / 60, (LocalData.z * (-1)) / 60);
+                    Particles.addParticle(Data.Particles[i], Data.coords.x + LocalData.x + .5, Data.coords.y + LocalData.y + .5, Data.coords.z + LocalData.z + .5, (LocalData.x * (-1)) / 60, ((LocalData.y * (-1)) + 0.78) / 60, (LocalData.z * (-1)) / 60);
                 }
                 ;
             },

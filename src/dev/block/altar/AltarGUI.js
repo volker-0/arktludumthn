@@ -40,7 +40,6 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     ItemsParticles:[],
     BlockPos:[],
     BlockParticles:[],
-    LocalEmiter: null,
   },
 
   getScreenName: function(player, coords) {
@@ -72,7 +71,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     //Крафт
     if(this.data.isCraftng){
       this.data.CraftingTime--;
-      this.sendPacket("AnimateParticles", {Emiter:this.data.LocalEmiter, coords: {x: this.x, y: this.y, z: this.z}, Pos: this.data.BlockPos});
+      this.sendPacket("AnimateParticles", {Particles:this.data.BlockParticles, coords: {x: this.x, y: this.y, z: this.z}, Pos: this.data.BlockPos});
       this.Craft();
     };
     this.networkData.sendChanges();
@@ -81,6 +80,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
   GetAltarPower: function(){
     this.data.AltarPower = 0;
     this.data.BlockPos = [];
+    this.data.BlockParticles = [];
     let AltarSource = new BlockSource.getDefaultForDimension(this.dimension);
     let Structure;
     for (let i = 0; i < AltarBlocks.length; i++) {
@@ -157,13 +157,12 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
   client:{
     events:{
       AnimateParticles: function(Data) {
-        for(let i =0; i< Data.Pos.length;i++){
-          //let LocalEmiter = new Particles.ParticleEmitter(Data.coords.x, Data.coords.y, Data.coords.z);
-          let LocalData = Data.Pos[i];
-          //LocalEmiter.emit(TestParticle,0,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
-          //LocalEmiter.release();
-          Particles.addParticle(TestParticle,Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
-        };
+        if(Data.CraftingTime>=60){
+          for(let i =0; i< Data.Pos.length;i++){
+            let LocalData = Data.Pos[i];
+            Particles.addParticle(Data.Particles[i],Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
+          };
+        }
       },
     },
     updateModel: function() {

@@ -5,11 +5,11 @@ let AltarAPI = {
   },
 
   Catalizator:{
-    22: [5,7],
-    57: [7, 7],
-    41: [10, 7],
-    42: [3, 7],
-    133: [9, 7],
+    22: [5,LypisParticle],
+    57: [7, DiamondParticle],
+    41: [10, GoldParticle],
+    42: [3, IronParticle],
+    133: [9, EmeraldParticle],
   },
 
   Recipes:{
