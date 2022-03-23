@@ -60,4 +60,8 @@ craft/furnace.js
 craft/workbench.js
 craft/altar.js
 
+mobs/holybot.js
+mobs/naida.js
+mobs/kraken.js
+
 creative_tab.js

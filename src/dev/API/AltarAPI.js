@@ -30,9 +30,9 @@ let AltarAPI = {
     this.Catalizator[blockid] = [power, particle];
   },
 
-  CatalizatorBlockArr(blockidArr, powerArr){
+  CatalizatorBlockArr(blockidArr, powerArr, particleArr){
     for(let i = 0; i < blockidArr.length; i++){
-      this.Catalizator[blockidArr[i]] = powerArr[i];
+      this.Catalizator[blockidArr[i]] = [powerArr[i], particleArr[i]];
     };
   },
 
