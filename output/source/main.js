@@ -122,9 +122,9 @@ var AltarAPI = {
 };
 var TestParticle = Particles.registerParticleType({
     texture: "nitor",
-    size: [1, 2],
+    size: [4, 5],
     lifetime: [60, 60],
-    color: [1, 1, 1, 1],
+    color: [0.77, 0.67, 0, 1],
     render: 1,
 });
 var cloud = Block.createSpecialType({

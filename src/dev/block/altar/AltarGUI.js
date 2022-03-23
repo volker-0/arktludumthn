@@ -11,7 +11,7 @@ let AltarGui = new UI.StandardWindow({
     }
   },
   drawing: [
-    { type: "bitmap", x: 0, y: 0, bitmap: "AltarStar", width: 999, height:600 }
+    { type: "bitmap", x: 0, y: 0, bitmap: "AltarStar", width: 997, height:600 }
   ],
   elements:{
     "slot0" : {type: "slot", x: 465, y: 20, size: 70, maxStackSize: 1},
