@@ -14,6 +14,10 @@ block/altar/AltarStructure.js
 block/altar/AltarBlock.js
 block/altar/AltarGUI.js
 
+liquid/HollyWater.js
+
+biomes/Holly_lands.js
+
 item/ingot.js
 item/armor/ignis.js
 item/armor/terra.js

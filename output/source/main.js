@@ -66,35 +66,35 @@ function ItemGenerate() {
 }
 var GoldParticle = Particles.registerParticleType({
     texture: "nitor",
-    size: [0.25, 1.5],
+    size: [0.25, 2],
     lifetime: [60, 60],
     color: [0.77, 0.67, 0, 0.4],
     render: 0,
 });
 var EmeraldParticle = Particles.registerParticleType({
     texture: "nitor",
-    size: [0.25, 1.5],
+    size: [0.25, 2],
     lifetime: [60, 60],
     color: [0, 0.69, 0.17, 0.4],
     render: 0,
 });
 var IronParticle = Particles.registerParticleType({
     texture: "nitor",
-    size: [0.25, 1.5],
+    size: [0.25, 2],
     lifetime: [60, 60],
     color: [0.7, 0.7, 0.7, 0.4],
     render: 0,
 });
 var LypisParticle = Particles.registerParticleType({
     texture: "nitor",
-    size: [0.25, 1.5],
+    size: [0.25, 2],
     lifetime: [60, 60],
-    color: [0.6, 0.34, 0.64, 0.4],
+    color: [0.11, 0.31, 0.74, 0.4],
     render: 0,
 });
 var DiamondParticle = Particles.registerParticleType({
     texture: "nitor",
-    size: [0.25, 1.5],
+    size: [0.25, 2],
     lifetime: [60, 60],
     color: [0.12, 0.74, 0.70, 0.4],
     render: 0,
@@ -124,9 +124,9 @@ var AltarAPI = {
     CatalizatorBlock: function (blockid, power, particle) {
         this.Catalizator[blockid] = [power, particle];
     },
-    CatalizatorBlockArr: function (blockidArr, powerArr) {
+    CatalizatorBlockArr: function (blockidArr, powerArr, particleArr) {
         for (var i = 0; i < blockidArr.length; i++) {
-            this.Catalizator[blockidArr[i]] = powerArr[i];
+            this.Catalizator[blockidArr[i]] = [powerArr[i], particleArr[i]];
         }
         ;
     },
@@ -648,11 +648,13 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     client: {
         events: {
             AnimateParticles: function (Data) {
-                for (var i = 0; i < Data.Pos.length; i++) {
-                    var LocalData = Data.Pos[i];
-                    Particles.addParticle(Data.Particles[i], Data.coords.x + LocalData.x + .5, Data.coords.y + LocalData.y + .5, Data.coords.z + LocalData.z + .5, (LocalData.x * (-1)) / 60, ((LocalData.y * (-1)) + 0.78) / 60, (LocalData.z * (-1)) / 60);
+                if (Data.CraftingTime >= 60) {
+                    for (var i = 0; i < Data.Pos.length; i++) {
+                        var LocalData = Data.Pos[i];
+                        Particles.addParticle(Data.Particles[i], Data.coords.x + LocalData.x + .5, Data.coords.y + LocalData.y + .5, Data.coords.z + LocalData.z + .5, (LocalData.x * (-1)) / 60, ((LocalData.y * (-1)) + 0.78) / 60, (LocalData.z * (-1)) / 60);
+                    }
+                    ;
                 }
-                ;
             },
         },
         updateModel: function () {
@@ -757,6 +759,44 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         },
     },
 });
+LiquidRegistry.registerLiquid("Hollywater", "Святая вода", ["holywater"]);
+Block.createLiquidBlock("Hollywater", {
+    name: "Святая вода",
+    still: {
+        texture: ["holywater", 0]
+    },
+    flowing: {
+        texture: ["holywater", 0]
+    },
+    bucket: {
+        texture: { name: "holywaterBucket", meta: 0 },
+    },
+});
+Block.registerEntityInsideFunction("Hollywater_still", function (blockCoords, block, entity) {
+    Entity.addEffect(entity, 10, 1, 40, true, false);
+});
+var HollyLands = new CustomBiome("Holly_lands");
+HollyLands.setFoliageColor(82, 196, 168);
+HollyLands.setGrassColor(24, 196, 153);
+HollyLands.setSkyColor(16, 232, 228);
+HollyLands.setServerJson(JSON.stringify({
+    "minecraft:overworld_height": {
+        "noise_type": "default"
+    },
+    "overworld": {},
+    "Holly_lands": {},
+    "minecraft:surface_parameters": {
+        "sea_material": "minecraft:block_hollywater_still",
+    },
+    "minecraft:overworld_generation_rules": {
+        "hills_transformation": "jungle_hills",
+        "generate_for_climates": [
+            ["cold", 5],
+            ["medium", 20],
+            ["warm", 35],
+        ]
+    }
+}));
 IDRegistry.genItemID("aeriteingot");
 Item.createItem("aeriteingot", "Аэритовый слиток", { name: "aeriteingot", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("territeingot");
@@ -13073,6 +13113,37 @@ Recipes.addShaped({ id: ItemID.ElementalGuardian, count: 1, data: 0 }, ["aba", "
 Recipes.addShaped({ id: ItemID.ArsenalGuardian, count: 1, data: 0 }, [" a ", "bcd", "cec"], ['a', ItemID.evilfragment, 0, 'b', ItemID.energyfragment, 0, 'c', ItemID.krackeningot, 0, 'd', ItemID.coldfragment, 0, 'e', ItemID.millionfragment, 0]);
 AltarAPI.BaseBlock(BlockID.azatotbricks, 50);
 AltarAPI.AddAltarRecipe(0, 0, ItemID.aercore, 0, ItemID.terracore, 0, ItemID.igniscore, 0, ItemID.aquacore, ItemID.elementalcore, 10);
+Callback.addCallback("ItemUse", function (coords, item) {
+    coords = coords.relative;
+    if (item.id == ItemID.hollybot) {
+        Entity.spawn(coords.x, coords.y, coords.z, "ark:holybot");
+        Game.message("Призван проклятый механизмм");
+        MusicPlayer.play("Holybot.music");
+    }
+    ;
+});
+Callback.addCallback("EntityDeath", function (entity, attacker, damageType) {
+    if (Entity.getTypeAddon(entity) == "ark:holybot") {
+        MusicPlayer.stop();
+    }
+    ;
+});
+Callback.addCallback("ItemUse", function (coords, item) {
+    coords = coords.relative;
+    if (item.id == ItemID.Naida) {
+        Entity.spawn(coords.x, coords.y, coords.z, "ark:naida");
+        Game.message("Призвана Наида");
+    }
+    ;
+});
+Callback.addCallback("ItemUse", function (coords, item) {
+    coords = coords.relative;
+    if (item.id == ItemID.Kracken) {
+        Entity.spawn(coords.x, coords.y, coords.z, "ark:kraken");
+        Game.message("Призван Кракен");
+    }
+    ;
+});
 Item.addCreativeGroup("aer_armor", "броня воздуха", [
     ItemID.aerhelmet,
     ItemID.aerchestplate,
