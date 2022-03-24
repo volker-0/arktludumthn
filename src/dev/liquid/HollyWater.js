@@ -14,6 +14,6 @@ Block.createLiquidBlock("Hollywater",
   },
 });
 
-Block.registerEntityInsideFunction("Hollywater_still", function(blockCoords, block, entity){
-  Entity.addEffect(entity, 10, 1, 40, true, false);
-});
+//Block.registerEntityInsideFunction("Hollywater_still", function(blockCoords, block, entity){
+//  Entity.addEffect(entity, 10, 1, 40, true, false);
+//});
