@@ -4,10 +4,10 @@ HollyLands.setFoliageColor(0.32, 0.77, 0.66);
 
 HollyLands.setGrassColor(0.09, 0.76, 0.6);
 
-HollyLands.setSkyColor(0.06, 0.91, 0.89);
+//HollyLands.setSkyColor(0.06, 0.91, 0.89);
 
 HollyLands.setServerJson(JSON.stringify({
-"minecraft:climate": {
+      "minecraft:climate": {
         "downfall": 0.0,
         "snow_accumulation": [
           0.0,
@@ -36,19 +36,19 @@ HollyLands.setServerJson(JSON.stringify({
       },
       "minecraft:overworld_generation_rules": {
         "hills_transformation": "forest_hills",
-        "river_transformation": "frozen_river",
+        "river_transformation": "river",
         "generate_for_climates": [
           [
-            "cold",
+            "warm",
             25
           ],
           [
             "medium",
             32
-          ]  
+          ]
         ],
         "mutate_transformation": "birch_forest",
-        "shore_transformation": "cold_beach"
+        "shore_transformation": "beach"
       } 
 }));
 

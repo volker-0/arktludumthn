@@ -778,7 +778,7 @@ Block.createLiquidBlock("Hollywater", {
 var HollyLands = new CustomBiome("holly_lands");
 HollyLands.setFoliageColor(0.32, 0.77, 0.66);
 HollyLands.setGrassColor(0.09, 0.76, 0.6);
-HollyLands.setSkyColor(0.06, 0.91, 0.89);
+//HollyLands.setSkyColor(0.06, 0.91, 0.89);
 HollyLands.setServerJson(JSON.stringify({
     "minecraft:climate": {
         "downfall": 0.0,
@@ -809,10 +809,9 @@ HollyLands.setServerJson(JSON.stringify({
     },
     "minecraft:overworld_generation_rules": {
         "hills_transformation": "forest_hills",
-        "river_transformation": "frozen_river",
         "generate_for_climates": [
             [
-                "cold",
+                "warm",
                 25
             ],
             [
@@ -821,7 +820,7 @@ HollyLands.setServerJson(JSON.stringify({
             ]
         ],
         "mutate_transformation": "birch_forest",
-        "shore_transformation": "cold_beach"
+        "shore_transformation": "stone_beach"
     }
 }));
 HollyLands.setClientJson(JSON.stringify({
@@ -831,6 +830,7 @@ HollyLands.setClientJson(JSON.stringify({
     "water_fog_distance": 10,
     "fog_identifier": "ark:holy"
 }));
+//    "river_transformation": "river",
 IDRegistry.genItemID("aeriteingot");
 Item.createItem("aeriteingot", "Аэритовый слиток", { name: "aeriteingot", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("territeingot");

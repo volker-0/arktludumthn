@@ -2,9 +2,10 @@
     "global": {
         "info": {
             "name": "Arktludumthn",
+            "description": "Global RPG mod",
             "author": "Volker",
             "version": "1.0",
-            "description": "Global RPG mod"
+            "icon": "src/icon.png"
         },
         "api": "CoreEngine"
     },
@@ -85,10 +86,6 @@
         },
         {
             "source": "src/structure",
-            "targetDir":"."
-        },
-        {
-            "source":"src/mod_icon.png",
             "targetDir":"."
         },
         {
