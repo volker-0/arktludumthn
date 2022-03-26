@@ -775,10 +775,42 @@ Block.createLiquidBlock("Hollywater", {
 //Block.registerEntityInsideFunction("Hollywater_still", function(blockCoords, block, entity){
 //  Entity.addEffect(entity, 10, 1, 40, true, false);
 //});
+var HollyRiver = new CustomBiome("holly_river");
+HollyRiver.setFoliageColor(0.32, 0.77, 0.66);
+HollyRiver.setGrassColor(0.09, 0.76, 0.6);
+HollyRiver.setServerJson(JSON.stringify({
+    "minecraft:climate": {
+        "downfall": 0.5,
+        "snow_accumulation": [
+            0,
+            0.125
+        ],
+        "temperature": 0.5
+    },
+    "minecraft:overworld_height": {
+        "noise_type": "river"
+    },
+    "overworld": {},
+    "river": {},
+    "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "sea_floor_material": "minecraft:gravel",
+        "foundation_material": "minecraft:stone",
+        "mid_material": "minecraft:dirt",
+        "top_material": "minecraft:grass",
+        "sea_material": "minecraft:block_Hollywater_still"
+    }
+}));
+HollyRiver.setClientJson(JSON.stringify({
+    "water_surface_color": "#3f515d",
+    "water_fog_color": "#294252",
+    "water_surface_transparency": 0.3,
+    "water_fog_distance": 10,
+    "fog_identifier": "ark:holy"
+}));
 var HollyLands = new CustomBiome("holly_lands");
 HollyLands.setFoliageColor(0.32, 0.77, 0.66);
 HollyLands.setGrassColor(0.09, 0.76, 0.6);
-//HollyLands.setSkyColor(0.06, 0.91, 0.89);
 HollyLands.setServerJson(JSON.stringify({
     "minecraft:climate": {
         "downfall": 0.0,
@@ -798,7 +830,8 @@ HollyLands.setServerJson(JSON.stringify({
     "animal": {},
     "monster": {},
     "overworld": {},
-    "desolation": {},
+    "holly_lands": {},
+    "forest": {},
     "minecraft:surface_parameters": {
         "top_material": "minecraft:grass",
         "mid_material": "minecraft:dirt",
@@ -808,19 +841,20 @@ HollyLands.setServerJson(JSON.stringify({
         "sea_floor_depth": 7
     },
     "minecraft:overworld_generation_rules": {
-        "hills_transformation": "forest_hills",
+        "hills_transformation": "holly_lands",
+        "river_transformation": "holly_river",
         "generate_for_climates": [
             [
                 "warm",
-                25
+                1
             ],
             [
                 "medium",
-                32
+                2
             ]
         ],
-        "mutate_transformation": "birch_forest",
-        "shore_transformation": "stone_beach"
+        "mutate_transformation": "holly_lands",
+        "shore_transformation": "beach"
     }
 }));
 HollyLands.setClientJson(JSON.stringify({
@@ -830,7 +864,6 @@ HollyLands.setClientJson(JSON.stringify({
     "water_fog_distance": 10,
     "fog_identifier": "ark:holy"
 }));
-//    "river_transformation": "river",
 IDRegistry.genItemID("aeriteingot");
 Item.createItem("aeriteingot", "Аэритовый слиток", { name: "aeriteingot", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("territeingot");

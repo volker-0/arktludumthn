@@ -1,0 +1,68 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:pixie",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:health": {
+				"value": 5,
+				"max": 5
+			},
+			"minecraft:movement": {
+				"value": 0.2
+			},
+			"minecraft:physics": {},
+			"minecraft:breathable": {
+				"total_supply": 20,
+				"suffocate_time": 15
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"holly"
+				]
+			},
+			"minecraft:pushable": {},
+			"minecraft:can_fly": true,
+			"minecraft:flying_speed": {
+				"value": 0.6
+			},
+			"minecraft:movement.fly": {
+				"max_turn": 30
+			},
+			"minecraft:navigation.fly": {
+				"avoid_water": true,
+				"avoid_damage_blocks": true,
+				"can_path_over_water": true,
+				"can_path_over_lava": true,
+				"can_path_from_air": true,
+				"can_walk": false,
+				"can_swim": false,
+				"can_jump": false,
+				"can_sink": true
+			},
+			"minecraft:behavior.move_to_random_block": {
+				"priority": 0,
+				"within_radius": 0,
+				"block_distance": 20,
+				"speed_multiplier": 3
+			},
+			"minecraft:collision_box": {
+				"height": 0.3125,
+				"width": 0.125
+			},
+			"minecraft:scale": {
+				"value": 3
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 3
+			}
+		},
+		"events": {}
+	}
+}
