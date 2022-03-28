@@ -9,11 +9,20 @@ Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
 Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
     for(var i=0;i<10;i++){
         var coords = GenerationUtils.randomCoords(chunkX, chunkZ, 1, 20);
-            GenerationUtils.generateOre(coords.x, coords.y, coords.z, BlockID.heartore, 0, 2);
+            GenerationUtils.generateOre(coords.x, coords.y, coords.z, BlockID.heartore, 0, 6);
     }
 }
 )
 
+Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
+    for(var i=0;i<10;i++){
+        var coords = GenerationUtils.randomCoords(chunkX, chunkZ, 1, 100);
+        if(World.getBiome(coords.x,coords.y,coords.z)==HollyLands.id){ 
+            GenerationUtils.generateOre(coords.x, coords.y, coords.z, BlockID.hollyore, 0, 10);
+        }
+    }
+}
+)
 
 Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
     for(var i=0;i<10;i++){

@@ -64,6 +64,21 @@ function ItemGenerate() {
         }
     };
 }
+var ArmorAPI = {
+    RegisterArmor: function (id, def) {
+        Armor.registerOnHurtListener(id, function (item, slot, player, value, type) {
+            var absorption = Entity.getAttribute(player, "health");
+            Game.message("start ".concat(absorption.getValue()));
+            //absorption.setMaxValue(value);
+            absorption.setValue(value + 5);
+            Game.message("default ".concat(absorption.getDefaultValue()));
+            Game.message("max ".concat(absorption.getMaxValue()));
+            Game.message("min ".concat(absorption.getMinValue()));
+            Game.message("end ".concat(absorption.getValue()));
+        });
+    },
+};
+ArmorAPI.RegisterArmor(ItemID.aerchestplate, 10);
 var GoldParticle = Particles.registerParticleType({
     texture: "nitor",
     size: [0.25, 2],
@@ -215,6 +230,16 @@ Block.setDestroyLevel(BlockID.territeore, 1);
 Block.registerDropFunction("territeore", function (coords, blockID, blockData, level) {
     if (level > 2) {
         return [[BlockID.territeore, 1, 0]];
+    }
+    return [];
+}, 1);
+IDRegistry.genBlockID("hollyore");
+Block.createBlock("hollyore", [{ name: "Святая руда", texture: [["hollyore", 0], ["hollyore", 0], ["hollyore", 0], ["hollyore", 0], ["hollyore", 0], ["hollyore", 0]], inCreative: true }]);
+ToolAPI.registerBlockMaterial(BlockID.hollyore, "stone", 2, true);
+Block.setDestroyLevel(BlockID.hollyore, 2);
+Block.registerDropFunction("hollyore", function (coords, blockID, blockData, level) {
+    if (level > 2) {
+        return [[BlockID.hollyore, 1, 0]];
     }
     return [];
 }, 1);
@@ -12713,7 +12738,15 @@ Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
 Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
     for (var i = 0; i < 10; i++) {
         var coords = GenerationUtils.randomCoords(chunkX, chunkZ, 1, 20);
-        GenerationUtils.generateOre(coords.x, coords.y, coords.z, BlockID.heartore, 0, 2);
+        GenerationUtils.generateOre(coords.x, coords.y, coords.z, BlockID.heartore, 0, 6);
+    }
+});
+Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
+    for (var i = 0; i < 10; i++) {
+        var coords = GenerationUtils.randomCoords(chunkX, chunkZ, 1, 100);
+        if (World.getBiome(coords.x, coords.y, coords.z) == HollyLands.id) {
+            GenerationUtils.generateOre(coords.x, coords.y, coords.z, BlockID.hollyore, 0, 10);
+        }
     }
 });
 Callback.addCallback("GenerateChunkUnderground", function (chunkX, chunkZ) {
@@ -12888,6 +12921,8 @@ Recipes.addFurnace(BlockID.heartore, ItemID.heartingot, 1);
 Recipes.addFurnace(BlockID.chaosore, ItemID.chaosingot, 1);
 Recipes.addFurnace(BlockID.goldyore, ItemID.goldyingot, 1);
 Recipes.addFurnace(BlockID.depthore, ItemID.depthingot, 1);
+Recipes.addFurnace(BlockID.depthore, ItemID.depthingot, 1);
+Recipes.addFurnace(BlockID.hollyore, ItemID.hollyingot, 1);
 Recipes.addShaped({ id: ItemID.Kracken, count: 1, data: 0 }, ["aba", "bcb", "aba"], ['a', BlockID.ship, 0, 'b', 367, 0, 'c', 368, 0]);
 Recipes.addShaped({ id: ItemID.ArsenalCreator, count: 1, data: 0 }, ["aba", "b b", "aba"], ['a', ItemID.ArsenalGuardian, 0, 'b', ItemID.cosmiliteingot, 0]);
 Recipes.addShaped({ id: ItemID.CaptainOfArkOfTheCosmos, count: 1, data: 0 }, ["aba", "b b", "aba"], ['a', ItemID.omikroneingot, 0, 'b', ItemID.cosmiliteingot, 0]);

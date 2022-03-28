@@ -53,6 +53,17 @@ Block.registerDropFunction("territeore", function(coords, blockID, blockData, le
 	return [];
 }, 1);
 
+IDRegistry.genBlockID("hollyore");
+Block.createBlock("hollyore", [{name: "Святая руда", texture: [["hollyore", 0], ["hollyore", 0], ["hollyore", 0], ["hollyore", 0], ["hollyore", 0], ["hollyore", 0]], inCreative: true}]);
+ToolAPI.registerBlockMaterial(BlockID.hollyore, "stone", 2, true);
+Block.setDestroyLevel (BlockID.hollyore, 2) 
+Block.registerDropFunction("hollyore", function(coords, blockID, blockData, level){
+	if (level > 2){
+		return [[BlockID.hollyore, 1, 0]]
+	}
+	return [];
+}, 1);
+
 IDRegistry.genBlockID("cometiteore");
 Block.createBlock("cometiteore", [{name: "Кометитовая руда", texture: [["cometiteore", 0], ["cometiteore", 0], ["cometiteore", 0], ["cometiteore", 0], ["cometiteore", 0], ["cometiteore", 0]], inCreative: true}]);
 ToolAPI.registerBlockMaterial(BlockID.cometiteore, "stone", 3, true);

@@ -1,0 +1,57 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ark:unicorn",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:health": {
+				"value": 10,
+				"max": 10
+			},
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 1
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:movement": {
+				"value": 0.2
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:navigation.walk": {
+				"can_walk": true
+			},
+			"minecraft:jump.static": {},
+			"minecraft:behavior.float": {},
+			"minecraft:behavior.random_look_around": {
+				"priority": 3
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 0
+			}
+		},
+		"events": {}
+	}
+}

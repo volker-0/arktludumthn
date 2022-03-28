@@ -17,3 +17,7 @@ Recipes.addFurnace(BlockID.chaosore, ItemID.chaosingot, 1);
 Recipes.addFurnace(BlockID.goldyore, ItemID.goldyingot, 1)
 
 Recipes.addFurnace(BlockID.depthore, ItemID.depthingot, 1);
+
+Recipes.addFurnace(BlockID.depthore, ItemID.depthingot, 1);
+
+Recipes.addFurnace(BlockID.hollyore, ItemID.hollyingot, 1);

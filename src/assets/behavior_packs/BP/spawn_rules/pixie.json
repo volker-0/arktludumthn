@@ -1,5 +1,5 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.16.0",
 	"minecraft:spawn_rules": {
 		"description": {
 			"identifier": "ark:pixie",
@@ -15,17 +15,11 @@
 					"min_size": 1,
 					"max_size": 2
 				},
-				"minecraft:biome_filter": [
-          {
-            "any_of": [
-              {
-                "test": "has_biome_tag",
-                "operator": "==",
-                "value": "holly_lands"
-              }
-            ]
-          }
-        ]
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"operator": "==",
+					"value": "holly_lands"
+				}
 			}
 		]
 	}

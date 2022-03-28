@@ -4,3 +4,5 @@ item.spawn_egg.entity.ark:fish_kraken.name=Spawn Рыба
 entity.ark:fish_kraken.name=Рыба
 item.spawn_egg.entity.ark:pixie.name=Spawn Пикси
 entity.ark:pixie.name=Пикси
+item.spawn_egg.entity.ark:unicorn.name=Spawn Единорог
+entity.ark:unicorn.name=Единорог
