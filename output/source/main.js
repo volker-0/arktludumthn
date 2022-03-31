@@ -64,21 +64,38 @@ function ItemGenerate() {
         }
     };
 }
-var ArmorAPI = {
-    RegisterArmor: function (id, def) {
-        Armor.registerOnHurtListener(id, function (item, slot, player, value, type) {
-            var absorption = Entity.getAttribute(player, "health");
-            Game.message("start ".concat(absorption.getValue()));
-            //absorption.setMaxValue(value);
-            absorption.setValue(value + 5);
-            Game.message("default ".concat(absorption.getDefaultValue()));
-            Game.message("max ".concat(absorption.getMaxValue()));
-            Game.message("min ".concat(absorption.getMinValue()));
-            Game.message("end ".concat(absorption.getValue()));
-        });
-    },
+ArmorAPI = {
+    Armor: {},
+    RegisterArmor: function (id, def) { },
 };
 ArmorAPI.RegisterArmor(ItemID.aerchestplate, 10);
+Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, damageType) {
+    Game.message(damageType);
+    if (damageType != -4151) {
+        var def = 0;
+        var startHealth_1 = Entity.getMaxHealth(entity);
+        for (var i = 0; i < 4; i++) {
+            if (Entity.getArmorSlot(entity, i).id in ArmorAPI.Armor) {
+                for (var id in ArmorAPI.Armor) {
+                    if (Entity.getArmorSlot(entity, i).id == id) {
+                        def += ArmorAPI.Armor[id];
+                        break;
+                    }
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        if (damageValue > def) {
+            Entity.setMaxHealth(entity, Entity.getMaxHealth(entity) + def);
+            Entity.setHealth(entity, Entity.getMaxHealth(entity));
+            runOnMainThread(function () {
+                Entity.setMaxHealth(entity, startHealth_1);
+            });
+        }
+    }
+});
 var GoldParticle = Particles.registerParticleType({
     texture: "nitor",
     size: [0.25, 2],
