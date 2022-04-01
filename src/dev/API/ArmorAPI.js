@@ -2,34 +2,46 @@ ArmorAPI ={
   Armor:{
 
   },
-  RegisterArmor: function(id, def){},
+  RegisterArmor: function(id, def){
+    this.Armor[id]=def;
+  },
 };
 
-ArmorAPI.RegisterArmor(ItemID.aerchestplate, 10)
+ArmorAPI.RegisterArmor(ItemID.aerchestplate, 2)
 
 Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damageType){
-  Game.message(damageType);
-  if(damageType != -4151){
-    let def = 0;
+  //Game.message("type " +damageType);
+  Game.message("value "+damageValue);
+  if(damageType == 2||damageType == 3||damageType == 11||damageType == 1){//2 3 11
+    let defense = 0;
     let startHealth = Entity.getMaxHealth(entity);
 
     for(let i=0; i<4; i++){
       if(Entity.getArmorSlot(entity, i).id in ArmorAPI.Armor){
         for(let id in ArmorAPI.Armor){
           if(Entity.getArmorSlot(entity, i).id == id){
-            def += ArmorAPI.Armor[id];
+            defense += ArmorAPI.Armor[id];
             break;
           }
         };
       };
     };
 
-    if(damageValue> def){
-      Entity.setMaxHealth(entity, Entity.getMaxHealth(entity)+ def);
-      Entity.setHealth(entity, Entity.getMaxHealth(entity));
+    if(damageValue> defense){
+      if(damageValue< Entity.getHealth(entity)+defense){
+        Entity.setMaxHealth(entity, startHealth + defense);
+        //Entity.healEntity(entity, defense);
+        Game.message("hp "+Entity.getHealth(entity));
+        runOnMainThread(function(){
+          Entity.setMaxHealth(entity, startHealth);
+        });
+      };
+    }else{
+      Entity.setMaxHealth(entity, Entity.getMaxHealth(entity)+ damageValue-1);
+      Entity.healEntity(entity, damageValue-1);
       runOnMainThread(function(){
         Entity.setMaxHealth(entity, startHealth);
       });
-    }
-  }
-})
+    };
+  };
+});
