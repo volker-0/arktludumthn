@@ -581,7 +581,7 @@ ToolAPI.addToolMaterial("animus", {durability: 3400, level: 4, efficiency: 8, da
 ToolAPI.setTool(ItemID.animus, "animus", ToolType.sword);
 
 IDRegistry.genItemID("dragondestroy");
-Item.createItem("dragondestroy", "§1 Земля §r \n 700 урон ", {name: "dragondestroy", meta: 0}, {stack: 1});
+Item.createItem("dragondestroy", "§1 Убийца драконов §r \n 700 урон ", {name: "dragondestroy", meta: 0}, {stack: 1});
 ToolAPI.addToolMaterial("dragondestroy", {durability: 3400, level: 4, efficiency: 8, damage: 700, enchantability: 14});
 ToolAPI.setTool(ItemID.dragondestroy, "dragondestroy", ToolType.sword);
 

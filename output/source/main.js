@@ -254,7 +254,7 @@ Block.registerDropFunction("ignisusnetherore", function (coords, blockID, blockD
     return [];
 }, 1);
 IDRegistry.genBlockID("territeore");
-Block.createBlock("territeore", [{ name: "Природная руда", texture: [["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0]], inCreative: true }]);
+Block.createBlock("territeore", [{ name: "Территовая руда", texture: [["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0]], inCreative: true }]);
 ToolAPI.registerBlockMaterial(BlockID.territeore, "stone", 3, true);
 Block.setDestroyLevel(BlockID.territeore, 1);
 Block.registerDropFunction("territeore", function (coords, blockID, blockData, level) {
@@ -1952,7 +1952,7 @@ Item.createItem("animus", "§1 Анимус §r \n 800 урон ", { name: "anim
 ToolAPI.addToolMaterial("animus", { durability: 3400, level: 4, efficiency: 8, damage: 800, enchantability: 14 });
 ToolAPI.setTool(ItemID.animus, "animus", ToolType.sword);
 IDRegistry.genItemID("dragondestroy");
-Item.createItem("dragondestroy", "§1 Земля §r \n 700 урон ", { name: "dragondestroy", meta: 0 }, { stack: 1 });
+Item.createItem("dragondestroy", "§1 Убийца драконов §r \n 700 урон ", { name: "dragondestroy", meta: 0 }, { stack: 1 });
 ToolAPI.addToolMaterial("dragondestroy", { durability: 3400, level: 4, efficiency: 8, damage: 700, enchantability: 14 });
 ToolAPI.setTool(ItemID.dragondestroy, "dragondestroy", ToolType.sword);
 IDRegistry.genItemID("paladinhammer");
@@ -2327,17 +2327,17 @@ Item.createItem("chtulhuleather", "Кожа Ктулху", { name: "chtulhuleath
 IDRegistry.genItemID("creativechunk");
 Item.createItem("creativechunk", "§6 Семя креатива", { name: "creativechunk", meta: 0 }, { isTech: true }, { stack: 64 });
 IDRegistry.genItemID("livingshard");
-Item.createItem("livingshard", "Живой осколок", { name: "livingshard", meta: 0 }, { stack: 1 });
+Item.createItem("livingshard", "Живой осколок", { name: "livingshard", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("evilfragment");
-Item.createItem("evilfragment", "Истинная ярость", { name: "evilfragment", meta: 0 }, { stack: 1 });
+Item.createItem("evilfragment", "Истинная ярость", { name: "evilfragment", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("energyfragment");
-Item.createItem("energyfragment", "Чистая энергия", { name: "energyfragment", meta: 0 }, { stack: 1 });
+Item.createItem("energyfragment", "Чистая энергия", { name: "energyfragment", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("coldfragment");
-Item.createItem("coldfragment", "Магический мороз", { name: "coldfragment", meta: 0 }, { stack: 1 });
+Item.createItem("coldfragment", "Магический мороз", { name: "coldfragment", meta: 0 }, { stack: 64 });
+IDRegistry.genItemID("millionfragment");
+Item.createItem("millionfragment", "Сила множества", { name: "millionfragment", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("fragmentoftruncatissoul");
 Item.createItem("fragmentoftruncatissoul", "Фрагмент души Трункатиса", { name: "fragmentoftruncatissoul", meta: 0 }, { stack: 64 });
-IDRegistry.genItemID("millionfragment");
-Item.createItem("millionfragment", "Сила множества", { name: "millionfragment", meta: 0 }, { stack: 1 });
 IDRegistry.genItemID("stardust");
 Item.createItem("stardust", "Звездная пыль", { name: "stardust", meta: 0 }, { stack: 64 });
 IDRegistry.genItemID("blackmagicdust");
@@ -13223,8 +13223,8 @@ Recipes.addShaped({ id: ItemID.Hollybot, count: 1, data: 0 }, ["abc", "b b", "db
 Recipes.addShaped({ id: ItemID.trueexalibur, count: 1, data: 0 }, ["   ", "ab ", "   "], ['a', ItemID.exalibur, 0, 'b', ItemID.brokenherosword, 0]);
 Recipes.addShaped({ id: ItemID.herosword, count: 1, data: 0 }, ["bab", "aca", "bab"], ['a', 5, 0, 'b', ItemID.terraessence, 0, 'c', ItemID.brokenherosword, 0]);
 Recipes.addShaped({ id: ItemID.trueancientark, count: 1, data: 0 }, [" a ", "b c", " d "], ['a', ItemID.ancientark, 0, 'b', ItemID.elementalcore, 0, 'd', ItemID.brokenherosword, 0, 'c', ItemID.livingshard, 0]);
-Recipes.addShaped({ id: ItemID.elementalingot, count: 1, data: 0 }, ["ab ", "ad ", "   "], ['a', ItemID.aeriteingot, 0, 'b', ItemID.territeingot, 0, 'c', ItemID.ignisusingot, 0, 'd', ItemID.aquatiteingot, 0]);
-Recipes.addShaped({ id: ItemID.cosmicsingularity, count: 1, data: 0 }, ["ab ", "ad ", "   "], ['a', ItemID.aeressence, 0, 'b', ItemID.terraessence, 0, 'c', ItemID.ignisessence, 0, 'd', ItemID.aquaessence, 0]);
+Recipes.addShaped({ id: ItemID.elementalingot, count: 1, data: 0 }, ["ab ", "сd ", "   "], ['a', ItemID.aeriteingot, 0, 'b', ItemID.territeingot, 0, 'c', ItemID.ignisusingot, 0, 'd', ItemID.aquatiteingot, 0]);
+Recipes.addShaped({ id: ItemID.cosmicsingularity, count: 1, data: 0 }, ["ab ", "cd ", "   "], ['a', ItemID.aeressence, 0, 'b', ItemID.terraessence, 0, 'c', ItemID.ignisessence, 0, 'd', ItemID.aquaessence, 0]);
 Recipes.addShaped({ id: ItemID.elementalark, count: 1, data: 0 }, [" a ", " b ", "c d"], ['a', ItemID.cosmicsingularity, 0, 'b', ItemID.trueancientark, 0, 'c', ItemID.elementalcore, 0, 'd', ItemID.elementalingot, 0]);
 Recipes.addShaped({ id: ItemID.biomesword, count: 1, data: 0 }, ["abc", "def", "ghi"], ['a', 1, 0, 'b', 3, 0, 'c', 12, 0, 'd', 12, 1, 'e', 80, 0, 'f', 87, 0, 'g', 121, 0, 'h', 201, 0, 'i', 268, 0]);
 Recipes.addShaped({ id: ItemID.truebiomesword, count: 1, data: 0 }, ["   ", "abc", "   "], ['a', ItemID.livingshard, 0, 'b', ItemID.biomesword, 0, 'c', ItemID.ectoplasm, 0]);
@@ -13244,7 +13244,20 @@ Recipes.addShaped({ id: ItemID.grandbiomesword, count: 1, data: 0 }, [" a ", "b 
 Recipes.addShaped({ id: ItemID.ElementalGuardian, count: 1, data: 0 }, ["aba", "bbb", "aba"], ['a', ItemID.elementalcore, 0, 'b', ItemID.krackeningot, 0]);
 Recipes.addShaped({ id: ItemID.ArsenalGuardian, count: 1, data: 0 }, [" a ", "bcd", "cec"], ['a', ItemID.evilfragment, 0, 'b', ItemID.energyfragment, 0, 'c', ItemID.krackeningot, 0, 'd', ItemID.coldfragment, 0, 'e', ItemID.millionfragment, 0]);
 AltarAPI.BaseBlock(BlockID.azatotbricks, 50);
+//cores
 AltarAPI.AddAltarRecipe(0, 0, ItemID.aercore, 0, ItemID.terracore, 0, ItemID.igniscore, 0, ItemID.aquacore, ItemID.elementalcore, 10);
+AltarAPI.AddAltarRecipe(0, ItemID.aeressence, ItemID.aeriteingot, ItemID.aeressence, ItemID.aeriteingot, ItemID.aeressence, ItemID.aeriteingot, ItemID.aeressence, ItemID.aeriteingot, ItemID.aercore, 10);
+AltarAPI.AddAltarRecipe(0, ItemID.terraessence, ItemID.territeingot, ItemID.terraessence, ItemID.territeingot, ItemID.terraessence, ItemID.territeingot, ItemID.terraessence, ItemID.territeingot, ItemID.terracore, 10);
+AltarAPI.AddAltarRecipe(0, ItemID.ignisessence, ItemID.ignisusingot, ItemID.ignisessence, ItemID.ignisusingot, ItemID.ignisessence, ItemID.ignisusingot, ItemID.ignisessence, ItemID.ignisusingot, ItemID.igniscore, 10);
+AltarAPI.AddAltarRecipe(0, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquacore, 10);
+AltarAPI.AddAltarRecipe(ItemID.elementalcore, 0, ItemID.aeriteingot, 0, ItemID.territeingot, 0, ItemID.ignisusingot, 0, ItemID.aquatiteingot, ItemID.elementalingot, 10);
+AltarAPI.AddAltarRecipe(0, 0, ItemID.aeressence, 0, ItemID.terraessence, 0, ItemID.ignisessence, 0, ItemID.aquaessence, ItemID.cosmicsingularity, 10);
+//biome sword
+AltarAPI.AddAltarRecipe(80, 1, 12, 87, 268, -217, -249, 24, 3, ItemID.biomesword, 25);
+AltarAPI.AddAltarRecipe(ItemID.biomesword, ItemID.livingshard, ItemID.ectoplasm, ItemID.livingshard, ItemID.ectoplasm, ItemID.livingshard, ItemID.ectoplasm, ItemID.livingshard, ItemID.ectoplasm, ItemID.truebiomesword, 40);
+AltarAPI.AddAltarRecipe(ItemID.truebiomesword, ItemID.krackeningot, 0, ItemID.cosmicsingularity, 0, ItemID.elementalingot, 0, ItemID.elementalcore, 0, ItemID.omegabiomesword, 50);
+//ancient ark
+AltarAPI.AddAltarRecipe(ItemID.livingshard, ItemID.exalibur, ItemID.aeressence, ItemID.enchantedsword, ItemID.terraessence, ItemID.brokenherosword, ItemID.ignisessence, ItemID.starsword, ItemID.aquaessence, ItemID.ancientark, 50);
 Callback.addCallback("ItemUse", function (coords, item) {
     coords = coords.relative;
     if (item.id == ItemID.hollybot) {
@@ -13276,7 +13289,27 @@ Callback.addCallback("ItemUse", function (coords, item) {
     }
     ;
 });
-Item.addCreativeGroup("aer_armor", "броня воздуха", [
+Item.addCreativeGroup("terra_armor", "Земля", [
+    ItemID.terrahelmet,
+    ItemID.terrachestplate,
+    ItemID.terraleggings,
+    ItemID.terraboots,
+    ItemID.terrasword,
+    ItemID.terrapickaxe,
+    ItemID.terraaxe,
+    ItemID.terrashovel
+]);
+Item.addCreativeGroup("ignis_armor", "Огонь", [
+    ItemID.ignishelmet,
+    ItemID.ignischestplate,
+    ItemID.ignisleggings,
+    ItemID.ignisboots,
+    ItemID.ignissword,
+    ItemID.ignispickaxe,
+    ItemID.ignisaxe,
+    ItemID.ignisshovel
+]);
+Item.addCreativeGroup("aer_armor", "Воздух", [
     ItemID.aerhelmet,
     ItemID.aerchestplate,
     ItemID.aerleggings,
@@ -13286,7 +13319,7 @@ Item.addCreativeGroup("aer_armor", "броня воздуха", [
     ItemID.aeraxe,
     ItemID.aershovel
 ]);
-Item.addCreativeGroup("aqua_armor", "броня воды", [
+Item.addCreativeGroup("aqua_armor", "Вода", [
     ItemID.aquahelmet,
     ItemID.aquachestplate,
     ItemID.aqualeggings,
@@ -13296,7 +13329,188 @@ Item.addCreativeGroup("aqua_armor", "броня воды", [
     ItemID.aquaaxe,
     ItemID.aquashovel
 ]);
-Item.addCreativeGroup("shard", "осколки", [
+Item.addCreativeGroup("comet_armor", "Кометит", [
+    ItemID.cometitehelmet,
+    ItemID.cometitechestplate,
+    ItemID.cometiteleggings,
+    ItemID.cometiteboots,
+    ItemID.cometitesword,
+    ItemID.cometitepickaxe,
+    ItemID.cometiteaxe,
+    ItemID.cometiteshovel
+]);
+Item.addCreativeGroup("holly_armor", "Святое", [
+    ItemID.hollyhelmet,
+    ItemID.hollychestplate,
+    ItemID.hollyleggings,
+    ItemID.hollyboots,
+    ItemID.hollysword,
+    ItemID.exalibur,
+    ItemID.hollypickaxe,
+    ItemID.hollyaxe,
+    ItemID.hollyshovel
+]);
+Item.addCreativeGroup("minecraft_armor", "Майнкрафт", [
+    ItemID.grandminecrafthelmet,
+    ItemID.grandminecraftchestplate,
+    ItemID.grandminecraftleggings,
+    ItemID.grandminecraftboots,
+    ItemID.grandminecraftsword,
+    ItemID.grandminecraftpickaxe,
+    ItemID.grandminecraftaxe,
+    ItemID.grandminecraftshovel
+]);
+Item.addCreativeGroup("kraken_armor", "Кракен", [
+    ItemID.krackenhelmet,
+    ItemID.krackenchestplate,
+    ItemID.krackenleggings,
+    ItemID.krackenboots,
+    ItemID.krackensword,
+    ItemID.krackenkatana,
+    ItemID.krackenblade,
+    ItemID.krackenpickaxe,
+    ItemID.krackenaxe,
+    ItemID.krackenshovel
+]);
+Item.addCreativeGroup("paladium_armor", "Паладиум", [
+    ItemID.palladiumhelmet,
+    ItemID.palladiumchestplate,
+    ItemID.palladiumleggings,
+    ItemID.palladiumboots,
+    ItemID.palladiumsword,
+    ItemID.palladiumpickaxe,
+    ItemID.palladiumaxe,
+    ItemID.palladiumshovel
+]);
+Item.addCreativeGroup("horngod_armor", "Рогатый бог", [
+    ItemID.horngodhelmet,
+    ItemID.horngodchestplate,
+    ItemID.horngodleggings,
+    ItemID.horngodboots,
+    ItemID.horngodsword,
+    ItemID.horngodpickaxe,
+    ItemID.horngodaxe,
+    ItemID.horngodshovel
+]);
+Item.addCreativeGroup("astral_armor", "Астрал", [
+    ItemID.astralhelmet,
+    ItemID.astralchestplate,
+    ItemID.astralleggings,
+    ItemID.astralboots,
+    ItemID.astralsword,
+    ItemID.astralpickaxe,
+    ItemID.astralaxe,
+    ItemID.astralshovel
+]);
+Item.addCreativeGroup("chaos_armor", "Хаос", [
+    ItemID.chaoshelmet,
+    ItemID.chaoschestplate,
+    ItemID.chaosleggings,
+    ItemID.chaosboots,
+    ItemID.chaossword,
+    ItemID.chaospickaxe,
+    ItemID.chaosaxe,
+    ItemID.chaosshovel
+]);
+Item.addCreativeGroup("omicron_armor", "Омикрон", [
+    ItemID.omikronhelmet,
+    ItemID.omikronchestplate,
+    ItemID.omikronleggings,
+    ItemID.omikronboots,
+    ItemID.omikronsword,
+    ItemID.omikronpickaxe,
+    ItemID.omikronaxe,
+    ItemID.omikronshovel
+]);
+Item.addCreativeGroup("venomus_armor", "Веномус", [
+    ItemID.venomushelmet,
+    ItemID.venomuschestplate,
+    ItemID.venomusleggings,
+    ItemID.venomusboots,
+    ItemID.venomussword,
+    ItemID.venomuspickaxe,
+    ItemID.venomusaxe,
+    ItemID.venomusshovel
+]);
+Item.addCreativeGroup("meow_armor", "Мяу", [
+    ItemID.meowhelmet,
+    ItemID.meowchestplate,
+    ItemID.meowleggings,
+    ItemID.meowboots,
+    ItemID.meowsword,
+    ItemID.meowmere,
+    ItemID.murrrsama,
+    ItemID.meowpickaxe,
+    ItemID.meowaxe,
+    ItemID.meowshovel
+]);
+Item.addCreativeGroup("florite_armor", "Флорит", [
+    ItemID.floritehelmet,
+    ItemID.floritechestplate,
+    ItemID.floriteleggings,
+    ItemID.floriteboots,
+    ItemID.floritesword,
+    ItemID.floritepickaxe,
+    ItemID.floriteaxe,
+    ItemID.floriteshovel
+]);
+Item.addCreativeGroup("galaxite_armor", "Галаксит", [
+    ItemID.galaxitehelmet,
+    ItemID.galaxitechestplate,
+    ItemID.galaxiteleggings,
+    ItemID.galaxiteboots,
+    ItemID.galaxitesword,
+    ItemID.galaxitepickaxe,
+    ItemID.galaxiteaxe,
+    ItemID.galaxiteshovel
+]);
+Item.addCreativeGroup("goldy_armor", "Злотоносная", [
+    ItemID.goldyhelmet,
+    ItemID.goldychestplate,
+    ItemID.goldyleggings,
+    ItemID.goldyboots,
+    ItemID.goldysword,
+    ItemID.goldypickaxe,
+    ItemID.goldyaxe,
+    ItemID.goldyshovel
+]);
+Item.addCreativeGroup("shadowspec_armor", "Шедоуспех", [
+    ItemID.shadowspechelmet,
+    ItemID.shadowspecchestplate,
+    ItemID.shadowspecleggings,
+    ItemID.shadowspecboots,
+    ItemID.shadowspecsword,
+    ItemID.shadowspecpickaxe,
+    ItemID.shadowspecaxe,
+    ItemID.shadowspecshovel
+]);
+Item.addCreativeGroup("azatot_armor", "Азатот", [
+    ItemID.azatothelmet,
+    ItemID.azatotchestplate,
+    ItemID.azatotleggings,
+    ItemID.azatotboots,
+    ItemID.azatotsword,
+    ItemID.azatotpickaxe,
+    ItemID.azatotaxe,
+    ItemID.azatotshovel
+]);
+Item.addCreativeGroup("chtulhu_armor", "Ктулху", [
+    ItemID.chtulhuhelmet,
+    ItemID.chtulhuchestplate,
+    ItemID.chtulhuleggings,
+    ItemID.chtulhuboots,
+    ItemID.chtulhusword,
+    ItemID.chtulhupickaxe,
+    ItemID.chtulhuaxe,
+    ItemID.chtulhushovel
+]);
+Item.addCreativeGroup("ark_armor", "Арк", [
+    ItemID.ArkHelmet,
+    ItemID.ArkChestplate,
+    ItemID.ArkLeggings,
+    ItemID.ArkBoots
+]);
+Item.addCreativeGroup("shard", "Осколки", [
     ItemID.livingshard,
     ItemID.evilfragment,
     ItemID.energyfragment,
@@ -13308,7 +13522,7 @@ Item.addCreativeGroup("shard", "осколки", [
     ItemID.calamitydust,
     ItemID.azatotdust
 ]);
-Item.addCreativeGroup("decor_block", "декоративные блоки", [
+Item.addCreativeGroup("decor_block", "Декоративные блоки", [
     BlockID.cloud,
     BlockID.cometgrass,
     BlockID.cometdirt,
@@ -13325,33 +13539,35 @@ Item.addCreativeGroup("decor_block", "декоративные блоки", [
     BlockID.astralpink,
     BlockID.astralmid
 ]);
-Item.addCreativeGroup("ore", "руды", [
+Item.addCreativeGroup("ore", "Руды", [
     BlockID.aeriteore,
     BlockID.aquatiteore,
     BlockID.ignisusore,
     BlockID.ignisusnetherore,
+    BlockID.territeore,
     BlockID.cometiteore,
     BlockID.heartore,
+    BlockID.hollyore,
     BlockID.astralore,
     BlockID.chaosore,
     BlockID.floriteore,
     BlockID.goldyore,
     BlockID.depthore,
 ]);
-Item.addCreativeGroup("armor_magic", "магическая броня", [
+Item.addCreativeGroup("armor_magic", "Магическая броня", [
     ItemID.germesboots,
     ItemID.firerisboots,
     ItemID.gfboots,
     ItemID.ugfboots
 ]);
-Item.addCreativeGroup("core", "ядра", [
+Item.addCreativeGroup("core", "Ядра", [
     ItemID.aercore,
     ItemID.aquacore,
     ItemID.igniscore,
     ItemID.terracore,
     ItemID.elementalcore
 ]);
-Item.addCreativeGroup("essence", "эссенции", [
+Item.addCreativeGroup("essence", "Эссенции", [
     ItemID.aeressence,
     ItemID.aquaessence,
     ItemID.ignisessence,
@@ -13359,12 +13575,12 @@ Item.addCreativeGroup("essence", "эссенции", [
     ItemID.profanedessence,
     ItemID.calamityessence,
 ]);
-Item.addCreativeGroup("teleport", "телепортеры", [
+Item.addCreativeGroup("teleport", "Телепортеры", [
     ItemID.overworld,
     ItemID.azatotshears,
     ItemID.astralshears
 ]);
-Item.addCreativeGroup("summon boss", "призыв босcов", [
+Item.addCreativeGroup("summon boss", "Призыв босcов", [
     ItemID.Hollybot,
     ItemID.Naida,
     ItemID.Phantom,
@@ -13388,11 +13604,12 @@ Item.addCreativeGroup("summon boss", "призыв босcов", [
     ItemID.Ark,
     ItemID.VerumPtah
 ]);
-Item.addCreativeGroup("food", "еда", [
+Item.addCreativeGroup("food", "Сердца", [
     ItemID.lifecrystal,
-    ItemID.fireheart
+    ItemID.fireheart,
+    ItemID.elementalheart,
 ]);
-Item.addCreativeGroup("ingot", "слитки", [
+Item.addCreativeGroup("ingot", "Слитки", [
     ItemID.aeriteingot,
     ItemID.territeingot,
     ItemID.ignisusingot,
@@ -13417,11 +13634,10 @@ Item.addCreativeGroup("ingot", "слитки", [
     ItemID.depthingot,
     ItemID.galaxiteingot
 ]);
-Item.addCreativeGroup("sword", "оружие", [
+Item.addCreativeGroup("sword", "Оружие", [
     ItemID.starsword,
     ItemID.enchantedsword,
     ItemID.brokenherosword,
-    ItemID.exalibur,
     ItemID.ancientark,
     ItemID.trueexalibur,
     ItemID.herosword,
@@ -13434,8 +13650,6 @@ Item.addCreativeGroup("sword", "оружие", [
     ItemID.murasama,
     ItemID.rootenbroadsword,
     ItemID.taigasword,
-    ItemID.krackenkatana,
-    ItemID.krackenblade,
     ItemID.grandbiomesword,
     ItemID.elementalsword,
     ItemID.ArsenalGuardian,
@@ -13450,8 +13664,6 @@ Item.addCreativeGroup("sword", "оружие", [
     ItemID.rdrill,
     ItemID.earther,
     ItemID.starevil,
-    ItemID.meowmere,
-    ItemID.murrrsama,
     ItemID.hollycollider,
     ItemID.heatedamputation,
     ItemID.ryusukesword,
@@ -13492,7 +13704,7 @@ Item.addCreativeGroup("sword", "оружие", [
     ItemID.AstralSworda,
     ItemID.MultiverseSword,
 ]);
-Item.addCreativeGroup("books", "книги", [
+Item.addCreativeGroup("books", "Книги", [
     ItemID.hollybotbook,
     ItemID.naidabook,
     ItemID.krakenbook,

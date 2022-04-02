@@ -403,9 +403,9 @@ Recipes.addShaped({id: ItemID.herosword, count: 1, data: 0}, [ "bab", "aca", "ba
 
 Recipes.addShaped({id: ItemID.trueancientark, count: 1, data: 0}, [ " a ", "b c", " d "], ['a', ItemID.ancientark, 0, 'b', ItemID.elementalcore, 0, 'd', ItemID.brokenherosword, 0, 'c', ItemID.livingshard, 0]);
 
-Recipes.addShaped({id: ItemID.elementalingot, count: 1, data: 0}, [ "ab ", "ad ", "   "], ['a', ItemID.aeriteingot, 0, 'b', ItemID.territeingot, 0, 'c', ItemID.ignisusingot, 0, 'd', ItemID.aquatiteingot, 0]);
+Recipes.addShaped({id: ItemID.elementalingot, count: 1, data: 0}, [ "ab ", "сd ", "   "], ['a', ItemID.aeriteingot, 0, 'b', ItemID.territeingot, 0, 'c', ItemID.ignisusingot, 0, 'd', ItemID.aquatiteingot, 0]);
 
-Recipes.addShaped({id: ItemID.cosmicsingularity, count: 1, data: 0}, [ "ab ", "ad ", "   "], ['a', ItemID.aeressence, 0, 'b', ItemID.terraessence, 0, 'c', ItemID.ignisessence, 0, 'd', ItemID.aquaessence, 0]);
+Recipes.addShaped({id: ItemID.cosmicsingularity, count: 1, data: 0}, [ "ab ", "cd ", "   "], ['a', ItemID.aeressence, 0, 'b', ItemID.terraessence, 0, 'c', ItemID.ignisessence, 0, 'd', ItemID.aquaessence, 0]);
 
 Recipes.addShaped({id: ItemID.elementalark, count: 1, data: 0}, [ " a ", " b ", "c d"], ['a', ItemID.cosmicsingularity, 0, 'b', ItemID.trueancientark, 0, 'c', ItemID.elementalcore, 0, 'd', ItemID.elementalingot, 0]);
 
