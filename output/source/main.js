@@ -72,9 +72,7 @@ ArmorAPI = {
 };
 ArmorAPI.RegisterArmor(ItemID.aerchestplate, 2);
 Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, damageType) {
-    //Game.message("type " +damageType);
-    Game.message("value " + damageValue);
-    if (damageType == 2 || damageType == 3 || damageType == 11 || damageType == 1) { //2 3 11
+    if (damageType == 2 || damageType == 3 || damageType == 11) {
         var defense = 0;
         var startHealth_1 = Entity.getMaxHealth(entity);
         for (var i = 0; i < 4; i++) {
@@ -93,8 +91,7 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
         if (damageValue > defense) {
             if (damageValue < Entity.getHealth(entity) + defense) {
                 Entity.setMaxHealth(entity, startHealth_1 + defense);
-                //Entity.healEntity(entity, defense);
-                Game.message("hp " + Entity.getHealth(entity));
+                Entity.setHealth(entity, Entity.getHealth(entity) + defense);
                 runOnMainThread(function () {
                     Entity.setMaxHealth(entity, startHealth_1);
                 });
@@ -257,7 +254,7 @@ Block.registerDropFunction("ignisusnetherore", function (coords, blockID, blockD
     return [];
 }, 1);
 IDRegistry.genBlockID("territeore");
-Block.createBlock("territeore", [{ name: "Игнисусовая руда", texture: [["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0]], inCreative: true }]);
+Block.createBlock("territeore", [{ name: "Природная руда", texture: [["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0]], inCreative: true }]);
 ToolAPI.registerBlockMaterial(BlockID.territeore, "stone", 3, true);
 Block.setDestroyLevel(BlockID.territeore, 1);
 Block.registerDropFunction("territeore", function (coords, blockID, blockData, level) {

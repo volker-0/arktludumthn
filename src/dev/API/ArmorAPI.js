@@ -10,9 +10,7 @@ ArmorAPI ={
 ArmorAPI.RegisterArmor(ItemID.aerchestplate, 2)
 
 Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damageType){
-  //Game.message("type " +damageType);
-  Game.message("value "+damageValue);
-  if(damageType == 2||damageType == 3||damageType == 11||damageType == 1){//2 3 11
+  if(damageType == 2||damageType == 3||damageType == 11){
     let defense = 0;
     let startHealth = Entity.getMaxHealth(entity);
 
@@ -30,8 +28,7 @@ Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damag
     if(damageValue> defense){
       if(damageValue< Entity.getHealth(entity)+defense){
         Entity.setMaxHealth(entity, startHealth + defense);
-        //Entity.healEntity(entity, defense);
-        Game.message("hp "+Entity.getHealth(entity));
+        Entity.setHealth(entity,Entity.getHealth(entity) + defense);
         runOnMainThread(function(){
           Entity.setMaxHealth(entity, startHealth);
         });

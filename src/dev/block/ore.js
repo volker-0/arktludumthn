@@ -43,7 +43,7 @@ Block.registerDropFunction("ignisusnetherore", function(coords, blockID, blockDa
 }, 1);
 
 IDRegistry.genBlockID("territeore");
-Block.createBlock("territeore", [{name: "Игнисусовая руда", texture: [["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0]], inCreative: true}]);
+Block.createBlock("territeore", [{name: "Природная руда", texture: [["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0], ["territeore", 0]], inCreative: true}]);
 ToolAPI.registerBlockMaterial(BlockID.territeore, "stone", 3, true);
 Block.setDestroyLevel (BlockID.territeore, 1) 
 Block.registerDropFunction("territeore", function(coords, blockID, blockData, level){
