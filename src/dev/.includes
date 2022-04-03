@@ -69,4 +69,7 @@ mobs/holybot.js
 mobs/naida.js
 mobs/kraken.js
 
+integration/AncientWonders.js
+integration/RecipeViewer.js
+
 creative_tab.js

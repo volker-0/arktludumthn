@@ -12,9 +12,7 @@ let AltarAPI = {
     133: [9, EmeraldParticle],
   },
 
-  Recipes:{
-
-  },
+  Recipes:[],
 
   BaseBlock(blockid, power){
     this.AltarBase[blockid] = power;
@@ -56,10 +54,37 @@ let AltarAPI = {
     };
   },
 
-  AddAltarRecipe(sc, s0, s1, s2, s3, s4, s5, s6, s7, output, energy){
-    this.Recipes[output] = {
-      items:[sc, s0, s1, s2, s3, s4, s5, s6, s7],
-      energy: energy,
+  AddAltarRecipe(recipe){
+    if (!recipe.input) {
+        Logger.Log("Input is not correct! (Altar)", "ARK");
+        return;
     };
+
+    if (!recipe.output) {
+      Logger.Log("Output is not correct! (Altar)", "ARK");
+        return;
+    };
+
+    for(let i = 0; i<9; i++){
+      let copy = recipe.input[i];
+      if(recipe.input[i]==undefined){
+        recipe.input[i] = {id:0, data:0, count:1};
+      } else{
+        copy.count = 1;
+      };
+    };
+    recipe.output.count = 1;
+
+    let input= [];
+
+    for(let i = 0; i<9; i++){
+      input[i] = recipe.input[i];
+    };
+
+    let output =[recipe.output];
+
+    let recipefull = {input:input, output:output, "energy": recipe.energy};
+    
+    this.Recipes.push(recipefull);
   },
 };

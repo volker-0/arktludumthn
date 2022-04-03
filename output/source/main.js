@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 importLib("ToolLib");
 IMPORT("SettingsManager");
 //IMPORT("DungeonAPI");
@@ -156,7 +171,7 @@ var AltarAPI = {
         42: [3, IronParticle],
         133: [9, EmeraldParticle],
     },
-    Recipes: {},
+    Recipes: [],
     BaseBlock: function (blockid, power) {
         this.AltarBase[blockid] = power;
     },
@@ -193,11 +208,37 @@ var AltarAPI = {
         }
         ;
     },
-    AddAltarRecipe: function (sc, s0, s1, s2, s3, s4, s5, s6, s7, output, energy) {
-        this.Recipes[output] = {
-            items: [sc, s0, s1, s2, s3, s4, s5, s6, s7],
-            energy: energy,
-        };
+    AddAltarRecipe: function (recipe) {
+        if (!recipe.input) {
+            Logger.Log("Input is not correct! (Altar)", "ARK");
+            return;
+        }
+        ;
+        if (!recipe.output) {
+            Logger.Log("Output is not correct! (Altar)", "ARK");
+            return;
+        }
+        ;
+        for (var i = 0; i < 9; i++) {
+            var copy = recipe.input[i];
+            if (recipe.input[i] == undefined) {
+                recipe.input[i] = { id: 0, data: 0, count: 1 };
+            }
+            else {
+                copy.count = 1;
+            }
+            ;
+        }
+        ;
+        recipe.output.count = 1;
+        var input = [];
+        for (var i = 0; i < 9; i++) {
+            input[i] = recipe.input[i];
+        }
+        ;
+        var output = [recipe.output];
+        var recipefull = { input: input, output: output, "energy": recipe.energy };
+        this.Recipes.push(recipefull);
     },
 };
 var cloud = Block.createSpecialType({
@@ -603,7 +644,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         //Крафт
         if (this.data.isCraftng) {
             this.data.CraftingTime--;
-            this.sendPacket("AnimateParticles", { Particles: this.data.BlockParticles, coords: { x: this.x, y: this.y, z: this.z }, Pos: this.data.BlockPos });
+            this.sendPacket("AnimateParticles", { Particles: this.data.BlockParticles, coords: { x: this.x, y: this.y, z: this.z }, Pos: this.data.BlockPos, CraftingTime: this.data.CraftingTime });
             this.Craft();
         }
         ;
@@ -658,29 +699,36 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         this.container.setText("AltarText", "\u0421\u0438\u043B\u0430 \u0430\u043B\u0442\u0430\u0440\u044F: ".concat(this.data.AltarPower));
     },
     GetRecipe: function () {
-        var itemsArr = [this.container.getSlot("slotCenter").id, this.container.getSlot("slot0").id, this.container.getSlot("slot1").id, this.container.getSlot("slot2").id, this.container.getSlot("slot3").id, this.container.getSlot("slot4").id, this.container.getSlot("slot5").id, this.container.getSlot("slot6").id, this.container.getSlot("slot7").id,];
-        for (recipe in AltarAPI.Recipes) {
-            var copy = AltarAPI.Recipes[recipe];
-            if (JSON.stringify(copy.items) == JSON.stringify(itemsArr)) {
-                if (this.data.AltarPower >= copy.energy) {
-                    for (var i = 0; i <= 7; i++) {
-                        var name = "slot" + i;
-                        if (this.container.getSlot(name).id != 0) {
-                            this.data.ItemsParticles.push(AltarItems[i]);
-                        }
-                    }
-                    ;
-                    this.data.CraftingItem = recipe;
-                    this.data.isCraftng = true;
-                    break;
+        var test = false;
+        var RecipeEnergy;
+        var Recipe;
+        var itemsArr = [this.container.getSlot("slotCenter"), this.container.getSlot("slot0"), this.container.getSlot("slot1"), this.container.getSlot("slot2"), this.container.getSlot("slot3"), this.container.getSlot("slot4"), this.container.getSlot("slot5"), this.container.getSlot("slot6"), this.container.getSlot("slot7")];
+        for (var i = 0; i < AltarAPI.Recipes.length; i++) {
+            var copy = AltarAPI.Recipes[i];
+            RecipeEnergy = copy.energy;
+            for (var a = 0; a < 9; a++) {
+                if (copy.input[a].id == itemsArr[a].id && copy.input[a].data == itemsArr[a].data) {
+                    test = true;
+                    Recipe = copy.output;
+                    continue;
                 }
                 ;
-            }
-            else {
-                this.data.isCraftng = false;
-                this.data.CraftingTime = 100;
+                test = false;
+                break;
             }
             ;
+        }
+        ;
+        if (this.data.AltarPower >= RecipeEnergy && test) {
+            for (var i = 0; i <= 7; i++) {
+                var name = "slot" + i;
+                if (this.container.getSlot(name).id != 0) {
+                    this.data.ItemsParticles.push(AltarItems[i]);
+                }
+            }
+            ;
+            this.data.CraftingItem = Recipe;
+            this.data.isCraftng = true;
         }
         ;
     },
@@ -695,7 +743,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
             }
             ;
             this.container.validateAll();
-            this.container.setSlot("slotCenter", this.data.CraftingItem, 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCentert").extra);
+            this.container.setSlot("slotCenter", this.data.CraftingItem.id, 1, this.data.CraftingItem.data, this.container.getSlot("slotCentert").extra);
             this.container.sendChanges();
         }
         ;
@@ -703,7 +751,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     client: {
         events: {
             AnimateParticles: function (Data) {
-                if (Data.CraftingTime >= 60) {
+                if (Data.CraftingTime >= 50) {
                     for (var i = 0; i < Data.Pos.length; i++) {
                         var LocalData = Data.Pos[i];
                         Particles.addParticle(Data.Particles[i], Data.coords.x + LocalData.x + .5, Data.coords.y + LocalData.y + .5, Data.coords.z + LocalData.z + .5, (LocalData.x * (-1)) / 60, ((LocalData.y * (-1)) + 0.78) / 60, (LocalData.z * (-1)) / 60);
@@ -13245,22 +13293,155 @@ Recipes.addShaped({ id: ItemID.ElementalGuardian, count: 1, data: 0 }, ["aba", "
 Recipes.addShaped({ id: ItemID.ArsenalGuardian, count: 1, data: 0 }, [" a ", "bcd", "cec"], ['a', ItemID.evilfragment, 0, 'b', ItemID.energyfragment, 0, 'c', ItemID.krackeningot, 0, 'd', ItemID.coldfragment, 0, 'e', ItemID.millionfragment, 0]);
 AltarAPI.BaseBlock(BlockID.azatotbricks, 50);
 //cores
-AltarAPI.AddAltarRecipe(0, 0, ItemID.aercore, 0, ItemID.terracore, 0, ItemID.igniscore, 0, ItemID.aquacore, ItemID.elementalcore, 10);
-AltarAPI.AddAltarRecipe(0, ItemID.aeressence, ItemID.aeriteingot, ItemID.aeressence, ItemID.aeriteingot, ItemID.aeressence, ItemID.aeriteingot, ItemID.aeressence, ItemID.aeriteingot, ItemID.aercore, 10);
-AltarAPI.AddAltarRecipe(0, ItemID.terraessence, ItemID.territeingot, ItemID.terraessence, ItemID.territeingot, ItemID.terraessence, ItemID.territeingot, ItemID.terraessence, ItemID.territeingot, ItemID.terracore, 10);
-AltarAPI.AddAltarRecipe(0, ItemID.ignisessence, ItemID.ignisusingot, ItemID.ignisessence, ItemID.ignisusingot, ItemID.ignisessence, ItemID.ignisusingot, ItemID.ignisessence, ItemID.ignisusingot, ItemID.igniscore, 10);
-AltarAPI.AddAltarRecipe(0, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquaessence, ItemID.aquatiteingot, ItemID.aquacore, 10);
-AltarAPI.AddAltarRecipe(ItemID.elementalcore, 0, ItemID.aeriteingot, 0, ItemID.territeingot, 0, ItemID.ignisusingot, 0, ItemID.aquatiteingot, ItemID.elementalingot, 10);
-AltarAPI.AddAltarRecipe(0, 0, ItemID.aeressence, 0, ItemID.terraessence, 0, ItemID.ignisessence, 0, ItemID.aquaessence, ItemID.cosmicsingularity, 10);
+AltarAPI.AddAltarRecipe({
+    input: {
+        2: { id: ItemID.aercore, data: 0 },
+        4: { id: ItemID.terracore, data: 0 },
+        6: { id: ItemID.igniscore, data: 0 },
+        8: { id: ItemID.aquacore, data: 0 },
+    },
+    output: { id: ItemID.elementalcore, data: 0 },
+    energy: 10
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        1: { id: ItemID.aeressence, data: 0 },
+        2: { id: ItemID.aeriteingot, data: 0 },
+        3: { id: ItemID.aeressence, data: 0 },
+        4: { id: ItemID.aeriteingot, data: 0 },
+        5: { id: ItemID.aeressence, data: 0 },
+        6: { id: ItemID.aeriteingot, data: 0 },
+        7: { id: ItemID.aeressence, data: 0 },
+        8: { id: ItemID.aeriteingot, data: 0 },
+    },
+    output: { id: ItemID.aercore, data: 0 },
+    energy: 10
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        1: { id: ItemID.terraessence, data: 0 },
+        2: { id: ItemID.territeingot, data: 0 },
+        3: { id: ItemID.terraessence, data: 0 },
+        4: { id: ItemID.territeingot, data: 0 },
+        5: { id: ItemID.terraessence, data: 0 },
+        6: { id: ItemID.territeingot, data: 0 },
+        7: { id: ItemID.terraessence, data: 0 },
+        8: { id: ItemID.territeingot, data: 0 },
+    },
+    output: { id: ItemID.terracore, data: 0 },
+    energy: 10
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        1: { id: ItemID.ignisessence, data: 0 },
+        2: { id: ItemID.ignisusingot, data: 0 },
+        3: { id: ItemID.ignisessence, data: 0 },
+        4: { id: ItemID.ignisusingot, data: 0 },
+        5: { id: ItemID.ignisessence, data: 0 },
+        6: { id: ItemID.ignisusingot, data: 0 },
+        7: { id: ItemID.ignisessence, data: 0 },
+        8: { id: ItemID.ignisusingot, data: 0 },
+    },
+    output: { id: ItemID.igniscore, data: 0 },
+    energy: 10
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        1: { id: ItemID.aquaessence, data: 0 },
+        2: { id: ItemID.aquatiteingot, data: 0 },
+        3: { id: ItemID.aquaessence, data: 0 },
+        4: { id: ItemID.aquatiteingot, data: 0 },
+        5: { id: ItemID.aquaessence, data: 0 },
+        6: { id: ItemID.aquatiteingot, data: 0 },
+        7: { id: ItemID.aquaessence, data: 0 },
+        8: { id: ItemID.aquatiteingot, data: 0 },
+    },
+    output: { id: ItemID.aquacore, data: 0 },
+    energy: 10
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        0: { id: ItemID.elementalcore, data: 0 },
+        2: { id: ItemID.aeriteingot, data: 0 },
+        4: { id: ItemID.territeingot, data: 0 },
+        6: { id: ItemID.ignisusingot, data: 0 },
+        8: { id: ItemID.aquatiteingot, data: 0 },
+    },
+    output: { id: ItemID.elementalingot, data: 0 },
+    energy: 10
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        2: { id: ItemID.aeressence, data: 0 },
+        4: { id: ItemID.terraessence, data: 0 },
+        6: { id: ItemID.ignisessence, data: 0 },
+        8: { id: ItemID.aquaessence, data: 0 },
+    },
+    output: { id: ItemID.cosmicsingularity, data: 0 },
+    energy: 10
+});
 //biome sword
-AltarAPI.AddAltarRecipe(80, 1, 12, 87, 268, -217, -249, 24, 3, ItemID.biomesword, 25);
-AltarAPI.AddAltarRecipe(ItemID.biomesword, ItemID.livingshard, ItemID.ectoplasm, ItemID.livingshard, ItemID.ectoplasm, ItemID.livingshard, ItemID.ectoplasm, ItemID.livingshard, ItemID.ectoplasm, ItemID.truebiomesword, 40);
-AltarAPI.AddAltarRecipe(ItemID.truebiomesword, ItemID.krackeningot, 0, ItemID.cosmicsingularity, 0, ItemID.elementalingot, 0, ItemID.elementalcore, 0, ItemID.omegabiomesword, 50);
+AltarAPI.AddAltarRecipe({
+    input: {
+        0: { id: 268, data: 0 },
+        1: { id: 80, data: 0 },
+        2: { id: 1, data: 0 },
+        3: { id: 12, data: 0 },
+        4: { id: 87, data: 0 },
+        5: { id: -217, data: 0 },
+        6: { id: -249, data: 0 },
+        7: { id: 24, data: 0 },
+        8: { id: 3, data: 0 },
+    },
+    output: { id: ItemID.biomesword, data: 0 },
+    energy: 25
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        0: { id: ItemID.biomesword, data: 0 },
+        1: { id: ItemID.livingshard, data: 0 },
+        2: { id: ItemID.ectoplasm, data: 0 },
+        3: { id: ItemID.livingshard, data: 0 },
+        4: { id: ItemID.ectoplasm, data: 0 },
+        5: { id: ItemID.livingshard, data: 0 },
+        6: { id: ItemID.ectoplasm, data: 0 },
+        7: { id: ItemID.livingshard, data: 0 },
+        8: { id: ItemID.ectoplasm, data: 0 },
+    },
+    output: { id: ItemID.truebiomesword, data: 0 },
+    energy: 30
+});
+AltarAPI.AddAltarRecipe({
+    input: {
+        0: { id: ItemID.truebiomesword, data: 0 },
+        1: { id: ItemID.krackeningot, data: 0 },
+        3: { id: ItemID.cosmicsingularity, data: 0 },
+        5: { id: ItemID.elementalingot, data: 0 },
+        7: { id: ItemID.elementalcore, data: 0 },
+    },
+    output: { id: ItemID.omegabiomesword, data: 0 },
+    energy: 50
+});
 //ancient ark
+AltarAPI.AddAltarRecipe({
+    input: {
+        0: { id: ItemID.livingshard, data: 0 },
+        1: { id: ItemID.exalibur, data: 0 },
+        2: { id: ItemID.aeressence, data: 0 },
+        3: { id: ItemID.enchantedsword, data: 0 },
+        4: { id: ItemID.terraessence, data: 0 },
+        5: { id: ItemID.brokenherosword, data: 0 },
+        6: { id: ItemID.ignisessence, data: 0 },
+        7: { id: ItemID.starsword, data: 0 },
+        8: { id: ItemID.aquaessence, data: 0 },
+    },
+    output: { id: ItemID.truebiomesword, data: 0 },
+    energy: 50
+});
 AltarAPI.AddAltarRecipe(ItemID.livingshard, ItemID.exalibur, ItemID.aeressence, ItemID.enchantedsword, ItemID.terraessence, ItemID.brokenherosword, ItemID.ignisessence, ItemID.starsword, ItemID.aquaessence, ItemID.ancientark, 50);
 Callback.addCallback("ItemUse", function (coords, item) {
     coords = coords.relative;
-    if (item.id == ItemID.hollybot) {
+    if (item.id == ItemID.Hollybot) {
         Entity.spawn(coords.x, coords.y, coords.z, "ark:holybot");
         Game.message("Призван проклятый механизмм");
         MusicPlayer.play("Holybot.music");
@@ -13288,6 +13469,121 @@ Callback.addCallback("ItemUse", function (coords, item) {
         Game.message("Призван Кракен");
     }
     ;
+});
+ModAPI.addAPICallback("AncientWondersAPI", function (api) {
+    var AncientWonders = api.AncientWonders;
+    var MagicCore = api.MagicCore;
+    var Wands = api.Wands;
+    //удвоение стоимости активации всех свитков
+    (function () {
+        var srolls = Object.keys(Wands.prot);
+        for (var id in srolls) {
+            var parameters = Object.keys(Wands.prot[srolls[id]].activate);
+            for (var parameter in parameters) {
+                if (parameter != "aspects")
+                    Wands.prot[srolls[id]].activate[parameters[parameter]] = Wands.prot[srolls[id]].activate[parameters[parameter]] * 2;
+            }
+        }
+    })();
+    //удвоение параметров класса
+    //magic
+    AncientWonders.addParameterRegister("mage", "magic", 0, 200, 0);
+    AncientWonders.addParameterRegister("warrior", "magic", 0, 30, 0);
+    api.AncientWonders.addParameterRegister("necromancer", "magic", 0, 100, 0);
+    //protection 
+    AncientWonders.addParameterRegister("mage", "protection", 0, 80, 0);
+    AncientWonders.addParameterRegister("warrior", "protection", 0, 200, 0);
+    api.AncientWonders.addParameterRegister("necromancer", "protection", 0, 60, 0);
+    //necromancer 
+    AncientWonders.addParameterRegister("mage", "necromancer", 0, 20, 0);
+    AncientWonders.addParameterRegister("warrior", "necromancer", 0, 10, 0);
+    AncientWonders.addParameterRegister("necromancer", "necromancer", 0, 200, 0);
+    //damage type
+    function attack(ent, fire, wate, earth, aer, orgDmg, dmg, arm) {
+        var damage = orgDmg;
+        if (arm["fire"])
+            damage -= (orgDmg - dmg) - (dmg / fire);
+        if (arm["wate"])
+            damage -= (orgDmg - dmg) - (dmg / wate);
+        if (arm["earth"])
+            damage -= (orgDmg - dmg) - (dmg / earth);
+        if (arm["aer"])
+            damage -= (orgDmg - dmg) - (dmg / aer);
+        if (damage >= 1)
+            Entity.damageEntity(ent, damage);
+    }
+    MagicCore.registerArmorMagicType("wate", {
+        damage: function (ent, type, orgDmg, dmg, arm) {
+            attack(ent, 1, .1, .1, .4, orgDmg, dmg, arm);
+        }
+    });
+    MagicCore.registerArmorMagicType("earth", {
+        damage: function (ent, type, orgDmg, dmg, arm) {
+            attack(ent, .2, 0, .1, 1, orgDmg, dmg, arm);
+        }
+    });
+    MagicCore.registerArmorMagicType("fire", {
+        damage: function (ent, type, orgDmg, dmg, arm) {
+            attack(ent, .9, .1, 1, .5, orgDmg, dmg, arm);
+        }
+    });
+    MagicCore.registerArmorMagicType("aer", {
+        damage: function (ent, type, orgDmg, dmg, arm) {
+            attack(ent, .6, 1, .1, .2, orgDmg, dmg, arm);
+        }
+    });
+    //armor aer
+    MagicCore.setArmor(ItemID.aerhelmet, "magic", 40);
+    MagicCore.setArmor(ItemID.aerchestplate, "magic", 40);
+    MagicCore.setArmor(ItemID.aerleggings, "magic", 40);
+    MagicCore.setArmor(ItemID.aerboots, "magic", 40);
+    MagicCore.setArmorMagic(ItemID.aerhelmet, "aer", 1);
+    MagicCore.setArmorMagic(ItemID.aerchestplate, "aer", 2);
+    MagicCore.setArmorMagic(ItemID.aerleggings, "aer", 1);
+    MagicCore.setArmorMagic(ItemID.aerboots, "aer", 1);
+    //armor aqua
+    MagicCore.setArmor(ItemID.aquahelmet, "magic", 40);
+    MagicCore.setArmor(ItemID.aquachestplate, "magic", 40);
+    MagicCore.setArmor(ItemID.aqualeggings, "magic", 40);
+    MagicCore.setArmor(ItemID.aquaboots, "magic", 40);
+    MagicCore.setArmorMagic(ItemID.aquahelmet, "aer", 1);
+    MagicCore.setArmorMagic(ItemID.aquachestplate, "aer", 2);
+    MagicCore.setArmorMagic(ItemID.aqualeggings, "aer", 1);
+    MagicCore.setArmorMagic(ItemID.aquaboots, "aer", 1);
+});
+ModAPI.addAPICallback("RecipeViewer", function (api) {
+    var AltarRecipe = /** @class */ (function (_super) {
+        __extends(AltarRecipe, _super);
+        function AltarRecipe() {
+            var _this = this;
+            return _this;
+        }
+        ;
+        AltarRecipe.prototype.getAllList = function () {
+            var AltarRecipes = AltarAPI.Recipes;
+            return AltarRecipes;
+        };
+        ;
+        return AltarRecipe;
+    }(api.RecipeType));
+    ;
+    var CreatorAltarRecipe = new AltarRecipe("Алтарь созидания", BlockID.creatoraltar, {
+        params: {},
+        drawing: [],
+        elements: {
+            slot0: { x: 465, y: 265, size: 70 },
+            slot1: { x: 465, y: 20, size: 70 },
+            slot2: { x: 625, y: 40, size: 70 },
+            slot3: { x: 790, y: 265, size: 70 },
+            slot4: { x: 625, y: 480, size: 70 },
+            slot5: { x: 465, y: 510, size: 70 },
+            slot6: { x: 300, y: 480, size: 70 },
+            slot7: { x: 140, y: 265, size: 70 },
+            slot8: { x: 300, y: 40, size: 70 },
+            output0: { x: 0, y: 0, size: 70 },
+        }
+    });
+    api.RecipeTypeRegistry.register("creatoraltar", CreatorAltarRecipe);
 });
 Item.addCreativeGroup("terra_armor", "Земля", [
     ItemID.terrahelmet,

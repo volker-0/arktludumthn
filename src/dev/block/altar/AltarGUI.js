@@ -71,7 +71,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
     //Крафт
     if(this.data.isCraftng){
       this.data.CraftingTime--;
-      this.sendPacket("AnimateParticles", {Particles:this.data.BlockParticles, coords: {x: this.x, y: this.y, z: this.z}, Pos: this.data.BlockPos});
+      this.sendPacket("AnimateParticles", {Particles:this.data.BlockParticles, coords: {x: this.x, y: this.y, z: this.z}, Pos: this.data.BlockPos, CraftingTime:this.data.CraftingTime});
       this.Craft();
     };
     this.networkData.sendChanges();
@@ -117,25 +117,34 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
   },
 
   GetRecipe: function(){
-    let itemsArr = [this.container.getSlot("slotCenter").id, this.container.getSlot("slot0").id, this.container.getSlot("slot1").id, this.container.getSlot("slot2").id, this.container.getSlot("slot3").id, this.container.getSlot("slot4").id, this.container.getSlot("slot5").id, this.container.getSlot("slot6").id, this.container.getSlot("slot7").id,];
-    for(recipe in AltarAPI.Recipes){
-      let copy = AltarAPI.Recipes[recipe];
-      if(JSON.stringify(copy.items) == JSON.stringify(itemsArr)){
-        if(this.data.AltarPower>= copy.energy){
-          for(let i =0; i<=7; i++){
-            let name = "slot"+i;
-            if(this.container.getSlot(name).id!=0){
-              this.data.ItemsParticles.push(AltarItems[i]);
-            }
-          };
-          this.data.CraftingItem = recipe;
-          this.data.isCraftng = true;
-          break;
+    let test = false;
+    let RecipeEnergy;
+    let Recipe;
+    let itemsArr = [this.container.getSlot("slotCenter"), this.container.getSlot("slot0"), this.container.getSlot("slot1"), this.container.getSlot("slot2"), this.container.getSlot("slot3"), this.container.getSlot("slot4"), this.container.getSlot("slot5"), this.container.getSlot("slot6"), this.container.getSlot("slot7")];
+    
+    for(let i =0; i < AltarAPI.Recipes.length; i++){
+      let copy = AltarAPI.Recipes[i];
+      RecipeEnergy = copy.energy;
+      for(let a = 0; a<9; a++){
+        if(copy.input[a].id == itemsArr[a].id && copy.input[a].data == itemsArr[a].data){
+          test = true;
+          Recipe = copy.output;
+          continue;
         };
-      } else{
-        this.data.isCraftng = false;
-        this.data.CraftingTime = 100;
+        test = false;
+        break;
       };
+    };
+
+    if(this.data.AltarPower>= RecipeEnergy && test){
+      for(let i =0; i<=7; i++){
+        let name = "slot"+i;
+        if(this.container.getSlot(name).id!=0){
+          this.data.ItemsParticles.push(AltarItems[i]);
+        }
+      };
+      this.data.CraftingItem = Recipe;
+      this.data.isCraftng = true;
     };
   },
 
@@ -149,7 +158,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         this.container.setSlot(name, this.container.getSlot(name).id, this.container.getSlot(name).count - 1, this.container.getSlot(name).data, this.container.getSlot(name).extra);
       };
       this.container.validateAll();
-      this.container.setSlot("slotCenter", this.data.CraftingItem, 1, this.container.getSlot("slotCenter").data, this.container.getSlot("slotCentert").extra);
+      this.container.setSlot("slotCenter", this.data.CraftingItem.id, 1, this.data.CraftingItem.data, this.container.getSlot("slotCentert").extra);
       this.container.sendChanges();
     };
   },
@@ -157,7 +166,7 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
   client:{
     events:{
       AnimateParticles: function(Data) {
-        if(Data.CraftingTime>=60){
+        if(Data.CraftingTime>=50){
           for(let i =0; i< Data.Pos.length;i++){
             let LocalData = Data.Pos[i];
             Particles.addParticle(Data.Particles[i],Data.coords.x+LocalData.x + .5,Data.coords.y+LocalData.y+ .5,Data.coords.z+LocalData.z+ .5, (LocalData.x * (-1))/60, ((LocalData.y * (-1))+ 0.78)/60, (LocalData.z * (-1))/60)
