@@ -134,17 +134,17 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         test = false;
         break;
       };
-    };
-
-    if(this.data.AltarPower>= RecipeEnergy && test){
-      for(let i =0; i<=7; i++){
-        let name = "slot"+i;
-        if(this.container.getSlot(name).id!=0){
-          this.data.ItemsParticles.push(AltarItems[i]);
-        }
+      if(this.data.AltarPower>= RecipeEnergy && test){
+        for(let i =0; i<=7; i++){
+          let name = "slot"+i;
+          if(this.container.getSlot(name).id!=0){
+            this.data.ItemsParticles.push(AltarItems[i]);
+          }
+        };
+        this.data.CraftingItem = Recipe;
+        this.data.isCraftng = true;
+        break;
       };
-      this.data.CraftingItem = Recipe;
-      this.data.isCraftng = true;
     };
   },
 
@@ -158,7 +158,8 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         this.container.setSlot(name, this.container.getSlot(name).id, this.container.getSlot(name).count - 1, this.container.getSlot(name).data, this.container.getSlot(name).extra);
       };
       this.container.validateAll();
-      this.container.setSlot("slotCenter", this.data.CraftingItem.id, 1, this.data.CraftingItem.data, this.container.getSlot("slotCentert").extra);
+      Logger.Log(JSON.stringify(this.data.CraftingItem));
+      this.container.setSlot("slotCenter", this.data.CraftingItem[0].id, 1, this.data.CraftingItem[0].data, this.container.getSlot("slotCentert").extra);
       this.container.sendChanges();
     };
   },

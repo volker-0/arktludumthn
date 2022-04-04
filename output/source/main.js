@@ -237,7 +237,7 @@ var AltarAPI = {
         }
         ;
         var output = [recipe.output];
-        var recipefull = { input: input, output: output, "energy": recipe.energy };
+        var recipefull = { input: input, output: output, energy: recipe.energy };
         this.Recipes.push(recipefull);
     },
 };
@@ -569,12 +569,16 @@ var AltarItems = [
     { x: .0625, y: 1.25, z: .0625 }
 ];
 IDRegistry.genBlockID("creatoraltar");
-Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", texture: ["creatoraltar", 0], inCreative: true }]);
-var AltarMesh = new RenderMesh(__dir__ + "resources/res/models/altar.obj", "obj", null);
-AltarMesh.setBlockTexture("creatoraltar", 0);
+Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", inCreative: true }]);
+var AltarMesh = new RenderMesh();
 var AltarModel = new BlockRenderer.Model(AltarMesh);
-var ICRenderAltar = new ICRender.Model(AltarModel);
+var ICRenderAltar = new ICRender.Model();
+AltarMesh.setBlockTexture("creatoraltar", 0);
+AltarMesh.importFromFile(__dir__ + "resources/res/models/altar.obj", "obj", null);
+ICRenderAltar.addEntry(AltarModel);
 BlockRenderer.setStaticICRender(BlockID.creatoraltar, -1, ICRenderAltar);
+ItemModel.getFor(ItemID.creatoraltar, -1).setSpriteUiRender(true);
+ItemModel.getFor(ItemID.creatoraltar, -1).setModUiSpriteName("altaricon", 0);
 var AltarGui = new UI.StandardWindow({
     standard: {
         header: { text: { text: "Алтарь созидания" }, color: android.graphics.Color.rgb(185, 142, 77) },
@@ -717,18 +721,19 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
                 break;
             }
             ;
-        }
-        ;
-        if (this.data.AltarPower >= RecipeEnergy && test) {
-            for (var i = 0; i <= 7; i++) {
-                var name = "slot" + i;
-                if (this.container.getSlot(name).id != 0) {
-                    this.data.ItemsParticles.push(AltarItems[i]);
+            if (this.data.AltarPower >= RecipeEnergy && test) {
+                for (var i_1 = 0; i_1 <= 7; i_1++) {
+                    var name = "slot" + i_1;
+                    if (this.container.getSlot(name).id != 0) {
+                        this.data.ItemsParticles.push(AltarItems[i_1]);
+                    }
                 }
+                ;
+                this.data.CraftingItem = Recipe;
+                this.data.isCraftng = true;
+                break;
             }
             ;
-            this.data.CraftingItem = Recipe;
-            this.data.isCraftng = true;
         }
         ;
     },
@@ -743,7 +748,8 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
             }
             ;
             this.container.validateAll();
-            this.container.setSlot("slotCenter", this.data.CraftingItem.id, 1, this.data.CraftingItem.data, this.container.getSlot("slotCentert").extra);
+            Logger.Log(JSON.stringify(this.data.CraftingItem));
+            this.container.setSlot("slotCenter", this.data.CraftingItem[0].id, 1, this.data.CraftingItem[0].data, this.container.getSlot("slotCentert").extra);
             this.container.sendChanges();
         }
         ;
@@ -13435,10 +13441,9 @@ AltarAPI.AddAltarRecipe({
         7: { id: ItemID.starsword, data: 0 },
         8: { id: ItemID.aquaessence, data: 0 },
     },
-    output: { id: ItemID.truebiomesword, data: 0 },
+    output: { id: ItemID.ancientark, data: 0 },
     energy: 50
 });
-AltarAPI.AddAltarRecipe(ItemID.livingshard, ItemID.exalibur, ItemID.aeressence, ItemID.enchantedsword, ItemID.terraessence, ItemID.brokenherosword, ItemID.ignisessence, ItemID.starsword, ItemID.aquaessence, ItemID.ancientark, 50);
 Callback.addCallback("ItemUse", function (coords, item) {
     coords = coords.relative;
     if (item.id == ItemID.Hollybot) {
@@ -13552,35 +13557,43 @@ ModAPI.addAPICallback("AncientWondersAPI", function (api) {
     MagicCore.setArmorMagic(ItemID.aquaboots, "aer", 1);
 });
 ModAPI.addAPICallback("RecipeViewer", function (api) {
+    IDRegistry.genItemID("icon_altar");
+    Item.createItem("icon_altar", "Алтарь созидания", { name: "altaricon" }, { isTech: true });
     var AltarRecipe = /** @class */ (function (_super) {
         __extends(AltarRecipe, _super);
         function AltarRecipe() {
-            var _this = this;
-            return _this;
+            return _super !== null && _super.apply(this, arguments) || this;
         }
-        ;
         AltarRecipe.prototype.getAllList = function () {
             var AltarRecipes = AltarAPI.Recipes;
             return AltarRecipes;
         };
         ;
+        AltarRecipe.prototype.onOpen = function (elements, recipe) {
+            var text = elements.get("TextEnergy");
+            text.description.text = "\u041D\u0443\u0436\u043D\u043E \u044D\u043D\u0435\u0440\u0433\u0438\u0438: ".concat(recipe.energy);
+        };
+        ;
         return AltarRecipe;
     }(api.RecipeType));
     ;
-    var CreatorAltarRecipe = new AltarRecipe("Алтарь созидания", BlockID.creatoraltar, {
+    var CreatorAltarRecipe = new AltarRecipe("Алтарь созидания", ItemID.icon_altar, {
         params: {},
-        drawing: [],
+        drawing: [
+            { type: "bitmap", x: 0, y: 0, bitmap: "AltarStar", width: 997, height: 600 }
+        ],
         elements: {
-            slot0: { x: 465, y: 265, size: 70 },
-            slot1: { x: 465, y: 20, size: 70 },
-            slot2: { x: 625, y: 40, size: 70 },
-            slot3: { x: 790, y: 265, size: 70 },
-            slot4: { x: 625, y: 480, size: 70 },
-            slot5: { x: 465, y: 510, size: 70 },
-            slot6: { x: 300, y: 480, size: 70 },
-            slot7: { x: 140, y: 265, size: 70 },
-            slot8: { x: 300, y: 40, size: 70 },
-            output0: { x: 0, y: 0, size: 70 },
+            input0: { type: "slot", x: 465, y: 265, size: 70 },
+            input1: { type: "slot", x: 465, y: 20, size: 70 },
+            input2: { type: "slot", x: 625, y: 40, size: 70 },
+            input3: { type: "slot", x: 790, y: 265, size: 70 },
+            input4: { type: "slot", x: 625, y: 480, size: 70 },
+            input5: { type: "slot", x: 465, y: 510, size: 70 },
+            input6: { type: "slot", x: 300, y: 480, size: 70 },
+            input7: { type: "slot", x: 140, y: 265, size: 70 },
+            input8: { type: "slot", x: 300, y: 40, size: 70 },
+            output0: { type: "slot", x: 0, y: 0, size: 70 },
+            TextEnergy: { type: "text", x: 80, y: 0, font: { size: 30 }, text: "\u041D\u0443\u0436\u043D\u043E \u044D\u043D\u0435\u0440\u0433\u0438\u0438: " }
         }
     });
     api.RecipeTypeRegistry.register("creatoraltar", CreatorAltarRecipe);

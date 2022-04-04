@@ -1,12 +1,15 @@
 IDRegistry.genBlockID("creatoraltar");
-Block.createBlock("creatoraltar", [{name: "Алтарь созидания", texture: ["creatoraltar", 0], inCreative: true}]);
+Block.createBlock("creatoraltar", [{name: "Алтарь созидания", inCreative: true}]);
 
-let AltarMesh = new RenderMesh(__dir__ + "resources/res/models/altar.obj", "obj", null);
+let AltarMesh = new RenderMesh();
+let AltarModel = new BlockRenderer.Model(AltarMesh);
+let ICRenderAltar = new ICRender.Model();
 
 AltarMesh.setBlockTexture("creatoraltar", 0);
+AltarMesh.importFromFile(__dir__ + "resources/res/models/altar.obj", "obj", null);
 
-let AltarModel = new BlockRenderer.Model(AltarMesh);
-
-let ICRenderAltar = new ICRender.Model(AltarModel);
+ICRenderAltar.addEntry(AltarModel);
 
 BlockRenderer.setStaticICRender(BlockID.creatoraltar, -1, ICRenderAltar);
+ItemModel.getFor(ItemID.creatoraltar, -1).setSpriteUiRender(true);
+ItemModel.getFor(ItemID.creatoraltar, -1).setModUiSpriteName("altaricon", 0);

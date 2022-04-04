@@ -153,9 +153,6 @@ AltarAPI.AddAltarRecipe({
     7:{id:ItemID.starsword, data:0},
     8:{id:ItemID.aquaessence, data:0},
   },
-  output:{id:ItemID.truebiomesword, data:0},
+  output:{id:ItemID.ancientark, data:0},
   energy:50
 });
-
-AltarAPI.AddAltarRecipe(ItemID.livingshard, ItemID.exalibur, ItemID.aeressence, ItemID.enchantedsword, ItemID.terraessence, ItemID.brokenherosword, ItemID.ignisessence, ItemID.starsword, ItemID.aquaessence, ItemID.ancientark, 50);
-

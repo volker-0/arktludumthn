@@ -83,7 +83,7 @@ let AltarAPI = {
 
     let output =[recipe.output];
 
-    let recipefull = {input:input, output:output, "energy": recipe.energy};
+    let recipefull = {input:input, output:output, energy: recipe.energy};
     
     this.Recipes.push(recipefull);
   },
