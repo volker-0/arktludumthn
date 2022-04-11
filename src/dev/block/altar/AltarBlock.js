@@ -17,7 +17,7 @@ Item.createItem("icon_altar", "Алтарь созидания", {name: "altaric
 
 Callback.addCallback("ItemUse", function(coords, item, block, isExternal, player){
   if(item.id == ItemID.icon_altar){
-    BlockSource.getDefaultForActor(player).setBlock(coords.x, coords.y, coords.z, item.id, item.data);
+    BlockSource.getDefaultForActor(player).setBlock(coords.x, coords.y, coords.z, BlockID.creatoraltar, 1);
     item.count--;
   };
 })
