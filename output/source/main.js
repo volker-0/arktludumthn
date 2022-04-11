@@ -569,7 +569,7 @@ var AltarItems = [
     { x: .0625, y: 1.25, z: .0625 }
 ];
 IDRegistry.genBlockID("creatoraltar");
-Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", inCreative: true }]);
+Block.createBlock("creatoraltar", [{ name: "Алтарь созидания", inCreative: false }]);
 var AltarMesh = new RenderMesh();
 var AltarModel = new BlockRenderer.Model(AltarMesh);
 var ICRenderAltar = new ICRender.Model();
@@ -577,8 +577,15 @@ AltarMesh.setBlockTexture("creatoraltar", 0);
 AltarMesh.importFromFile(__dir__ + "resources/res/models/altar.obj", "obj", null);
 ICRenderAltar.addEntry(AltarModel);
 BlockRenderer.setStaticICRender(BlockID.creatoraltar, -1, ICRenderAltar);
-ItemModel.getFor(ItemID.creatoraltar, -1).setSpriteUiRender(true);
-ItemModel.getFor(ItemID.creatoraltar, -1).setModUiSpriteName("altaricon", 0);
+IDRegistry.genItemID("icon_altar");
+Item.createItem("icon_altar", "Алтарь созидания", { name: "altaricon" });
+Callback.addCallback("ItemUse", function (coords, item, block, isExternal, player) {
+    if (item.id == ItemID.icon_altar) {
+        BlockSource.getDefaultForActor(player).setBlock(coords.x, coords.y, coords.z, item.id, item.data);
+        item.count--;
+    }
+    ;
+});
 var AltarGui = new UI.StandardWindow({
     standard: {
         header: { text: { text: "Алтарь созидания" }, color: android.graphics.Color.rgb(185, 142, 77) },

@@ -1,5 +1,5 @@
 IDRegistry.genBlockID("creatoraltar");
-Block.createBlock("creatoraltar", [{name: "Алтарь созидания", inCreative: true}]);
+Block.createBlock("creatoraltar", [{name: "Алтарь созидания", inCreative: false}]);
 
 let AltarMesh = new RenderMesh();
 let AltarModel = new BlockRenderer.Model(AltarMesh);
@@ -11,5 +11,13 @@ AltarMesh.importFromFile(__dir__ + "resources/res/models/altar.obj", "obj", null
 ICRenderAltar.addEntry(AltarModel);
 
 BlockRenderer.setStaticICRender(BlockID.creatoraltar, -1, ICRenderAltar);
-ItemModel.getFor(ItemID.creatoraltar, -1).setSpriteUiRender(true);
-ItemModel.getFor(ItemID.creatoraltar, -1).setModUiSpriteName("altaricon", 0);
+
+IDRegistry.genItemID("icon_altar");
+Item.createItem("icon_altar", "Алтарь созидания", {name: "altaricon"});
+
+Callback.addCallback("ItemUse", function(coords, item, block, isExternal, player){
+  if(item.id == ItemID.icon_altar){
+    BlockSource.getDefaultForActor(player).setBlock(coords.x, coords.y, coords.z, item.id, item.data);
+    item.count--;
+  };
+})
