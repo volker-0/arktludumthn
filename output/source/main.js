@@ -581,7 +581,7 @@ IDRegistry.genItemID("icon_altar");
 Item.createItem("icon_altar", "Алтарь созидания", { name: "altaricon" });
 Callback.addCallback("ItemUse", function (coords, item, block, isExternal, player) {
     if (item.id == ItemID.icon_altar) {
-        BlockSource.getDefaultForActor(player).setBlock(coords.x, coords.y, coords.z, item.id, item.data);
+        BlockSource.getDefaultForActor(player).setBlock(coords.relative.x, coords.relative.y, coords.relative.z, BlockID.creatoraltar, 1);
         item.count--;
     }
     ;

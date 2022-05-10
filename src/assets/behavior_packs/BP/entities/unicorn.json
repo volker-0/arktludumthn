@@ -7,15 +7,166 @@
 			"is_summonable": true,
 			"is_experimental": false
 		},
-		"component_groups": {},
+		"component_groups": {
+			"minecraft:horse_wild": {
+				"minecraft:rideable": {
+					"seat_count": 1,
+					"family_types": [
+						"player",
+						"zombie"
+					],
+					"interact_text": "action.interact.mount",
+					"seats": {
+						"position": [
+							0,
+							1.1,
+							-0.2
+						]
+					}
+				},
+				"minecraft:behavior.mount_pathing": {
+					"priority": 2,
+					"speed_multiplier": 1.5,
+					"target_dist": 0,
+					"track_target": true
+				},
+				"minecraft:tamemount": {
+					"min_temper": 0,
+					"max_temper": 100,
+					"feed_text": "action.interact.feed",
+					"ride_text": "action.interact.mount",
+					"feed_items": [
+						{
+							"item": "wheat",
+							"temper_mod": 3
+						},
+						{
+							"item": "sugar",
+							"temper_mod": 3
+						},
+						{
+							"item": "apple",
+							"temper_mod": 3
+						},
+						{
+							"item": "golden_carrot",
+							"temper_mod": 5
+						},
+						{
+							"item": "golden_apple",
+							"temper_mod": 10
+						},
+						{
+							"item": "appleEnchanted",
+							"temper_mod": 10
+						}
+					],
+					"auto_reject_items": [
+						{
+							"item": "horsearmorleather"
+						},
+						{
+							"item": "horsearmoriron"
+						},
+						{
+							"item": "horsearmorgold"
+						},
+						{
+							"item": "horsearmordiamond"
+						},
+						{
+							"item": "saddle"
+						}
+					],
+					"tame_event": {
+						"event": "minecraft:on_tame",
+						"target": "self"
+					}
+				},
+				"minecraft:variant": {
+					"value": 0
+				}
+			},
+			"minecraft:horse_tamed": {
+				"minecraft:is_tamed": {},
+				"minecraft:rideable": {
+					"seat_count": 1,
+					"crouching_skip_interact": true,
+					"family_types": [
+						"player"
+					],
+					"seats": {
+						"position": [
+							0,
+							1.1,
+							-0.2
+						]
+					}
+				},
+				"minecraft:inventory": {
+					"inventory_size": 2,
+					"container_type": "horse"
+				},
+				"minecraft:breedable": {
+					"require_tame": true,
+					"inherit_tamed": false,
+					"breeds_with": [
+						{
+							"mate_type": "minecraft:horse",
+							"baby_type": "minecraft:horse",
+							"breed_event": {
+								"event": "minecraft:entity_born",
+								"target": "baby"
+							}
+						},
+						{
+							"mate_type": "minecraft:donkey",
+							"baby_type": "minecraft:mule",
+							"breed_event": {
+								"event": "minecraft:entity_born",
+								"target": "baby"
+							}
+						}
+					],
+					"breed_items": [
+						"golden_carrot",
+						"golden_apple",
+						"appleEnchanted"
+					]
+				},
+				"minecraft:behavior.tempt": {
+					"priority": 5,
+					"speed_multiplier": 1.2,
+					"items": [
+						"golden_apple",
+						"appleEnchanted",
+						"golden_carrot"
+					]
+				}
+			},
+			"minecraft:horse_saddled": {
+				"minecraft:is_saddled": {},
+				"minecraft:input_ground_controlled": {},
+				"minecraft:can_power_jump": {},
+				"minecraft:behavior.player_ride_tamed": {},
+				"minecraft:variant": {
+					"value": 1
+				}
+			},
+			"ark:unsaddled": {
+				"minecraft:variant": {
+					"value": 0
+				}
+			}
+		},
 		"components": {
 			"minecraft:health": {
 				"value": 10,
 				"max": 10
 			},
 			"minecraft:collision_box": {
-				"width": 1,
-				"height": 1
+				"width": 1.4,
+				"height": 1.6
 			},
 			"minecraft:physics": {},
 			"minecraft:pushable": {
@@ -50,8 +201,118 @@
 			},
 			"minecraft:behavior.random_stroll": {
 				"priority": 0
+			},
+			"minecraft:equippable": {
+				"slots": [
+					{
+						"slot": 0,
+						"item": "saddle",
+						"accepted_items": [
+							"saddle"
+						],
+						"on_equip": {
+							"event": "minecraft:horse_saddled"
+						},
+						"on_unequip": {
+							"event": "minecraft:horse_unsaddled"
+						}
+					},
+					{
+						"slot": 1,
+						"item": "horsearmoriron",
+						"accepted_items": [
+							"horsearmorleather",
+							"horsearmoriron",
+							"horsearmorgold",
+							"horsearmordiamond"
+						]
+					}
+				]
+			},
+			"minecraft:horse.jump_strength": {
+				"value": {
+					"range_min": 0.4,
+					"range_max": 2
+				}
+			},
+			"minecraft:leashable": {
+				"soft_distance": 4,
+				"hard_distance": 6,
+				"max_distance": 10
+			},
+			"minecraft:healable": {
+				"items": [
+					{
+						"item": "wheat",
+						"heal_amount": 2
+					},
+					{
+						"item": "sugar",
+						"heal_amount": 1
+					},
+					{
+						"item": "hay_block",
+						"heal_amount": 20
+					},
+					{
+						"item": "apple",
+						"heal_amount": 3
+					},
+					{
+						"item": "golden_carrot",
+						"heal_amount": 4
+					},
+					{
+						"item": "golden_apple",
+						"heal_amount": 10
+					},
+					{
+						"item": "appleEnchanted",
+						"heal_amount": 10
+					}
+				]
 			}
 		},
-		"events": {}
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"minecraft:horse_wild"
+					]
+				}
+			},
+			"minecraft:on_tame": {
+				"remove": {
+					"component_groups": [
+						"minecraft:horse_wild"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:horse_tamed",
+						"ark:unsaddled"
+					]
+				}
+			},
+			"minecraft:horse_saddled": {
+				"add": {
+					"component_groups": [
+						"minecraft:horse_saddled"
+					]
+				}
+			},
+			"minecraft:horse_unsaddled": {
+				"remove": {
+					"component_groups": [
+						"minecraft:horse_saddled"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ark:unsaddled"
+					]
+				}
+			}
+		}
 	}
 }
