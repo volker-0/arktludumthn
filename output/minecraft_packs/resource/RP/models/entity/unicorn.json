@@ -259,6 +259,93 @@
 				"cubes": [
 					{"origin": [-1, 30, 3], "size": [2, 6, 2], "uv": [78, 59]}
 				]
+			},
+			{
+				"name": "Saddle",
+				"pivot": [0, 22, 2],
+				"cubes": [
+					{"origin": [-5, 21, -1], "size": [10, 1, 8], "uv": [80, 0]}
+				]
+			},
+			{
+				"name": "SaddleB",
+				"pivot": [0, 22, 2],
+				"cubes": [
+					{"origin": [-1.5, 22, -1], "size": [3, 1, 2], "uv": [106, 9]}
+				]
+			},
+			{
+				"name": "SaddleC",
+				"pivot": [0, 22, 2],
+				"cubes": [
+					{"origin": [-4, 22, 5], "size": [8, 1, 2], "uv": [80, 9]}
+				]
+			},
+			{
+				"name": "SaddleL2",
+				"pivot": [5, 21, 2],
+				"cubes": [
+					{"origin": [4.5, 13, 1], "size": [1, 2, 2], "uv": [74, 0]}
+				]
+			},
+			{
+				"name": "SaddleL",
+				"pivot": [5, 21, 2],
+				"cubes": [
+					{"origin": [4.5, 15, 1.5], "size": [1, 6, 1], "uv": [70, 0]}
+				]
+			},
+			{
+				"name": "SaddleR2",
+				"pivot": [-5, 21, 2],
+				"cubes": [
+					{"origin": [-5.5, 13, 1], "size": [1, 2, 2], "uv": [74, 4]}
+				]
+			},
+			{
+				"name": "SaddleR",
+				"pivot": [-5, 21, 2],
+				"cubes": [
+					{"origin": [-5.5, 15, 1.5], "size": [1, 6, 1], "uv": [80, 0]}
+				]
+			},
+			{
+				"name": "SaddleMouthL",
+				"pivot": [0, 20, -10],
+				"rotation": [30, 0, 0],
+				"cubes": [
+					{"origin": [1.5, 26, -14], "size": [1, 2, 2], "uv": [74, 13]}
+				]
+			},
+			{
+				"name": "SaddleMouthR",
+				"pivot": [0, 20, -10],
+				"rotation": [30, 0, 0],
+				"cubes": [
+					{"origin": [-2.5, 26, -14], "size": [1, 2, 2], "uv": [74, 13]}
+				]
+			},
+			{
+				"name": "SaddleMouthLine",
+				"pivot": [0, 20, -10],
+				"cubes": [
+					{"origin": [2.6, 23, -16], "size": [0, 3, 16], "uv": [44, 10]}
+				]
+			},
+			{
+				"name": "SaddleMouthLineR",
+				"pivot": [0, 20, -10],
+				"cubes": [
+					{"origin": [-2.6, 23, -16], "size": [0, 3, 16], "uv": [44, 5]}
+				]
+			},
+			{
+				"name": "HeadSaddle",
+				"pivot": [0, 20, -10],
+				"rotation": [30, 0, 0],
+				"cubes": [
+					{"origin": [-2.5, 25.1, -17], "size": [5, 5, 12], "uv": [80, 12], "inflate": 0.05}
+				]
 			}
 		]
 	}

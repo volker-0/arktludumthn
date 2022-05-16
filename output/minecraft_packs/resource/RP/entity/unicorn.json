@@ -7,13 +7,14 @@
 				"default": "entity_alphatest"
 			},
 			"textures": {
-				"default": "textures/entity/unicorn"
+				"default": "textures/entity/unicorn",
+				"saddled": "textures/entity/unicornSeddle"
 			},
 			"geometry": {
 				"default": "geometry.unicorn"
 			},
 			"render_controllers": [
-				"controller.render.mobs"
+				"controller.render.unicorn"
 			],
 			"spawn_egg": {
 				"base_color": "#000000",

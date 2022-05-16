@@ -3,6 +3,7 @@ header.js
 API/EssenceAPI.js
 API/ItemGenerate.js
 API/ArmorAPI.js
+API/ChronoAPI.js
 
 particles/CatalizatorParticles.js
 
@@ -54,6 +55,7 @@ item/shard.js
 item/food.js
 item/dimension.js
 item/books.js
+item/Baubles.js
 
 dimension.js
 

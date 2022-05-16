@@ -18,6 +18,7 @@ IMPORT("SettingsManager");
 //IMPORT("DungeonAPI");
 IMPORT("SoundAPI");
 //IMPORT("RechargeLib");
+IMPORT("BaublesAPI");
 var folder = __dir__ + "/sounds/";
 var MusicPlayer = new MediaPlayer();
 MediaPlayer.register("Holybot.music", folder + "Holybot.mp3");
@@ -124,6 +125,34 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
     }
     ;
 });
+var Panel = {
+    window: new UI.Window({
+        location: {
+            x: 0,
+            y: 110,
+            width: 50,
+            height: 200
+        },
+        elements: {
+            "0": { type: "button", visual: true, x: -1000, y: 0, size: 1000 }
+        },
+        drawing: [
+            { type: "bitmap", x: 0, y: 0, bitmap: "button_time_stop", width: 997, height: 600 }
+        ]
+    }),
+    container: new ItemContainer(),
+    enabled: false,
+    open: function (client) {
+        //this.container.closeFor(client);
+        this.window.setAsGameOverlay(true);
+        this.container.openFor(client, this.window);
+    },
+    close: function (client) {
+        this.container.closeFor(client);
+    },
+};
+var TimeStop = function (time, enabled) {
+};
 var GoldParticle = Particles.registerParticleType({
     texture: "nitor",
     size: [0.25, 2],
@@ -12771,6 +12800,21 @@ ModAPI.addAPICallback("GuideAPI", function (api) {
             },
         },
     });
+});
+IDRegistry.genItemID("StopClock");
+Item.createItem("StopClock", "Хронометр", { name: "chrono", meta: 0 }, { stack: 1 });
+Baubles.registerBauble({
+    id: ItemID.StopClock,
+    type: BaubleType.charm,
+    onEquip: function (client) {
+        alert("onEquip " + client.getPlayerUid());
+        Panel.open(client);
+    },
+    onTakeOff: function (client) {
+        alert("onTakeOff");
+        Panel.close(client);
+    },
+    tick: function () { }
 });
 var Azatot = new Dimensions.CustomDimension("Azatot", 685);
 Azatot.setSkyColor(0, 0, .2);

@@ -3,6 +3,7 @@ IMPORT("SettingsManager");
 //IMPORT("DungeonAPI");
 IMPORT("SoundAPI")
 //IMPORT("RechargeLib");
+IMPORT("BaublesAPI");
 
 const folder = __dir__ + "/sounds/";
 const MusicPlayer = new MediaPlayer();
