@@ -9,7 +9,7 @@ Baubles.registerBauble({
       Panel.open(client);
   },
   onTakeOff(client) {
-      alert("onTakeOff");
+      Logger.Log("TakeOff");
       Panel.close(client);
   },
   tick(){}

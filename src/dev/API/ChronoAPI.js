@@ -1,4 +1,4 @@
-var Panel = {
+let Panel = {
   window: new UI.Window({
     location: {
       x:0,
@@ -19,15 +19,24 @@ var Panel = {
   enabled: false,
 
   open: function(client){
-    //this.container.closeFor(client);
-    this.window.setAsGameOverlay(true)
-    this.container.openFor(client, this.window);
+    if (!this.container.getClientContainerTypeName()) {
+			this.container.setClientContainerTypeName("chronometer.ui");
+		}
+    this.window.setAsGameOverlay(true);
+		this.container.openFor(client, "chronometer");
+    /*this.container.closeFor(client);
+    this.window.setContainer(this.container)
+    this.container.openFor(client, this.window);*/
   },
 
   close: function(client){
-    this.container.closeFor(client);
+    this.container.close();
   },
 };
+
+ItemContainer.registerScreenFactory("chronometer.ui", function(container, name) {
+  return Panel.window;
+});
 
 let TimeStop =  function(time, enabled){
   

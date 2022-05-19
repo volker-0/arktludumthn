@@ -134,7 +134,7 @@ var Panel = {
             height: 200
         },
         elements: {
-            "0": { type: "button", visual: true, x: -1000, y: 0, size: 1000 }
+            "0": { type: "button", x: -1000, y: 0, size: 1000 }
         },
         drawing: [
             { type: "bitmap", x: 0, y: 0, bitmap: "button_time_stop", width: 997, height: 600 }
@@ -143,14 +143,22 @@ var Panel = {
     container: new ItemContainer(),
     enabled: false,
     open: function (client) {
-        //this.container.closeFor(client);
+        if (!this.container.getClientContainerTypeName()) {
+            this.container.setClientContainerTypeName("chronometer.ui");
+        }
         this.window.setAsGameOverlay(true);
-        this.container.openFor(client, this.window);
+        this.container.openFor(client, "chronometer");
+        /*this.container.closeFor(client);
+        this.window.setContainer(this.container)
+        this.container.openFor(client, this.window);*/
     },
     close: function (client) {
-        this.container.closeFor(client);
+        this.container.close();
     },
 };
+ItemContainer.registerScreenFactory("chronometer.ui", function (container, name) {
+    return Panel.window;
+});
 var TimeStop = function (time, enabled) {
 };
 var GoldParticle = Particles.registerParticleType({
@@ -12811,7 +12819,7 @@ Baubles.registerBauble({
         Panel.open(client);
     },
     onTakeOff: function (client) {
-        alert("onTakeOff");
+        Logger.Log("TakeOff");
         Panel.close(client);
     },
     tick: function () { }
