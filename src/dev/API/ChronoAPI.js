@@ -30,7 +30,7 @@ let Panel = {
   },
 
   close: function(client){
-    this.container.close();
+    this.container.closeFor(client);
   },
 };
 

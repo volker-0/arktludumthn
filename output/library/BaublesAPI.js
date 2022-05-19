@@ -157,8 +157,8 @@ var Baubles = /** @class */ (function () {
         container.setClientContainerTypeName("baubles.ui");
         var slots = ["amulet", "ring0", "ring1", "belt", "head", "body", "charm"];
         for (var _i = 0, slots_1 = slots; _i < slots_1.length; _i++) {
-            var name = slots_1[_i];
-            container.setDirtySlotListener(name, function (container, name, slot) {
+            var name_1 = slots_1[_i];
+            container.setDirtySlotListener(name_1, function (container, name, slot) {
                 var _a, _b;
                 var data = Baubles.data[playerUid];
                 var old = data.cache[name];
@@ -171,7 +171,7 @@ var Baubles = /** @class */ (function () {
                     data.cache[name] = slot.id;
                 }
             });
-            container.setSlotAddTransferPolicy(name, function (container, name, id, amount) {
+            container.setSlotAddTransferPolicy(name_1, function (container, name, id, amount) {
                 var baubleType = name === "ring0" || name === "ring1" ? "ring" : name;
                 return Baubles.getType(id) === baubleType ?
                     Math.min(amount, Item.getMaxStack(id) - container.getSlot(name).count) : 0;

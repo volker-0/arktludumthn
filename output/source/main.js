@@ -153,7 +153,7 @@ var Panel = {
         this.container.openFor(client, this.window);*/
     },
     close: function (client) {
-        this.container.close();
+        this.container.closeFor(client);
     },
 };
 ItemContainer.registerScreenFactory("chronometer.ui", function (container, name) {
