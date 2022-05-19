@@ -125,41 +125,44 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
     }
     ;
 });
-var Panel = {
-    window: new UI.Window({
-        location: {
-            x: 0,
-            y: 110,
-            width: 50,
-            height: 200
-        },
-        elements: {
-            "0": { type: "button", x: -1000, y: 0, size: 1000 }
-        },
-        drawing: [
-            { type: "bitmap", x: 0, y: 0, bitmap: "button_time_stop", width: 997, height: 600 }
-        ]
-    }),
-    container: new ItemContainer(),
-    enabled: false,
-    open: function (client) {
-        if (!this.container.getClientContainerTypeName()) {
-            this.container.setClientContainerTypeName("chronometer.ui");
-        }
-        this.window.setAsGameOverlay(true);
-        this.container.openFor(client, "chronometer");
-        /*this.container.closeFor(client);
-        this.window.setContainer(this.container)
-        this.container.openFor(client, this.window);*/
-    },
-    close: function (client) {
-        this.container.closeFor(client);
-    },
-};
-ItemContainer.registerScreenFactory("chronometer.ui", function (container, name) {
-    return Panel.window;
-});
-var TimeStop = function (time, enabled) {
+var TimeStopClock = /** @class */ (function () {
+    function TimeStopClock(time) {
+        this._this = this;
+        this.window = new UI.Window({
+            location: {
+                x: 950,
+                y: 225,
+                width: 50,
+                height: 50
+            },
+            elements: {
+                btn: { type: "button", bitmap: "button_time_stop", bitmap2: "button_time_stop", x: 0, y: 0, scale: 50, clicker: {} }
+            },
+            drawing: []
+        });
+        this.container = new ItemContainer();
+        this.open = function (client) {
+            if (!this.container.getClientContainerTypeName()) {
+                this.container.setClientContainerTypeName("chronometer.ui");
+            }
+            this.window.setAsGameOverlay(true);
+            this.container.openFor(client, "chronometer");
+        };
+        this.close = function (client) {
+            this.container.closeFor(client);
+        };
+        var click = this.window.getContent();
+        Logger.Log(JSON.stringify(click.clicker));
+        click.elements.btn.clicker = { onClick: function () { TimeStop(time); } };
+    }
+    ;
+    return TimeStopClock;
+}());
+;
+var TimeStopEnabled = false;
+var counter = 0;
+var TimeStop = function (time) {
+    runOnMainThread(function () { java.lang.Thread.currentThread().sleep(time); });
 };
 var GoldParticle = Particles.registerParticleType({
     texture: "nitor",
@@ -12811,16 +12814,21 @@ ModAPI.addAPICallback("GuideAPI", function (api) {
 });
 IDRegistry.genItemID("StopClock");
 Item.createItem("StopClock", "Хронометр", { name: "chrono", meta: 0 }, { stack: 1 });
+var ChronoBasic = new TimeStopClock(5000);
+ItemContainer.registerScreenFactory("chronometer.ui", function (container, name) {
+    return ChronoBasic.window;
+});
 Baubles.registerBauble({
     id: ItemID.StopClock,
     type: BaubleType.charm,
     onEquip: function (client) {
-        alert("onEquip " + client.getPlayerUid());
-        Panel.open(client);
+        var debug = ChronoBasic.window.getContent();
+        Logger.Log(JSON.stringify(debug));
+        ChronoBasic.open(client);
     },
     onTakeOff: function (client) {
         Logger.Log("TakeOff");
-        Panel.close(client);
+        ChronoBasic.close(client);
     },
     tick: function () { }
 });

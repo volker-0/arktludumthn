@@ -1,43 +1,43 @@
-let Panel = {
-  window: new UI.Window({
+class TimeStopClock{
+  constructor(time){
+    let click = this.window.getContent();
+    Logger.Log(JSON.stringify(click.clicker))
+    click.elements.btn.clicker = 
+      {onClick: function(){
+        TimeStop(time)}
+      }
+  };
+  _this = this;
+  window = new UI.Window({
     location: {
-      x:0,
-      y:110,
+      x:950,
+      y:225,
       width:50,
-      height:200
+      height:50
     },
     elements: {
-      "0": {type: "button",  x: -1000, y: 0, size: 1000}
+      btn: {type: "button", bitmap: "button_time_stop", bitmap2: "button_time_stop", x: 0, y: 0, scale: 50, clicker:{}}
     },
-    drawing: [
-      { type: "bitmap", x: 0, y: 0, bitmap: "button_time_stop", width: 997, height:600 }
-    ]
-  }),
+    drawing: []
+  });
 
-  container: new ItemContainer(),
+  container = new ItemContainer();
   
-  enabled: false,
+  time;
 
-  open: function(client){
+  open = function(client){
     if (!this.container.getClientContainerTypeName()) {
 			this.container.setClientContainerTypeName("chronometer.ui");
 		}
     this.window.setAsGameOverlay(true);
 		this.container.openFor(client, "chronometer");
-    /*this.container.closeFor(client);
-    this.window.setContainer(this.container)
-    this.container.openFor(client, this.window);*/
-  },
+  };
 
-  close: function(client){
+  close = function(client){
     this.container.closeFor(client);
-  },
+  };
 };
 
-ItemContainer.registerScreenFactory("chronometer.ui", function(container, name) {
-  return Panel.window;
-});
-
-let TimeStop =  function(time, enabled){
-  
+let TimeStop =  function(time){
+  runOnMainThread(function(){java.lang.Thread.currentThread().sleep(time);})
 };
