@@ -127,7 +127,6 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
 });
 var TimeStopClock = /** @class */ (function () {
     function TimeStopClock(time) {
-        this._this = this;
         this.window = new UI.Window({
             location: {
                 x: 950,
@@ -136,31 +135,30 @@ var TimeStopClock = /** @class */ (function () {
                 height: 50
             },
             elements: {
-                btn: { type: "button", bitmap: "button_time_stop", bitmap2: "button_time_stop", x: 0, y: 0, scale: 50, clicker: {} }
+                btn: { type: "button", bitmap: "button_time_stop", bitmap2: "button_time_stop_pressed", x: 0, y: 0, scale: 50, clicker: {} }
             },
             drawing: []
         });
-        this.container = new ItemContainer();
-        this.open = function (client) {
-            if (!this.container.getClientContainerTypeName()) {
-                this.container.setClientContainerTypeName("chronometer.ui");
-            }
+        this.enabled = false;
+        this.container = new UI.Container();
+        this.open = function () {
             this.window.setAsGameOverlay(true);
-            this.container.openFor(client, "chronometer");
+            this.container.openAs(this.window);
         };
-        this.close = function (client) {
-            this.container.closeFor(client);
+        this.close = function () {
+            this.container.close();
         };
         var click = this.window.getContent();
-        Logger.Log(JSON.stringify(click.clicker));
-        click.elements.btn.clicker = { onClick: function () { TimeStop(time); } };
+        click.elements.btn.clicker =
+            { onClick: function () {
+                    TimeStop(time);
+                }
+            };
     }
     ;
     return TimeStopClock;
 }());
 ;
-var TimeStopEnabled = false;
-var counter = 0;
 var TimeStop = function (time) {
     runOnMainThread(function () { java.lang.Thread.currentThread().sleep(time); });
 };
@@ -12824,13 +12822,25 @@ Baubles.registerBauble({
     onEquip: function (client) {
         var debug = ChronoBasic.window.getContent();
         Logger.Log(JSON.stringify(debug));
-        ChronoBasic.open(client);
+        ChronoBasic.open();
+        ChronoBasic.enabled = true;
     },
     onTakeOff: function (client) {
         Logger.Log("TakeOff");
-        ChronoBasic.close(client);
+        ChronoBasic.close();
+        ChronoBasic.enabled = false;
     },
     tick: function () { }
+});
+Callback.addCallback("NativeGuiChanged", function (screenName) {
+    if (ChronoBasic.enabled) {
+        if (screenName != "in_game_play_screen") {
+            ChronoBasic.close();
+        }
+        else {
+            ChronoBasic.open();
+        }
+    }
 });
 var Azatot = new Dimensions.CustomDimension("Azatot", 685);
 Azatot.setSkyColor(0, 0, .2);

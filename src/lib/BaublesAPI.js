@@ -153,6 +153,7 @@ var Baubles = /** @class */ (function () {
         Network.addServerPacket("baubles.open_ui", function (client) { return _this.openGuiFor(client); });
     };
     Baubles.setupContainer = function (playerUid, container) {
+        Logger.Log(container)
         if (container === void 0) { container = new ItemContainer(); }
         container.setClientContainerTypeName("baubles.ui");
         var slots = ["amulet", "ring0", "ring1", "belt", "head", "body", "charm"];
