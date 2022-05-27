@@ -2,10 +2,18 @@ ArmorAPI ={
   Armor:{
 
   },
+  Baubles:{
+
+  },
   RegisterArmor: function(id, def){
     this.Armor[id]=def;
   },
+  RegisterArmorBauble: function(id, def){
+    this.Baubles[id]=def;
+  },
 };
+
+const Bauble =["amulet", "ring", "belt", "head", "body", "charm"]
 
 ArmorAPI.RegisterArmor(ItemID.aerchestplate, 2)
 
@@ -24,6 +32,18 @@ Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damag
         };
       };
     };
+
+    if(Player.isPlayer(entity)){
+      for(let i=0; i<6; i++){
+        let n = Bauble[i];
+        player = Network.getClientForPlayer(entity);
+        let container = Baubles.getContainer(player);
+        let id =container.getSlot(n).id;
+        if(ArmorAPI.Bauble[id] != undefined){
+          defense += ArmorAPI.Bauble[id];
+        };
+      };
+    }
 
     if(damageValue> defense){
       if(damageValue< Entity.getHealth(entity)+defense){
