@@ -1,15 +1,15 @@
 ArmorAPI ={
-  Armor:{
+  Armor:[
 
-  },
-  Baubles:{
+  ],
+  Baubles:[
 
+  ],
+  RegisterArmor: function(id, data, def){
+    this.Armor.push({id:id, data:data, def:def});
   },
-  RegisterArmor: function(id, def){
-    this.Armor[id]=def;
-  },
-  RegisterArmorBauble: function(id, def){
-    this.Baubles[id]=def;
+  RegisterArmorBauble: function(id, data, def){
+    this.Baubles.push({id:id, data:data, def:def});
   },
 };
 
@@ -23,27 +23,24 @@ Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damag
     let startHealth = Entity.getMaxHealth(entity);
 
     for(let i=0; i<4; i++){
-      if(Entity.getArmorSlot(entity, i).id in ArmorAPI.Armor){
-        for(let id in ArmorAPI.Armor){
-          if(Entity.getArmorSlot(entity, i).id == id){
-            defense += ArmorAPI.Armor[id];
-            break;
-          }
+      for(let n; n < ArmorAPI.Armor.length();n++){
+        let arm = Entity.getArmorSlot(entity, i);
+        if(arm.id == ArmorAPI.Armor[n][id] && arm.data == ArmorAPI.Armor[n][data]){
+          defense += ArmorAPI.Armor[n][def];
         };
       };
     };
 
     if(Player.isPlayer(entity)){
       for(let i=0; i<6; i++){
-        let n = Bauble[i];
-        player = Network.getClientForPlayer(entity);
-        let container = Baubles.getContainer(player);
-        let id =container.getSlot(n).id;
-        if(ArmorAPI.Bauble[id] != undefined){
-          defense += ArmorAPI.Bauble[id];
+        for(let n; n < ArmorAPI.Bauble.length(); n++){
+          let arm = Baubles.getContainer(Network.getClientForPlayer(entity)).getSlot(Bauble[i]);
+          if(arm.id == ArmorAPI.Bauble[n][id] && arm.data == ArmorAPI.Bauble[n][data]){
+            defense += ArmorAPI.Bauble[n][def];
+          };
         };
       };
-    }
+    };
 
     if(damageValue> defense){
       if(damageValue< Entity.getHealth(entity)+defense){
