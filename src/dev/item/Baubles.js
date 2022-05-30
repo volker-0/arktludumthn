@@ -8,10 +8,10 @@ ItemContainer.registerScreenFactory("chronometer.ui", function(container, name) 
 Baubles.registerBauble({
   id: ItemID.StopClock,
   type: BaubleType.charm,
-  onEquip(client) {
+  onEquip: function(client) {
     ChronoBasic.enabled = true;
   },
-  onTakeOff(client) {
+  onTakeOff: function(client) {
     Logger.Log("TakeOff");
     ChronoBasic.enabled = false;
   },

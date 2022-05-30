@@ -22,7 +22,7 @@ IMPORT("BaublesAPI");
 var folder = __dir__ + "/sounds/";
 var MusicPlayer = new MediaPlayer();
 MediaPlayer.register("Holybot.music", folder + "Holybot.mp3");
-var Bauble = ["amulet", "ring", "belt", "head", "body", "charm"];
+var Bauble = ["amulet", "ring0", "ring1", "belt", "head", "body", "charm"];
 var EssenceAPI = {
     registerDropEntity: function (idEntity, idEssence, countMax) {
         countMax = countMax || 3;
@@ -97,7 +97,7 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
         var defense = 0;
         var startHealth_1 = Entity.getMaxHealth(entity);
         for (var i = 0; i < 4; i++) {
-            for (var n = void 0; n < ArmorAPI.Armor.length(); n++) {
+            for (var n = void 0; n < ArmorAPI.Armor.length; n++) {
                 var arm = Entity.getArmorSlot(entity, i);
                 if (arm.id == ArmorAPI.Armor[n][id] && arm.data == ArmorAPI.Armor[n][data]) {
                     defense += ArmorAPI.Armor[n][def];
@@ -107,12 +107,12 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
             ;
         }
         ;
-        if (Player.isPlayer(entity)) {
-            for (var i = 0; i < 6; i++) {
-                for (var n = void 0; n < ArmorAPI.Bauble.length(); n++) {
+        if (Entity.getType(entity) == 63) {
+            for (var i = 0; i < 8; i++) {
+                for (var n = void 0; n < ArmorAPI.Baubles.length; n++) {
                     var arm = Baubles.getContainer(Network.getClientForPlayer(entity)).getSlot(Bauble[i]);
-                    if (arm.id == ArmorAPI.Bauble[n][id] && arm.data == ArmorAPI.Bauble[n][data]) {
-                        defense += ArmorAPI.Bauble[n][def];
+                    if (arm.id == ArmorAPI.Baubles[n][id] && arm.data == ArmorAPI.Baubles[n][data]) {
+                        defense += ArmorAPI.Baubles[n][def];
                     }
                     ;
                 }
@@ -143,16 +143,38 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
     ;
 });
 AttackAPI = {
-    Attack: [],
-    VoidAttack: [],
-    RegisterAttack: function (id, data, atck) {
-        this.Attack.push({ id: id, data: data, atck: atck });
-    },
-    RegisterVoidAttack: function (id, data, atck) {
-        this.VoidAttack.push({ id: id, data: data, atck: atck });
-    },
+    Items: [],
+    RegisterAttack: function (id, data, atck, vatck) {
+        this.Items.push({ id: id, data: data, atck: atck, vatck: vatck });
+    }
 };
-Callback.addCallback();
+/*Callback.addCallback("EntityHurt", function(attacker, entity, damage, type){
+  let attack = 0;
+  let voidAttack = 0;
+
+  if(Entity.getType(entity) == 63){
+    for(let i=0; i<8; i++){
+      let atc = Baubles.getContainer(Network.getClientForPlayer(attacker)).getSlot(Bauble[i]);
+      for(let n; n < AttackAPI.Items.length; n++){
+        if(atc.id == AttackAPI.Items[n][id] && atc.data == AttackAPI.Items[n][data]){
+          attack += AttackAPI.Items[n][atck];
+          voidAttack += AttackAPI.Items[n][vatck];
+        };
+      };
+    };
+  };
+
+  let carriedItem = Entity.getCarriedItem(attacker);
+  for(let n; n < AttackAPI.Items.length; n++){
+    if(carriedItem.id == AttackAPI.Items[n][id] && carriedItem.data == AttackAPI.Items[n][data]){
+      attack += AttackAPI.Items[n][atck];
+      voidAttack += AttackAPI.Items[n][vatck];
+    };
+  };
+
+  Entity.damageEntity(entity, attack, 11, {attacker: attacker, bool1: true});
+  Entity.damageEntity(entity, attack, 1, {attacker: attacker, bool1: false});
+});*/ 
 var TimeStopClock = /** @class */ (function () {
     function TimeStopClock(time) {
         this.window = new UI.Window({

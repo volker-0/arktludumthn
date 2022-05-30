@@ -10,4 +10,4 @@ const MusicPlayer = new MediaPlayer();
 
 MediaPlayer.register("Holybot.music", folder + "Holybot.mp3");
 
-const Bauble =["amulet", "ring", "belt", "head", "body", "charm"]
+const Bauble = ["amulet", "ring0", "ring1", "belt", "head", "body", "charm"]

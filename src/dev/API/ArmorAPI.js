@@ -21,7 +21,7 @@ Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damag
     let startHealth = Entity.getMaxHealth(entity);
 
     for(let i=0; i<4; i++){
-      for(let n; n < ArmorAPI.Armor.length();n++){
+      for(let n; n < ArmorAPI.Armor.length;n++){
         let arm = Entity.getArmorSlot(entity, i);
         if(arm.id == ArmorAPI.Armor[n][id] && arm.data == ArmorAPI.Armor[n][data]){
           defense += ArmorAPI.Armor[n][def];
@@ -29,12 +29,12 @@ Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damag
       };
     };
 
-    if(Player.isPlayer(entity)){
-      for(let i=0; i<6; i++){
-        for(let n; n < ArmorAPI.Bauble.length(); n++){
+    if(Entity.getType(entity) == 63){
+      for(let i=0; i<8; i++){
+        for(let n; n < ArmorAPI.Baubles.length; n++){
           let arm = Baubles.getContainer(Network.getClientForPlayer(entity)).getSlot(Bauble[i]);
-          if(arm.id == ArmorAPI.Bauble[n][id] && arm.data == ArmorAPI.Bauble[n][data]){
-            defense += ArmorAPI.Bauble[n][def];
+          if(arm.id == ArmorAPI.Baubles[n][id] && arm.data == ArmorAPI.Baubles[n][data]){
+            defense += ArmorAPI.Baubles[n][def];
           };
         };
       };

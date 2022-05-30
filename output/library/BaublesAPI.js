@@ -157,14 +157,17 @@ var Baubles = /** @class */ (function () {
         if (container === void 0) { container = new ItemContainer(); }
         container.setClientContainerTypeName("baubles.ui");
         var slots = ["amulet", "ring0", "ring1", "belt", "head", "body", "charm"];
-        for (var _i = 0, slots_1 = slots; _i < slots_1.length; _i++) {
-            var name_1 = slots_1[_i];
+        for (var _i = 0; _i < slots.length; _i++) {
+            var name_1 = slots[_i];
             container.setDirtySlotListener(name_1, function (container, name, slot) {
                 var _a, _b;
                 var data = Baubles.data[playerUid];
                 var old = data.cache[name];
-                if (!old && slot.id > 0 || slot.id !== old) {
+                //Logger.Log(JSON.stringify(old));
+                //Logger.Log(JSON.stringify(data.cache));
+                if (!old && slot.id != 0 || slot.id !== old) {
                     var client = Network.getClientForPlayer(playerUid);
+                    Logger.Log(old==true)
                     if (old) {
                         (_a = Baubles.getDesc(old.id)) === null || _a === void 0 ? void 0 : _a.onTakeOff(client, data.container, name);
                     }
@@ -238,7 +241,7 @@ Baubles.setupServerSide();
 Callback.addCallback("tick", function () { return Baubles.tick(); });
 Callback.addCallback("LevelLeft", function () { return Baubles.reset(); });
 Callback.addCallback("EntityDeath", function (entity) {
-    if (Entity.getType(entity) === 1) { //player
+    if (Entity.getType(entity) == 63) { //player
         var data = Baubles.getDataFor(entity);
         if (!data) {
             return;
@@ -251,7 +254,7 @@ Callback.addCallback("EntityDeath", function (entity) {
         var blockSource = BlockSource.getDefaultForActor(entity);
         var container = data.container;
         for (var i in data.cache) {
-            var bauble = data.cache[i];
+            var bauble = Baubles.descriptions[data.cache[i]];
             if (bauble.onTakeOff) {
                 bauble.onTakeOff(client, data.container, i);
             }
