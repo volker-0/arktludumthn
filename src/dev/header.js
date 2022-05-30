@@ -9,3 +9,5 @@ const folder = __dir__ + "/sounds/";
 const MusicPlayer = new MediaPlayer();
 
 MediaPlayer.register("Holybot.music", folder + "Holybot.mp3");
+
+const Bauble =["amulet", "ring", "belt", "head", "body", "charm"]

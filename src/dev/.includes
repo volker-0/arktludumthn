@@ -3,6 +3,7 @@ header.js
 API/EssenceAPI.js
 API/ItemGenerate.js
 API/ArmorAPI.js
+API/AttackAPI.js
 API/ChronoAPI.js
 
 particles/CatalizatorParticles.js

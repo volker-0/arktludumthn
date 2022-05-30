@@ -22,6 +22,7 @@ IMPORT("BaublesAPI");
 var folder = __dir__ + "/sounds/";
 var MusicPlayer = new MediaPlayer();
 MediaPlayer.register("Holybot.music", folder + "Holybot.mp3");
+var Bauble = ["amulet", "ring", "belt", "head", "body", "charm"];
 var EssenceAPI = {
     registerDropEntity: function (idEntity, idEssence, countMax) {
         countMax = countMax || 3;
@@ -81,23 +82,39 @@ function ItemGenerate() {
     };
 }
 ArmorAPI = {
-    Armor: {},
-    RegisterArmor: function (id, def) {
-        this.Armor[id] = def;
+    Armor: [],
+    Baubles: [],
+    RegisterArmor: function (id, data, def) {
+        this.Armor.push({ id: id, data: data, def: def });
+    },
+    RegisterArmorBauble: function (id, data, def) {
+        this.Baubles.push({ id: id, data: data, def: def });
     },
 };
-ArmorAPI.RegisterArmor(ItemID.aerchestplate, 2);
+ArmorAPI.RegisterArmor(ItemID.aerchestplate, 0, 2);
 Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, damageType) {
     if (damageType == 2 || damageType == 3 || damageType == 11) {
         var defense = 0;
         var startHealth_1 = Entity.getMaxHealth(entity);
         for (var i = 0; i < 4; i++) {
-            if (Entity.getArmorSlot(entity, i).id in ArmorAPI.Armor) {
-                for (var id in ArmorAPI.Armor) {
-                    if (Entity.getArmorSlot(entity, i).id == id) {
-                        defense += ArmorAPI.Armor[id];
-                        break;
+            for (var n = void 0; n < ArmorAPI.Armor.length(); n++) {
+                var arm = Entity.getArmorSlot(entity, i);
+                if (arm.id == ArmorAPI.Armor[n][id] && arm.data == ArmorAPI.Armor[n][data]) {
+                    defense += ArmorAPI.Armor[n][def];
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        if (Player.isPlayer(entity)) {
+            for (var i = 0; i < 6; i++) {
+                for (var n = void 0; n < ArmorAPI.Bauble.length(); n++) {
+                    var arm = Baubles.getContainer(Network.getClientForPlayer(entity)).getSlot(Bauble[i]);
+                    if (arm.id == ArmorAPI.Bauble[n][id] && arm.data == ArmorAPI.Bauble[n][data]) {
+                        defense += ArmorAPI.Bauble[n][def];
                     }
+                    ;
                 }
                 ;
             }
@@ -125,6 +142,17 @@ Callback.addCallback("EntityHurt", function (attacker, entity, damageValue, dama
     }
     ;
 });
+AttackAPI = {
+    Attack: [],
+    VoidAttack: [],
+    RegisterAttack: function (id, data, atck) {
+        this.Attack.push({ id: id, data: data, atck: atck });
+    },
+    RegisterVoidAttack: function (id, data, atck) {
+        this.VoidAttack.push({ id: id, data: data, atck: atck });
+    },
+};
+Callback.addCallback();
 var TimeStopClock = /** @class */ (function () {
     function TimeStopClock(time) {
         this.window = new UI.Window({
@@ -12812,7 +12840,7 @@ ModAPI.addAPICallback("GuideAPI", function (api) {
 });
 IDRegistry.genItemID("StopClock");
 Item.createItem("StopClock", "Хронометр", { name: "chrono", meta: 0 }, { stack: 1 });
-var ChronoBasic = new TimeStopClock(5000);
+var ChronoBasic = new TimeStopClock(500);
 ItemContainer.registerScreenFactory("chronometer.ui", function (container, name) {
     return ChronoBasic.window;
 });
@@ -12820,14 +12848,10 @@ Baubles.registerBauble({
     id: ItemID.StopClock,
     type: BaubleType.charm,
     onEquip: function (client) {
-        var debug = ChronoBasic.window.getContent();
-        Logger.Log(JSON.stringify(debug));
-        ChronoBasic.open();
         ChronoBasic.enabled = true;
     },
     onTakeOff: function (client) {
         Logger.Log("TakeOff");
-        ChronoBasic.close();
         ChronoBasic.enabled = false;
     },
     tick: function () { }

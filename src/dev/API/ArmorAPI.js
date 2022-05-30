@@ -13,9 +13,7 @@ ArmorAPI ={
   },
 };
 
-const Bauble =["amulet", "ring", "belt", "head", "body", "charm"]
-
-ArmorAPI.RegisterArmor(ItemID.aerchestplate, 2)
+ArmorAPI.RegisterArmor(ItemID.aerchestplate, 0, 2);
 
 Callback.addCallback("EntityHurt", function(attacker, entity, damageValue, damageType){
   if(damageType == 2||damageType == 3||damageType == 11){
