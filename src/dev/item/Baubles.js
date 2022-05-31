@@ -12,7 +12,6 @@ Baubles.registerBauble({
     ChronoBasic.enabled = true;
   },
   onTakeOff: function(client) {
-    Logger.Log("TakeOff");
     ChronoBasic.enabled = false;
   },
   tick(){}
