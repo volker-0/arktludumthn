@@ -148,33 +148,39 @@ AttackAPI = {
         this.Items.push({ id: id, data: data, atck: atck, vatck: vatck });
     }
 };
-/*Callback.addCallback("EntityHurt", function(attacker, entity, damage, type){
-  let attack = 0;
-  let voidAttack = 0;
-
-  if(Entity.getType(entity) == 63){
-    for(let i=0; i<8; i++){
-      let atc = Baubles.getContainer(Network.getClientForPlayer(attacker)).getSlot(Bauble[i]);
-      for(let n; n < AttackAPI.Items.length; n++){
-        if(atc.id == AttackAPI.Items[n][id] && atc.data == AttackAPI.Items[n][data]){
-          attack += AttackAPI.Items[n][atck];
-          voidAttack += AttackAPI.Items[n][vatck];
-        };
-      };
-    };
-  };
-
-  let carriedItem = Entity.getCarriedItem(attacker);
-  for(let n; n < AttackAPI.Items.length; n++){
-    if(carriedItem.id == AttackAPI.Items[n][id] && carriedItem.data == AttackAPI.Items[n][data]){
-      attack += AttackAPI.Items[n][atck];
-      voidAttack += AttackAPI.Items[n][vatck];
-    };
-  };
-
-  Entity.damageEntity(entity, attack, 11, {attacker: attacker, bool1: true});
-  Entity.damageEntity(entity, attack, 1, {attacker: attacker, bool1: false});
-});*/ 
+Callback.addCallback("EntityHurt", function (attacker, entity, damage, type) {
+    if (attacker != undefined) {
+        var attack = 0;
+        var voidAttack = 0;
+        if (Entity.getType(entity) == 63) {
+            for (var i = 0; i < 8; i++) {
+                var atc = Baubles.getContainer(Network.getClientForPlayer(attacker)).getSlot(Bauble[i]);
+                for (var n = void 0; n < AttackAPI.Items.length; n++) {
+                    if (atc.id == AttackAPI.Items[n][id] && atc.data == AttackAPI.Items[n][data]) {
+                        attack += AttackAPI.Items[n][atck];
+                        voidAttack += AttackAPI.Items[n][vatck];
+                    }
+                    ;
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        var carriedItem = Entity.getCarriedItem(attacker);
+        for (var n = void 0; n < AttackAPI.Items.length; n++) {
+            if (carriedItem.id == AttackAPI.Items[n][id] && carriedItem.data == AttackAPI.Items[n][data]) {
+                attack += AttackAPI.Items[n][atck];
+                voidAttack += AttackAPI.Items[n][vatck];
+            }
+            ;
+        }
+        ;
+        Entity.damageEntity(entity, attack, 11, { attacker: attacker, bool1: true });
+        Entity.damageEntity(entity, attack, 1, { attacker: attacker, bool1: false });
+    }
+    ;
+});
 var TimeStopClock = /** @class */ (function () {
     function TimeStopClock(time) {
         this.window = new UI.Window({
@@ -12873,7 +12879,6 @@ Baubles.registerBauble({
         ChronoBasic.enabled = true;
     },
     onTakeOff: function (client) {
-        Logger.Log("TakeOff");
         ChronoBasic.enabled = false;
     },
     tick: function () { }

@@ -165,7 +165,6 @@ var Baubles = /** @class */ (function () {
                 var old = data.cache[name];
                 if ((!old && slot.id != 0) || slot.id !== old) {
                     var client = Network.getClientForPlayer(playerUid);
-                    Logger.Log(old==true)
                     if (old) {
                         (_a = Baubles.getDesc(old)) === null || _a === void 0 ? void 0 : _a.onTakeOff(client, data.container, name);
                     }else{
