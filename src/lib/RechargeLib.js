@@ -5,11 +5,21 @@ LIBRARY({
   api: "CoreEngine",
 });
 
+let Recharge = {};
+
+Callback.addCallback("ServerPlayerLoaded", function(player){
+  
+});
+
 let RechargeLib = {
-  Items: {},
-  addRechargeble: function(item, rechargeTime){
-    this.Items[item]= rechargeTime;
+  Items: [],
+  addRechargeble: function(itemid, itemdata, rechargeTime){
+    this.Items.push({item:{id:itemid, data:itemdata}, rechargeTime: rechargeTime});
   },
 };
 
-Callback.addCallback()
+Callback.addCallback("PlayerAttack", function(player, victim){
+
+  let item = Player.getCarriedItem(player);
+  
+});
