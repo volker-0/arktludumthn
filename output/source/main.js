@@ -14,10 +14,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 importLib("ToolLib");
-IMPORT("SettingsManager");
 //IMPORT("DungeonAPI");
 IMPORT("SoundAPI");
-//IMPORT("RechargeLib");
+IMPORT("RechargeLib");
 IMPORT("BaublesAPI");
 var folder = __dir__ + "/sounds/";
 var MusicPlayer = new MediaPlayer();
