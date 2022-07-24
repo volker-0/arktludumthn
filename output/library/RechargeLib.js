@@ -20,7 +20,7 @@ Callback.addCallback("ServerPlayerLoaded", function(player){
 Callback.addCallback("PlayerAttack", function(player, victim){
   let time
   let item = Player.getCarriedItem(player);
-  for(let i; i < RechargeLib.Items.length; i++){
+  for(let i = 0; i < RechargeLib.Items.length; i++){
     let a = RechargeLib.Items[i];
     if(a.item.id == item.id){
       if(a.item.data == item.data){
@@ -31,19 +31,24 @@ Callback.addCallback("PlayerAttack", function(player, victim){
     };
   };
 
-  let now = Math.floor((java.lang.management.ThreadMXBean.getCurrentThreadCpuTime())/50000000);
-  if((now - RechargeLib.Recharge[player][ThreadTime]) > time){
-    RechargeLib.Recharge[player][isRecharging] = false;
+  let ThisPlayerInformation = RechargeLib.Recharge[player];
+  let now = Updatable.getSyncTime();
+  Logger.Log(now - ThisPlayerInformation.ThreadTime)
+  Logger.Log(time)
+  if((now - ThisPlayerInformation.ThreadTime) > time){
+    ThisPlayerInformation.isRecharging = false;
   }else{
-    RechargeLib.Recharge[player][isRecharging] = true;
+    ThisPlayerInformation.isRecharging = true;
   };
-  RechargeLib.Recharge[player][ThreadTime] = now;
+  ThisPlayerInformation.ThreadTime = now;
+  Logger.Log(JSON.stringify(RechargeLib.Recharge[player]));
 
-  if(RechargeLib.Recharge[player][isRecharging] == false){
-    RechargeLib.Recharge[player][isRecharging] = true;
+  if(ThisPlayerInformation.isRecharging == false){
+    ThisPlayerInformation.isRecharging = true;
   }else{
     Game.prevent();
-  }
+  };
+  Logger.Log("Done");
 });
 
 RechargeLib.addRechargeble(267, 0, 13);

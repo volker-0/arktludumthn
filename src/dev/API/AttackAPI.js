@@ -7,7 +7,7 @@ AttackAPI ={
   }
 };
 
-Callback.addCallback("EntityHurt", function(attacker, entity, damage, type){
+/*Callback.addCallback("EntityHurt", function(attacker, entity, damage, type){
   if(attacker != undefined){
     let attack = 0;
     let voidAttack = 0;
@@ -35,4 +35,4 @@ Callback.addCallback("EntityHurt", function(attacker, entity, damage, type){
     Entity.damageEntity(entity, attack, 11, {attacker: attacker, bool1: true});
     Entity.damageEntity(entity, attack, 1, {attacker: attacker, bool1: false});
   };
-});
+});*/
