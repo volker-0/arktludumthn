@@ -14,7 +14,18 @@ let RechargeLib = {
 };
 
 Callback.addCallback("ServerPlayerLoaded", function(player){
-  RechargeLib.Recharge[player] = {ThreadTime: 0, isRecharging: false};
+  RechargeLib.Recharge[player] = {ThreadTime: 0, isRecharging: false, window: new UI.Window({
+    location: {
+      x:550,
+      y:225,
+      width:206,
+      height:50
+    },
+    elements: {},
+    drawing: [{type: "bitmap", bitmap: "bar", height: 242, width: 1000}]
+  }), container: new UI.Container()};
+  let some = RechargeLib.Recharge[player];
+  some.window.setAsGameOverlay(true);
 });
 
 Callback.addCallback("PlayerAttack", function(player, victim){
@@ -33,22 +44,44 @@ Callback.addCallback("PlayerAttack", function(player, victim){
 
   let ThisPlayerInformation = RechargeLib.Recharge[player];
   let now = Updatable.getSyncTime();
-  Logger.Log(now - ThisPlayerInformation.ThreadTime)
-  Logger.Log(time)
   if((now - ThisPlayerInformation.ThreadTime) > time){
     ThisPlayerInformation.isRecharging = false;
   }else{
     ThisPlayerInformation.isRecharging = true;
   };
   ThisPlayerInformation.ThreadTime = now;
-  Logger.Log(JSON.stringify(RechargeLib.Recharge[player]));
 
   if(ThisPlayerInformation.isRecharging == false){
     ThisPlayerInformation.isRecharging = true;
+    Threading.initThread("recharge"+ player, function(){
+      let thisRech = RechargeLib.Recharge[player];
+      let thisContainer = thisRech.container;
+      let thisWindow = thisRech.window;
+      let waitTime = time * 10;
+
+      thisContainer.openAs(thisWindow);
+      let content = thisContainer.getGuiContent();
+      content.drawing = [{type: "bitmap", bitmap: "bar", height: 242, width: 1000}];
+
+      Logger.Log(waitTime);
+
+      java.lang.Thread.currentThread().sleep(waitTime);
+
+      Logger.Log("0");
+
+      for(let i = 1; i<5; i++){
+        content.drawing = [{type: "bitmap", bitmap: "bar" + i, height: 242, width: 10}];
+
+        java.lang.Thread.currentThread().sleep(waitTime);
+
+        Logger.Log(i);
+      };
+
+      thisContainer.close()
+    });
   }else{
     Game.prevent();
   };
-  Logger.Log("Done");
 });
 
 RechargeLib.addRechargeble(267, 0, 13);

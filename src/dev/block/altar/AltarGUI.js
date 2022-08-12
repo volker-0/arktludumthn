@@ -158,7 +158,6 @@ TileEntity.registerPrototype(BlockID.creatoraltar, {
         this.container.setSlot(name, this.container.getSlot(name).id, this.container.getSlot(name).count - 1, this.container.getSlot(name).data, this.container.getSlot(name).extra);
       };
       this.container.validateAll();
-      Logger.Log(JSON.stringify(this.data.CraftingItem));
       this.container.setSlot("slotCenter", this.data.CraftingItem[0].id, 1, this.data.CraftingItem[0].data, this.container.getSlot("slotCentert").extra);
       this.container.sendChanges();
     };
