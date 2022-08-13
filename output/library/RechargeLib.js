@@ -22,7 +22,7 @@ Callback.addCallback("ServerPlayerLoaded", function(player){
       height:50
     },
     elements: {},
-    drawing: [{type: "bitmap", bitmap: "bar", height: 242, width: 1000}]
+    drawing: [{type: "bitmap", bitmap: "bar", height: 242, width: 1000},{type: "background", bitmap: "bar"}]
   }), container: new UI.Container()};
   let some = RechargeLib.Recharge[player];
   some.window.setAsGameOverlay(true);
@@ -60,21 +60,35 @@ Callback.addCallback("PlayerAttack", function(player, victim){
       let waitTime = time * 10;
 
       thisContainer.openAs(thisWindow);
-      let content = thisContainer.getGuiContent();
-      content.drawing = [{type: "bitmap", bitmap: "bar", height: 242, width: 1000}];
 
-      Logger.Log(waitTime);
+      thisWindow.setContent({
+        location: {
+          x:550,
+          y:225,
+          width:206,
+          height:50
+        },
+        elements: {},
+        drawing: [{type: "bitmap", bitmap: "bar", height: 242, width: 1000},{type: "background", bitmap: "bar"}]
+      });
 
       java.lang.Thread.currentThread().sleep(waitTime);
 
-      Logger.Log("0");
-
       for(let i = 1; i<5; i++){
-        content.drawing = [{type: "bitmap", bitmap: "bar" + i, height: 242, width: 10}];
+        thisWindow.setContent({
+          location: {
+            x:550,
+            y:225,
+            width:206,
+            height:50
+          },
+          elements: {},
+          drawing: [{type: "bitmap", bitmap: "bar"+i, height: 242, width: 1000},{type: "background", bitmap: "bar"}]
+        });
+
+        thisContainer.sendChanges();
 
         java.lang.Thread.currentThread().sleep(waitTime);
-
-        Logger.Log(i);
       };
 
       thisContainer.close()
