@@ -1,10 +1,3 @@
-LIBRARY({
-  name: "RechargeLib",
-  version: 1.0,
-  shared: true,
-  api: "CoreEngine",
-});
-
 let RechargeLib = {
   Recharge: {},
   Items: [],
@@ -12,47 +5,40 @@ let RechargeLib = {
     this.Items.push({item:{id:itemid, data:itemdata}, rechargeTime: rechargeTime});
   },
   StartTimer: function(time,player){
+    let waitTime = time * 10;
+    let thisRech = RechargeLib.Recharge[player];
+    let thisContainer = thisRech.container;
+    let thisWindow = thisRech.window;
+
+    if(thisRech.thread != undefined){
+      thisRech.thread.interrupt();
+      thisRech.thread.interrupt();
+      thisRech.thread = undefined;
+      thisContainer.close();
+    }
     Threading.initThread("recharge"+ player, function(){
-      let waitTime = time * 10;
-      let thisRech = RechargeLib.Recharge[player];
-      let thisContainer = thisRech.container;
-      let thisWindow = thisRech.window;
+      try{       
+        thisRech.thread = java.lang.Thread.currentThread()
+        thisContainer.openAs(thisWindow);
+        for(let i = 0; i<5; i++){
+          thisWindow.setContent({
+            location: {
+              x:794,
+              y:(UI.getScreenHeight()/15),
+              width:(50*4.125),
+              height:50
+            },
+            elements: {},
+            drawing: [{type: "bitmap", bitmap: "rechargeBar.bar"+i, height: (1000/4.125)+1, width: 1000}]
+          });
 
-      thisContainer.openAs(thisWindow);
+          java.lang.Thread.currentThread().sleep(waitTime);
+        };
 
-      thisWindow.setContent({
-        location: {
-          x:550,
-          y:225,
-          width:206,
-          height:50
-        },
-        elements: {},
-        drawing: [{type: "bitmap", bitmap: "bar", height: 242, width: 1000}]
-      });
-
-      Logger.Log("0");
-
-      java.lang.Thread.currentThread().sleep(waitTime);
-
-      for(let i = 1; i<5; i++){
-        thisWindow.setContent({
-          location: {
-            x:550,
-            y:225,
-            width:206,
-            height:50
-          },
-          elements: {},
-          drawing: [{type: "bitmap", bitmap: "bar"+i, height: 242, width: 1000}]
-        });
-
-        Logger.Log(i);
-        java.lang.Thread.currentThread().sleep(waitTime);
-      };
-
-      Logger.Log("End");
-      thisContainer.close()
+        thisRech.thread = undefined;
+        thisContainer.close();
+      }catch(err){
+      }
     });
   },
 };
@@ -60,14 +46,14 @@ let RechargeLib = {
 Callback.addCallback("ServerPlayerLoaded", function(player){
   RechargeLib.Recharge[player] = {ThreadTime: 0, isRecharging: false, window: new UI.Window({
     location: {
-      x:550,
-      y:225,
-      width:206,
+      x:794,
+      y:(UI.getScreenHeight()/11),
+      width:(50*4.125),
       height:50
     },
     elements: {},
-    drawing: [{type: "bitmap", bitmap: "bar", height: 242, width: 1000}]
-  }), container: new UI.Container()};
+    drawing: [{type: "bitmap", bitmap: "rechargeBar.bar0", height: (1000/4.125)+1, width: 1000}]
+  }), container: new UI.Container(), thread: undefined};
   let some = RechargeLib.Recharge[player];
   some.window.setAsGameOverlay(true);
 });
@@ -104,4 +90,4 @@ Callback.addCallback("PlayerAttack", function(player, victim){
   };
 });
 
-RechargeLib.addRechargeble(267, 0, 40);
+RechargeLib.addRechargeble(267, 0, 40/*13*/);
