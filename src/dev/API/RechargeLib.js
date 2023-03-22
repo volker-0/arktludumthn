@@ -90,4 +90,4 @@ Callback.addCallback("PlayerAttack", function(player, victim){
   };
 });
 
-RechargeLib.addRechargeble(267, 0, 40/*13*/);
+RechargeLib.addRechargeble(267, 0, 13);

@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 importLib("ToolLib");
 //IMPORT("DungeonAPI");
 IMPORT("SoundAPI");
-IMPORT("RechargeLib");
+//IMPORT("RechargeLib");
 IMPORT("BaublesAPI");
 var folder = __dir__ + "/sounds/";
 var MusicPlayer = new MediaPlayer();
@@ -147,35 +147,47 @@ AttackAPI = {
         this.Items.push({ id: id, data: data, atck: atck, vatck: vatck });
     }
 };
-/*Callback.addCallback("EntityHurt", function(attacker, entity, damage, type){
-  if(attacker != undefined){
-    let attack = 0;
-    let voidAttack = 0;
-
-    if(Entity.getType(entity) == 63){
-      for(let i=0; i<8; i++){
-        let atc = Baubles.getContainer(Network.getClientForPlayer(attacker)).getSlot(Bauble[i]);
-        for(let n; n < AttackAPI.Items.length; n++){
-          if(atc.id == AttackAPI.Items[n][id] && atc.data == AttackAPI.Items[n][data]){
-            attack += AttackAPI.Items[n][atck];
-            voidAttack += AttackAPI.Items[n][vatck];
-          };
-        };
-      };
-    };
-
-    let carriedItem = Entity.getCarriedItem(attacker);
-    for(let n; n < AttackAPI.Items.length; n++){
-      if(carriedItem.id == AttackAPI.Items[n][id] && carriedItem.data == AttackAPI.Items[n][data]){
-        attack += AttackAPI.Items[n][atck];
-        voidAttack += AttackAPI.Items[n][vatck];
-      };
-    };
-
-    Entity.damageEntity(entity, attack, 11, {attacker: attacker, bool1: true});
-    Entity.damageEntity(entity, attack, 1, {attacker: attacker, bool1: false});
-  };
-});*/ 
+Callback.addCallback("EntityHurt", function (attacker, entity, damage, type) {
+    if (attacker != -1) {
+        var attack = 0;
+        var voidAttack = 0;
+        if (Entity.getType(attacker) == 63) {
+            for (var i = 0; i < 8; i++) {
+                var atc = Baubles.getContainer(Network.getClientForPlayer(attacker)).getSlot(Bauble[i]);
+                for (var n = 0; n < AttackAPI.Items.length; n++) {
+                    if (atc.id == AttackAPI.Items[n].id && atc.data == AttackAPI.Items[n].data) {
+                        attack += AttackAPI.Items[n].atck;
+                        voidAttack += AttackAPI.Items[n].vatck;
+                    }
+                    ;
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        var carriedItem = Entity.getCarriedItem(attacker);
+        for (var n = 0; n < AttackAPI.Items.length; n++) {
+            if (carriedItem.id == AttackAPI.Items[n].id && carriedItem.data == AttackAPI.Items[n].data) {
+                attack += AttackAPI.Items[n].atck;
+                voidAttack += AttackAPI.Items[n].vatck;
+            }
+            ;
+        }
+        ;
+        if (attack > 0) {
+            Entity.damageEntity(entity, attack, 11, { attacker: -1, bool1: true });
+        }
+        ;
+        if (voidAttack > 0) {
+            Entity.healEntity(entity, -voidAttack);
+        }
+        Game.message(voidAttack);
+        Game.message(attack);
+        Game.message(damage);
+    }
+    ;
+});
 var TimeStopClock = /** @class */ (function () {
     function TimeStopClock(time) {
         this.window = new UI.Window({
@@ -213,6 +225,101 @@ var TimeStopClock = /** @class */ (function () {
 var TimeStop = function (time) {
     runOnMainThread(function () { java.lang.Thread.currentThread().sleep(time); });
 };
+var RechargeLib = {
+    Recharge: {},
+    Items: [],
+    addRechargeble: function (itemid, itemdata, rechargeTime) {
+        this.Items.push({ item: { id: itemid, data: itemdata }, rechargeTime: rechargeTime });
+    },
+    StartTimer: function (time, player) {
+        var waitTime = time * 10;
+        var thisRech = RechargeLib.Recharge[player];
+        var thisContainer = thisRech.container;
+        var thisWindow = thisRech.window;
+        if (thisRech.thread != undefined) {
+            thisRech.thread.interrupt();
+            thisRech.thread.interrupt();
+            thisRech.thread = undefined;
+            thisContainer.close();
+        }
+        Threading.initThread("recharge" + player, function () {
+            try {
+                thisRech.thread = java.lang.Thread.currentThread();
+                thisContainer.openAs(thisWindow);
+                for (var i = 0; i < 5; i++) {
+                    thisWindow.setContent({
+                        location: {
+                            x: 794,
+                            y: (UI.getScreenHeight() / 15),
+                            width: (50 * 4.125),
+                            height: 50
+                        },
+                        elements: {},
+                        drawing: [{ type: "bitmap", bitmap: "rechargeBar.bar" + i, height: (1000 / 4.125) + 1, width: 1000 }]
+                    });
+                    java.lang.Thread.currentThread().sleep(waitTime);
+                }
+                ;
+                thisRech.thread = undefined;
+                thisContainer.close();
+            }
+            catch (err) {
+            }
+        });
+    },
+};
+Callback.addCallback("ServerPlayerLoaded", function (player) {
+    RechargeLib.Recharge[player] = { ThreadTime: 0, isRecharging: false, window: new UI.Window({
+            location: {
+                x: 794,
+                y: (UI.getScreenHeight() / 11),
+                width: (50 * 4.125),
+                height: 50
+            },
+            elements: {},
+            drawing: [{ type: "bitmap", bitmap: "rechargeBar.bar0", height: (1000 / 4.125) + 1, width: 1000 }]
+        }), container: new UI.Container(), thread: undefined };
+    var some = RechargeLib.Recharge[player];
+    some.window.setAsGameOverlay(true);
+});
+Callback.addCallback("PlayerAttack", function (player, victim) {
+    var time;
+    var item = Player.getCarriedItem(player);
+    for (var i = 0; i < RechargeLib.Items.length; i++) {
+        var a = RechargeLib.Items[i];
+        if (a.item.id == item.id) {
+            if (a.item.data == item.data) {
+                time = a.rechargeTime;
+            }
+            ;
+        }
+        else {
+            return;
+        }
+        ;
+    }
+    ;
+    var ThisPlayerInformation = RechargeLib.Recharge[player];
+    var now = Updatable.getSyncTime();
+    if ((now - ThisPlayerInformation.ThreadTime) > time) {
+        ThisPlayerInformation.isRecharging = false;
+    }
+    else {
+        ThisPlayerInformation.isRecharging = true;
+    }
+    ;
+    ThisPlayerInformation.ThreadTime = now;
+    if (ThisPlayerInformation.isRecharging == false) {
+        ThisPlayerInformation.isRecharging = true;
+        RechargeLib.StartTimer(time, player);
+    }
+    else {
+        RechargeLib.StartTimer(time, player);
+        Game.prevent();
+    }
+    ;
+});
+RechargeLib.addRechargeble(267, 0, 13);
 var GoldParticle = Particles.registerParticleType({
     texture: "nitor",
     size: [0.25, 2],
@@ -12887,6 +12994,10 @@ Callback.addCallback("NativeGuiChanged", function (screenName) {
         }
     }
 });
+IDRegistry.genItemID("smt");
+Item.createItem("smt", "smt", { name: "smt", meta: 0 }, { stack: 1 });
+Baubles.registerBauble({ id: ItemID.smt, type: BaubleType.charm, onEquip: function (client) { }, onTakeOff: function (client) { }, tick: function () { } });
+AttackAPI.RegisterAttack(ItemID.smt, 0, 6, 3);
 var Azatot = new Dimensions.CustomDimension("Azatot", 685);
 Azatot.setSkyColor(0, 0, .2);
 Azatot.setFogColor(0, 0, .2);

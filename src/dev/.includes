@@ -5,6 +5,7 @@ API/ItemGenerate.js
 API/ArmorAPI.js
 API/AttackAPI.js
 API/ChronoAPI.js
+API/RechargeLib.js
 
 particles/CatalizatorParticles.js
 

@@ -26,3 +26,10 @@ Callback.addCallback("NativeGuiChanged", function(screenName){
     }
   }
 })
+
+IDRegistry.genItemID("smt");
+Item.createItem("smt", "smt", {name: "smt", meta: 0}, {stack: 1});
+
+Baubles.registerBauble({id: ItemID.smt,type: BaubleType.charm,onEquip: function(client) {},onTakeOff: function(client) {},tick(){}});
+
+AttackAPI.RegisterAttack(ItemID.smt, 0, 5, 3)
